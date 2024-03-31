@@ -11,7 +11,7 @@ import { FcSms } from "react-icons/fc";
 import Loader from "../Layout/Loader";
 import SmallLoader from "../Layout/SmallLoader";
 import { server } from "../../server";
-const ENDPOINT = "http://localhost:4000/";
+const ENDPOINT = "https://chireva-orevas-projects.vercel.app/";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const DashboardMessages = () => {
@@ -151,7 +151,7 @@ const MessageList = ({
       }
     };
     getUser();
-  }, [me, conversation,]);
+  }, [me, conversation]);
 
   const handleClick = (id) => {
     navigate(`${id}`, {
