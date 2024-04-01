@@ -51,7 +51,7 @@ const ProductsPage = () => {
   return (
     <>
       <Header activeHeading={3} />
-      <div className="min-h-screen bg-gradient-to-r from-gray-300 to-slate-500 ... mt-[70px] md:mt-[100px]">
+      <div className="min-h-screen bg-gradient-to-r from-gray-300 to-slate-500 ... mt-[60px] md:mt-[100px]">
         {productsLoading || loading ? (
           <div className="flex items-center justify-center h-[80vh]">
             <Loader />

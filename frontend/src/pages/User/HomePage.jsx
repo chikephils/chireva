@@ -20,7 +20,7 @@ const HomePage = () => {
   return (
     <>
       <Header activeHeading={1} />
-      <div className="bg-gradient-to-r from-slate-500 to-gray-500 ... mt-[65px] md:mt-[100px]">
+      <div className="bg-gradient-to-r from-slate-500 to-gray-500 ... mt-[60px] md:mt-[100px]">
         <Slider />
         <Categories />
         <Events />

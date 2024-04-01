@@ -8,7 +8,7 @@ const OrderPage = () => {
   return (
     <>
       <Header />
-      <div className=" bg-slate-100 mt-[70px]  md:mt-[100px]">
+      <div className=" bg-slate-100 mt-[60px]  md:mt-[100px]">
         <div className={`${styles.section} w-full flex pb-10`}>
           <ProfileSideBar active={2} />
           <div

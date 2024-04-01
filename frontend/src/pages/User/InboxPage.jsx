@@ -8,7 +8,7 @@ const InboxPage = () => {
   return (
     <>
       <Header />
-      <div className="mt-[70px] md:mt-[100px]">
+      <div className="mt-[60px] md:mt-[100px]">
         <div className={`${styles.section} w-full flex pb-10`}>
           <ProfileSideBar active={4} />
           <div

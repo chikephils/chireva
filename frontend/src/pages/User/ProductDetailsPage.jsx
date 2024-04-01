@@ -34,7 +34,7 @@ const ProductDetailsPage = () => {
   return (
     <>
       <Header />
-      <div className="mt-[70px] md:mt-[100px]">
+      <div className="mt-[60px] md:mt-[100px]">
         {data === null ? (
           <div className="flex items-center justify-center h-[80vh]">
             <Loader />

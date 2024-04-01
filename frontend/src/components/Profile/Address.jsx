@@ -76,8 +76,8 @@ const Address = () => {
   return (
     <div className="">
       {open && (
-        <div className="fixed w-full h-screen top-10 lg:top-6 left-0 bg-[#00000030] z-[5000] flex items-center justify-center shadow-xl">
-          <div className="w-[90%] lg:w-[40%] h-[80vh] md:h-[80vh] overflow-y-scroll scrollbar-none lg:h-[75vh] bg-gradient-to-r from-slate-300 to-slate-400 ... rounded-md shadow-2xl relative p-1 lg:p-2 mt-4">
+        <div className="fixed w-full h-screen top-10 lg:top-6 left-0 bg-[#00000030] z-50 flex items-center justify-center shadow-xl">
+          <div className="w-[90%] lg:w-[40%] h-[80vh] md:h-[80vh] overflow-y-scroll scrollbar-none lg:h-[75vh] bg-gradient-to-r from-slate-300 to-slate-400 ... rounded-md shadow-2xl z-[1000] p-1 lg:p-2 mt-4">
             <div className="w-full flex justify-end p-1">
               <RxCross1
                 size={30}

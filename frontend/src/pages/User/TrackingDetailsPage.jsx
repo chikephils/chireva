@@ -7,7 +7,7 @@ const TrackingDetailsPage = () => {
   return (
     <>
       <Header />
-      <div className="mt-[70px] md:mt-[100px] bg-gradient-to-r from-slate-200 to-slate-300 ...">
+      <div className="mt-[60px] md:mt-[100px] bg-gradient-to-r from-slate-200 to-slate-300 ...">
         <TrackOrder />
       </div>
       <Footer />

@@ -29,7 +29,6 @@ const Header = ({ activeHeading }) => {
   const wishList = useSelector(selectWishListItems);
   const seller = useSelector((state) => state.shop.seller);
 
-
   const navigate = useNavigate();
 
   const dropDownToogle = () => {
@@ -215,11 +214,11 @@ const Header = ({ activeHeading }) => {
       </div>
 
       {/* Mobile Header */}
-      <div className=" flex md:hidden shadow-sm items-center justify-between w-full bg-lime-600 h-[70px] fixed top-0 z-50">
+      <div className=" flex md:hidden shadow-sm items-center justify-between w-full bg-lime-600 h-[64px] fixed top-0 z-50">
         <div className={`${styles.section}`}>
           <header className="w-full flex items-center justify-between">
             {/* Left Section */}
-            <div className="w-1/4 flex flex-col justify-start">
+            <div className="w-1/4 flex flex-col justify-start pb-1">
               <BiMenuAltLeft
                 size={40}
                 color="white"
@@ -227,10 +226,10 @@ const Header = ({ activeHeading }) => {
                 onClick={menuToggle}
               />
               <div
-                className="block md:hidden relative h-[27px]  ml-2"
+                className="flex md:hidden h-[20px]  ml-4"
                 onClick={dropDownToogle}
               >
-                <button className="h-[100%] p-2 flex justify-between items-center text-center bg-white font-sans text-[12px] font-medium select-none rounded-md">
+                <button className="p-2 flex justify-between items-center bg-white font-sans text-[12px] font-medium select-none rounded-md">
                   Categories <IoIosArrowDown size={20} />
                 </button>
                 {dropDown ? (
@@ -282,29 +281,29 @@ const Header = ({ activeHeading }) => {
         {openMenu && (
           <div className="fixed w-full bg-[#0000005f] z-50 h-full top-0 left-0">
             <div className="fixed w-[60%] bg-slate-50 h-[98vh] top-0 z-10 rounded-lg overflow-y-auto scrollbar-thin">
-                <div className="flex items-center justify-center  py-2 sticky top-0  bg-slate-200 z-50">
-              <div className="w-full flex justify-between pr-3">
-                <div>
-                  <div
-                    className="relative mr-[15px] cursor-pointer"
-                    onClick={() => setOpenWishList(!openWishList)}
-                  >
-                    <AiOutlineHeart size={30} className="ml-4 mt-5" />
-                    <span className="absolute right-0 top-0 rounded-full bg-lime-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
-                      {wishList.length}
-                    </span>
+              <div className="flex items-center justify-center  py-2 sticky top-0  bg-slate-200 z-50">
+                <div className="w-full flex justify-between pr-3">
+                  <div>
+                    <div
+                      className="relative mr-[15px] cursor-pointer"
+                      onClick={() => setOpenWishList(!openWishList)}
+                    >
+                      <AiOutlineHeart size={30} className="ml-4 mt-5" />
+                      <span className="absolute right-0 top-0 rounded-full bg-lime-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
+                        {wishList.length}
+                      </span>
+                    </div>
                   </div>
+                  <RxCross1
+                    size={30}
+                    className="ml-4 mt-5 cursor-pointer"
+                    onClick={menuToggle}
+                  />
+                  {/*Wishlist popUp */}
+                  {openWishList ? (
+                    <WishList setOpenWishList={setOpenWishList} />
+                  ) : null}
                 </div>
-                <RxCross1
-                  size={30}
-                  className="ml-4 mt-5 cursor-pointer"
-                  onClick={menuToggle}
-                />
-                {/*Wishlist popUp */}
-                {openWishList ? (
-                  <WishList setOpenWishList={setOpenWishList} />
-                ) : null}
-              </div>
               </div>
               <div className="my-6 w-[92%] m-auto h-[40px] relative">
                 <input

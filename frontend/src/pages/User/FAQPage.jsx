@@ -7,7 +7,7 @@ const FAQPage = () => {
   return (
     <>
       <Header activeHeading={5} />
-      <div className="flex flex-col min-h-screen mt-[70px] md:mt-[100px]">
+      <div className="flex flex-col min-h-screen mt-[60px] md:mt-[100px]">
         <Faq />
         <Footer />
       </div>

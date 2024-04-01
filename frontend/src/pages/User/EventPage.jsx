@@ -21,7 +21,7 @@ const EventPage = () => {
   return (
     <>
       <Header activeHeading={4} />
-      <div className="flex flex-col bg-gradient-to-r from-gray-300 to-slate-500 ... min-h-screen mt-[70px] md:mt-[100px]">
+      <div className="flex flex-col bg-gradient-to-r from-gray-300 to-slate-500 ... min-h-screen mt-[60px] md:mt-[100px]">
         {loading ? (
           <div className="flex items-center justify-center h-[80vh]">
             <Loader />
