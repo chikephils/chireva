@@ -225,10 +225,7 @@ const Header = ({ activeHeading }) => {
                 className="cursor-pointer"
                 onClick={menuToggle}
               />
-              <div
-                className="md:hidden block relative"
-                onClick={dropDownToogle}
-              >
+              <div className="md:hidden relative" onClick={dropDownToogle}>
                 <button className="px-1 flex justify-between items-center bg-white font-sans text-[12px] font-medium select-none rounded-md">
                   Categories <IoIosArrowDown size={20} />
                 </button>
