@@ -30,9 +30,9 @@ const WishList = ({ setOpenWishList }) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full bg-[#0000004b] h-screen z-50 ">
-      <div className="fixed top-0 right-0 z-[1000]  w-[70%] lg:w-[40%] bg-gradient-to-r from-slate-200 to-slate-300 ... flex flex-col justify-between shadow-xl rounded-lg  h-[94vh] ">
-        <div className="w-full h-[8vh] flex items-center justify-between px-1 bg-gradient-to-r from-cyan-300 to-blue-400 ... rounded-lg">
+    <div className="fixed top-0 left-0 w-full h-full bg-[#0000004b] z-50 flex items-start justify-end">
+      <div className="relative w-[70%] lg:w-[40%] bg-gradient-to-r from-slate-200 to-slate-300 flex flex-col justify-between shadow-xl rounded-lg h-[94vh]">
+        <div className="w-full h-[8vh] flex items-center justify-between px-1 bg-gradient-to-r from-cyan-300 to-blue-400 rounded-t-lg">
           <div>
             <RxCross1
               size={25}
