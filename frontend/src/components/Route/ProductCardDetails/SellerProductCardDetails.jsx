@@ -3,7 +3,6 @@ import { RxCross1 } from "react-icons/rx";
 import styles from "../../../styles/styles";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-
 const SellerProductCardDetails = ({ setIsOpen, product }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -24,7 +23,7 @@ const SellerProductCardDetails = ({ setIsOpen, product }) => {
     <div className="bg-[#fff] shadow-xl">
       {product ? (
         <div className="fixed w-full h-screen top-0 left-0 bg-[#00000030] z-50 flex items-center justify-center shadow-xl">
-          <div className="w-[90%] lg:w-[60%] h-[70vh] md:h-[70vh] overflow-y-scroll scrollbar-none lg:h-[75vh] bg-gradient-to-l from-slate-50 to-slate-200 ... rounded-md shadow-2xl relative p-2 mt-[82px] ">
+          <div className="w-[90%] lg:w-[60%] h-[70vh] md:h-[70vh] overflow-y-scroll scrollbar-none lg:h-[75vh] bg-gradient-to-l from-slate-50 to-slate-200 ... rounded-md shadow-2xl relative p-2 mt-[82px] z-50 ">
             <div className=" sticky top-0 right-0 z-50 cursor-pointer">
               <RxCross1
                 size={24}
@@ -35,47 +34,48 @@ const SellerProductCardDetails = ({ setIsOpen, product }) => {
 
             <div className="block w-full lg:flex">
               <div className="w-full justify-center lg:w-[40%] ">
-
-              <div className="relative cursor-pointer px-[10px] rounded-[10px] flex items-center justify-center hover:shadow-md">
-                <div className="min-w-[250px] overflow-hidden rounded-[10px] mb-[10px]">
-                  <div
-                    className="flex transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                  >
-                    {product.images?.map((photo, index) => (
-                      <div
-                        key={index}
-                        className="relative flex flex-shrink-0 w-full items-center justify-center"
-                      >
-                        <img
-                          src={`${photo?.url}`}
-                          alt={`pics ${index + 1}`}
-                          className="max-w-[150px]  lg:max-w-[100%] min-h-[150px] lg:h-[50%] object-contain "
-                        />
+                <div className="relative cursor-pointer px-[10px] rounded-[10px] flex items-center justify-center hover:shadow-md">
+                  <div className="min-w-[250px] overflow-hidden rounded-[10px] mb-[10px]">
+                    <div
+                      className="flex transition-transform duration-500 ease-in-out"
+                      style={{
+                        transform: `translateX(-${currentIndex * 100}%)`,
+                      }}
+                    >
+                      {product.images?.map((photo, index) => (
                         <div
-                          className="absolute top-1/2 transform -translate-y-1/2 px-1 rounded-full border-none cursor-pointer flex items-center justify-center z-50 left-[5px] bg-slate-100 "
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            goToPrevSlide(e);
-                          }}
+                          key={index}
+                          className="relative flex flex-shrink-0 w-full items-center justify-center"
                         >
-                          <FaArrowLeft size={30} />
+                          <img
+                            src={`${photo?.url}`}
+                            alt={`pics ${index + 1}`}
+                            className="max-w-[150px]  lg:max-w-[100%] min-h-[150px] lg:h-[50%] object-contain "
+                          />
+                          <div
+                            className="absolute top-1/2 transform -translate-y-1/2 px-1 rounded-full border-none cursor-pointer flex items-center justify-center z-50 left-[5px] bg-slate-100 "
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              goToPrevSlide(e);
+                            }}
+                          >
+                            <FaArrowLeft size={30} />
+                          </div>
+                          <div
+                            className="absolute top-1/2 transform -translate-y-1/2 px-1 rounded-full border-none cursor-pointer flex items-center justify-center z-50 right-[5px] bg-slate-100 "
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              goToNextSlide(e);
+                            }}
+                          >
+                            <FaArrowRight size={30} />
+                          </div>
                         </div>
-                        <div
-                          className="absolute top-1/2 transform -translate-y-1/2 px-1 rounded-full border-none cursor-pointer flex items-center justify-center z-50 right-[5px] bg-slate-100 "
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            goToNextSlide(e);
-                          }}
-                        >
-                          <FaArrowRight size={30} />
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-                
+
                 <div className="flex py-4">
                   <img
                     src={`${product.shop?.avatar?.url}`}

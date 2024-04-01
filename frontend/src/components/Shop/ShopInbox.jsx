@@ -11,7 +11,7 @@ import CreateLoader from "../Layout/createLoader";
 import TimeAgo from "timeago-react";
 import { RxCross1 } from "react-icons/rx";
 import Loader from "../Layout/Loader";
-const ENDPOINT = "https://chireva-orevas-projects.vercel.app/";
+const ENDPOINT = "https://localhost.4000/";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const ShopInbox = () => {

@@ -7,7 +7,7 @@ import socketIO from "socket.io-client";
 import { FcSms } from "react-icons/fc";
 import Loader from "../Layout/Loader";
 import SmallLoader from "../Layout/SmallLoader";
-const ENDPOINT = "https://chireva-orevas-projects.vercel.app/";
+const ENDPOINT = "https://localhost.4000/";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const UserInbox = () => {

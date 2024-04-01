@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CheckoutSteps from "../../components/Checkout/CheckoutSteps";
 import { closePaymentModal, useFlutterwave } from "flutterwave-react-v3";
 import { RxCross1 } from "react-icons/rx";
@@ -12,6 +12,7 @@ import styles from "../../styles/styles";
 
 const PaymentPage = ({ orderData, setShowPayment }) => {
   const user = useSelector(selectUser);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const config = {
@@ -47,6 +48,35 @@ const PaymentPage = ({ orderData, setShowPayment }) => {
       });
   };
 
+  const handlePayment = () => {
+    setLoading(true);
+    createOrder();
+    const tx_ref = orderData.paymentInfo.transactionId;
+    handleFlutterPayment({
+      callback: (response) => {
+        console.log(response);
+        closePaymentModal(); // this will close the modal programmatically
+      },
+      onClose: () => {
+        axios
+          .delete(`${server}/order/delete-order`, {
+            data: { transaction_Id: tx_ref },
+          })
+          .then(() => {
+            navigate("/checkout");
+          })
+          .catch((error) => {
+            console.error("Error deleting order:", error);
+
+            toast.error("Error deleting order. Please try again.");
+          })
+          .finally(() => {
+            setLoading(false);
+          });
+      },
+    });
+  };
+
   return (
     <>
       <div className="fixed w-full h-screen top-0 left-0 bg-[#00000030] z-50 flex items-center justify-center shadow-xl">
@@ -74,34 +104,12 @@ const PaymentPage = ({ orderData, setShowPayment }) => {
             <div>
               <button
                 className={`${styles.button} w-[150px] lg:w-[280px] mt-10 text-white font-medium`}
-                onClick={() => {
-                  createOrder();
-                  const tx_ref = orderData.paymentInfo.transactionId;
-                  handleFlutterPayment({
-                    callback: (response) => {
-                      console.log(response);
-                      closePaymentModal(); // this will close the modal programmatically
-                    },
-                    onClose: () => {
-                      axios
-                        .delete(`${server}/order/delete-order`, {
-                          data: { transaction_Id: tx_ref },
-                        })
-                        .then(() => {
-                          navigate("/checkout");
-                        })
-                        .catch((error) => {
-                          console.error("Error deleting order:", error);
-
-                          toast.error(
-                            "Error deleting order. Please try again."
-                          );
-                        });
-                    },
-                  });
-                }}
+                onClick={handlePayment}
+                disabled={loading}
               >
-                Pay &#x20A6;{orderData?.totalPrice}
+                {loading
+                  ? "Processing..."
+                  : `Pay \u20A6${orderData?.totalPrice}`}
               </button>
             </div>
           </div>

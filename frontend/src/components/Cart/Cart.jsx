@@ -34,8 +34,8 @@ const Cart = ({ setOpenCart }) => {
   return (
     <>
       <div className="fixed top-0 left-0 w-full bg-[#0000004b] h-screen z-50 ">
-        <div className="fixed top-0 right-0 z-[101] w-[70%] lg:w-[40%] bg-gradient-to-r from-slate-200 to-slate-400 ... flex flex-col justify-between shadow-lg overflow-y-scroll scrollbar-none h-[100vh] rounded-md">
-          <div className="w-full h-[10vh] flex items-center justify-between px-1 bg-gradient-to-r from-red-300 to-red-500 ...">
+        <div className="fixed top-0 right-0 z-[101] w-[70%] lg:w-[40%] bg-gradient-to-r from-slate-200 to-slate-400 ... flex flex-col justify-between shadow-lg overflow-y-scroll scrollbar-none h-[94vh] rounded-md">
+          <div className="w-full h-[8vh] flex items-center justify-between px-1 bg-gradient-to-r from-red-300 to-red-500 ...">
             <div>
               <RxCross1
                 size={25}
@@ -64,7 +64,7 @@ const Cart = ({ setOpenCart }) => {
 
           {cartItems && cartItems.length > 0 ? (
             <div className="w-full  rounded-t-[2rem] flex flex-col mb-2 px-1 md:px-2">
-              <div className="w-full h-[80vh] py-2  flex flex-col gap-1 overflow-y-scroll scrollbar-none ">
+              <div className="w-full h-[78vh] py-2  flex flex-col gap-1 overflow-y-scroll scrollbar-none ">
                 {cartItems &&
                   cartItems.map((item) => (
                     <CartItem key={item._id} item={item} />
@@ -73,14 +73,16 @@ const Cart = ({ setOpenCart }) => {
 
               {/*Checkout Buttons */}
 
-              <div
-                className="h-[50px] flex items-center justify-center w-[100%] bg-gradient-to-r from-red-400 to-red-600 ... rounded-[5px] cursor-pointer"
-                onClick={() => setOpen(true)}
-              >
-                <h1 className="text-[#fff] text-[18px] font-[600]">
-                  Checkout &#x20A6; {total.toFixed(2)}
-                </h1>
-              </div>
+              <Link to="/checkout">
+                <div
+                  className="h-[7vh] flex items-center justify-center w-[100%] bg-gradient-to-r from-red-400 to-red-600 ... rounded-[5px] cursor-pointer"
+                  onClick={() => setOpen(true)}
+                >
+                  <h1 className="text-[#fff] text-[18px] font-[600]">
+                    Checkout &#x20A6; {total.toFixed(2)}
+                  </h1>
+                </div>
+              </Link>
             </div>
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center gap-6 p-4">
@@ -96,63 +98,7 @@ const Cart = ({ setOpenCart }) => {
           )}
         </div>
       </div>
-      {open && (
-        <div className="fixed top-0 left-0 w-full bg-[#0000004b] h-screen z-50 ">
-          <ConfirmOrder cartItems={cartItems} setOpen={setOpen} total={total} />
-        </div>
-      )}
     </>
-  );
-};
-
-const ConfirmOrder = ({ cartItems, setOpen, total }) => {
-  return (
-    <div className="fixed top-0 right-0 z-[101] w-[95%] lg:w-[40%] bg-gradient-to-r from-gray-300 to-slate-500 ... flex flex-col justify-between shadow-lg overflow-y-scroll scrollbar-none h-[100vh] rounded-md ">
-      <div className="w-full h-[10vh] flex items-center justify-between px-1 bg-gradient-to-r from-red-400 to-red-500 ...">
-        <div>
-          <RxCross1
-            size={25}
-            className="cursor-pointer"
-            onClick={() => setOpen(false)}
-          />
-        </div>
-      </div>
-      <div className="w-full  rounded-t-[2rem] flex flex-col px-1 md:px-2 mb-2">
-        <div className="w-full h-[75vh]  flex flex-col gap-1 overflow-y-scroll scrollbar-none rounded-md  my-2  ">
-          {cartItems &&
-            cartItems.map((item) => (
-              <div
-                key={item._id}
-                className="w-full flex items-center justify-between min-h-[80px] border border-black rounded-md shadow-md bg-gradient-to-r from-slate-300 to-yellow-200 ..."
-              >
-                <div className="flex justify-center w-[30%]">
-                  <img
-                    src={`${item.images && item?.images[0]?.url}`}
-                    alt="img"
-                    className="max-w-[70px] max-h-[60px] lg:max-w-[130px] lg:max-h-[80px]"
-                  />
-                </div>
-                <div className="flex justify-center w-[5%] font-semibold">
-                  {item.quantity}
-                </div>
-                <div className="flex justify-start w-[40%] font-semibold">
-                  {item?.name}
-                </div>
-                <div className="flex justify-start w-[20%] font-semibold pr-1">
-                  &#x20A6;{item?.discountPrice * item?.quantity}
-                </div>
-              </div>
-            ))}
-        </div>
-        <Link to="/checkout">
-          <div className="h-[55px] flex items-center justify-center w-[100%] bg-gradient-to-r from-red-500 to-red-700 ... rounded-[5px]">
-            <h1 className="text-[#fff] text-[18px] font-[600]">
-              Shipping & Payment &#x20A6;{total}
-            </h1>
-          </div>
-        </Link>
-      </div>
-    </div>
   );
 };
 

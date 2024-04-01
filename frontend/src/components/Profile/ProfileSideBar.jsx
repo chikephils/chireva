@@ -30,7 +30,7 @@ const ProfileSideBar = ({ active }) => {
     axios
       .get(`${server}/user/logout`, { withCredentials: true })
       .then((res) => {
-        dispatch(setLogout())
+        dispatch(setLogout());
         toast.success(res.data.message);
         navigate("/");
       })

@@ -11,7 +11,7 @@ import styles from "../../styles/styles";
 import Loader from "../Layout/Loader";
 import { RxCross1 } from "react-icons/rx";
 import CreateLoader from "../Layout/createLoader";
-const ENDPOINT = "https://chireva-orevas-projects.vercel.app/";
+const ENDPOINT = "https://localhost.4000/";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const Inbox = () => {

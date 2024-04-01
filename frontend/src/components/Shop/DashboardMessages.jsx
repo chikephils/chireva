@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
   selectSeller,
-  selectSellerLoading,
 } from "../../features/shop/shopSlice";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +10,7 @@ import { FcSms } from "react-icons/fc";
 import Loader from "../Layout/Loader";
 import SmallLoader from "../Layout/SmallLoader";
 import { server } from "../../server";
-const ENDPOINT = "https://chireva-orevas-projects.vercel.app/";
+const ENDPOINT = "https://localhost.4000/";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const DashboardMessages = () => {

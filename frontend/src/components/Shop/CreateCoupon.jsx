@@ -54,8 +54,8 @@ const CreateCoupon = ({ seller, setOpen, refreshCoupons, shopProducts }) => {
   };
 
   return (
-    <div className="fixed top-3 left-0 w-full h-screen bg-[#00000062] z-[5000] flex items-center justify-center pt-10 lg:pl-24 lg:pt-16">
-      <div className="w-[90%] lg:w-[40%] h-[80vh] bg-gradient-to-l from-slate-200 to-slate-300 ... rounded-md shadow p-4 overflow-y-scroll scrollbar-none">
+    <div className="fixed top-3 left-0 w-full h-screen bg-[#00000062] z-50 flex items-center justify-center pt-10 lg:pl-24 lg:pt-16">
+      <div className="w-[90%] lg:w-[40%] h-[80vh] bg-gradient-to-l from-slate-200 to-slate-300 ... rounded-md shadow p-4 overflow-y-scroll scrollbar-none z-50">
         <div className="w-full flex justify-end">
           <RxCross2
             size={30}
