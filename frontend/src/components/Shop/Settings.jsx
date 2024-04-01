@@ -87,7 +87,7 @@ const Settings = () => {
   };
 
   return (
-    <div>
+    <div className="w-full flex items-center justify-center">
       <>
         {loading || sellerLoading ? (
           <div className="absolute top-0 left-0 w-full h-full bg-gray-200 opacity-50 z-10 flex items-center justify-center">
@@ -95,122 +95,117 @@ const Settings = () => {
           </div>
         ) : null}
       </>
-      <div className="w-full flex items-center justify-center px-2">
-        <div className="w-full md:w-[80%] px-2 py-4 md:py-4 ">
-          <div className="flex items-center justify-center sticky top-2 mb-2">
-            <h5 className="pb-2 text-base md:text-lg lg:text-xl font-semibold text-center">
-              Shop Settings
-            </h5>
-          </div>
-          <div className=" h-[70vh] overflow-y-scroll scrollbar-none pb-6">
-            <div className="w-full flex items-center justify-center">
-              <div className="relative">
-                <img
-                  src={`${seller?.avatar?.url}`}
-                  alt=""
-                  className="w-[100px] h-[100px] lg:w-[140px] lg:h-[140px] rounded-full cursor-pointer border-[1.5px] border-lime-500 "
+      <div className="w-full px-2 ">
+        <div className=" w-full  flex items-center justify-center  py-2 sticky top-0 mb-1 bg-gray-400  z-50">
+          <h5 className="pb-2 text-base md:text-lg lg:text-xl font-semibold text-center">
+            Shop Settings
+          </h5>
+        </div>
+        <div className="h-[70h]  overflow-y-scroll scrollbar-none pb-6 pt-1">
+          <div className="w-full flex items-center justify-center">
+            <div className="relative">
+              <img
+                src={`${seller?.avatar?.url}`}
+                alt=""
+                className="w-[100px] h-[100px] lg:w-[140px] lg:h-[140px] rounded-full cursor-pointer border-[1.5px] border-lime-500 "
+              />
+              <div className="w-[30px] h-[30px] bg-slate-400 rounded-full flex items-center justify-center cursor-pointer absolute bottom-[10px] right-[15px]">
+                <input
+                  type="file"
+                  id="image"
+                  className="hidden"
+                  onChange={handleImageChange}
                 />
-                <div className="w-[30px] h-[30px] bg-slate-400 rounded-full flex items-center justify-center cursor-pointer absolute bottom-[10px] right-[15px]">
-                  <input
-                    type="file"
-                    id="image"
-                    className="hidden"
-                    onChange={handleImageChange}
-                  />
-                  <label htmlFor="image">
-                    <AiOutlineCamera />
-                  </label>
-                </div>
+                <label htmlFor="image">
+                  <AiOutlineCamera />
+                </label>
               </div>
             </div>
-
-            {/* Shop info */}
-            <form
-              className="flex flex-col items-center"
-              onSubmit={updateHandler}
-            >
-              <div className="w-[100%] flex items-center flex-col 600px:w-[80%] 800px:w-[70%] mt-2">
-                <div className="w-full pl-[3%]">
-                  <label className="block pb-2"> Shop Name</label>
-                </div>
-                <input
-                  type="name"
-                  placeholder={`${seller?.shopName}`}
-                  value={shopName}
-                  onChange={(e) => setShopName(e.target.value)}
-                  className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
-                  required
-                />
-              </div>
-              <div className="w-[100%] flex items-center flex-col 600px:w-[80%] 800px:w-[70%] mt-2">
-                <div className="w-full pl-[3%]">
-                  <label className="block pb-2">Shop description</label>
-                </div>
-                <textarea
-                  type="text"
-                  name="description"
-                  placeholder={`${
-                    seller?.description
-                      ? seller.description
-                      : "Enter your shop description"
-                  }`}
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
-                  rows={4}
-                />
-              </div>
-              <div className="w-[100%] flex items-center flex-col 600px:w-[80%] 800px:w-[70%] mt-2">
-                <div className="w-full pl-[3%]">
-                  <label className="block pb-2">Shop Address</label>
-                </div>
-                <input
-                  type="name"
-                  placeholder={seller?.address}
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                  className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
-                  required
-                />
-              </div>
-              <div className="w-[100%] flex items-center flex-col 600px:w-[80%] 800px:w-[70%] mt-2">
-                <div className="w-full pl-[3%]">
-                  <label className="block pb-2">Shop Phone Number</label>
-                </div>
-                <input
-                  type="number"
-                  placeholder={seller?.phoneNumber}
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
-                  required
-                />
-              </div>
-
-              <div className="w-[100%] flex items-center flex-col 600px:w-[80%] 800px:w-[70%] mt-2">
-                <div className="w-full pl-[3%]">
-                  <label className="block pb-2">Shop Zip Code</label>
-                </div>
-                <input
-                  type="number"
-                  placeholder={seller?.zipCode}
-                  value={zipCode}
-                  onChange={(e) => setZipCode(e.target.value)}
-                  className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
-                  required
-                />
-              </div>
-
-              <div className="w-[100%] flex items-center flex-col 600px:w-[50%] 800px:w-[50%] mt-2">
-                <button
-                  type="submit"
-                  className="w-[95%] bg-black h-[45px] rounded-md text-white cursor-pointer mb-4 800px:mb-0 600px:mb-0"
-                >
-                  {isLoading ? <SmallLoader /> : "Update"}
-                </button>
-              </div>
-            </form>
           </div>
+
+          {/* Shop info */}
+          <form className="flex flex-col items-center" onSubmit={updateHandler}>
+            <div className="w-[100%] flex items-center flex-col 600px:w-[80%] 800px:w-[70%] mt-2">
+              <div className="w-full pl-[3%]">
+                <label className="block pb-2"> Shop Name</label>
+              </div>
+              <input
+                type="name"
+                placeholder={`${seller?.shopName}`}
+                value={shopName}
+                onChange={(e) => setShopName(e.target.value)}
+                className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+                required
+              />
+            </div>
+            <div className="w-[100%] flex items-center flex-col 600px:w-[80%] 800px:w-[70%] mt-2">
+              <div className="w-full pl-[3%]">
+                <label className="block pb-2">Shop description</label>
+              </div>
+              <textarea
+                type="text"
+                name="description"
+                placeholder={`${
+                  seller?.description
+                    ? seller.description
+                    : "Enter your shop description"
+                }`}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+                rows={4}
+              />
+            </div>
+            <div className="w-[100%] flex items-center flex-col 600px:w-[80%] 800px:w-[70%] mt-2">
+              <div className="w-full pl-[3%]">
+                <label className="block pb-2">Shop Address</label>
+              </div>
+              <input
+                type="name"
+                placeholder={seller?.address}
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+                required
+              />
+            </div>
+            <div className="w-[100%] flex items-center flex-col 600px:w-[80%] 800px:w-[70%] mt-2">
+              <div className="w-full pl-[3%]">
+                <label className="block pb-2">Shop Phone Number</label>
+              </div>
+              <input
+                type="number"
+                placeholder={seller?.phoneNumber}
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+                required
+              />
+            </div>
+
+            <div className="w-[100%] flex items-center flex-col 600px:w-[80%] 800px:w-[70%] mt-2">
+              <div className="w-full pl-[3%]">
+                <label className="block pb-2">Shop Zip Code</label>
+              </div>
+              <input
+                type="number"
+                placeholder={seller?.zipCode}
+                value={zipCode}
+                onChange={(e) => setZipCode(e.target.value)}
+                className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+                required
+              />
+            </div>
+
+            <div className="w-[100%] flex items-center flex-col 600px:w-[50%] 800px:w-[50%] mt-2">
+              <button
+                type="submit"
+                className="w-[95%] bg-black h-[45px] rounded-md text-white cursor-pointer mb-4 800px:mb-0 600px:mb-0"
+              >
+                {isLoading ? <SmallLoader /> : "Update"}
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

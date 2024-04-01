@@ -87,7 +87,7 @@ const Header = ({ activeHeading }) => {
                         : data.name;
                     return (
                       <Link key={data._id} to={`/product/${data._id}`}>
-                        <div className="w-full flex items-start py-3">
+                        <div className="w-full flex items-center py-1  !border-black border-[1px] rounded-md m-1 !shadow-xl  bg-gradient-to-r from-gray-400 to-slate-200 ...">
                           <img
                             src={`${data?.images[0]?.url}`}
                             alt="log"
@@ -225,10 +225,16 @@ const Header = ({ activeHeading }) => {
                 className="cursor-pointer"
                 onClick={menuToggle}
               />
-              <div className="md:hidden relative" onClick={dropDownToogle}>
+              <div className="md:hidden relative block" onClick={dropDownToogle}>
                 <button className="px-1 flex justify-between items-center bg-white font-sans text-[12px] font-medium select-none rounded-md">
                   Categories <IoIosArrowDown size={20} />
                 </button>
+                {dropDown ? (
+                  <DropDown
+                    categoriesData={categoriesData}
+                    setDropDown={setDropDown}
+                  />
+                ) : null}
               </div>
             </div>
 
@@ -310,7 +316,7 @@ const Header = ({ activeHeading }) => {
                             : data.name;
                         return (
                           <Link key={data._id} to={`/product/${data._id}`}>
-                            <div className="w-full flex items-start py-3">
+                            <div className="w-full flex items-center py-1  !border-black border-[1px] rounded-md m-1 !shadow-xl  bg-gradient-to-r from-gray-400 to-slate-200 ...">
                               <img
                                 src={`${data?.images[0]?.url}`}
                                 alt="log"

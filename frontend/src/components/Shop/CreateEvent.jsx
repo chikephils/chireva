@@ -103,7 +103,7 @@ const CreateEvent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setShowLoader(true)
+    setShowLoader(true);
     const errors = {};
     if (!name.trim()) {
       errors.name = "Name is required";
@@ -212,20 +212,16 @@ const CreateEvent = () => {
           </div>
         )}
       </>
-      <div className="w-full md:w-[60%] px-2  ">
-        <div className="flex items-center justify-center sticky top-2">
-          <h5 className="pb-4 text-base md:text-lg lg:text-xl font-semibold text-center">
+      <div className="w-full px-2 ">
+        <div className=" w-full  flex items-center justify-center  py-2 sticky top-0 mb-1 bg-gray-400  z-50">
+          <h5 className="pb-2 text-base md:text-lg lg:text-xl font-semibold text-center">
             Create Event
           </h5>
         </div>
 
         {/* create Event form  */}
-        <div className=" h-[70vh] overflow-y-scroll scrollbar-none pb-6">
-          <form
-            onSubmit={handleSubmit}
-            className="h-[80vh] overflow-y-scroll scrollbar-none"
-          >
-            <br />
+        <div className="h-[70h]  overflow-y-scroll scrollbar-none pb-6 pt-1">
+          <form onSubmit={handleSubmit}>
             <div>
               <label className=" block text-[14px] md:text-[16px] font-medium ">
                 Event Name <span className="text-red-500">*</span>
