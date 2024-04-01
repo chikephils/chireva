@@ -40,7 +40,7 @@ const ProfileSideBar = ({ active }) => {
   };
 
   return (
-    <div className=" w-[20%] md:w-[20%] lg:w-[20%] fixed pb-1 mt-1 lg:mt-3 320px:h-[85vh] 375px:h-[87vh] 400px:h-[89vh] 600px:h-[91vh] lg:h-[88vh] bg-gradient-to-r from-slate-200 to-slate-400 ...  shadow-md overflow-y-scroll scrollbar-none  rounded-md ">
+    <div className=" w-[20%] md:w-[20%] lg:w-[20%] fixed pb-12 mt-1 lg:mt-3 h-full bg-gradient-to-r from-slate-200 to-slate-400 ...  shadow-md overflow-y-scroll scrollbar-none  rounded-md ">
       <div className="hidden lg:flex items-center p-2 md:p-3">
         <Link to="/profile" className="w-full flex items-center">
           <FcPortraitMode
