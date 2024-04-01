@@ -11,7 +11,7 @@ const DashBoardHeader = ({ active }) => {
   const seller = useSelector((state) => state.shop.seller);
 
   return (
-    <div className="w-full h-[80px] bg-gradient-to-r from-yellow-200 to-lime-400 ... shadow-lg shadow fixed top-0 left-0 z-50 flex items-center justify-between px-3 mb-2">
+    <div className="w-full h-[60px] bg-gradient-to-r from-yellow-200 to-lime-400 ... shadow-lg  fixed top-0 left-0 z-50 flex items-center justify-between px-3 mb-2">
       <div className="lg:ml-3">
         <Link to="/dashboard">
           <img src={Logo} alt="logo" className="w-14 h-14" title="Dashboard" />

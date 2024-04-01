@@ -225,7 +225,10 @@ const Header = ({ activeHeading }) => {
                 className="cursor-pointer"
                 onClick={menuToggle}
               />
-              <div className="md:hidden relative block" onClick={dropDownToogle}>
+              <div
+                className="md:hidden relative block"
+                onClick={dropDownToogle}
+              >
                 <button className="px-1 flex justify-between items-center bg-white font-sans text-[12px] font-medium select-none rounded-md">
                   Categories <IoIosArrowDown size={20} />
                 </button>
@@ -277,19 +280,17 @@ const Header = ({ activeHeading }) => {
         {/* Header Side-Bar */}
         {openMenu && (
           <div className="fixed w-full bg-[#0000005f] z-50 h-full top-0 left-0">
-            <div className="fixed w-[60%] bg-slate-50 h-full mb-4 pb-3 top-0 z-10 rounded-lg overflow-y-auto scrollbar-none">
-              <div className="flex items-center justify-center  py-2 sticky top-0  bg-slate-200 z-50">
-                <div className="w-full flex justify-between pr-3">
-                  <div>
-                    <div
-                      className="relative mr-[15px] cursor-pointer"
-                      onClick={() => setOpenWishList(!openWishList)}
-                    >
-                      <AiOutlineHeart size={30} className="ml-4 mt-5" />
-                      <span className="absolute right-0 top-0 rounded-full bg-lime-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
-                        {wishList.length}
-                      </span>
-                    </div>
+            <div className="fixed w-[60%] bg-slate-50 h-full mb-8 pb-4 top-0 z-10 rounded-lg overflow-y-auto scrollbar-none">
+              <div className="flex items-center justify-center sticky top-0  bg-slate-200 z-50">
+                <div className="w-full flex items-center justify-between pr-3 pb-1">
+                  <div
+                    className="relative mr-[15px] cursor-pointer"
+                    onClick={() => setOpenWishList(!openWishList)}
+                  >
+                    <AiOutlineHeart size={30} className="ml-4 mt-5" />
+                    <span className="absolute right-0 top-4 rounded-full bg-lime-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
+                      {wishList.length}
+                    </span>
                   </div>
                   <RxCross1
                     size={30}

@@ -10,7 +10,7 @@ const DropDown = ({ categoriesData, setDropDown }) => {
     setDropDown(false);
   };
   return (
-    <div className="pb-6 w-[270px] md:w-[270px] bg-gradient-to-r from-gray-200 to-slate-200 ...  absolute z-50 rounded-md shadow-2xl border border-black overflow-y-auto scrollbar-none h-[60vh]">
+    <div className="py-3 w-[270px] md:w-[270px] bg-gradient-to-r from-gray-200 to-slate-200 ...  absolute z-50 rounded-md shadow-2xl border border-black overflow-y-auto scrollbar-none ">
       {categoriesData &&
         categoriesData.map((category, index) => (
           <div

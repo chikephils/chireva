@@ -162,7 +162,7 @@ const MessageList = ({
 
   return (
     <div
-      className={`w-full flex p-2 md:p-3 px-1 md:px-3  border-[0.5px] shadow-lg rounded-md bg-gradient-to-r from-slate-100 to-slate-200 ... mb-3 ${
+      className={`w-full flex p-2 md:p-3 px-1 md:px-3  border-[0.5px] shadow-lg rounded-md bg-gradient-to-r from-slate-100 to-slate-200 ... mb-2 ${
         active === index ? "bg-[00000010]" : "bg-transparent"
       } cursor-pointer`}
       onClick={handleClick}

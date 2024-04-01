@@ -8,11 +8,11 @@ const AdminDashboardUsers = () => {
   return (
     <>
       <AdminHeader />
-      <div className=" mt-[82px]">
+      <div className=" mt-[60px]">
         <div className={`${styles.section} w-full flex pb-10`}>
           <AdminSideBar active={4} />
           <div
-            className={`w-[78%] ml-[21%] mt-3  320px:h-[82vh] 375px:h-[85vh] 600px:h-[86vh] lg:h-[88vh] fixed overflow-y-scroll scrollbar-none pb-8 bg-gradient-to-r from-slate-200 to-slate-400 ... shadow-lg rounded-md`}
+            className={`w-[78%] ml-[21%] mt-3 h-[85vh] fixed overflow-y-scroll scrollbar-none pb-8 rounded-md shadow-lg  bg-gradient-to-r from-slate-200 to-slate-400 ... px-1 lg:px-2`}
           >
             <AdminUsers />
           </div>
