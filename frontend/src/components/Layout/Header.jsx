@@ -277,7 +277,7 @@ const Header = ({ activeHeading }) => {
         {/* Header Side-Bar */}
         {openMenu && (
           <div className="fixed w-full bg-[#0000005f] z-50 h-full top-0 left-0">
-            <div className="fixed w-[60%] bg-slate-50 h-[98vh] top-0 z-10 rounded-lg overflow-y-auto scrollbar-thin">
+            <div className="fixed w-[60%] bg-slate-50 h-full mb-4 pb-3 top-0 z-10 rounded-lg overflow-y-auto scrollbar-none">
               <div className="flex items-center justify-center  py-2 sticky top-0  bg-slate-200 z-50">
                 <div className="w-full flex justify-between pr-3">
                   <div>
