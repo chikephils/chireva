@@ -140,6 +140,7 @@ const AllProducts = () => {
     });
 
   return (
+    <>
     <div className="p-2">
       <div className="flex items-center justify-center  py-4 sticky top-2 mb-2 bg-slate-400 z-50">
         <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black pb-2">
@@ -162,13 +163,15 @@ const AllProducts = () => {
           />
         )}
       </div>
-      {isOpen && selectedProduct && (
-        <SellerProductCardDetails
-          setIsOpen={() => setIsOpen(false)}
-          product={selectedProduct}
-        />
-      )}
+      
     </div>
+    {isOpen && selectedProduct && (
+      <SellerProductCardDetails
+        setIsOpen={() => setIsOpen(false)}
+        product={selectedProduct}
+      />
+    )}
+    </>
   );
 };
 

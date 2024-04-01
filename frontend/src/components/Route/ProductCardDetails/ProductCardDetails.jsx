@@ -96,7 +96,7 @@ const ProductCardDetails = ({
     <div className="bg-[#fff] shadow-xl">
       {product ? (
         <div className="fixed w-full h-screen top-0 left-0 bg-[#00000030] z-50 flex items-center justify-center shadow-xl">
-          <div className="w-[90%] lg:w-[60%] h-[80vh] md:h-[90vh] overflow-y-scroll scrollbar-none lg:h-[75vh] bg-white rounded-md shadow-2xl relative p-2 py-3 ">
+          <div className="w-[90%] lg:w-[60%] h-[80vh] md:h-[90vh] overflow-y-scroll scrollbar-none lg:h-[75vh] bg-white rounded-md shadow-2xl relative p-2 pt-2 pb-6 mb-3 ">
             <div className=" sticky top-0 right-0 z-50 cursor-pointer">
               <RxCross1
                 size={24}
@@ -214,7 +214,7 @@ const ProductCardDetails = ({
                     )}
                   </div>
                 </div>
-                <div className="mt-3">
+                <div className="my-3">
                   {inCart ? (
                     <div
                       className={`!w-max !h-[45px] px-2 shadow-xl !rounded-xl mr-3 bg-red-500 flex items-center cursor-pointer`}

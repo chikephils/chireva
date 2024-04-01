@@ -225,19 +225,10 @@ const Header = ({ activeHeading }) => {
                 className="cursor-pointer"
                 onClick={menuToggle}
               />
-              <div
-                className="flex md:hidden h-[20px]  ml-4"
-                onClick={dropDownToogle}
-              >
-                <button className="p-2 flex justify-between items-center bg-white font-sans text-[12px] font-medium select-none rounded-md">
+              <div className="md:hidden" onClick={dropDownToogle}>
+                <button className="px-1 flex justify-between items-center bg-white font-sans text-[12px] font-medium select-none rounded-md">
                   Categories <IoIosArrowDown size={20} />
                 </button>
-                {dropDown ? (
-                  <DropDown
-                    categoriesData={categoriesData}
-                    setDropDown={setDropDown}
-                  />
-                ) : null}
               </div>
             </div>
 
@@ -391,6 +382,9 @@ const Header = ({ activeHeading }) => {
             </div>
           </div>
         )}
+        {dropDown ? (
+          <DropDown categoriesData={categoriesData} setDropDown={setDropDown} />
+        ) : null}
       </div>
     </>
   );
