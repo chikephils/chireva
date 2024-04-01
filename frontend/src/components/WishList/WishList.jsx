@@ -106,7 +106,7 @@ const CartItem = ({ item }) => {
     : item.originalPrice;
 
   return (
-    <div className=" w-full border-[2px] rounded-lg p-1 lg:p-2 flex justify-between min-h-[60px] bg-gradient-to-r from-lime-300 to-blue-400 ...">
+    <div className=" w-full border-[2px] rounded-lg p-1 lg:p-2 flex justify-between min-h-[75px] bg-gradient-to-r from-lime-300 to-blue-400 ...">
       <div className=" flex items-center justify-start">
         <RxCross1
           className=" flex items-center cursor-pointer font-bold"
@@ -121,7 +121,7 @@ const CartItem = ({ item }) => {
         />
       </div>
       <div className="w-[40%]">
-        <h1 className="text-sm md:text-base">{item?.name}</h1>
+        <h1 className="text-sm md:text-base">{item.name.slice(0, 15)}..</h1>
         <h4 className="text-sm md:text-base font-Roboto  pt-[3px] text-red-600">
           &#x20A6;{totalPrice}
         </h4>
