@@ -9,7 +9,7 @@ import { IoIosGift } from "react-icons/io";
 
 const AdminSideBar = ({ active }) => {
   return (
-    <div className=" w-[20%] md:w-[20%] lg:w-[20%] fixed pb-12 mt-3 h-[90vh] bg-gradient-to-r from-gray-200 to-slate-400 ... overflow-y-scroll scrollbar-none rounded-md shadow-md">
+    <div className=" w-[20%] md:w-[20%] lg:w-[20%] fixed pb-12 mt-2 h-[87vh] bg-gradient-to-r from-gray-200 to-slate-400 ... overflow-y-scroll scrollbar-none rounded-md shadow-md">
       {/* single item */}
       <div className="hidden lg:flex items-center p-3">
         <Link to="/admin/dashboard" className="w-full flex items-center">

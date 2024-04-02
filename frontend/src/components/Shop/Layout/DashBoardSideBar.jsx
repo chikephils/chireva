@@ -17,7 +17,7 @@ import { FiGift } from "react-icons/fi";
 
 const DashBoardSideBar = ({ active }) => {
   return (
-    <div className=" w-[20%] md:w-[20%] lg:w-[20%] fixed pb-12 mt-3 320px:h-[90vh] 375px:h-[85vh] 600px:h-[86vh] lg:h-[88vh] bg-gradient-to-r from-yellow-200 to-slate-400 ... shadow-lg rounded-md overflow-y-scroll scrollbar-none ">
+    <div className=" w-[20%] md:w-[20%] lg:w-[20%] fixed pb-12 mt-2 h-[87vh] bg-gradient-to-r from-yellow-200 to-slate-400 ... shadow-lg rounded-md overflow-y-scroll scrollbar-none ">
       {/* single Items desktop view */}
       <div className="hidden lg:flex items-center p-3">
         <Link to="/dashboard" className="w-full flex items-center">
@@ -66,10 +66,7 @@ const DashBoardSideBar = ({ active }) => {
           to="/dashboard-create-product"
           className="w-full flex items-center"
         >
-          <MdCreateNewFolder
-            size={30}
-            color="green"
-          />
+          <MdCreateNewFolder size={30} color="green" />
           <h5
             className={`block pl-2 text-[16px] font-semibold ${
               active === 4 ? "text-[red]" : "text-black"
@@ -137,7 +134,7 @@ const DashBoardSideBar = ({ active }) => {
 
       <div className="hidden lg:flex items-center p-3">
         <Link to="/dashboard/coupons" className="w-full flex items-center">
-        <FiGift size={30} color="green" />
+          <FiGift size={30} color="green" />
           <h5
             className={`block pl-2 text-[16px] font-semibold ${
               active === 9 ? "text-[red]" : "text-black"
@@ -243,10 +240,7 @@ const DashBoardSideBar = ({ active }) => {
           to="/dashboard-create-product"
           className="w-full flex flex-col items-center"
         >
-          <MdCreateNewFolder
-            size={32}
-            color="green"
-          />
+          <MdCreateNewFolder size={32} color="green" />
           <p
             className={`text-[12px] md:text-[16px] font-medium ${
               active === 4 ? "text-[red]" : "text-black"
@@ -294,7 +288,7 @@ const DashBoardSideBar = ({ active }) => {
           to="/dashboard-withdraw-money"
           className="w-full flex flex-col items-center"
         >
-           <FaMoneyBill1Wave size={30} color="green" />
+          <FaMoneyBill1Wave size={30} color="green" />
           <p
             className={`text-[12px] md:text-[16px] font-medium ${
               active === 7 ? "text-[red]" : "text-black"
