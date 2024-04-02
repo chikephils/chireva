@@ -21,7 +21,7 @@ const SellerProductCardDetails = ({ setIsOpen, product }) => {
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-[#0000004b] z-50 flex items-center justify-center">
-      <div className=" relative w-[90%] lg:w-[60%] h-[70vh] md:h-[70vh] overflow-y-scroll scrollbar-none lg:h-[75vh] bg-gradient-to-l from-slate-50 to-slate-200 ... rounded-md shadow-2xl  p-2 mt-[70px] lg:mt-[82px] z-[1000] ">
+      <div className=" w-[90%] lg:w-[60%] h-[70vh] md:h-[70vh] overflow-y-scroll scrollbar-none lg:h-[75vh] bg-gradient-to-l from-slate-50 to-slate-200 ... rounded-md shadow-2xl  p-2 mt-[70px] lg:mt-[82px] z-[1000] ">
         <div className=" sticky top-0 right-0 z-50 cursor-pointer">
           <RxCross1
             size={24}

@@ -365,7 +365,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3">
+      <div className="flex lg:hidden py-3 pb-6">
         <Link
           to="/dashboard-settings"
           className="w-full flex flex-col items-center"
