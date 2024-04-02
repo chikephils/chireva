@@ -12,7 +12,7 @@ const AdminDashboardOrders = () => {
         <div className={`${styles.section} w-full flex pb-10`}>
           <AdminSideBar active={2} />
           <div
-            className={`w-[78%] ml-[21%] mt-3 h-[85vh] fixed overflow-y-scroll scrollbar-none pb-8 rounded-md shadow-lg  bg-gradient-to-r from-slate-200 to-slate-400 ... px-1 lg:px-2`}
+            className={`w-[78%] ml-[21%] mt-3 h-[90vh] fixed overflow-y-scroll scrollbar-none pb-8 rounded-md shadow-lg  bg-gradient-to-r from-slate-200 to-slate-400 ... px-1 lg:px-2`}
           >
             <AdminOrders />
           </div>

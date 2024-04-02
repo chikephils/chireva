@@ -31,7 +31,7 @@ const WishList = ({ setOpenWishList }) => {
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-[#0000004b] z-50 flex items-start justify-end">
-      <div className="relative w-[70%] lg:w-[40%] bg-gradient-to-r from-slate-200 to-slate-300 flex flex-col justify-between shadow-xl rounded-lg h-[94vh]">
+      <div className="relative w-[70%] lg:w-[40%] bg-gradient-to-r from-slate-200 to-slate-300 flex flex-col justify-between shadow-xl rounded-lg h-full">
         <div className="w-full h-[8vh] flex items-center justify-between px-1 bg-gradient-to-r from-cyan-300 to-blue-400 rounded-t-lg">
           <div>
             <RxCross1
@@ -62,7 +62,7 @@ const WishList = ({ setOpenWishList }) => {
         {/*Wish LIst items */}
         {wishList && wishList.length > 0 ? (
           <div className="w-full  rounded-lg flex flex-col pb-1">
-            <div className="w-full h-[78vh] py-2 flex flex-col gap-1 overflow-y-scroll scrollbar-none pl-1 ">
+            <div className="w-full h-[82vh] py-2 flex flex-col gap-1 overflow-y-scroll scrollbar-none pl-1 ">
               {wishList &&
                 wishList.map((item) => <CartItem key={item._id} item={item} />)}
             </div>

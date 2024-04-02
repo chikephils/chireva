@@ -34,8 +34,8 @@ const Cart = ({ setOpenCart }) => {
   return (
     <>
       <div className="fixed top-0 left-0 w-full bg-[#0000004b] h-screen z-50 ">
-        <div className="fixed top-0 right-0 z-[101] w-[70%] lg:w-[40%] bg-gradient-to-r from-slate-200 to-slate-400 ... flex flex-col justify-between shadow-lg overflow-y-scroll scrollbar-none h-[94vh] rounded-md">
-          <div className="w-full h-[8vh] flex items-center justify-between px-1 bg-gradient-to-r from-red-300 to-red-500 ...">
+        <div className="fixed top-0 right-0 z-[101] w-[70%] lg:w-[40%] bg-gradient-to-r from-slate-200 to-slate-400 ... flex flex-col justify-between shadow-lg overflow-y-scroll scrollbar-none h-full rounded-md">
+          <div className="w-full h-[7vh] flex items-center justify-between px-1 bg-gradient-to-r from-red-300 to-red-500 ...">
             <div>
               <RxCross1
                 size={25}
@@ -64,7 +64,7 @@ const Cart = ({ setOpenCart }) => {
 
           {cartItems && cartItems.length > 0 ? (
             <div className="w-full  rounded-t-[2rem] flex flex-col mb-2 px-1 md:px-2">
-              <div className="w-full h-[78vh] py-2  flex flex-col gap-1 overflow-y-scroll scrollbar-none ">
+              <div className="w-full h-[82vh] py-2  flex flex-col gap-1 overflow-y-scroll scrollbar-none ">
                 {cartItems &&
                   cartItems.map((item) => (
                     <CartItem key={item._id} item={item} />

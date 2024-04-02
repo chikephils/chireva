@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MdDashboard,  } from "react-icons/md";
+import { MdDashboard } from "react-icons/md";
 import { HiMiniShoppingBag } from "react-icons/hi2";
 import { HiUserGroup } from "react-icons/hi2";
 import { GiMoneyStack, GiSellCard } from "react-icons/gi";
 import { BiSolidCalendarEvent, BiSolidPackage } from "react-icons/bi";
-import { IoIosGift, IoMdSettings } from "react-icons/io";
+import { IoIosGift } from "react-icons/io";
 
 const AdminSideBar = ({ active }) => {
   return (
-    <div className=" w-[20%] md:w-[20%] lg:w-[20%] fixed pb-8 mt-3 320px:h-[82vh] 375px:h-[85vh] 600px:h-[86vh] lg:h-[88vh] bg-gradient-to-r from-gray-200 to-slate-400 ... overflow-y-scroll scrollbar-none rounded-md shadow-md">
+    <div className=" w-[20%] md:w-[20%] lg:w-[20%] fixed pb-12 mt-3 h-[90vh] bg-gradient-to-r from-gray-200 to-slate-400 ... overflow-y-scroll scrollbar-none rounded-md shadow-md">
       {/* single item */}
       <div className="hidden lg:flex items-center p-3">
         <Link to="/admin/dashboard" className="w-full flex items-center">
