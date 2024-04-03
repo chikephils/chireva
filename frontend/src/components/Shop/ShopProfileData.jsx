@@ -93,7 +93,7 @@ const ShopProfileData = ({ isOwner }) => {
 
 const ShopProductsTab = ({ data, isLoading }) => {
   return (
-    <>
+    <div className={`${styles.section}`}>
       {isLoading ? (
         <div className="flex items-center justify-center h-[80vh]">
           <Loader />
@@ -103,14 +103,14 @@ const ShopProductsTab = ({ data, isLoading }) => {
           No products available.
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-[5px] md:grid-cols-4 md:gap-[10px] 600px:grid-cols-3 600px:gap-[10px]  lg:grid-cols-4 lg:gap-[10px] xl:grid-cols-5 xl:gap-[30px] pb-10 justify-items-center mb-12 border-0">
+        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-4 md:gap-[30px] lg:grid-cols-4 lg:gap-[40px] xl:grid-cols-5 xl:gap-[50px] 600px:grid-cols-3 600px:gap-[10px] pb-10 justify-items-center">
           {data &&
             data.map((product) => (
               <SellerProductCard key={product._id} product={product} />
             ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

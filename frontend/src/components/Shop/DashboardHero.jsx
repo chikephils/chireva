@@ -20,14 +20,13 @@ import axios from "axios";
 import Loader from "../Layout/Loader";
 import SmallLoader from "../Layout/SmallLoader";
 
-
 const DashboardHero = () => {
   const dispatch = useDispatch();
   const seller = useSelector(selectSeller);
   const [products, setProducts] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const orders = useSelector(selectAllShopOrders);
-  const AllProducts = useSelector(selectAllShopProducts)
+  const AllProducts = useSelector(selectAllShopProducts);
   const [shopOrders, setShopOrders] = useState(null);
   const [availableBalance, setAvailableBalance] = useState(
     seller?.availableBalance.toFixed(2)
@@ -196,13 +195,9 @@ const DashboardHero = () => {
                 All Products
               </h3>
             </div>
-            {isLoading ? (
-              <SmallLoader />
-            ) : (
-              <h5 className="pt-2 pl-[36px] text-[22px] font-[500]">
-                {AllProducts?.length}
-              </h5>
-            )}
+            <h5 className="pt-2 pl-[36px] text-[22px] font-[500]">
+              {AllProducts?.length}
+            </h5>
             <Link to="/dashboard-products">
               <h5 className="pt-4 pl-2 text-[#077f9c]">View Products</h5>
             </Link>

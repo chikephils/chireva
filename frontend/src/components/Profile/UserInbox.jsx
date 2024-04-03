@@ -91,7 +91,7 @@ const UserInbox = () => {
       </div>
 
       {/* All Messages List */}
-      <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-3 pb-6">
+      <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-3 pb-4">
         {isLoading ? (
           <div className="flex items-center justify-center  h-[60vh] ">
             <Loader />

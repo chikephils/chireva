@@ -49,7 +49,7 @@ const ChangePassword = () => {
           </h1>
         </div>
 
-        <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-2 pb-6">
+        <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-2 pb-4">
           <form className="space-y-2" onSubmit={passwordChangeHandler}>
             <div>
               <label

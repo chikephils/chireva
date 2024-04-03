@@ -12,7 +12,7 @@ const OrderPage = () => {
         <div className={`${styles.section} w-full flex pb-10`}>
           <ProfileSideBar active={2} />
           <div
-            className={`w-[78%] ml-[21%] mt-1 lg:mt-3  h-[90vh] fixed overflow-y-scroll scrollbar-none pb-4 bg-gradient-to-r from-slate-300 to-yellow-200 ...  rounded-md shadow-md px-1 md:px-2 lg:px-4`}
+            className={`w-[78%] ml-[21%] mt-1 lg:mt-3  h-full fixed  pb-4 bg-gradient-to-r from-slate-300 to-yellow-200 ...  rounded-md shadow-md px-1 md:px-2 lg:px-4`}
           >
             <AllOrders />
           </div>

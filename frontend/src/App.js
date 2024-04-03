@@ -22,7 +22,6 @@ import {
   AddressPage,
   TrackingDetailsPage,
   CheckoutPage,
-  PaymentMethodPage,
   TrackOrderPage,
   OrderDetailsPage,
   PaymentRedirectPage,
@@ -151,13 +150,6 @@ function App() {
             <Route
               path="/profile/inbox/:id"
               element={isAuth ? <InboxDetails /> : <Navigate to="/login" />}
-            />
-
-            <Route
-              path="profile/payment-method"
-              element={
-                isAuth ? <PaymentMethodPage /> : <Navigate to="/login" />
-              }
             />
 
             <Route

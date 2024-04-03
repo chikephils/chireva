@@ -9,7 +9,7 @@ import { IoIosGift } from "react-icons/io";
 
 const AdminSideBar = ({ active }) => {
   return (
-    <div className=" w-[20%] md:w-[20%] lg:w-[20%] fixed pb-12 mt-2 h-[87vh] bg-gradient-to-r from-gray-200 to-slate-400 ... overflow-y-scroll scrollbar-none rounded-md shadow-md">
+    <div className=" w-[20%] md:w-[20%] lg:w-[20%] fixed pb-12 mt-1 lg:mt-3 h-full bg-gradient-to-r from-slate-200 to-slate-400 ...  shadow-md  rounded-md flex items-center  ">
       {/* single item */}
       <div className="hidden lg:flex items-center p-3">
         <Link to="/admin/dashboard" className="w-full flex items-center">
@@ -101,7 +101,7 @@ const AdminSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
-      <div className="hidden lg:flex items-center p-3 lg:p-3">
+      <div className="hidden lg:flex items-center p-3 lg:p-3 mb-2">
         <Link to="/admin/withdraw-request" className="w-full flex items-center">
           <GiMoneyStack size={30} color="006600" />
           <h5
@@ -113,6 +113,7 @@ const AdminSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
+
 
       {/* Mobile view */}
       <div className="flex lg:hidden py-3">
@@ -212,7 +213,7 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3">
+      <div className="flex lg:hidden py-3 mb-2">
         <Link
           to="/admin/withdraw-request"
           className="w-full flex flex-col items-center"

@@ -91,7 +91,7 @@ const ProfileContent = () => {
         </h1>
       </div>
       {/* Profile Page */}
-      <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-2 pb-3">
+      <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-2 pb-4">
         <div className="flex justify-center w-full pr-4 mt-2">
           <div className="relative">
             <img

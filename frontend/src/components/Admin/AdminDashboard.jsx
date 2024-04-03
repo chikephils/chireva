@@ -92,12 +92,12 @@ const AdminDashboard = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-center  py-2 sticky top-1">
-        <h5 className="pb-2 text-base md:text-lg lg:text-xl font-semibold text-center">
+      <div className="flex items-center justify-center  py-2 sticky top-2 mb-2">
+        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black pb-2">
           Overview
-        </h5>
+        </h1>
       </div>
-      <div className="lg:h-[80vh] h-[78vh] overflow-y-scroll scrollbar-none  pb-8">
+      <div className="h-[70vh] overflow-y-scroll scrollbar-none  pb-6">
         <div className="w-full block lg:flex items-center justify-between">
           <div className="w-[full] mb-4 lg:w-[30%] min-h-[25vh] bg-gradient-to-l from-gray-50 to-slate-100 ... rounded-md px-2 py-5 shadow-md">
             <div className="flex items-center">

@@ -12,7 +12,6 @@ import ProfilePage from "../../pages/User/ProfilePage";
 import OrderPage from "../../pages/User/OrderPage";
 import RefundPage from "../../pages/User/RefundPage";
 import CheckoutPage from "../../pages/User/CheckoutPage";
-import PaymentMethodPage from "../../pages/User/PaymentMethodPage";
 import TrackOrderPage from "../../pages/User/TrackOrderPage";
 import OrderDetailsPage from "../../pages/User/OrderDetailsPage";
 import PaymentRedirectPage from "../../pages/User/PaymentRedirectPage";
@@ -42,7 +41,6 @@ export {
   ChangePasswordPage,
   AddressPage,
   CheckoutPage,
-  PaymentMethodPage,
   OrderDetailsPage,
   TrackingDetailsPage,
   TrackOrderPage,

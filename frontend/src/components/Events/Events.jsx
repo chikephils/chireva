@@ -11,7 +11,7 @@ const Events = () => {
   const eventsLoading = useSelector(selectEventLoading);
 
   return (
-    <div className={`${styles.section} border-b mb-4 shadow-lg`}>
+    <div className={`${styles.section} border-b mb-4`}>
       <div>
         <div className={`${styles.heading}`}>
           <h1>Popular Events</h1>

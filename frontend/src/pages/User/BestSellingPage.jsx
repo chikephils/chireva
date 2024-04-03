@@ -10,13 +10,13 @@ import { getAllProducts } from "../../features/product/productSlice";
 const BestSellingPage = () => {
   const products = useSelector((state) => state?.products?.products);
   const [data, setData] = useState([]);
-  const dispatch = useDispatch()
- 
+  const dispatch = useDispatch();
+
   const [loading, setLoading] = useState(true);
 
-   useEffect(() => {
-    dispatch(getAllProducts())
-  }, [])
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -40,7 +40,7 @@ const BestSellingPage = () => {
         ) : (
           <div className={`${styles.section}`}>
             {data && data.length > 0 ? (
-              <div className="grid grid-cols-2 gap-[5px] md:grid-cols-4 md:gap-[10px] lg:grid-cols-4 lg:gap-[20px] xl:grid-cols-5 xl:gap-[30px] 600px:grid-cols-3 600px:gap-[10px]  py-10 justify-items-center">
+              <div className="grid grid-cols-2 gap-[20px] md:grid-cols-4 md:gap-[30px] lg:grid-cols-4 lg:gap-[40px] xl:grid-cols-5 xl:gap-[50px] 600px:grid-cols-3 600px:gap-[10px] py-10 justify-items-center">
                 {data.map((product) => (
                   <ProductCard product={product} key={product._id} />
                 ))}

@@ -36,14 +36,14 @@ const ShopHomePage = () => {
           </div>
         ) : (
           <>
-            <div className="lg:w-[24%]  bg-[#fff] rounded-xl shadow-2xl lg:overflow-y-scroll scrollbar-none lg:sticky top-3 left-0 z-10 h-[98vh]   lg:h-[98vh]">
-              <div className="overflow-y-scroll scrollbar-none h-screen">
+            <div className="lg:w-[24%] bg-[#fff] rounded-xl shadow-2xl lg:sticky top-0 left-0 z-10 px-2 h-full py-4">
+              <div className="overflow-y-scroll scrollbar-none h-[95vh] bg-gray-300 rounded-md shadow-lg">
                 <ShopInfo isOwner={true} shopId={id} shop={shop} />
               </div>
             </div>
           </>
         )}
-        <div className="lg:w-[75%] rounded-[4px] mt-4 lg:mt-0">
+        <div className="lg:w-[75%] rounded-[4px]  lg:mt-0">
           <div className=" overflow-y-scroll scrollbar-none h-screen">
             <ShopProfileData isOwner={true} />
           </div>

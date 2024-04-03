@@ -6,7 +6,11 @@ import { HiOutlineReceiptRefund } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Loader from "../Layout/Loader";
-import { getAllOrders, selectAllOrders,selectOrderLoading } from "../../features/user/userSlice";
+import {
+  getAllOrders,
+  selectAllOrders,
+  selectOrderLoading,
+} from "../../features/user/userSlice";
 
 const Refunds = () => {
   const isLoading = useSelector(selectOrderLoading);
@@ -106,7 +110,7 @@ const Refunds = () => {
           <HiOutlineReceiptRefund size={24} /> REFUNDS
         </h1>
       </div>
-      <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-3 pb-6">
+      <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-3 pb-4">
         {isLoading ? (
           <div className="flex items-center justify-center  h-[60vh] ">
             <Loader />
