@@ -39,7 +39,7 @@ const ProfileSideBar = ({ active }) => {
   };
 
   return (
-    <div className="w-full h-full overflow-y-scroll scrollbar-none">
+    <div className="w-full h-full overflow-y-scroll scrollbar-none py-4">
       <div className="hidden lg:flex items-center p-2 md:p-3">
         <Link to="/profile" className="w-full flex items-center">
           <FcPortraitMode
@@ -55,6 +55,7 @@ const ProfileSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
+
       <div className="hidden lg:flex items-center p-3">
         <Link to="/profile/orders" className="w-full flex items-center">
           <FcPaid size={28} color={`${active === 2 ? "red" : "black"}`} />
@@ -150,7 +151,7 @@ const ProfileSideBar = ({ active }) => {
       </div>
 
       {user && user?.role === "Admin" && (
-        <div className="hidden lg:flex items-center p-3">
+        <div className="hidden lg:flex items-center p-3 ">
           <Link to="/admin/dashboard" className="w-full flex items-center">
             <MdAdminPanelSettings size={28} color="green" />
             <h5
@@ -165,7 +166,7 @@ const ProfileSideBar = ({ active }) => {
       )}
 
       {/* mobile view */}
-      <div className="block lg:hidden w-full pt-4 ">
+      <div className="block lg:hidden w-full">
         <div className="flex-col items-center justify-center cursor-pointer w-full mb-8">
           <Link to="/profile">
             <div className="flex items-center justify-center">

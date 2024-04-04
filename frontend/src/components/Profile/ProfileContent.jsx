@@ -71,7 +71,7 @@ const ProfileContent = () => {
           .finally(() => {
             setIsLoading(false);
           });
-      } else return
+      } else return;
     };
     reader.readAsDataURL(e.target.files[0]);
   };
@@ -85,7 +85,7 @@ const ProfileContent = () => {
           </div>
         ) : null}
       </>
-      <div className="flex items-center justify-center  py-2 sticky top-2 mb-2">
+      <div className="flex items-center justify-center sticky top-0 mb-2">
         <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black pb-2">
           <FcPortraitMode size={24} /> My Profile
         </h1>
