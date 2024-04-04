@@ -176,10 +176,13 @@ const ShopReviewsTab = ({ data, isLoading }) => {
           <div className="flex flex-col p-2 ">
             {allReviews &&
               allReviews.map((item, index) => (
-                <div className="w-full flex my-4 bg-gradient-to-l from-slate-100 to-slate-200 ... border-[1px] shadow-lg rounded-md p-2" key={index}>
+                <div
+                  className="w-full flex my-4 bg-gradient-to-l from-slate-100 to-slate-200 ... border-[1px] shadow-lg rounded-md p-2"
+                  key={index}
+                >
                   <img
-                    src={`${item.user?.avatar?.url}`}
-                    className="w-full flex my-4 bg-gradient-to-l from-slate-100 to-slate-200 ... border-[1px] shadow-lg rounded-md p-2"
+                    src={`${item.user.avatar?.url}`}
+                    className="w-20 h-20 rounded"
                     alt=""
                   />
                   <div className="pl-2">

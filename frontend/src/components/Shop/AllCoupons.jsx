@@ -109,6 +109,7 @@ const AllCoupons = ({ refreshCoupons, coupons, isLoading, setIsOpen }) => {
             <Loader />
           </div>
         ) : (
+          <div className="h-[70vh] overflow-y-scroll scrollbar-none">
           <DataGrid
             rows={rows}
             columns={columns}
@@ -117,6 +118,7 @@ const AllCoupons = ({ refreshCoupons, coupons, isLoading, setIsOpen }) => {
             autoHeight
             disableColumnMenu
           />
+          </div>
         )}
       </div>
     </div>

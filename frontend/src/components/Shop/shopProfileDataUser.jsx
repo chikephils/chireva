@@ -176,13 +176,11 @@ const ShopReviewsTab = ({ isOwner, data, isLoading }) => {
           <div className="flex flex-col pb-2">
             {allReviews &&
               allReviews.map((item, index) => (
-                <div className="w-full flex my-4" key={index}>
-                  <img
-                    src={`${item.user.avatar?.url}`}
-                    className="w-full flex my-4 bg-gradient-to-l from-slate-100 to-slate-200 ... border-[1px] shadow-lg rounded-md p-2"
-                    key={index}
-                    alt=""
-                  />
+                <div
+                className="w-full flex my-4 bg-gradient-to-l from-slate-100 to-slate-200 ... border-[1px] shadow-lg rounded-md p-2"
+                key={index}
+              >
+                <img src={`${item.user.avatar?.url}`} className="w-20 h-20 rounded" alt="" />
                   <div className="pl-2">
                     <div className="flex w-full items-center">
                       <h1 className="font-[600] pr-2">{item.user.firstName}</h1>

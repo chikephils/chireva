@@ -112,14 +112,16 @@ const TrackOrders = () => {
             <Loader />
           </div>
         ) : (
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={10}
-            disableRowSelectionOnClick
-            autoHeight
-            disableColumnMenu
-          />
+          <div className="h-[70vh] overflow-y-scroll scrollbar-none">
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              pageSize={10}
+              disableRowSelectionOnClick
+              autoHeight
+              disableColumnMenu
+            />
+          </div>
         )}
       </div>
     </div>

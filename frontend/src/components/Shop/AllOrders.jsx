@@ -114,15 +114,17 @@ const AllOrders = () => {
             <Loader />
           </div>
         ) : (
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={10}
-            disableRowSelectionOnClick
-            autoHeight
-            disableColumnMenu
-            getRowId={(row) => row.id}
-          />
+          <div className="h-[70vh] overflow-y-scroll scrollbar-none">
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              pageSize={10}
+              disableRowSelectionOnClick
+              autoHeight
+              disableColumnMenu
+              getRowId={(row) => row.id}
+            />
+          </div>
         )}
       </div>
     </div>

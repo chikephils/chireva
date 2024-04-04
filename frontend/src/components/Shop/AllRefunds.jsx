@@ -110,6 +110,7 @@ const AllRefunds = () => {
             <Loader />
           </div>
         ) : (
+          <div className="h-[70vh] overflow-y-scroll scrollbar-none">
           <DataGrid
             rows={rows}
             columns={columns}
@@ -118,6 +119,7 @@ const AllRefunds = () => {
             autoHeight
             disableColumnMenu
           />
+          </div>
         )}
       </div>
     </div>

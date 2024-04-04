@@ -153,14 +153,14 @@ const AdminDashboard = () => {
         </div>
 
         <br />
-        <h3 className="text-[22px] font-Poppins pb-2">Latest Orders</h3>
+        <h3 className="text-[18px] md:text-[22px] font-Poppins pb-2">Latest Orders</h3>
         <>
           {isLoading ? (
             <div className="flex items-center justify-center ml-8 h-[30vh]">
               <Loader />
             </div>
           ) : (
-            <div className="h-[40vh]">
+            <div className="h-[40vh] overflow-y-scroll scrollbar-thin">
               <DataGrid
                 rows={row}
                 columns={columns}
