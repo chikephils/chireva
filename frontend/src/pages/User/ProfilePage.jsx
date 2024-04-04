@@ -7,10 +7,12 @@ import ProfileContent from "../../components/Profile/ProfileContent";
 const ProfilePage = () => {
   return (
     <>
-      <Header />
-      <div className="mt-[62px] md:mt-[100px]">
-        <div className={`${styles.section} w-full flex pb-10`}>
-          <ProfileSideBar active={1} />
+     <Header />
+      <div className="mt-[62px] md:mt-[100px] h-full">
+        <div className={`${styles.section} w-full flex h-full`}>
+          <div className=" w-[20%] md:w-[20%] lg:w-[20%] fixed  mt-1 lg:mt-3 h-full bg-gradient-to-r from-slate-200 to-slate-400 ...  shadow-md  rounded-md  py-4">
+            <ProfileSideBar active={1} />
+          </div>
           <div
             className={`w-[78%] ml-[21%] mt-1 lg:mt-3  h-full fixed  pb-4 bg-gradient-to-r from-slate-300 to-yellow-200 ...  rounded-md shadow-md px-1 md:px-2 lg:px-4`}
           >
