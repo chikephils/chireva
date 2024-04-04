@@ -8,8 +8,8 @@ const AdminWithdrawalDetailsPage = () => {
     <div>
       <AdminHeader />
       <div className="bg-gradient-to-r from-slate-100 to-slate-300 ...">
-      <AdminWithdrawalDetails />
-      <Footer />
+        <AdminWithdrawalDetails />
+        <Footer />
       </div>
     </div>
   );

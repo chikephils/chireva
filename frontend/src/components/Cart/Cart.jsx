@@ -118,7 +118,7 @@ const CartItem = ({ item }) => {
   };
 
   return (
-    <div className=" border border-black bg-gradient-to-r from-slate-300 to-yellow-200 ... w-full p-1 rounded-lg flex  justify-between min-h-[90px] shadow-lg">
+    <div className=" border border-black bg-gradient-to-r from-slate-300 to-yellow-200 ... w-full p-1 rounded-lg flex  justify-between min-h-[90px] shadow-lg ">
       <div className="flex-col flex items-center justify-between ">
         <div
           className={`bg-black border border-[#e4434373] rounded-full h-[25px] w-[25px] lg:w-[25px] lg:h-[25px] ${styles.normalFlex} justify-center cursor-pointer`}
