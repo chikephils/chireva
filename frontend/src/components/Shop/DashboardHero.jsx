@@ -214,9 +214,8 @@ const DashboardHero = () => {
             <DataGrid
               rows={row}
               columns={columns}
-              pageSize={4}
               disableRowSelectionOnClick
-              autoHeight
+              autoPageSize
               disableColumnMenu
             />
           )}

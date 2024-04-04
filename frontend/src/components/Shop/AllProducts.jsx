@@ -123,23 +123,21 @@ const AllProducts = ({ handleProductClick, shopProducts, isLoading }) => {
           <FiPackage size={24} /> Your Shop Products
         </h1>
       </div>
-
-      {isLoading ? (
-        <div className="flex items-center justify-center  h-[60vh] ">
-          <Loader />
-        </div>
-      ) : (
-        <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-12">
+      <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-12">
+        {isLoading ? (
+          <div className="flex items-center justify-center  h-[60vh] ">
+            <Loader />
+          </div>
+        ) : (
           <DataGrid
             rows={rows}
             columns={columns}
-            pageSize={10}
             disableRowSelectionOnClick
-            autoHeight
+            autoPageSize
             disableColumnMenu
           />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

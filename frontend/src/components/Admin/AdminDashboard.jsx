@@ -160,15 +160,13 @@ const AdminDashboard = () => {
               <Loader />
             </div>
           ) : (
-            <div className="h-[40vh] overflow-y-scroll scrollbar-thin">
-              <DataGrid
-                rows={row}
-                columns={columns}
-                pageSize={4}
-                disableRowSelectionOnClick
-                disableColumnMenu
-              />
-            </div>
+            <DataGrid
+            rows={row}
+            columns={columns}
+            disableRowSelectionOnClick
+            autoPageSize
+            disableColumnMenu
+          />
           )}
         </>
       </div>

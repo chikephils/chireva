@@ -143,9 +143,8 @@ const AdminSellers = () => {
           <DataGrid
             rows={rows}
             columns={columns}
-            pageSize={10}
             disableRowSelectionOnClick
-            autoHeight
+            autoPageSize
             disableColumnMenu
           />
         )}

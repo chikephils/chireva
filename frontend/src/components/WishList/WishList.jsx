@@ -121,8 +121,8 @@ const CartItem = ({ item }) => {
         />
       </div>
       <div className="w-[40%]">
-        <h1 className="text-sm md:text-base">{item.name.slice(0, 15)}..</h1>
-        <h4 className="text-sm md:text-base font-Roboto  pt-[3px] text-red-600">
+        <h1 className="text-sm md:text-base font-semibold">{item.name.slice(0, 15)}..</h1>
+        <h4 className="text-sm md:text-base font-Roboto font-semibold  pt-[3px] text-red-600">
           &#x20A6;{totalPrice}
         </h4>
       </div>

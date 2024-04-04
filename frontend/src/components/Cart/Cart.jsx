@@ -64,7 +64,7 @@ const Cart = ({ setOpenCart }) => {
 
           {cartItems && cartItems.length > 0 ? (
             <div className="w-full  rounded-lg flex flex-col pb-1">
-              <div className="w-full h-[82vh] pb-2 flex flex-col gap-[5px] overflow-y-scroll scrollbar-none p-1 ">
+              <div className="w-full h-[85vh] py-3  flex flex-col gap-2 overflow-y-scroll scrollbar-none p-1 ">
                 {cartItems &&
                   cartItems.map((item) => (
                     <CartItem key={item._id} item={item} />
@@ -118,8 +118,8 @@ const CartItem = ({ item }) => {
   };
 
   return (
-    <div className=" border border-black bg-gradient-to-r from-slate-300 to-yellow-200 ... w-full p-1 rounded-lg flex  justify-between h-[82px] shadow-lg">
-      <div className="flex-col items-center justify-between ">
+    <div className=" border border-black bg-gradient-to-r from-slate-300 to-yellow-200 ... w-full p-1 rounded-lg flex  justify-between h-[90px] shadow-lg">
+      <div className="flex-col flex items-center justify-between ">
         <div
           className={`bg-black border border-[#e4434373] rounded-full h-[25px] w-[25px] lg:w-[25px] lg:h-[25px] ${styles.normalFlex} justify-center cursor-pointer`}
           onClick={add}
@@ -134,7 +134,8 @@ const CartItem = ({ item }) => {
           <HiOutlineMinus size={14} className=" font-semibold" color="#fff" />
         </div>
       </div>
-      <div className="flex justify-center w-[30%]">
+
+      <div className="flex justify-center items-center w-[30%]">
         <img
           src={`${item.images && item.images[0]?.url}`}
           alt="img"
