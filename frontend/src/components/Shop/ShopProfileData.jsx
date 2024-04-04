@@ -179,7 +179,7 @@ const ShopReviewsTab = ({ data, isLoading }) => {
                 <div className="w-full flex my-4 bg-gradient-to-l from-slate-100 to-slate-200 ... border-[1px] shadow-lg rounded-md p-2" key={index}>
                   <img
                     src={`${item.user?.avatar?.url}`}
-                    className="w-[50px] h-[50px] rounded-full"
+                    className="w-full flex my-4 bg-gradient-to-l from-slate-100 to-slate-200 ... border-[1px] shadow-lg rounded-md p-2"
                     alt=""
                   />
                   <div className="pl-2">

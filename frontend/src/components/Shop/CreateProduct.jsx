@@ -175,7 +175,7 @@ const CreateProduct = () => {
         </div>
 
         {/* create product form  */}
-        <div className="h-[70h]  overflow-y-scroll scrollbar-none pb-6 pt-1">
+        <div className="h-[70vh]  overflow-y-scroll scrollbar-none pb-6 pt-1">
           <form onSubmit={handleSubmit}>
             <div>
               <label className=" block text-[14px] md:text-[16px] font-medium ">

@@ -33,8 +33,8 @@ const Cart = ({ setOpenCart }) => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 w-full bg-[#0000004b] h-screen z-50 ">
-        <div className="fixed top-0 right-0 z-[101] w-[70%] lg:w-[40%] bg-gradient-to-r from-slate-200 to-slate-400 ... flex flex-col justify-between shadow-lg h-full rounded-md">
+      <div className="fixed top-0 left-0 w-full h-full bg-[#0000004b] z-50 flex items-start justify-end">
+        <div className="relative w-[70%] lg:w-[40%] bg-gradient-to-r from-slate-200 to-slate-300 flex flex-col justify-between shadow-xl rounded-lg h-full">
           <div className="w-full h-[7vh] flex items-center justify-between px-1 bg-gradient-to-r from-red-300 to-red-500 ...">
             <div>
               <RxCross1
@@ -63,8 +63,8 @@ const Cart = ({ setOpenCart }) => {
           {/*Cart items */}
 
           {cartItems && cartItems.length > 0 ? (
-            <div className="w-full  rounded-t-[2rem] flex flex-col mb-2 px-1 md:px-2">
-              <div className="w-full h-[82vh] py-3  flex flex-col gap-1 overflow-y-scroll scrollbar-none ">
+            <div className="w-full  rounded-lg flex flex-col pb-1">
+              <div className="w-full h-[82vh] py-2 flex flex-col gap-1 overflow-y-scroll scrollbar-none p-1 ">
                 {cartItems &&
                   cartItems.map((item) => (
                     <CartItem key={item._id} item={item} />
@@ -73,7 +73,7 @@ const Cart = ({ setOpenCart }) => {
 
               {/*Checkout Buttons */}
 
-              <Link to="/checkout">
+              <Link to="/checkout" className="px-1">
                 <div
                   className="h-[7vh] flex items-center justify-center w-[100%] bg-gradient-to-r from-red-400 to-red-600 ... rounded-[5px] cursor-pointer"
                   onClick={() => setOpen(true)}
@@ -119,7 +119,7 @@ const CartItem = ({ item }) => {
   };
 
   return (
-    <div className=" border border-black bg-gradient-to-r from-slate-300 to-yellow-200 ... w-full p-1 lg:px- rounded-lg flex items-center justify-between min-h-[80px] shadow-lg">
+    <div className=" w-full border-[2px] rounded-lg p-1 lg:p-2 flex justify-between min-h-[75px] bg-gradient-to-r from-slate-300 to-yellow-200 ...">
       <div className="flex-col items-center justify-between ">
         <div
           className={`bg-black border border-[#e4434373] rounded-full h-[25px] w-[25px] lg:w-[25px] lg:h-[25px] ${styles.normalFlex} justify-center cursor-pointer`}
