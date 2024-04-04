@@ -97,7 +97,7 @@ const AdminDashboard = () => {
           Overview
         </h1>
       </div>
-      <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-6">
+      <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-8">
         <div className="w-full block lg:flex items-center justify-between">
           <div className="w-[full] mb-4 lg:w-[30%] min-h-[25vh] bg-gradient-to-l from-gray-50 to-slate-100 ... rounded-md px-2 py-5 shadow-md">
             <div className="flex items-center">

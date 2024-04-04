@@ -134,7 +134,7 @@ const AdminSellers = () => {
           <GrWorkshop size={24} /> SELLERS
         </h1>
       </div>
-      <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-6">
+      <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-8">
         {isLoading ? (
           <div className="flex items-center justify-center  h-[60vh] ">
             <Loader />

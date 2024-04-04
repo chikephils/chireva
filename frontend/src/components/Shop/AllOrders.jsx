@@ -102,13 +102,13 @@ const AllOrders = () => {
     });
 
   return (
-    <div className="p-2">
-      <div className="flex items-center justify-center  py-2 sticky top-2 mb-2 bg-slate-400 z-50">
-        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black pb-2">
+    <div className="h-full">
+      <div className="flex items-center justify-center sticky h-[35px]">
+        <h1 className=" flex font-medium lg:text-[22px] lg:font-[600] text-black py-3">
           <FiPackage size={24} /> Your Shop Orders
         </h1>
       </div>
-      <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-3 pb-6">
+      <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-12">
         {isLoading ? (
           <div className="flex items-center justify-center  h-[60vh] ">
             <Loader />

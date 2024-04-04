@@ -13,7 +13,7 @@ const ProfilePage = () => {
           <ProfileSideBar active={1} />
         </div>
         <div
-          className={`w-[78%] ml-[21%] mt-1 lg:mt-3 h-[calc(100%-62px)] md:h-[calc(100%-100px)] fixed  pb-4 bg-gradient-to-r from-slate-300 to-yellow-200 ...  rounded-md shadow-md px-1 md:px-2 py-2`}
+          className={`w-[78%] ml-[21%] mt-1 lg:mt-3 h-[calc(100%-62px)] md:h-[calc(100%-100px)] fixed  pb-4 bg-gradient-to-r from-slate-300 to-yellow-200 ...  rounded-md shadow-md px-1 py-2`}
         >
           <ProfileContent />
         </div>

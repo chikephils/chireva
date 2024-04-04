@@ -145,13 +145,13 @@ const DashboardHero = () => {
     });
 
   return (
-    <div className="">
-      <div className="flex items-center justify-center py-2 sticky top-1 mb-2">
-        <h2 className=" flex pb-2 text-base md:text-lg lg:text-xl font-semibold text-center ">
+    <div className="h-full">
+      <div className="flex items-center justify-center sticky h-[35px] py-3">
+        <h1 className=" flex font-medium lg:text-[22px] lg:font-[600] text-black py-2">
           Overview
-        </h2>
+        </h1>
       </div>
-      <div className=" h-[70vh] overflow-y-scroll scrollbar-none pb-8">
+      <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-6">
         <div className="w-full block lg:flex items-center justify-between">
           <div className="w-[full] mb-4 lg:w-[30%] lg:min-h-[25vh] min-h-[20vh] bg-white shadow rounded px-2 py-5">
             <div className="flex items-center">

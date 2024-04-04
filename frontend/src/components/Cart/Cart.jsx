@@ -64,7 +64,7 @@ const Cart = ({ setOpenCart }) => {
 
           {cartItems && cartItems.length > 0 ? (
             <div className="w-full  rounded-lg flex flex-col pb-1">
-              <div className="w-full h-[82vh] py-2 flex flex-col gap-1 overflow-y-scroll scrollbar-none p-1 ">
+              <div className="w-full h-[82vh] pb-2 flex flex-col gap-[5px] overflow-y-scroll scrollbar-none p-1 ">
                 {cartItems &&
                   cartItems.map((item) => (
                     <CartItem key={item._id} item={item} />
@@ -72,7 +72,6 @@ const Cart = ({ setOpenCart }) => {
               </div>
 
               {/*Checkout Buttons */}
-
               <Link to="/checkout" className="px-1">
                 <div
                   className="h-[7vh] flex items-center justify-center w-[100%] bg-gradient-to-r from-red-400 to-red-600 ... rounded-[5px] cursor-pointer"
@@ -119,7 +118,7 @@ const CartItem = ({ item }) => {
   };
 
   return (
-    <div className=" w-full border-[2px] rounded-lg p-1 lg:p-2 flex justify-between min-h-[75px] bg-gradient-to-r from-slate-300 to-yellow-200 ...">
+    <div className=" border border-black bg-gradient-to-r from-slate-300 to-yellow-200 ... w-full p-1 rounded-lg flex  justify-between h-[82px] shadow-lg">
       <div className="flex-col items-center justify-between ">
         <div
           className={`bg-black border border-[#e4434373] rounded-full h-[25px] w-[25px] lg:w-[25px] lg:h-[25px] ${styles.normalFlex} justify-center cursor-pointer`}

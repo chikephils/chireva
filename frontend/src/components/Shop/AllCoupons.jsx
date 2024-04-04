@@ -88,23 +88,22 @@ const AllCoupons = ({ refreshCoupons, coupons, isLoading, setIsOpen }) => {
     });
 
   return (
-    <div className="p-2">
-      <div className="sticky top-2 mb-2 bg-slate-400 z-50 ">
-        <div className="flex w-full items-center justify-end">
+    <div className="h-full">
+      <div className=" sticky bg-gray-400 z-50 h-[100px]">
+        <div className="flex w-full justify-end">
           <div
-            className={`${styles.button} !w-max !h-[45px] px-2 shadow-xl !rounded-[5px] mr-3`}
+            className={`${styles.button} !w-max !h-[40px] px-2 shadow-xl !rounded-[5px] mr-3`}
             onClick={() => setIsOpen(true)}
           >
             <span className="text-white font-semibold">Create Coupon Code</span>
           </div>
         </div>
-        <div className="flex w-full items-center justify-center ">
-          <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black pb-2">
-            <FiPackage size={24} /> Your Discount Coupons
-          </h1>
-        </div>
+
+        <h1 className=" flex justify-center font-medium lg:text-[22px] lg:font-[600] text-black pb-2">
+          <FiPackage size={24} /> Your Discount Coupons
+        </h1>
       </div>
-      <div className=" h-[70vh] overflow-y-scroll scrollbar pt-3 pb-6">
+      <div className=" h-[calc(100%-102px)] overflow-y-scroll scrollbar-none pt-3 pb-12">
         {isLoading ? (
           <div className="flex items-center justify-center  h-[60vh] ">
             <Loader />

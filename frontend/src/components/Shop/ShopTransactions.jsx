@@ -18,21 +18,21 @@ const ShopTransactions = () => {
   }, [dispatch, seller?._id]);
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     if (seller) {
       setTransactions(seller.transactions);
     }
-    setLoading(false)
+    setLoading(false);
   }, [seller]);
 
   return (
-    <div className="pl-1">
-      <div className="flex items-center justify-center  py-4 sticky top-2 mb-2 pb-2 bg-slate-100">
-        <h1 className="flex font-medium lg:text-[25px] lg:font-[600] text-black pb-2">
+    <div className="h-full">
+      <div className="flex items-center justify-center sticky h-[35px] bg-slate-200 py-3">
+        <h1 className=" flex font-medium lg:text-[22px] lg:font-[600] text-black py-2">
           <FcMoneyTransfer size={24} /> Your Transactions
         </h1>
       </div>
-      <div className="h-[70vh] overflow-y-scroll scrollbar pt-4 pb-4">
+      <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-12">
         {isLoading || loading ? (
           <div className="flex items-center justify-center h-[60vh]">
             <Loader />

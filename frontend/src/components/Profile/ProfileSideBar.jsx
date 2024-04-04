@@ -142,7 +142,7 @@ const ProfileSideBar = ({ active }) => {
           <RiLogoutCircleLine size={28} color="red" />
           <h5
             className={`block pl-2 text-[16px] font-semibold ${
-              active ===  8 ? "text-[red]" : "text-black"
+              active === 8 ? "text-[red]" : "text-black"
             }`}
           >
             Logout
