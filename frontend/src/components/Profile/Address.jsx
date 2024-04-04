@@ -14,9 +14,9 @@ const Address = ({ setOpen }) => {
   };
 
   return (
-    <>
-      <div className="sticky top-2 mb-2 flex items-center justify-between">
-        <h1 className="text-sm font-medium lg:text-[25px] lg:font-[600] text-black ">
+    <div className="h-full">
+      <div className="sticky top-2 mb-2 flex items-center justify-between h-[35px]">
+        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black py-2">
           My Address
         </h1>
         <div
@@ -57,7 +57,7 @@ const Address = ({ setOpen }) => {
           You not have any saved address!
         </h5>
       )}
-    </>
+    </div>
   );
 };
 

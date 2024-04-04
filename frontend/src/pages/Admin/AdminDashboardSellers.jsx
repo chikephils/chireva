@@ -8,11 +8,11 @@ const AdminDashboardSellers = () => {
   return (
     <>
       <AdminHeader />
-      <div className=" mt-[62px]">
-        <div className={`${styles.section} w-full flex pb-10`}>
+      <div className={`${styles.section} w-full flex mt-[62px] md:mt-[100px] `}>
+        <div className=" w-[20%] md:w-[20%] lg:w-[20%] fixed  mt-1 lg:mt-3 h-[calc(100%-62px)] bg-gradient-to-r from-slate-200 to-slate-400 ...  shadow-md  rounded-md py-4 flex items-center">
           <AdminSideBar active={3} />
           <div
-            className={`w-[78%] ml-[21%] mt-1  h-full fixed  pb-4 rounded-md bg-gradient-to-l from-slate-300 to-slate-400 ... shadow-lg px-1 md:px-2 lg:px-4 `}
+            className={`w-[78%] ml-[21%] mt-1 lg:mt-3 h-[calc(100%-62px)] fixed  pb-4 bg-gradient-to-l from-slate-300 to-slate-400 ...  rounded-md shadow-md px-1 md:px-2 py-2`}
           >
             <AdminSellers />
           </div>

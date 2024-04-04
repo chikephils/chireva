@@ -21,7 +21,6 @@ const UserInbox = () => {
   const [onlineUsers, setOnlineUsers] = useState([]);
   const scrollRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
- 
 
   useEffect(() => {
     if (user) {
@@ -54,7 +53,6 @@ const UserInbox = () => {
     const getConversation = async () => {
       setIsLoading(true);
       try {
-      
         const response = await axios.get(
           `${server}/conversation/get-all-conversation-user/${user?._id}`,
           { withCredentials: true }
@@ -70,7 +68,6 @@ const UserInbox = () => {
     getConversation();
   }, [user, messages]);
 
-
   const onLlineCheck = (chat) => {
     const chatMembers = chat.members.find((member) => member !== user?._id);
     const online = onlineUsers.find((user) => user.userId === chatMembers);
@@ -83,15 +80,15 @@ const UserInbox = () => {
   }, [messages]);
 
   return (
-    <div className="px-2">
-      <div className="flex items-center justify-center  py-4 sticky top-2 mb-2">
-        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black pb-2">
+    <div className="h-full px-2">
+    <div className="flex items-center justify-center sticky h-[35px]">
+      <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black py-2">
           <FcSms size={24} /> All Messages
         </h1>
       </div>
 
       {/* All Messages List */}
-      <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-3 pb-4">
+      <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-6">
         {isLoading ? (
           <div className="flex items-center justify-center  h-[60vh] ">
             <Loader />
@@ -148,7 +145,7 @@ const MessageList = ({
       }
     };
     getSeller();
-  }, [me, conversation,]);
+  }, [me, conversation]);
 
   const handleClick = (id) => {
     navigate(`${id}`, {

@@ -94,10 +94,10 @@ const ProfileSideBar = ({ active }) => {
       </div>
       <div className="hidden lg:flex items-center p-3">
         <Link to="/profile/track-orders" className="w-full flex items-center">
-          <FcInTransit size={28} color={`${active === 6 ? "red" : "black"}`} />
+          <FcInTransit size={28} color={`${active === 5 ? "red" : "black"}`} />
           <h5
             className={`block pl-2 text-[16px] font-semibold ${
-              active === 6 ? "text-[red]" : "text-black"
+              active === 5 ? "text-[red]" : "text-black"
             }`}
           >
             Track Orders
@@ -109,10 +109,10 @@ const ProfileSideBar = ({ active }) => {
           to="/profile/change-password"
           className="w-full flex items-center"
         >
-          <FcPrivacy size={30} color={`${active === 7 ? "red" : "black"}`} />
+          <FcPrivacy size={30} color={`${active === 6 ? "red" : "black"}`} />
           <h5
             className={`block pl-2 text-[16px] font-semibold ${
-              active === 7 ? "text-[red]" : "text-black"
+              active === 6 ? "text-[red]" : "text-black"
             }`}
           >
             Change Password
@@ -123,11 +123,11 @@ const ProfileSideBar = ({ active }) => {
         <Link to="/profile/address" className="w-full flex items-center">
           <FcAddressBook
             size={28}
-            color={`${active === 8 ? "red" : "black"}`}
+            color={`${active === 7 ? "red" : "black"}`}
           />
           <h5
             className={`block pl-2 text-[16px] font-semibold ${
-              active === 8 ? "text-[red]" : "text-black"
+              active === 7 ? "text-[red]" : "text-black"
             }`}
           >
             Address Book
@@ -142,7 +142,7 @@ const ProfileSideBar = ({ active }) => {
           <RiLogoutCircleLine size={28} color="red" />
           <h5
             className={`block pl-2 text-[16px] font-semibold ${
-              active === 9 ? "text-[red]" : "text-black"
+              active ===  8 ? "text-[red]" : "text-black"
             }`}
           >
             Logout
@@ -253,13 +253,13 @@ const ProfileSideBar = ({ active }) => {
               <FcInTransit
                 size={28}
                 className="flex items-center justify-center"
-                color={`${active === 6 ? "red" : "black"}`}
+                color={`${active === 5 ? "red" : "black"}`}
               />
             </div>
 
             <h5
               className={`block text-[12px] font-medium text-center ${
-                active === 6 ? "text-[red]" : "text-black"
+                active === 5 ? "text-[red]" : "text-black"
               }`}
             >
               Track Orders
@@ -273,13 +273,13 @@ const ProfileSideBar = ({ active }) => {
               <FcPrivacy
                 size={30}
                 className="flex items-center justify-center"
-                color={`${active === 7 ? "red" : "black"}`}
+                color={`${active === 6 ? "red" : "black"}`}
               />
             </div>
 
             <h5
               className={`block text-[12px] font-medium text-center ${
-                active === 7 ? "text-[red]" : "text-black"
+                active === 6 ? "text-[red]" : "text-black"
               }`}
             >
               Change password
@@ -293,13 +293,13 @@ const ProfileSideBar = ({ active }) => {
               <FcAddressBook
                 size={30}
                 className="flex items-center justify-center"
-                color={`${active === 8 ? "red" : "black"}`}
+                color={`${active === 7 ? "red" : "black"}`}
               />
             </div>
 
             <h5
               className={`block text-[12px] font-medium text-center ${
-                active === 8 ? "text-[red]" : "text-black"
+                active === 7 ? "text-[red]" : "text-black"
               }`}
             >
               Address
@@ -319,7 +319,7 @@ const ProfileSideBar = ({ active }) => {
 
             <h5
               className={`block text-[12px] font-medium text-center ${
-                active === 9 ? "text-[red]" : "text-black"
+                active === 8 ? "text-[red]" : "text-black"
               }`}
             >
               Logout

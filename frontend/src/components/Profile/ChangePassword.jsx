@@ -41,15 +41,15 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="w-full flex items-center justify-center px-1">
+    <div className=" px-1">
       <div className="w-full md:w-[60%]">
-        <div className="flex items-center justify-center  py-2 sticky top-2 mb-2">
-          <h1 className=" pb-2 md:pb-4 text-base md:text-lg lg:text-xl font-semibold text-center">
+        <div className="flex items-center justify-center sticky h-[35px]">
+          <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black py-2">
             Change Password
           </h1>
         </div>
 
-        <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-2 pb-4">
+        <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-6">
           <form className="space-y-2" onSubmit={passwordChangeHandler}>
             <div>
               <label

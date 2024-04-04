@@ -77,7 +77,7 @@ const ProfileContent = () => {
   };
 
   return (
-    <div className="">
+    <div className="h-full">
       <>
         {isLoading || userLoading ? (
           <div className="absolute top-0 left-0 w-full h-full bg-gray-200 opacity-50 z-10 flex items-center justify-center">
@@ -85,13 +85,13 @@ const ProfileContent = () => {
           </div>
         ) : null}
       </>
-      <div className="flex items-center justify-center sticky top-0 mb-2">
-        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black pb-2">
+      <div className="flex items-center justify-center sticky h-[35px]">
+        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black py-2">
           <FcPortraitMode size={24} /> My Profile
         </h1>
       </div>
       {/* Profile Page */}
-      <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-2 pb-4">
+      <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-6">
         <div className="flex justify-center w-full pr-4 mt-2">
           <div className="relative">
             <img
@@ -114,7 +114,7 @@ const ProfileContent = () => {
         </div>
         <br />
         <br />
-        <div className="w-full px-2 md:px-5">
+        <div className="w-full px-2 md:px-5 pb-4">
           <form onSubmit={handleSubmit}>
             <div className="w-full block lg:flex pb-1 lg:pb-3">
               <div className="w-[100%] lg:w-[50%]">

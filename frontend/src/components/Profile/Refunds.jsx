@@ -104,13 +104,13 @@ const Refunds = () => {
       });
     });
   return (
-    <div className="pl-2">
-      <div className="flex items-center justify-center  py-2 sticky top-2 mb-2">
-        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black pb-2">
+    <div className="h-full">
+      <div className="flex items-center justify-center sticky h-[35px]">
+        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black py-2">
           <HiOutlineReceiptRefund size={24} /> REFUNDS
         </h1>
       </div>
-      <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-3 pb-4">
+      <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-6">
         {isLoading ? (
           <div className="flex items-center justify-center  h-[60vh] ">
             <Loader />
