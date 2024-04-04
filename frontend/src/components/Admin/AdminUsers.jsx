@@ -104,27 +104,26 @@ const AdminUsers = () => {
     });
 
   return (
-    <div className="h-full">
+    <div className="h-full pb-20">
       <div className="flex items-center justify-center sticky h-[35px]">
         <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black pb-2">
           <HiOutlineUserGroup size={24} /> USERS
         </h1>
       </div>
-      <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-8">
-        {isLoading ? (
-          <div className="flex items-center justify-center  h-[60vh] ">
-            <Loader />
-          </div>
-        ) : (
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            disableRowSelectionOnClick
-            autoPageSize
-            disableColumnMenu
-          />
-        )}
-      </div>
+
+      {isLoading ? (
+        <div className="flex items-center justify-center  h-[60vh] ">
+          <Loader />
+        </div>
+      ) : (
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          disableRowSelectionOnClick
+          autoPageSize
+          disableColumnMenu
+        />
+      )}
 
       {open && (
         <div className="w-full fixed top-0 left-0 z-[999] bg-[#00000039] flex items-center justify-center h-screen">

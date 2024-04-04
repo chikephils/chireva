@@ -91,13 +91,13 @@ const AdminDashboard = () => {
     });
 
   return (
-    <div className="h-full">
+    <div className="h-full pb-6">
       <div className="flex items-center justify-center sticky h-[35px]">
         <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black py-2">
           Overview
         </h1>
       </div>
-      <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-8">
+      <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-4">
         <div className="w-full block lg:flex items-center justify-between">
           <div className="w-[full] mb-4 lg:w-[30%] min-h-[25vh] bg-gradient-to-l from-gray-50 to-slate-100 ... rounded-md px-2 py-5 shadow-md">
             <div className="flex items-center">
@@ -153,20 +153,24 @@ const AdminDashboard = () => {
         </div>
 
         <br />
-        <h3 className="text-[18px] md:text-[22px] font-Poppins pb-2">Latest Orders</h3>
+        <h3 className="text-[18px] md:text-[22px] font-Poppins pb-2">
+          Latest Orders
+        </h3>
         <>
           {isLoading ? (
             <div className="flex items-center justify-center ml-8 h-[30vh]">
               <Loader />
             </div>
           ) : (
-            <DataGrid
-            rows={row}
-            columns={columns}
-            disableRowSelectionOnClick
-            autoPageSize
-            disableColumnMenu
-          />
+            <div className="h-[40vh]">
+              <DataGrid
+                rows={row}
+                columns={columns}
+                disableRowSelectionOnClick
+                autoPageSize
+                disableColumnMenu
+              />
+            </div>
           )}
         </>
       </div>

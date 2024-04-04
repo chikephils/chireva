@@ -88,7 +88,7 @@ const AllCoupons = ({ refreshCoupons, coupons, isLoading, setIsOpen }) => {
     });
 
   return (
-    <div className="h-full">
+    <div className="h-full pb-20">
       <div className=" sticky bg-gray-400 z-50 h-[100px]">
         <div className="flex w-full justify-end">
           <div
@@ -103,21 +103,20 @@ const AllCoupons = ({ refreshCoupons, coupons, isLoading, setIsOpen }) => {
           <FiPackage size={24} /> Your Discount Coupons
         </h1>
       </div>
-      <div className=" h-[calc(100%-102px)] overflow-y-scroll scrollbar-none pt-3 pb-12">
-        {isLoading ? (
-          <div className="flex items-center justify-center  h-[60vh] ">
-            <Loader />
-          </div>
-        ) : (
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            disableRowSelectionOnClick
-            autoPageSize
-            disableColumnMenu
-          />
-        )}
-      </div>
+
+      {isLoading ? (
+        <div className="flex items-center justify-center  h-[60vh] ">
+          <Loader />
+        </div>
+      ) : (
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          disableRowSelectionOnClick
+          autoPageSize
+          disableColumnMenu
+        />
+      )}
     </div>
   );
 };
