@@ -1,10 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DashBoardHeader from "../../components/Shop/Layout/DashBoardHeader";
 import DashBoardSideBar from "../../components/Shop/Layout/DashBoardSideBar";
 import styles from "../../styles/styles";
 import AllEvents from "../../components/Shop/AllEvents";
+import { useDispatch, useSelector } from "react-redux";
+import { getShopEvents, selectSeller } from "../../features/shop/shopSlice";
+import SellerEventDetails from "../../components/Events/SellerEventDetails";
 
 const ShopAllEvents = () => {
+  const [shopEvents, setShopEvents] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const seller = useSelector(selectSeller);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getShopEvents(seller._id))
+      .unwrap()
+      .then((response) => {
+        setShopEvents(response);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        console.error("Error fetching shop events:", error);
+      });
+  }, [dispatch, seller._id]);
+
+  const handleEventClick = (eventId) => {
+    const event = shopEvents.find((item) => item._id === eventId);
+    setSelectedEvent(event);
+    setIsOpen(true);
+  };
   return (
     <>
       <DashBoardHeader active={5} />
@@ -14,10 +43,21 @@ const ShopAllEvents = () => {
           <div
             className={`w-[78%] ml-[21%] h-[calc(100%-62px)] fixed  pb-4 bg-gradient-to-l from-slate-300 to-slate-400 ...  rounded-md shadow-md px-1 md:px-2 py-2`}
           >
-            <AllEvents />
+            <AllEvents
+              handleEventClick={handleEventClick}
+              shopEvents={shopEvents}
+              seller={seller}
+              isLoading={isLoading}
+            />
           </div>
         </div>
       </div>
+      {isOpen && selectedEvent && (
+        <SellerEventDetails
+          setIsOpen={() => setIsOpen(false)}
+          product={selectedEvent}
+        />
+      )}
     </>
   );
 };

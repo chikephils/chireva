@@ -1,58 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectSeller } from "../../features/shop/shopSlice";
 import { Button } from "@mui/material";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import { DataGrid } from "@mui/x-data-grid";
-import { getShopEvents, deleteShopEvent } from "../../features/shop/shopSlice";
 import { toast } from "react-toastify";
 import { MdOutlineLocalOffer } from "react-icons/md";
-import SellerEventDetails from "../Events/SellerEventDetails";
 import Loader from "../Layout/Loader";
 import { selectEventError } from "../../features/event/eventSlice";
+import { deleteShopEvent } from "../../features/shop/shopSlice";
+import SmallLoader from "../Layout/SmallLoader";
 
-const AllEvents = () => {
-  const [shopEvents, setShopEvents] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const seller = useSelector(selectSeller);
+const AllEvents = ({ handleEventClick, shopEvents, isLoading }) => {
   const eventError = useSelector(selectEventError);
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
-
+  const [showLoader, setShowLoader] = useState({});
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getShopEvents(seller._id))
-      .unwrap()
-      .then((response) => {
-        setShopEvents(response);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        console.error("Error fetching shop events:", error);
-      });
-  }, [dispatch, seller._id]);
-
   const handleDelete = async (id) => {
-    // setShowLoader(true);
+    setShowLoader((prevStates) => ({ ...prevStates, [id]: true }));
     try {
       dispatch(deleteShopEvent(id));
-      console.log(id);
-      toast.success("Event deleted successfully");
-      // setShowLoader(false);
     } catch (error) {
       toast.error(eventError);
-      // setShowLoader(false);
+    } finally {
+      setShowLoader((prevStates) => ({ ...prevStates, [id]: false }));
     }
-  };
-
-  console.log(shopEvents);
-
-  const openEventDetails = (eventId) => {
-    const openEvent = shopEvents.find((item) => item._id === eventId);
-    setSelectedEvent(openEvent);
-    setIsOpen(true);
   };
 
   const columns = [
@@ -109,7 +80,7 @@ const AllEvents = () => {
       renderCell: (params) => {
         return (
           <>
-            <Button onClick={() => openEventDetails(params.row.id)}>
+            <Button onClick={() => handleEventClick(params.row.id)}>
               <AiOutlineEye size={18} />
             </Button>
           </>
@@ -127,7 +98,11 @@ const AllEvents = () => {
         return (
           <>
             <Button onClick={() => handleDelete(params.id)}>
-              <AiOutlineDelete size={18} />
+            {showLoader[params.id] ? (
+                <SmallLoader />
+              ) : (
+                <AiOutlineDelete size={18} />
+              )}
             </Button>
           </>
         );
@@ -170,10 +145,6 @@ const AllEvents = () => {
           autoPageSize
           disableColumnMenu
         />
-      )}
-
-      {isOpen && selectedEvent && (
-        <SellerEventDetails setIsOpen={setIsOpen} event={selectedEvent} />
       )}
     </div>
   );

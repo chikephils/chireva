@@ -7,7 +7,9 @@ const ShopOrderDetails = () => {
   return (
     <div>
       <DashBoardHeader />
-      <OrderDetails />
+      <div className="bg-gradient-to-r from-slate-200 to-slate-400 ...">
+        <OrderDetails />
+      </div>
       <Footer />
     </div>
   );

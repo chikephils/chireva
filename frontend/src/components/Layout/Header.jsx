@@ -3,7 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../Assests/img/logo.png";
 import { categoriesData } from "../../static/data";
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
-import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
+import {
+  IoIosArrowDown,
+  IoIosArrowForward,
+  IoIosArrowUp,
+} from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import styles from "../../styles/styles";
 import { BiMenuAltLeft } from "react-icons/bi";
@@ -132,11 +136,19 @@ const Header = ({ activeHeading }) => {
                 <button className="h-[100%] w-full flex justify-between items-center pl-10 bg-white font-sans text-lg font-[500] select-none rounded-md">
                   All Categories
                 </button>
-                <IoIosArrowDown
-                  size={20}
-                  className="absolute right-2 top-4 cursor-pointer"
-                  onClick={dropDownToogle}
-                />
+                {dropDown ? (
+                  <IoIosArrowUp
+                    size={20}
+                    className="absolute right-2 top-4 cursor-pointer"
+                    onClick={dropDownToogle}
+                  />
+                ) : (
+                  <IoIosArrowDown
+                    size={20}
+                    className="absolute right-2 top-4 cursor-pointer"
+                    onClick={dropDownToogle}
+                  />
+                )}
                 {dropDown ? (
                   <DropDown
                     categoriesData={categoriesData}
@@ -230,7 +242,12 @@ const Header = ({ activeHeading }) => {
                 onClick={dropDownToogle}
               >
                 <button className="px-1 flex justify-between items-center bg-white font-sans text-[12px] font-medium select-none rounded-md">
-                  Categories <IoIosArrowDown size={20} />
+                  Categories{" "}
+                  {dropDown ? (
+                    <IoIosArrowUp size={20} onClick={dropDownToogle} />
+                  ) : (
+                    <IoIosArrowDown size={20} onClick={dropDownToogle} />
+                  )}
                 </button>
                 {dropDown ? (
                   <DropDown
