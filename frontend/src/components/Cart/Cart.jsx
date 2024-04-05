@@ -64,7 +64,7 @@ const Cart = ({ setOpenCart }) => {
 
           {cartItems && cartItems.length > 0 ? (
             <div className="w-full  rounded-lg flex flex-col pb-1">
-              <div className="w-full h-[85vh] py-3  flex flex-col gap-2 overflow-y-scroll scrollbar-none p-1 ">
+              <div className="w-full h-[83vh] py-3  flex flex-col gap-3 overflow-y-scroll scrollbar-none p-1 ">
                 {cartItems &&
                   cartItems.map((item) => (
                     <CartItem key={item._id} item={item} />
