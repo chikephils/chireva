@@ -17,7 +17,7 @@ import { FiGift } from "react-icons/fi";
 
 const DashBoardSideBar = ({ active }) => {
   return (
-    <div className="w-full h-full overflow-y-scroll scrollbar-none py-4">
+    <div className="w-full h-full overflow-y-scroll scrollbar-none py-2">
       {/* single Items desktop view */}
       <div className="hidden lg:flex items-center p-3">
         <Link to="/dashboard" className="w-full flex items-center">
@@ -365,7 +365,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3 pb-6 mb-2">
+      <div className="flex lg:hidden py-3">
         <Link
           to="/dashboard-settings"
           className="w-full flex flex-col items-center"

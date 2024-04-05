@@ -9,7 +9,7 @@ import { IoIosGift } from "react-icons/io";
 
 const AdminSideBar = ({ active }) => {
   return (
-    <div className="w-full h-full overflow-y-scroll scrollbar-none py-4">
+    <div className="w-full h-full overflow-y-scroll scrollbar-none py-2">
       {/* single item */}
       <div className="hidden lg:flex items-center p-3">
         <Link to="/admin/dashboard" className="w-full flex items-center">
@@ -212,7 +212,7 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3 mb-4">
+      <div className="flex lg:hidden py-3 ">
         <Link
           to="/admin/withdraw-request"
           className="w-full flex flex-col items-center"

@@ -39,7 +39,7 @@ const ProfileSideBar = ({ active }) => {
   };
 
   return (
-    <div className="w-full h-full overflow-y-scroll scrollbar-none py-4">
+    <div className="w-full h-full overflow-y-scroll scrollbar-none py-2">
       <div className="hidden lg:flex items-center p-2 md:p-3">
         <Link to="/profile" className="w-full flex items-center">
           <FcPortraitMode
@@ -328,7 +328,7 @@ const ProfileSideBar = ({ active }) => {
         </div>
 
         {user && user?.role === "Admin" && (
-          <div className="flex-col items-center justify-center cursor-pointer w-full mb-8">
+          <div className="flex-col items-center justify-center cursor-pointer w-full">
             <Link to="/admin/dashboard">
               <div className="flex items-center justify-center">
                 <MdAdminPanelSettings
