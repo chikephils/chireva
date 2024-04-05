@@ -104,7 +104,7 @@ const AdminUsers = () => {
     });
 
   return (
-    <div className="h-full pb-20">
+    <div className="h-full pb-10">
       <div className="flex items-center justify-center sticky h-[35px]">
         <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black pb-2">
           <HiOutlineUserGroup size={24} /> USERS

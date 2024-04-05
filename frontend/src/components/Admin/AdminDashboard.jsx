@@ -91,7 +91,7 @@ const AdminDashboard = () => {
     });
 
   return (
-    <div className="h-full pb-6">
+    <div className="h-full">
       <div className="flex items-center justify-center sticky h-[35px]">
         <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black py-2">
           Overview

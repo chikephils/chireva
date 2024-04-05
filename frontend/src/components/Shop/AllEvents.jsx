@@ -151,7 +151,7 @@ const AllEvents = () => {
     });
 
   return (
-    <div className="h-full pb-20">
+    <div className="h-full pb-10">
       <div className="flex items-center justify-center sticky h-[35px]">
         <h1 className=" flex font-medium lg:text-[22px] lg:font-[600] text-black py-3p">
           <MdOutlineLocalOffer size={24} /> Your Shop Events

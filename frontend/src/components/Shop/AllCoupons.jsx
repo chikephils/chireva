@@ -88,7 +88,7 @@ const AllCoupons = ({ refreshCoupons, coupons, isLoading, setIsOpen }) => {
     });
 
   return (
-    <div className="h-full pb-20">
+    <div className="h-full pb-10">
       <div className=" sticky bg-gray-400 z-50">
         <div className="flex w-full justify-end">
           <div
