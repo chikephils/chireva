@@ -7,8 +7,8 @@ const ShopCreateEvent = () => {
   return (
     <>
       <DashBoardHeader />
-      <div className=" mt-[62px]">
-        <div className={`${styles.section} w-full flex pb-10`}>
+      <div className={`${styles.section} w-full flex mt-[62px]`}>
+        <div className=" w-[20%] md:w-[20%] lg:w-[20%] fixed  mt-1 h-[calc(100%-62px)] bg-gradient-to-r from-slate-200 to-slate-400 ...  shadow-md  rounded-md py-4 flex items-center">
           <DashBoardSideBar active={6} />
           <div
             className={`w-[78%] ml-[21%]  h-full fixed  pb-4 rounded-md bg-gradient-to-l from-slate-300 to-slate-400 ... shadow-lg px-1 md:px-2 lg:px-4 `}

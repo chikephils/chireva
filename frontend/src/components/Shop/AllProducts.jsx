@@ -117,7 +117,7 @@ const AllProducts = ({ handleProductClick, shopProducts, isLoading }) => {
     });
 
   return (
-    <div className="h-full pb-20">
+    <div className="h-full pb-12">
       <div className="flex items-center justify-center sticky h-[35px]">
         <h1 className=" flex font-medium lg:text-[22px] lg:font-[600] text-black py-3">
           <FiPackage size={24} /> Your Shop Products
