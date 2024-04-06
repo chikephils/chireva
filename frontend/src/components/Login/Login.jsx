@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import Logo from "../../Assests/img/logo.png";
 import SmallLoader from "../Layout/SmallLoader";
 import { setLogin } from "../../features/user/userSlice";
+import { tokenExpires } from "../../utils/auth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -34,7 +35,6 @@ const Login = () => {
 
       if (response.status >= 200 && response.status < 300) {
         const { token, user, message } = response.data;
-        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         dispatch(
           setLogin({
             user,
@@ -43,6 +43,7 @@ const Login = () => {
         );
         toast.success(message);
         navigate("/");
+        tokenExpires(dispatch);
       } else {
         toast.error(response.data.message);
       }

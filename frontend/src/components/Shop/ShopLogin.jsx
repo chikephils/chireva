@@ -9,6 +9,7 @@ import { LoadSeller, setShopLogin } from "../../features/shop/shopSlice";
 import { useDispatch } from "react-redux";
 import Logo from "../../Assests/img/logo.png";
 import SmallLoader from "../Layout/SmallLoader";
+import { shopTokenExpires } from "../../utils/auth";
 
 const ShopLogin = () => {
   const [email, setEmail] = useState("");
@@ -34,15 +35,10 @@ const ShopLogin = () => {
 
       if (response.status >= 200 && response.status < 300) {
         const { sellerToken, seller, message } = response.data;
-
-        localStorage.setItem("sellerToken", sellerToken);
-
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${sellerToken}`;
         dispatch(setShopLogin({ seller, sellerToken }));
         toast.success(message);
         navigate("/dashboard");
+        shopTokenExpires(dispatch);
       } else {
         toast.error(response.data.message);
       }

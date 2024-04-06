@@ -62,7 +62,7 @@ const WishList = ({ setOpenWishList }) => {
         {/*Wish LIst items */}
         {wishList && wishList.length > 0 ? (
           <div className="w-full  rounded-lg flex flex-col pb-1">
-            <div className="w-full h-[82vh] py-2 flex flex-col gap-1 overflow-y-scroll scrollbar-none pl-1 ">
+            <div className="w-full h-[82vh] py-2 flex flex-col gap-[15px] overflow-y-scroll scrollbar-none p-1 ">
               {wishList &&
                 wishList.map((item) => <CartItem key={item._id} item={item} />)}
             </div>

@@ -19,14 +19,10 @@ const ChangePassword = () => {
     setLoader(true);
 
     try {
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      };
       const response = await axios.put(
         `${server}/user/update-user-password`,
         { oldPassword, newPassword, confirmPassword },
-        { withCredentials: true, headers }
+        { withCredentials: true }
       );
       return toast.success(response.data.message);
     } catch (error) {

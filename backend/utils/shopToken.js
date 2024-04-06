@@ -4,7 +4,7 @@ const sendShopToken = (seller, statusCode, res) => {
 
   // Options for cookies
   const options = {
-    expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
+    expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
     httpOnly: true,
     sameSite: "none",
     secure: true,
@@ -14,6 +14,7 @@ const sendShopToken = (seller, statusCode, res) => {
     success: true,
     seller,
     SellerToken,
+    message: "Shop login successful",
   });
 };
 
