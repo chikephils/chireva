@@ -103,7 +103,7 @@ const ShopProductsTab = ({ data, isLoading }) => {
           No products available.
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:gap-[30px] lg:grid-cols-3 lg:gap-[40px] xl:grid-cols-4 xl:gap-[40px] 600px:grid-cols-3 600px:gap-[30px] pb-10 justify-items-center">
+        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:gap-[30px] lg:grid-cols-3 lg:gap-[40px] xl:grid-cols-4 xl:gap-[50px] 600px:grid-cols-3 600px:gap-[10px] 800px:grid-cols-4 800px:gap-[20px] pb-10 justify-items-center">
           {data &&
             data.map((product) => (
               <SellerProductCard key={product._id} product={product} />
@@ -173,7 +173,7 @@ const ShopReviewsTab = ({ data, isLoading }) => {
             No Reviews available.
           </div>
         ) : (
-          <div className="flex flex-col p-2 ">
+          <div className="flex flex-col pb-2 px-2 ">
             {allReviews &&
               allReviews.map((item, index) => (
                 <div
@@ -182,12 +182,12 @@ const ShopReviewsTab = ({ data, isLoading }) => {
                 >
                   <img
                     src={`${item.user.avatar?.url}`}
-                    className="w-20 h-20 rounded"
+                    className="w-10 h-10 rounded"
                     alt=""
                   />
                   <div className="pl-2">
                     <div className="flex w-full items-center">
-                      <h1 className="font-[600] pr-2">
+                      <h1 className="font-[500] pr-2">
                         {item.user?.firstName}
                       </h1>
                       <Ratings rating={item.rating} />

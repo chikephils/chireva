@@ -19,7 +19,7 @@ const DashBoardSideBar = ({ active }) => {
   return (
     <div className="w-full h-full overflow-y-scroll scrollbar-none py-2">
       {/* single Items desktop view */}
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/dashboard" className="w-full flex items-center">
           <FcOrganization
             size={30}
@@ -35,7 +35,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/dashboard-orders" className="w-full flex items-center">
           <FcPaid size={30} color={`${active === 2 ? "red" : "black"}`} />
           <h5
@@ -48,7 +48,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="hidden lg:flex items-center p-3 ">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/dashboard-products" className="w-full flex items-center">
           <FcPackage size={30} color={`${active === 3 ? "red" : "black"}`} />
           <h5
@@ -61,7 +61,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-3">
         <Link
           to="/dashboard-create-product"
           className="w-full flex items-center"
@@ -77,7 +77,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/dashboard-events" className="w-full flex items-center">
           <RiCalendarEventFill size={28} color="green" />
           <h5
@@ -90,7 +90,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/dashboard-create-event" className="w-full flex items-center">
           <MdLibraryAdd size={28} color="green" />
           <h5
@@ -103,7 +103,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="hidden lg:flex items-center p-3 lg:p-3">
+      <div className="hidden 800px:flex items-center p-3">
         <Link
           to="/dashboard-withdraw-money"
           className="w-full flex items-center"
@@ -119,7 +119,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className=" hidden lg:flex items-center p-3 lg:p-3">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/dashboard-messages" className="w-full flex items-center">
           <FcSms size={30} color={`${active === 8 ? "red" : "black"}`} />
           <h5
@@ -132,7 +132,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/dashboard/coupons" className="w-full flex items-center">
           <FiGift size={30} color="green" />
           <h5
@@ -145,7 +145,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="hidden lg:flex items-center p-3 ">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/dashboard-refunds" className="w-full flex items-center">
           <FcRefresh size={30} color={`${active === 10 ? "red" : "black"}`} />
           <h5
@@ -157,7 +157,7 @@ const DashBoardSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
-      <div className="hidden lg:flex items-center p-3 ">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/dashboard-transactions" className="w-full flex items-center">
           <FcMoneyTransfer
             size={30}
@@ -173,7 +173,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="hidden lg:flex items-center p-3 pb-6 mb-2">
+      <div className="hidden 800px:flex items-center p-3 pb-6 mb-2">
         <Link to="/dashboard-settings" className="w-full flex items-center">
           <FcAutomatic size={30} color={`${active === 12 ? "red" : "black"}`} />
           <h5
@@ -187,7 +187,7 @@ const DashBoardSideBar = ({ active }) => {
       </div>
 
       {/* Mobile view */}
-      <div className="flex lg:hidden py-3">
+      <div className="flex 800px:hidden py-3">
         <Link to="/dashboard" className="w-full flex flex-col items-center">
           <FcOrganization
             size={32}
@@ -203,7 +203,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3">
+      <div className="flex 800px:hidden py-3">
         <Link
           to="/dashboard-orders"
           className="w-full flex flex-col items-center"
@@ -219,7 +219,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3">
+      <div className="flex 800px:hidden py-3">
         <Link
           to="/dashboard-products"
           className="w-full flex flex-col items-center"
@@ -235,7 +235,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3">
+      <div className="flex 800px:hidden py-3">
         <Link
           to="/dashboard-create-product"
           className="w-full flex flex-col items-center"
@@ -251,7 +251,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3">
+      <div className="flex 800px:hidden py-3">
         <Link
           to="/dashboard-events"
           className="w-full flex flex-col items-center"
@@ -267,7 +267,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3">
+      <div className="flex 800px:hidden py-3">
         <Link
           to="/dashboard-create-event"
           className="w-full flex flex-col items-center"
@@ -283,7 +283,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3">
+      <div className="flex 800px:hidden py-3">
         <Link
           to="/dashboard-withdraw-money"
           className="w-full flex flex-col items-center"
@@ -299,7 +299,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3">
+      <div className="flex 800px:hidden py-3">
         <Link
           to="/dashboard-messages"
           className="w-full flex flex-col items-center"
@@ -315,7 +315,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3">
+      <div className="flex 800px:hidden py-3">
         <Link
           to="/dashboard/coupons"
           className="w-full flex flex-col items-center"
@@ -331,7 +331,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3">
+      <div className="flex 800px:hidden py-3">
         <Link
           to="/dashboard-refunds"
           className="w-full flex flex-col items-center"
@@ -346,7 +346,7 @@ const DashBoardSideBar = ({ active }) => {
           </p>
         </Link>
       </div>
-      <div className="flex lg:hidden py-3">
+      <div className="flex 800px:hidden py-3">
         <Link
           to="/dashboard-transactions"
           className="w-full flex flex-col items-center"
@@ -365,7 +365,7 @@ const DashBoardSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3">
+      <div className="flex 800px:hidden py-3">
         <Link
           to="/dashboard-settings"
           className="w-full flex flex-col items-center"

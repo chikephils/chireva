@@ -18,10 +18,12 @@ import { getAllShopOrders } from "../../features/shop/shopSlice";
 import { server } from "../../server";
 import axios from "axios";
 import Loader from "../Layout/Loader";
+import SmallLoader from "../Layout/SmallLoader";
 
 const DashboardHero = () => {
   const dispatch = useDispatch();
   const seller = useSelector(selectSeller);
+  const [products, setProducts] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const orders = useSelector(selectAllShopOrders);
   const AllProducts = useSelector(selectAllShopProducts);
@@ -31,7 +33,17 @@ const DashboardHero = () => {
   );
 
   useEffect(() => {
-    dispatch(getShopProducts(seller._id));
+    setIsLoading(true);
+    dispatch(getShopProducts(seller._id))
+      .unwrap()
+      .then((response) => {
+        setProducts(response);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        console.error("Error fetching shop products:", error);
+      });
   }, [dispatch, seller._id]);
 
   useEffect(() => {
@@ -140,15 +152,15 @@ const DashboardHero = () => {
         </h1>
       </div>
       <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-4">
-        <div className="w-full block lg:flex items-center justify-between">
-          <div className="w-[full] mb-4 lg:w-[30%] lg:min-h-[25vh] min-h-[20vh] bg-white shadow rounded px-2 py-5">
+        <div className="w-full block 800px:flex items-center justify-between">
+          <div className="w-full mb-4 800px:w-[30%] min-h-[30vh] bg-gradient-to-l from-gray-50 to-slate-100 ... shadow-md rounded-md px-2 py-5">
             <div className="flex items-center">
-              <TbCurrencyNaira size={30} className="mr-2" color="green" />
+              <TbCurrencyNaira size={30} className="mr-1" color="green" />
               <h3
-                className={`${styles.productTitle} !text-[16px] leading-5 !font-[400] text-[#00000085]`}
+                className={`${styles.productTitle} !text-[14px] leading-5 !font-[400] text-[#00000085]`}
               >
                 Account Balance{" "}
-                <span className="text-[14px]">(with 7% service charge)</span>
+                <span className="text-[12px]">(with 7% service charge)</span>
               </h3>
             </div>
             <h5 className="pt-2 pl-[36px] text-[20px] font-[500]">
@@ -158,7 +170,7 @@ const DashboardHero = () => {
               <h5 className="pt-4 pl-[2] text-[#077f9c]">Withdraw Money</h5>
             </Link>
           </div>
-          <div className="w-full mb-4 lg:w-[30%] lg:min-h-[25vh] min-h-[20vh] bg-white shadow rounded px-2 py-5">
+          <div className="w-full mb-4 800px:w-[30%] min-h-[30vh] bg-gradient-to-l from-gray-50 to-slate-100 ... shadow-md rounded-md px-2 py-5">
             <div className="flex items-center">
               <MdBorderClear size={30} className="mr-2" fill="#00000085" />
               <h3
@@ -174,7 +186,7 @@ const DashboardHero = () => {
               <h5 className="pt-4 pl-2 text-[#077f9c]">View Orders</h5>
             </Link>
           </div>
-          <div className="w-full mb-4 lg:w-[30%] lg:min-h-[25vh] min-h-[20vh] bg-white shadow rounded px-2 py-5">
+          <div className="w-full mb-4 800px:w-[30%] min-h-[30vh] bg-gradient-to-l from-gray-50 to-slate-100 ... shadow-md rounded-md px-2 py-5">
             <div className="flex items-center">
               <FiPackage size={30} className="mr-2" fill="#00000085" />
               <h3
@@ -192,10 +204,12 @@ const DashboardHero = () => {
           </div>
         </div>
         <br />
-        <h3 className="text-[22px] font-Poppins pb-2">Latest Orders</h3>
+        <h3 className=" text-[18px] md:text-[22px] pl-1 font-Poppins pb-2">
+          Latest Orders
+        </h3>
         <>
           {isLoading ? (
-            <div className="flex items-center justify-center ml-8 h-[30vh]">
+            <div className="flex items-center justify-center ml-8 ">
               <Loader />
             </div>
           ) : (

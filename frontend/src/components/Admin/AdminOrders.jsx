@@ -30,10 +30,11 @@ const AdminOrders = () => {
       flex: 0.7,
       cellClassName: (params) => {
         const status = params.value;
-        // console.log("status:", status);
-        const className = status === "Delivered" ? "greenColor" : "redColor";
-        // console.log("className:", className);
-        return className;
+        return status === "Processing"
+          ? "bg-yellow-400"
+          : status === "Delivered" || status === "Refund Success"
+          ? "bg-green-400"
+          : "bg-blue-300";
       },
     },
     {

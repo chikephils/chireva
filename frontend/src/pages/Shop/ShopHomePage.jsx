@@ -35,7 +35,7 @@ const ShopHomePage = () => {
         </div>
       ) : (
         <>
-          <div className={` lg:px-2 py-2 `}>
+          <div className={` lg:px-2 `}>
             <div className="w-full lg:flex justify-between">
               <div className="lg:w-[25%] bg-stone-200 rounded-[4px] shadow-sm  lg:sticky left-0 z-10 px-2 py-4 h-full">
                 <div className="overflow-y-scroll scrollbar-none h-[95vh] bg-slate-400 rounded-md shadow-lg">
@@ -43,7 +43,7 @@ const ShopHomePage = () => {
                 </div>
               </div>
 
-              <div className="800px:w-[72%]  800px:mt-['unset'] rounded-[4px]">
+              <div className="lg:w-[72%]  800px:mt-['unset'] rounded-[4px]">
                 <div className=" overflow-y-scroll scrollbar-none h-screen">
                   <ShopProfileData isOwner={true} />
                 </div>

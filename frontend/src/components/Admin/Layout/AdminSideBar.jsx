@@ -11,7 +11,7 @@ const AdminSideBar = ({ active }) => {
   return (
     <div className="w-full h-full overflow-y-scroll scrollbar-none py-2">
       {/* single item */}
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/admin/dashboard" className="w-full flex items-center">
           <MdDashboard size={28} color="#0000CD" />
           <h5
@@ -24,7 +24,7 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/admin/orders" className="w-full flex items-center">
           <HiMiniShoppingBag size={28} color="009900" />
           <h5
@@ -37,7 +37,7 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="hidden lg:flex items-center p-3 ">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/admin/sellers" className="w-full flex items-center">
           <GiSellCard size={28} color="green" />
           <h5
@@ -50,7 +50,7 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/admin/users" className="w-full flex items-center">
           <HiUserGroup size={28} color="purple" />
           <h5
@@ -63,7 +63,7 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/admin/products" className="w-full flex items-center">
           <BiSolidPackage size={28} color="#88be19" />
           <h5
@@ -75,8 +75,7 @@ const AdminSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
-
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/admin/events" className="w-full flex items-center">
           <BiSolidCalendarEvent size={26} color="#5f2872" />
           <h5
@@ -89,7 +88,7 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/admin/coupons" className="w-full flex items-center">
           <IoIosGift size={28} color="ff00cc" />
           <h5
@@ -101,7 +100,7 @@ const AdminSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
-      <div className="hidden lg:flex items-center p-3 lg:p-3 mb-2">
+      <div className="hidden 800px:flex items-center p-3">
         <Link to="/admin/withdraw-request" className="w-full flex items-center">
           <GiMoneyStack size={30} color="006600" />
           <h5
@@ -115,7 +114,7 @@ const AdminSideBar = ({ active }) => {
       </div>
 
       {/* Mobile view */}
-      <div className="flex lg:hidden py-3 mb-4">
+      <div className="flex 800px:hidden py-3 mb-4">
         <Link
           to="/admin/dashboard"
           className="w-full flex flex-col items-center"
@@ -131,7 +130,7 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3 mb-4">
+      <div className="flex 800px:hidden py-3 mb-4">
         <Link to="/admin/orders" className="w-full flex flex-col items-center">
           <HiMiniShoppingBag size={30} color="009900" />
           <p
@@ -144,7 +143,7 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3 mb-4">
+      <div className="flex 800px:hidden py-3 mb-4">
         <Link to="/admin/sellers" className="w-full flex flex-col items-center">
           <GiSellCard size={30} color="green" />
           <p
@@ -157,7 +156,7 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3 mb-4">
+      <div className="flex 800px:hidden py-3 mb-4">
         <Link to="/admin/users" className="w-full flex flex-col items-center">
           <HiUserGroup size={30} color="purple" />
           <p
@@ -170,7 +169,7 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3 mb-4">
+      <div className="flex 800px:hidden py-3 mb-4">
         <Link
           to="/admin/products"
           className="w-full flex flex-col items-center"
@@ -186,7 +185,7 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3 mb-4">
+      <div className="flex 800px:hidden py-3 mb-4">
         <Link to="/admin/events" className="w-full flex flex-col items-center">
           <BiSolidCalendarEvent size={28} color="#5f2872" />
           <p
@@ -199,7 +198,7 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3 mb-4">
+      <div className="flex 800px:hidden py-3 mb-4">
         <Link to="/admin/coupons" className="w-full flex flex-col items-center">
           <IoIosGift size={30} color="ff00cc" />
           <p
@@ -212,7 +211,7 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="flex lg:hidden py-3 ">
+      <div className="flex 800px:hidden py-3 mb-4">
         <Link
           to="/admin/withdraw-request"
           className="w-full flex flex-col items-center"

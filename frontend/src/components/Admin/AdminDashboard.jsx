@@ -98,8 +98,8 @@ const AdminDashboard = () => {
         </h1>
       </div>
       <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-4">
-        <div className="w-full block lg:flex items-center justify-between">
-          <div className="w-[full] mb-4 lg:w-[30%] min-h-[25vh] bg-gradient-to-l from-gray-50 to-slate-100 ... rounded-md px-2 py-5 shadow-md">
+        <div className="w-full block 800px:flex items-center justify-between">
+          <div className="w-full mb-4 800px:w-[30%] min-h-[30vh] bg-gradient-to-l from-gray-50 to-slate-100 ... shadow-md rounded-md px-2 py-5">
             <div className="flex items-center">
               <TbCurrencyNaira size={30} className="mr-2" color="green" />
               <h3
@@ -112,7 +112,7 @@ const AdminDashboard = () => {
               &#x20A6;{adminBalnce}
             </h5>
           </div>
-          <div className="w-full mb-4 lg:w-[30%] min-h-[25vh] bg-gradient-to-l from-gray-50 to-slate-100 ... shadow-md rounded-md px-2 py-5">
+          <div className="w-full mb-4 800px:w-[30%] min-h-[30vh] bg-gradient-to-l from-gray-50 to-slate-100 ... shadow-md rounded-md px-2 py-5">
             <div className="flex items-center">
               <MdBorderClear size={30} className="mr-2" fill="#00000085" />
               <h3
@@ -128,7 +128,7 @@ const AdminDashboard = () => {
               <h5 className="pt-4 pl-2 text-[#077f9c]">View Sellers</h5>
             </Link>
           </div>
-          <div className="w-full mb-4 800px:w-[30%] min-h-[25vh] bg-gradient-to-l from-gray-50 to-slate-100 ... shadow-md rounded-md px-2 py-5">
+          <div className="w-full mb-4 800px:w-[30%] min-h-[30vh] bg-gradient-to-l from-gray-50 to-slate-100 ... shadow-md rounded-md px-2 py-5">
             <div className="flex items-center">
               <FiPackage size={30} className="mr-2" fill="#00000085" />
               <h3
@@ -153,7 +153,7 @@ const AdminDashboard = () => {
         </div>
 
         <br />
-        <h3 className="text-[18px] md:text-[22px] font-Poppins pb-2">
+        <h3 className="text-[18px] md:text[22px] font-Poppins pb-2 pl-2">
           Latest Orders
         </h3>
         <>

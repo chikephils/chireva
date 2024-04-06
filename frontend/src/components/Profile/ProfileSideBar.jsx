@@ -40,7 +40,7 @@ const ProfileSideBar = ({ active }) => {
 
   return (
     <div className="w-full h-full overflow-y-scroll scrollbar-none py-2">
-      <div className="hidden lg:flex items-center p-2 md:p-3">
+      <div className="hidden 800px:flex items-center p-2 md:p-3">
         <Link to="/profile" className="w-full flex items-center">
           <FcPortraitMode
             size={30}
@@ -56,7 +56,7 @@ const ProfileSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-2 md:p-3">
         <Link to="/profile/orders" className="w-full flex items-center">
           <FcPaid size={28} color={`${active === 2 ? "red" : "black"}`} />
           <h5
@@ -68,7 +68,7 @@ const ProfileSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-2 md:p-3">
         <Link to="/profile/refunds" className="w-full flex items-center">
           <RiRefundFill size={28} color="#9370DB" />
           <h5
@@ -80,7 +80,7 @@ const ProfileSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-2 md:p-3">
         <Link to="/profile/inbox" className="w-full flex items-center">
           <RiMessageFill size={28} color="green" />
           <h5
@@ -92,7 +92,7 @@ const ProfileSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-2 md:p-3">
         <Link to="/profile/track-orders" className="w-full flex items-center">
           <FcInTransit size={28} color={`${active === 5 ? "red" : "black"}`} />
           <h5
@@ -104,7 +104,7 @@ const ProfileSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-2 md:p-3">
         <Link
           to="/profile/change-password"
           className="w-full flex items-center"
@@ -119,7 +119,7 @@ const ProfileSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
-      <div className="hidden lg:flex items-center p-3">
+      <div className="hidden 800px:flex items-center p-2 md:p-3">
         <Link to="/profile/address" className="w-full flex items-center">
           <FcAddressBook
             size={28}
@@ -134,7 +134,7 @@ const ProfileSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
-      <div className="hidden lg:flex items-center p-3 cursor-pointer">
+      <div className="hidden 800px:flex items-center p-2 md:p-3 cursor-pointer">
         <div
           onClick={handleLogout}
           className="flex items-center justify-center"
@@ -151,7 +151,7 @@ const ProfileSideBar = ({ active }) => {
       </div>
 
       {user && user?.role === "Admin" && (
-        <div className="hidden lg:flex items-center p-3 ">
+        <div className="hidden 800px:flex items-center p-2 md:p-3">
           <Link to="/admin/dashboard" className="w-full flex items-center">
             <MdAdminPanelSettings size={28} color="green" />
             <h5
@@ -166,7 +166,7 @@ const ProfileSideBar = ({ active }) => {
       )}
 
       {/* mobile view */}
-      <div className="block lg:hidden w-full">
+      <div className="block 800px:hidden w-full pb-4">
         <div className="flex-col items-center justify-center cursor-pointer w-full mb-8">
           <Link to="/profile">
             <div className="flex items-center justify-center">

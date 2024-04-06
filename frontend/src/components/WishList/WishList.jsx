@@ -62,12 +62,12 @@ const WishList = ({ setOpenWishList }) => {
         {/*Wish LIst items */}
         {wishList && wishList.length > 0 ? (
           <div className="w-full  rounded-lg flex flex-col pb-1">
-            <div className="w-full h-[82vh] py-2 flex flex-col gap-[15px] overflow-y-scroll scrollbar-none p-1 ">
+            <div className="w-full h-[84vh] py-2 flex flex-col  overflow-y-scroll scrollbar-none p-1 ">
               {wishList &&
                 wishList.map((item) => <CartItem key={item._id} item={item} />)}
             </div>
 
-            <div className="px-1 ">
+            <div className="px-1">
               <div className="h-[7vh] flex items-center justify-center w-[100%] bg-gradient-to-r from-cyan-400 to-blue-500 ...rounded-xl p-2 rounded-lg">
                 <h1 className="text-black text-[18px] font-[600]">
                   Total &#x20A6; {total.toFixed(2)}
@@ -106,22 +106,24 @@ const CartItem = ({ item }) => {
     : item.originalPrice;
 
   return (
-    <div className=" w-full border-[2px] rounded-lg p-1 lg:p-2 flex justify-between min-h-[75px] bg-gradient-to-r from-lime-300 to-blue-400 ...">
+    <div className=" w-full rounded-lg p-1 lg:p-2 flex justify-between min-h-[80px] bg-gradient-to-r from-lime-300 to-blue-400 ... shadow-lg my-2">
       <div className=" flex items-center justify-start">
         <RxCross1
           className=" flex items-center cursor-pointer font-bold"
           onClick={removeFromWishListHandler}
         />
       </div>
-      <div className=" flex w-[30%]">
+      <div className=" flex justify-center items-center w-[30%]">
         <img
           src={`${item.images && item.images[0]?.url}`}
           alt="img"
-          className="max-w-[50px] h-[50px] md:max-w-[60px] md:h-[60px] lg:max-w-[80px] lg:h-[80px] ml-2"
+          className="max-w-[60px] max-h-[50px]  600px:max-w-[100px] 600px:max-h-[70px] lg:max-w-[130px] lg:max-h-[80px] "
         />
       </div>
       <div className="w-[40%]">
-        <h1 className="text-sm md:text-base font-semibold">{item.name.slice(0, 15)}..</h1>
+        <h1 className="text-sm md:text-base font-semibold">
+          {item.name.slice(0, 15)}...
+        </h1>
         <h4 className="text-sm md:text-base font-Roboto font-semibold  pt-[3px] text-red-600">
           &#x20A6;{totalPrice}
         </h4>

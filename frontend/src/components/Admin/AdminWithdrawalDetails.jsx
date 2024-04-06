@@ -63,9 +63,7 @@ const AdminWithdrawalDetails = () => {
   };
 
   return (
-    <div
-      className={`py-4 min-h-screen mt-[82px] lg:mt-[90px] ${styles.section}`}
-    >
+    <div className={`py-4 min-h-screen mt-[60px] ${styles.section}`}>
       <div className="w-full h-[35px] bg-green-400 sticky top-0">
         <div className="flex justify-between p-2">
           <div className=" flex">
@@ -109,7 +107,7 @@ const AdminWithdrawalDetails = () => {
             </div>
 
             <br />
-            <div className="w-full md:flex items-center justify-between">
+            <div className="w-full md:flex items-center justify-start">
               <img
                 src={`${backend_url}${withdrawal?.seller?.avatar}`}
                 alt=""

@@ -19,7 +19,6 @@ const Cart = ({ setOpenCart }) => {
   const cartItems = useSelector(itemsInCart);
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     let totalPrice = cartItems?.reduce(function (accumulator, item) {
       return accumulator + item.discountPrice * item.quantity;
@@ -64,7 +63,7 @@ const Cart = ({ setOpenCart }) => {
 
           {cartItems && cartItems.length > 0 ? (
             <div className="w-full  rounded-lg flex flex-col pb-1">
-              <div className="w-full h-[83vh] py-3  flex flex-col gap-[15px] overflow-y-scroll scrollbar-none p-1 ">
+              <div className="w-full h-[85vh] py-2  flex flex-col overflow-y-scroll scrollbar-none p-1 ">
                 {cartItems &&
                   cartItems.map((item) => (
                     <CartItem key={item._id} item={item} />
@@ -115,10 +114,10 @@ const CartItem = ({ item }) => {
   };
 
   return (
-    <div className=" border-[1.5px] border-black bg-gradient-to-r from-slate-300 to-yellow-200 ... w-full p-1 rounded-lg flex  justify-between max-h-[90px] shadow-lg ">
+    <div className=" border-[1.5px] border-black bg-gradient-to-r from-slate-300 to-yellow-200 ... w-full p-1 rounded-lg flex  justify-between min-h-[100px] shadow-lg my-2 ">
       <div className="flex-col flex items-center justify-between ">
         <div
-          className={`bg-black border border-[#e4434373] rounded-full h-[25px] w-[25px] lg:w-[25px] lg:h-[25px] ${styles.normalFlex} justify-center cursor-pointer`}
+          className={`bg-black border rounded-full h-[25px] w-[25px] lg:w-[25px] lg:h-[25px] ${styles.normalFlex} justify-center cursor-pointer`}
           onClick={add}
         >
           <HiPlus size={14} className=" font-semibold" color="fff" />
@@ -136,12 +135,12 @@ const CartItem = ({ item }) => {
         <img
           src={`${item.images && item.images[0]?.url}`}
           alt="img"
-          className="max-w-[50px] max-h-[50px] lg:max-w-[130px] lg:max-h-[80px]"
+          className="max-w-[60px] max-h-[50px]  600px:max-w-[100px] 600px:max-h-[70px] lg:max-w-[130px] lg:max-h-[80px] "
         />
       </div>
 
       <div className="w-[50%] ">
-        <p className="text-[14px] md:text-[16px] text-black">
+        <p className="text-[14px] md:text-[16px] text-black font-semibold">
           {item.name.slice(0, 15)}..
         </p>
         <p className=" text-[14px] md:text-[16px] text-black font-medium">
