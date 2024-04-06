@@ -104,7 +104,7 @@ const ShopProductsTab = ({ data, isLoading }) => {
           No products available.
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-4 md:gap-[30px] lg:grid-cols-4 lg:gap-[40px] xl:grid-cols-5 xl:gap-[50px] 600px:grid-cols-3 600px:gap-[10px] pb-10 justify-items-center">
+        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-4 md:gap-[30px] lg:grid-cols-4 lg:gap-[40px] xl:grid-cols-4 xl:gap-[50px] 600px:grid-cols-3 600px:gap-[20px] pb-10 justify-items-center">
           {data &&
             data.map((product) => (
               <ProductCard key={product._id} product={product} />
@@ -176,10 +176,14 @@ const ShopReviewsTab = ({ isOwner, data, isLoading }) => {
             {allReviews &&
               allReviews.map((item, index) => (
                 <div
-                className="w-full flex my-4 bg-gradient-to-l from-slate-100 to-slate-200 ... border-[1px] shadow-lg rounded-md p-2"
-                key={index}
-              >
-                <img src={`${item.user.avatar?.url}`} className="w-20 h-20 rounded" alt="" />
+                  className="w-full flex my-4 bg-gradient-to-l from-slate-100 to-slate-200 ... border-[1px] shadow-lg rounded-md p-2"
+                  key={index}
+                >
+                  <img
+                    src={`${item.user.avatar?.url}`}
+                    className="w-20 h-20 rounded"
+                    alt=""
+                  />
                   <div className="pl-2">
                     <div className="flex w-full items-center">
                       <h1 className="font-[600] pr-2">{item.user.firstName}</h1>
