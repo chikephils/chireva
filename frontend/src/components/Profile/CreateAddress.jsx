@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { updateUserAddress } from "../../features/user/userSlice";
 import { RxCross1 } from "react-icons/rx";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { Country, State } from "country-state-city";
 import { toast } from "react-toastify";
 import styles from "../../styles/styles";

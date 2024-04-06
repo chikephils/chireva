@@ -4,7 +4,7 @@ import { RxCross1 } from "react-icons/rx";
 import styles from "../../styles/styles";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import axios from "axios";
-import { backend_url, server } from "../../server";
+import { server } from "../../server";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../features/user/userSlice";
 import {

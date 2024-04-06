@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import { selectUser } from "../../features/user/userSlice";
 import { itemsInCart } from "../../features/cart/cartSlice";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import PaymentPage from "../../pages/User/PaymentPage";
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Login from "../../components/Login/Login";
 
 const LoginPage = () => {

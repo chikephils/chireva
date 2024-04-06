@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { selectAllProducts } from "../../features/product/productSlice";
 import styles from "../../styles/styles";
 import ProductCard from "../Route/ProductCard/ProductCard";
 import { useSelector } from "react-redux";
@@ -7,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const SuggestedProducts = ({ product }) => {
   const [products, setProducts] = useState(null);
-  const allProducts = useSelector((state) => state?.allProducts);
+  const allProducts = useSelector((state) => state?.products?.products);
   const navigate = useNavigate();
 
   useEffect(() => {

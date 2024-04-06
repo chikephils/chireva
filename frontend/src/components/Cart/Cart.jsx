@@ -18,7 +18,7 @@ const Cart = ({ setOpenCart }) => {
   const [total, setTotal] = useState(0);
   const cartItems = useSelector(itemsInCart);
   const dispatch = useDispatch();
-  const [open, setOpen] = useState(false);
+
 
   useEffect(() => {
     let totalPrice = cartItems?.reduce(function (accumulator, item) {
@@ -73,10 +73,7 @@ const Cart = ({ setOpenCart }) => {
 
               {/*Checkout Buttons */}
               <Link to="/checkout" className="px-1">
-                <div
-                  className="h-[7vh] flex items-center justify-center w-[100%] bg-gradient-to-r from-red-400 to-red-600 ... rounded-[5px] cursor-pointer"
-                  onClick={() => setOpen(true)}
-                >
+                <div className="h-[7vh] flex items-center justify-center w-[100%] bg-gradient-to-r from-red-400 to-red-600 ... rounded-[5px] cursor-pointer">
                   <h1 className="text-[#fff] text-[18px] font-[600]">
                     Checkout &#x20A6; {total.toFixed(2)}
                   </h1>

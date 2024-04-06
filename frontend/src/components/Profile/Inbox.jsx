@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { selectUser } from "../../features/user/userSlice";
 import { server } from "../../server";
 import axios from "axios";
 import { AiOutlineSend } from "react-icons/ai";
@@ -11,7 +12,7 @@ import styles from "../../styles/styles";
 import Loader from "../Layout/Loader";
 import { RxCross1 } from "react-icons/rx";
 import CreateLoader from "../Layout/createLoader";
-const ENDPOINT = "https://localhost.4000/";
+const ENDPOINT = "http://localhost:4000";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const Inbox = () => {
@@ -91,6 +92,7 @@ const Inbox = () => {
     };
     getMessage();
   }, [currentChat]);
+  console.log(messages);
 
   const sendMessageHandler = async (e) => {
     e.preventDefault();
@@ -212,7 +214,7 @@ const Inbox = () => {
   };
 
   return (
-    <div className="w-full h-[90vh] flex flex-col justify-between pb-8">
+    <div className="w-full h-full flex flex-col justify-between">
       {isLoading ? (
         <div className="flex items-center justify-center  h-[60vh] ">
           <Loader />
@@ -220,7 +222,7 @@ const Inbox = () => {
       ) : (
         <>
           {/* Message header */}
-          <div className=" flex items-center justify-between py-2 sticky top-2 mb-2 bg-slate-300 px-2 rounded-lg">
+          <div className=" w-full h-[10vh] flex items-center justify-between py-2  bg-slate-300 px-2 rounded-lg">
             <div className="flex">
               <img
                 src={`${seller?.avatar.url}`}
@@ -233,112 +235,122 @@ const Inbox = () => {
               </div>
             </div>
             <RxCross1
-              size={20}
-              className="cursor-pointer"
+              size={30}
+              className="cursor-pointer pr-2"
               onClick={handleClick}
             />
           </div>
           {/* Messages */}
-          <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-3 pb-6 ml-2 lg:px-4">
-            {" "}
-            {messages &&
-              messages.map((message, index) => {
-                return (
-                  <div key={index} className="flex flex-col" ref={scrollRef}>
-                    <div
-                      className={` flex w-full my-2 ${
-                        message.sender === me ? "justify-end" : "justify-start"
-                      }`}
-                    >
-                      {message.sender !== me && (
-                        <img
-                          src={`${seller?.avatar.url}`}
-                          alt=""
-                          className="w-[40px] h-[40px] rounded-full mr-3"
-                        />
-                      )}
+          <div className="w-full rounded-lg flex flex-col pb-1">
+            <div className=" h-[75vh] overflow-y-scroll scrollbar-none py-2 p-1 lg:px-4">
+              {" "}
+              {messages &&
+                messages.map((message, index) => {
+                  return (
+                    <div key={index} className="flex flex-col" ref={scrollRef}>
+                      <div
+                        className={` flex w-full my-2 ${
+                          message.sender === me
+                            ? "justify-end"
+                            : "justify-start"
+                        }`}
+                      >
+                        {message.sender !== me && (
+                          <img
+                            src={`${seller?.avatar.url}`}
+                            alt=""
+                            className="w-[40px] h-[40px] rounded-full mr-3"
+                          />
+                        )}
 
-                      {message.images && (
-                        <img
-                          src={`${message?.images?.url}`}
-                          alt=""
-                          className="w-[150px] h-[150px] object-contain rounded-[10px] mr-2"
-                          style={{ maxWidth: "100%", maxHeight: "100%" }}
-                        />
-                      )}
+                        {message.images && (
+                          <img
+                            src={`${message?.images?.url}`}
+                            alt=""
+                            className="w-[150px] h-[150px] object-contain rounded-[10px] mr-2"
+                            style={{ maxWidth: "100%", maxHeight: "100%" }}
+                          />
+                        )}
 
-                      {message.text && (
-                        <div className="max-w-[250px] md:max-w-[300px] lg:max-w-[900px] p-2 rounded">
-                          <div
-                            className={`${
-                              message?.sender === me
-                                ? "bg-slate-200 p-2 rounded shadow-lg"
-                                : "bg-[#98e6ba] p-2 rounded shadow-lg"
-                            } text-[#000]`}
-                          >
-                            {message?.text}
+                        {message.text && (
+                          <div className="max-w-[250px] md:max-w-[300px] lg:max-w-[900px] p-2 rounded">
+                            <div
+                              className={`${
+                                message?.sender === me
+                                  ? "bg-white p-2 rounded shadow-lg"
+                                  : "bg-[#67e19c] p-2 rounded shadow-lg"
+                              } text-[#000]`}
+                            >
+                              {message?.text}
+                            </div>
                           </div>
-                        </div>
-                      )}
+                        )}
+                      </div>
+
+                      <p
+                        className={`text-[12px] text-black flex w-full ${
+                          message?.sender === me
+                            ? "justify-end pr-2"
+                            : "justify-start"
+                        }`}
+                      >
+                        <TimeAgo datetime={message.createdAt} />
+                      </p>
                     </div>
-
-                    <p
-                      className={`text-[12px] text-[#000000d3] flex w-full ${
-                        message?.sender === me
-                          ? "justify-end pr-2"
-                          : "justify-start"
-                      }`}
-                    >
-                      <TimeAgo datetime={message.createdAt} />
-                    </p>
-                  </div>
-                );
-              })}
-          </div>
-
-          <div
-            className={` flex w-full mt-4 ${
-              user ? "justify-end pr-6" : "justify-start"
-            }`}
-          >
-            {imgLoading && <CreateLoader />}
-          </div>
-          {/* send message input */}
-          <form
-            className="p-3 relative w-full flex justify-between items-center mb-2"
-            onSubmit={sendMessageHandler}
-          >
-            <div className="w-[30px]">
-              <input
-                type="file"
-                name=""
-                id="image"
-                className="hidden"
-                onChange={handleImageUpload}
-              />
-              <label htmlFor="image">
-                <TfiGallery className="cursor-pointer" size={20} />
-              </label>
+                  );
+                })}
             </div>
-            <div className="w-full">
-              <textarea
-                type="text"
-                required
-                placeholder="Enter your message..."
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                className={`${styles.input}`}
-                rows={2}
-              />
-              <input type="submit" value="Send" className="hidden" id="send" />
-              <label htmlFor="send">
-                <AiOutlineSend
-                  size={20}
-                  className="absolute right-4 top-5 cursor-pointer"
+
+            <div
+              className={` flex w-full mt-4 ${
+                user ? "justify-end pr-6" : "justify-start"
+              }`}
+            >
+              {imgLoading && <CreateLoader />}
+            </div>
+
+            {/* send message input */}
+            <form
+              className="p-3  relative w-full flex justify-between items-center mb-2"
+              onSubmit={sendMessageHandler}
+            >
+              <div className="w-[30px]">
+                <input
+                  type="file"
+                  name=""
+                  id="image"
+                  className="hidden"
+                  onChange={handleImageUpload}
                 />
-              </label>
-            </div>
-          </form>
+                <label htmlFor="image">
+                  <TfiGallery className="cursor-pointer" size={20} />
+                </label>
+              </div>
+              <div className="w-full">
+                <textarea
+                  type="text"
+                  required
+                  placeholder="Enter your message..."
+                  value={newMessage}
+                  onChange={(e) => setNewMessage(e.target.value)}
+                  className={`${styles.input}`}
+                  rows={2}
+                />
+                <input
+                  type="submit"
+                  value="Send"
+                  className="hidden"
+                  id="send"
+                />
+                <label htmlFor="send">
+                  <AiOutlineSend
+                    size={20}
+                    className="absolute right-4 top-5 cursor-pointer"
+                  />
+                </label>
+              </div>
+            </form>
+          </div>
         </>
       )}
     </div>

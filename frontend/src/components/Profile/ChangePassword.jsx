@@ -4,7 +4,7 @@ import SmallLoader from "../Layout/SmallLoader";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { useSelector } from "react-redux";
+
 
 const ChangePassword = () => {
   const [oldPassword, setOldPassword] = useState("");
@@ -12,7 +12,7 @@ const ChangePassword = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [loader, setLoader] = useState(false);
-  const token = useSelector((state) => state.user.token);
+
 
   const passwordChangeHandler = async (e) => {
     e.preventDefault();

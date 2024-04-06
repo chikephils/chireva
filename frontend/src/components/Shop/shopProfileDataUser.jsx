@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom";
 import styles from "../../styles/styles";
 import {
   getShopProducts,
-  selectProductLoading,
   getShopEvents,
   selectAllProductsLoading,
 } from "../../features/shop/shopSlice";

@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { server } from "../../server";
-import { LoadSeller, setShopLogin } from "../../features/shop/shopSlice";
+import { setShopLogin } from "../../features/shop/shopSlice";
 import { useDispatch } from "react-redux";
 import Logo from "../../Assests/img/logo.png";
 import SmallLoader from "../Layout/SmallLoader";

@@ -18,12 +18,10 @@ import { getAllShopOrders } from "../../features/shop/shopSlice";
 import { server } from "../../server";
 import axios from "axios";
 import Loader from "../Layout/Loader";
-import SmallLoader from "../Layout/SmallLoader";
 
 const DashboardHero = () => {
   const dispatch = useDispatch();
   const seller = useSelector(selectSeller);
-  const [products, setProducts] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const orders = useSelector(selectAllShopOrders);
   const AllProducts = useSelector(selectAllShopProducts);
@@ -33,17 +31,7 @@ const DashboardHero = () => {
   );
 
   useEffect(() => {
-    setIsLoading(true);
-    dispatch(getShopProducts(seller._id))
-      .unwrap()
-      .then((response) => {
-        setProducts(response);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        console.error("Error fetching shop products:", error);
-      });
+    dispatch(getShopProducts(seller._id));
   }, [dispatch, seller._id]);
 
   useEffect(() => {
