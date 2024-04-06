@@ -301,7 +301,18 @@ router.post(
       if (!isPasswordValid) {
         return next(new ErrorHandler("Incorrect Password", 400));
       }
-      sendToken(user, 201, res);
+
+      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY);
+      const options = {
+        expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+      };
+      res.cookie("user_token", token, options);
+
+      delete user.password;
+      res.status(200).json({ token, user, message: "Logged in sucessfully" });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
     }

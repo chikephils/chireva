@@ -307,7 +307,22 @@ router.post(
       if (!isPasswordValid) {
         return next(new ErrorHandler("Incorrect Password", 400));
       }
-      sendShopToken(seller, 201, res);
+      const sellerToken = jwt.sign(
+        { id: seller._id },
+        process.env.JWT_SECRET_KEY
+      );
+      const options = {
+        expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+      };
+      res.cookie("seller_token", sellerToken, options);
+
+      delete seller.password;
+      res
+        .status(200)
+        .json({ sellerToken, seller, message: "Logged in sucessfully" });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
     }

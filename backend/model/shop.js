@@ -97,9 +97,7 @@ shopSchema.pre("save", async function (next) {
 
 //jwt token
 shopSchema.methods.getJwtToken = function () {
-  return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY, {
-    expiresIn: process.env.JWT_EXPIRES,
-  });
+  return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY);
 };
 
 //compare password
