@@ -54,7 +54,7 @@ const ProductCard = ({ product, isEvent }) => {
   const add = () => {
     setInCart(!inCart);
     dispatch(addToCart({ item: product }));
-  };
+  }
 
   const remove = () => {
     setInCart(!inCart);
