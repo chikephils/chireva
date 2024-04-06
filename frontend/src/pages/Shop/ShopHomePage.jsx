@@ -43,7 +43,7 @@ const ShopHomePage = () => {
             </div>
           </>
         )}
-        <div className="lg:w-[72%] rounded-[4px]  lg:mt-0">
+        <div className="lg:w-[72%] rounded-[4px]  800px:mt-['unset']">
           <div className=" overflow-y-scroll scrollbar-none h-screen">
             <ShopProfileData isOwner={true} />
           </div>
