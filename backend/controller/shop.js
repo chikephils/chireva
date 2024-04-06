@@ -332,7 +332,6 @@ router.post(
 //load shop
 router.get(
   "/getSeller",
-  isSeller,
   catchAsyncError(async (req, res, next) => {
     try {
       const seller = await Shop.findById(req.seller._id);
@@ -353,7 +352,6 @@ router.get(
 //logout Seller
 router.get(
   "/logout",
-  isSeller,
   catchAsyncError(async (req, res, next) => {
     try {
       res.cookie("seller_token", null, {
@@ -389,7 +387,6 @@ router.get(
 
 router.put(
   "/update-shop-avatar",
-  isSeller,
   catchAsyncError(async (req, res, next) => {
     try {
       let existsSeller = await Shop.findById(req.seller._id);
@@ -423,7 +420,6 @@ router.put(
 //update Seller Info
 router.put(
   "/update-seller-info",
-  isSeller,
   catchAsyncError(async (req, res, next) => {
     try {
       const { shopName, description, address, phoneNumber, zipCode } = req.body;
@@ -454,8 +450,6 @@ router.put(
 //get All seller for Admin
 router.get(
   "/admin-all-sellers",
-  isAuthenticated,
-  isAdmin("Admin"),
   catchAsyncError(async (req, res, next) => {
     try {
       const sellers = await Shop.find().sort({
@@ -474,8 +468,6 @@ router.get(
 //delete Seller for Admin
 router.delete(
   "/delete-seller/:id",
-  isAuthenticated,
-  isAdmin("Admin"),
   catchAsyncError(async (req, res, next) => {
     try {
       const sellerId = req.params.id;
@@ -509,7 +501,6 @@ router.delete(
 //Update seller withdraw methods
 router.put(
   "/update-payment-methods",
-  isSeller,
   catchAsyncError(async (req, res, next) => {
     try {
       const { withdrawMethod } = req.body;
@@ -531,7 +522,6 @@ router.put(
 //Delete seller withdraw method --- seller
 router.delete(
   "/delete-withdraw-method/",
-  isSeller,
   catchAsyncError(async (req, res, next) => {
     try {
       const seller = await Shop.findById(req.seller._id);
