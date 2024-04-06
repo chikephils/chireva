@@ -9,7 +9,6 @@ const CouponCode = require("../model/couponCode");
 //create CouisCoupon
 router.post(
   "/create-coupon-code",
-  isSeller,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const shopId = req.body.shopId;
@@ -41,7 +40,6 @@ router.post(
 //get all Coupons
 router.get(
   "/get-coupon/:id",
-  isSeller,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const couponCodes = await CouponCode.find({ shopId: req.seller.id });
@@ -58,7 +56,6 @@ router.get(
 //delete Coupon code from shop
 router.delete(
   "/delete-coupon/:id",
-  isSeller,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const couponCode = await CouponCode.findByIdAndDelete(req.params.id);
@@ -99,8 +96,6 @@ router.get(
 //get all copons for Admin
 router.get(
   "/get-all-coupon",
-  isAuthenticated,
-  isAdmin("Admin"),
   catchAsyncErrors(async (req, res, next) => {
     try {
       const coupons = await CouponCode.find().sort({

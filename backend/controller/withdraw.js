@@ -13,7 +13,6 @@ const mongoose = require("mongoose");
 //create withdraw request for seller
 router.post(
   "/create-withdraw-request",
-  isSeller,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { amount } = req.body;
@@ -100,8 +99,6 @@ router.get(
 //update withdraw request for admin
 router.put(
   "/update-withdraw-request/:id",
-  isAuthenticated,
-  isAdmin("Admin"),
   catchAsyncErrors(async (req, res, next) => {
     try {
       const withdrawalId = req.params.id;

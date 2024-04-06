@@ -4,8 +4,8 @@ const Loader = () => {
   return (
     <div>
       <Circles
-        height="160"
-        width="160"
+        height="120"
+        width="120"
         color="#4fa94d"
         ariaLabel="circles-loading"
         wrapperStyle={{}}

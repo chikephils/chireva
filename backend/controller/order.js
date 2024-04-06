@@ -91,7 +91,6 @@ router.get(
 //update order status for Seller
 router.put(
   "/update-order-status/:id",
-  isSeller,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const orderId = req.params.id;
@@ -178,7 +177,6 @@ router.put(
 //accept the Refund --- seller
 router.put(
   "/order-refund-success/:id",
-  isSeller,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const orderId = req.params.id;
@@ -257,8 +255,6 @@ router.delete(
 //all orders -- for Admin
 router.get(
   "/admin-all-orders",
-  isAuthenticated,
-  isAdmin("Admin"),
   catchAsyncErrors(async (req, res, next) => {
     try {
       const orders = await Order.find().sort({

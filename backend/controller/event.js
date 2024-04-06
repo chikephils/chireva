@@ -116,8 +116,6 @@ router.get("/get-all-events", async (req, res, next) => {
 //get all events for admin
 router.get(
   "/admin-all-events",
-  isAuthenticated,
-  isAdmin("Admin"),
   catchAsyncErrors(async (req, res, next) => {
     try {
       const events = await Event.find().sort({

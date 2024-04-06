@@ -144,7 +144,7 @@ const Login = () => {
             <div>
               <button
                 type="submit"
-                className="group relative w-full h-[35px] md:h-[40px] flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-lime-500 hover:bg-lime-600"
+                className="group relative w-full h-[40px] flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-lime-500 hover:bg-lime-600"
               >
                 {loader ? <SmallLoader /> : "Login"}
               </button>
