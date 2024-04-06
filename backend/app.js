@@ -9,7 +9,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(
   cors({
-    origin: ["https://chireva-frontend.vercel.app","http://localhost:3000"],
+    origin: "https://chireva-frontend.vercel.app",
     methods: ["GET", "POST", "PUT", "PATCH"],
     credentials: true,
   })
