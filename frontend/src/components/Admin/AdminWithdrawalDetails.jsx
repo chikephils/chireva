@@ -8,6 +8,7 @@ import styles from "../../styles/styles";
 import { toast } from "react-toastify";
 import Loader from "../Layout/Loader";
 import SmallLoader from "../Layout/SmallLoader";
+import { useSelector } from "react-redux";
 
 const AdminWithdrawalDetails = () => {
   const navigate = useNavigate();
@@ -16,11 +17,15 @@ const AdminWithdrawalDetails = () => {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
   const [status, setStatus] = useState("");
+  const token = useSelector((state) => state.user?.token);
 
   useEffect(() => {
     axios
       .get(`${server}/withdraw/get-all-withdrawal-request`, {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((res) => {
         setWithdrawals(res.data.withdrawals);

@@ -23,6 +23,7 @@ const OrderDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const orders = useSelector(selectAllShopOrders);
+  const sellerToken = useSelector((state) => state.shop?.sellerToken);
 
   useEffect(() => {
     dispatch(getAllShopOrders(seller._id));
@@ -39,7 +40,12 @@ const OrderDetails = () => {
         {
           status,
         },
-        { withCredentials: true }
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${sellerToken}`,
+          },
+        }
       );
 
       if (response.status === 200) {
@@ -66,7 +72,12 @@ const OrderDetails = () => {
         {
           status,
         },
-        { withCredentials: true }
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${sellerToken}`,
+          },
+        }
       );
       if (response.status === 200) {
         toast.success("Refund Successful!");

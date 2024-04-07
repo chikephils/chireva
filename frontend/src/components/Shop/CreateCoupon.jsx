@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { server } from "../../server";
 import SmallLoader from "../Layout/SmallLoader";
+import { useSelector } from "react-redux";
 
 const CreateCoupon = ({ seller, setIsOpen, refreshCoupons, shopProducts }) => {
   const [showLoader, setShowLoader] = useState(false);
@@ -13,6 +14,7 @@ const CreateCoupon = ({ seller, setIsOpen, refreshCoupons, shopProducts }) => {
   const [maxAmount, setMaxAmount] = useState("");
   const [selectedProduct, setSelectedProduct] = useState("");
   const [formErrors, setFormErrors] = useState({});
+  const sellerToken = useSelector((state) => state.shop?.token);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,7 +43,12 @@ const CreateCoupon = ({ seller, setIsOpen, refreshCoupons, shopProducts }) => {
           value,
           shopId: seller._id,
         },
-        { withCredentials: true }
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${sellerToken}`,
+          },
+        }
       );
       setShowLoader(false);
       toast.success("Coupon created successfully");
@@ -55,19 +62,19 @@ const CreateCoupon = ({ seller, setIsOpen, refreshCoupons, shopProducts }) => {
 
   return (
     <div className="fixed top-0 left-0 w-full h-screen bg-[#00000062] z-50 flex items-center justify-center">
-    <div className="w-[90%] lg:w-[40%] h-[70vh] md:h-[80vh] bg-gradient-to-l from-slate-200 to-slate-300 ... rounded-md shadow p-4 z-50">
-      <div className="w-full flex items-center justify-between pb-3 px-2">
-        <h5 className=" text-base md:text-lg lg:text-xl font-semibold text-center">
-          Create Coupon
-        </h5>
-        <RxCross2
-          size={30}
-          className="cursor-pointer"
-          onClick={() => setIsOpen(false)}
-        />
-      </div>
+      <div className="w-[90%] lg:w-[40%] h-[70vh] md:h-[80vh] bg-gradient-to-l from-slate-200 to-slate-300 ... rounded-md shadow p-4 z-50">
+        <div className="w-full flex items-center justify-between pb-3 px-2">
+          <h5 className=" text-base md:text-lg lg:text-xl font-semibold text-center">
+            Create Coupon
+          </h5>
+          <RxCross2
+            size={30}
+            className="cursor-pointer"
+            onClick={() => setIsOpen(false)}
+          />
+        </div>
 
-      <div className="h-[60vh] md:-[70vh] overflow-y-scroll scrollbar-none pb-6 pt-1">
+        <div className="h-[60vh] md:-[70vh] overflow-y-scroll scrollbar-none pb-6 pt-1">
           <form onSubmit={handleSubmit}>
             <div>
               <label className=" block text-[14px] md:text-[16px] font-medium ">
