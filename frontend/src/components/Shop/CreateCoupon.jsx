@@ -14,7 +14,7 @@ const CreateCoupon = ({ seller, setIsOpen, refreshCoupons, shopProducts }) => {
   const [maxAmount, setMaxAmount] = useState("");
   const [selectedProduct, setSelectedProduct] = useState("");
   const [formErrors, setFormErrors] = useState({});
-  const sellerToken = useSelector((state) => state.shop?.token);
+  const sellerToken = useSelector((state) => state.shop?.sellerToken);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

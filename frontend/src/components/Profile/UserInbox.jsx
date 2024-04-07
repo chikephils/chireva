@@ -21,6 +21,7 @@ const UserInbox = () => {
   const [onlineUsers, setOnlineUsers] = useState([]);
   const scrollRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
+  const token = useSelector((state) => state.user.token);
 
   useEffect(() => {
     if (user) {
@@ -55,7 +56,12 @@ const UserInbox = () => {
       try {
         const response = await axios.get(
           `${server}/conversation/get-all-conversation-user/${user?._id}`,
-          { withCredentials: true }
+          {
+            withCredentials: true,
+            headers: {
+              Authorization: `Bearer${token}`,
+            },
+          }
         );
 
         setConversations(response.data.conversations);
@@ -81,8 +87,8 @@ const UserInbox = () => {
 
   return (
     <div className="h-full px-2">
-    <div className="flex items-center justify-center sticky h-[35px]">
-      <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black py-2">
+      <div className="flex items-center justify-center sticky h-[35px]">
+        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black py-2">
           <FcSms size={24} /> All Messages
         </h1>
       </div>

@@ -30,6 +30,7 @@ const Inbox = () => {
   const location = useLocation();
   const { conversation, seller, online } = location.state;
   const [imgLoading, setImageLoading] = useState(false);
+  const token = useSelector((state) => state.user?.token);
 
   const me = user?._id;
 
@@ -64,7 +65,12 @@ const Inbox = () => {
       try {
         const response = await axios.get(
           `${server}/conversation/get-conversation/${conversation?._id || id}`,
-          { withCredentials: true }
+          {
+            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
 
         setCurrentChat(response.data.conversation);
@@ -83,7 +89,12 @@ const Inbox = () => {
       try {
         const response = await axios.get(
           `${server}/messages/get-all-messages/${currentChat?._id}`,
-          { withCredentials: true }
+          {
+            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         setMessages(response.data.messages);
       } catch (error) {

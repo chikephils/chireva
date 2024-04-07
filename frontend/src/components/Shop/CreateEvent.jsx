@@ -221,7 +221,7 @@ const CreateEvent = () => {
 
       {/* create Event form  */}
       <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 flex justify-center">
-        <form onSubmit={handleSubmit} className="w-full md:w-[60%] pb-8 mb-6">
+        <form onSubmit={handleSubmit} className="w-full md:w-[60%] pb-4 mb-3">
           <div>
             <label className=" block text-[14px] md:text-[16px] font-medium ">
               Event Name <span className="text-red-500">*</span>

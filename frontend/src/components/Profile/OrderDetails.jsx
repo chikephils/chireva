@@ -7,10 +7,7 @@ import axios from "axios";
 import { server } from "../../server";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../features/user/userSlice";
-import {
-  getAllOrders,
-  selectAllOrders,
-} from "../../features/user/userSlice";
+import { getAllOrders, selectAllOrders } from "../../features/user/userSlice";
 import { toast } from "react-toastify";
 import { getAllProducts } from "../../features/product/productSlice";
 import { useParams } from "react-router-dom";
@@ -26,6 +23,7 @@ const OrderDetails = () => {
   const [loader, setLoader] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const token = useSelector((state) => state.user.token);
 
   const { id } = useParams();
 
@@ -56,7 +54,12 @@ const OrderDetails = () => {
           productId: selectedProduct?._id,
           orderId: order._id,
         },
-        { withCredentials: true }
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer${token}`,
+          },
+        }
       );
 
       return toast.success(response.data.message);
