@@ -16,6 +16,7 @@ const ShopInfo = ({ isOwner, shop }) => {
   const [isLoading, setIsLoading] = useState(false);
   const seller = useSelector(selectSeller);
   const { id } = useParams();
+  const sellerToken = useSelector((state) => state.shop?.sellerToken);
 
   useEffect(() => {
     dispatch(getShopProducts(id))
@@ -33,6 +34,9 @@ const ShopInfo = ({ isOwner, shop }) => {
     try {
       const response = await axios.get(`${server}/shop/logout`, {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${sellerToken}`,
+        },
       });
       dispatch(logoutSeller());
       navigate("/");

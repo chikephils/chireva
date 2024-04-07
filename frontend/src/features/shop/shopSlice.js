@@ -15,10 +15,14 @@ const initialState = {
 
 export const LoadSeller = createAsyncThunk(
   "seller/LoadSeller",
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
+    const sellerToken = getState().shop.sellerToken;
     try {
       const response = await axios.get(`${server}/shop/getSeller`, {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${sellerToken}`,
+        },
       });
       return response.data.seller;
     } catch (error) {
@@ -47,12 +51,16 @@ export const getShopProducts = createAsyncThunk(
 //delete product of shop
 export const deleteShopProduct = createAsyncThunk(
   "products/deleteShopProduct",
-  async (id, { rejectWithValue }) => {
+  async (id, { rejectWithValue, getState }) => {
+    const sellerToken = getState().shop.sellerToken;
     try {
       const response = await axios.delete(
         `${server}/product/delete-shop-product/${id}`,
         {
           withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${sellerToken}`,
+          },
         }
       );
       return response.data.product;
@@ -95,12 +103,16 @@ export const getShopEvents = createAsyncThunk(
 
 export const deleteShopEvent = createAsyncThunk(
   "events/deleteShopEvent",
-  async (id, { rejectWithValue }) => {
+  async (id, { rejectWithValue, getState }) => {
+    const sellerToken = getState().shop.sellerToken;
     try {
       const response = await axios.delete(
         `${server}/event/delete-shop-event/${id}`,
         {
           withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${sellerToken}`,
+          },
         }
       );
       return response.data.event;

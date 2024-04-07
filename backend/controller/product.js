@@ -8,6 +8,8 @@ const { isSeller, isAuthenticated, isAdmin } = require("../middleware/auth");
 const Order = require("../model/order");
 const cloudinary = require("cloudinary");
 
+
+
 // create Product
 router.post(
   "/create-product",
@@ -76,6 +78,7 @@ router.get(
 // Delete Product from Shop
 router.delete(
   "/delete-shop-product/:id",
+  isSeller,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const product = await Product.findById(req.params.id);
@@ -119,6 +122,7 @@ router.get(
 //create product review
 router.put(
   "/create-new-review",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { user, rating, comment, productId, orderId } = req.body;
@@ -175,6 +179,8 @@ router.put(
 //get all Products -- for admin
 router.get(
   "/admin-all-products",
+  isAuthenticated,
+  isAdmin("Admin"),
   catchAsyncErrors(async (req, res, next) => {
     try {
       const products = await Product.find().sort({

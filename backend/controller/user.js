@@ -41,7 +41,7 @@ router.post("/create-user", async (req, res, next) => {
     };
 
     const activationToken = createActivationToken(user);
-    const activationURL = `https://chireva-frontend.vercel.app/activation/${activationToken}`;
+    const activationURL = `http://localhost:3000/activation/${activationToken}`;
 
     //Read HTML template file
     const htmlTemplatePath = path.join(
@@ -124,7 +124,7 @@ router.post(
       const htmlMail = htmlTemplate
         .replace("%FIRST_NAME%", user.firstName)
         .replace("%LAST_NAME%", user.lastName)
-        .replace("%LOGIN%", "https://chireva-frontend.vercel.app/login");
+        .replace("%LOGIN%", "https://localhost:3000/login");
 
       try {
         await sendMail({
@@ -175,7 +175,7 @@ router.post(
           expiresIn: "2m",
         }
       );
-      const passwordResetURL = `https://chireva-frontend.vercel.app/password-reset/${user._id}/${passwordResetToken}`;
+      const passwordResetURL = `http://localhost:3000/password-reset/${user._id}/${passwordResetToken}`;
 
       const htmlTemplatePath = path.join(
         __dirname,
@@ -322,6 +322,7 @@ router.post(
 //load user
 router.get(
   "/getuser",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const user = await User.findById(req.user.id);
@@ -342,6 +343,7 @@ router.get(
 //log out User
 router.get(
   "/logout",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       res.cookie("user_token", null, {
@@ -361,6 +363,7 @@ router.get(
 //update user info
 router.put(
   "/update-user-info",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { email, password, phoneNumber, firstName, lastName } = req.body;
@@ -399,6 +402,7 @@ router.put(
 // update user avatar
 router.put(
   "/update-avatar",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       let existingUser = await User.findById(req.user.id);
@@ -430,6 +434,7 @@ router.put(
 //update user addressses
 router.put(
   "/update-user-addresses",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const user = await User.findById(req.user.id);
@@ -467,6 +472,7 @@ router.put(
 //delete user Address
 router.delete(
   "/delete-user-address/:id",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const userId = req.user._id;
@@ -489,6 +495,7 @@ router.delete(
 //update user Password
 router.put(
   "/update-user-password",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const user = await User.findById(req.user.id).select("+password");
@@ -538,6 +545,8 @@ router.get(
 //all User for admin
 router.get(
   "/admin-all-users",
+  isAuthenticated,
+  isAdmin("Admin"),
   catchAsyncErrors(async (req, res, next) => {
     try {
       const users = await User.find().sort({
@@ -556,6 +565,8 @@ router.get(
 //delete User for admin
 router.delete(
   "/delete-user/:id",
+  isAuthenticated,
+  isAdmin("Admin"),
   catchAsyncErrors(async (req, res, next) => {
     try {
       const userId = req.params.id;

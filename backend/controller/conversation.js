@@ -41,6 +41,7 @@ router.post(
 //get seller conversation
 router.get(
   "/get-all-conversation-seller/:id",
+  isSeller,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const conversations = await Conversation.find({
@@ -62,6 +63,7 @@ router.get(
 //get user conversations
 router.get(
   "/get-all-conversation-user/:id",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const conversations = await Conversation.find({
@@ -83,6 +85,7 @@ router.get(
 //get a particular conversation
 router.get(
   "/get-conversation/:id",
+  isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const conversation = await Conversation.findById(req.params.id);

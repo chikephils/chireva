@@ -312,7 +312,7 @@ router.post(
         process.env.JWT_SECRET_KEY
       );
       const options = {
-        expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+        expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
         httpOnly: true,
         sameSite: "none",
         secure: true,
@@ -332,6 +332,7 @@ router.post(
 //load shop
 router.get(
   "/getSeller",
+  isSeller,
   catchAsyncError(async (req, res, next) => {
     try {
       const seller = await Shop.findById(req.seller._id);
@@ -352,6 +353,7 @@ router.get(
 //logout Seller
 router.get(
   "/logout",
+  isSeller,
   catchAsyncError(async (req, res, next) => {
     try {
       res.cookie("seller_token", null, {
@@ -387,29 +389,31 @@ router.get(
 
 router.put(
   "/update-shop-avatar",
+  isSeller,
   catchAsyncError(async (req, res, next) => {
     try {
       let existsSeller = await Shop.findById(req.seller._id);
 
-      const imageId = existsSeller.avatar.public_id;
+        const imageId = existsSeller.avatar.public_id;
 
-      await cloudinary.v2.uploader.destroy(imageId);
+        await cloudinary.v2.uploader.destroy(imageId);
 
-      const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-        folder: "avatars",
-        width: 150,
-      });
+        const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+          folder: "avatars",
+          width: 150,
+        });
 
-      existsSeller.avatar = {
-        public_id: myCloud.public_id,
-        url: myCloud.secure_url,
-      };
+        existsSeller.avatar = {
+          public_id: myCloud.public_id,
+          url: myCloud.secure_url,
+        };
 
+  
       await existsSeller.save();
 
       res.status(200).json({
         success: true,
-        seller: existsSeller,
+        seller:existsSeller,
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
@@ -420,6 +424,7 @@ router.put(
 //update Seller Info
 router.put(
   "/update-seller-info",
+  isSeller,
   catchAsyncError(async (req, res, next) => {
     try {
       const { shopName, description, address, phoneNumber, zipCode } = req.body;
@@ -450,6 +455,8 @@ router.put(
 //get All seller for Admin
 router.get(
   "/admin-all-sellers",
+  isAuthenticated,
+  isAdmin("Admin"),
   catchAsyncError(async (req, res, next) => {
     try {
       const sellers = await Shop.find().sort({
@@ -468,6 +475,8 @@ router.get(
 //delete Seller for Admin
 router.delete(
   "/delete-seller/:id",
+  isAuthenticated,
+  isAdmin("Admin"),
   catchAsyncError(async (req, res, next) => {
     try {
       const sellerId = req.params.id;
@@ -501,6 +510,7 @@ router.delete(
 //Update seller withdraw methods
 router.put(
   "/update-payment-methods",
+  isSeller,
   catchAsyncError(async (req, res, next) => {
     try {
       const { withdrawMethod } = req.body;
@@ -522,6 +532,7 @@ router.put(
 //Delete seller withdraw method --- seller
 router.delete(
   "/delete-withdraw-method/",
+  isSeller,
   catchAsyncError(async (req, res, next) => {
     try {
       const seller = await Shop.findById(req.seller._id);

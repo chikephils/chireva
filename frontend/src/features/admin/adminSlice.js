@@ -15,10 +15,14 @@ const initialState = {
 
 export const getAllUsers = createAsyncThunk(
   "user/getAllUsers",
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
+    const token = getState().user.token;
     try {
       const response = await axios.get(`${server}/user/admin-all-users`, {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       return response.data.users;
     } catch (error) {
@@ -30,10 +34,14 @@ export const getAllUsers = createAsyncThunk(
 
 export const deleteUser = createAsyncThunk(
   "user/deletUser",
-  async (id, { rejectWithValue }) => {
+  async (id, { rejectWithValue, getState }) => {
+    const token = getState().user.token;
     try {
       const response = await axios.delete(`${server}/user/delete-user/${id}`, {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       toast.success(response.data.message);
     } catch (error) {
@@ -45,10 +53,14 @@ export const deleteUser = createAsyncThunk(
 
 export const getAllSellers = createAsyncThunk(
   "seller/getAllSellers",
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
+    const token = getState().user.token;
     try {
       const response = await axios.get(`${server}/shop/admin-all-sellers`, {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       console.log(response.data.sellers);
       return response.data.sellers;
@@ -61,12 +73,16 @@ export const getAllSellers = createAsyncThunk(
 
 export const deleteSeller = createAsyncThunk(
   "seller/deleteSeller",
-  async (id, { rejectWithValue }) => {
+  async (id, { rejectWithValue, getState }) => {
+    const token = getState().user.token;
     try {
       const response = await axios.delete(
         `${server}/shop/delete-seller/${id}`,
         {
           withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       toast.success(response.data.message);
@@ -79,10 +95,14 @@ export const deleteSeller = createAsyncThunk(
 
 export const getAllAdminEvents = createAsyncThunk(
   "events/getAllAdminEvents",
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
+    const token = getState().user.token;
     try {
       const response = await axios.get(`${server}/event/admin-all-events`, {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       return response.data.events;
     } catch (error) {
@@ -93,10 +113,14 @@ export const getAllAdminEvents = createAsyncThunk(
 
 export const getAllAdminOrders = createAsyncThunk(
   "orders/getAllAdminOrders",
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
+    const token = getState().user.token;
     try {
       const response = await axios.get(`${server}/order/admin-all-orders/`, {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       return response.data.orders;
     } catch (error) {
@@ -109,10 +133,14 @@ export const getAllAdminOrders = createAsyncThunk(
 //get all products Admin
 export const getAllAdminProducts = createAsyncThunk(
   "products/getAllAdminProducts",
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
+    const token = getState().user.token;
     try {
       const response = await axios.get(`${server}/product/admin-all-products`, {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       return response.data.products;
     } catch (error) {

@@ -80,8 +80,6 @@ router.post(
 //get all Withdrawals  for admin
 router.get(
   "/get-all-withdrawal-request",
-  isAuthenticated,
-  isAdmin("Admin"),
   catchAsyncErrors(async (req, res, next) => {
     try {
       const withdrawals = await Withdraw.find().sort({ createdAt: -1 });

@@ -24,10 +24,16 @@ const ProfileSideBar = ({ active }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
+  const token = useSelector((state) => state.user.token);
 
   const handleLogout = () => {
     axios
-      .get(`${server}/user/logout`, { withCredentials: true })
+      .get(`${server}/user/logout`, {
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
         dispatch(setLogout());
         toast.success(res.data.message);

@@ -5,30 +5,41 @@ const User = require("../model/user");
 const Shop = require("../model/shop");
 
 exports.isAuthenticated = catchAsyncErrors(async (req, res, next) => {
-  const { user_token } = req.cookies;
+  try {
+    let token = req.header("Authorization");
+    if (!token) {
+      return next(new ErrorHandler("Please login to continue", 403));
+    }
 
-  if (!user_token) {
-    return next(new ErrorHandler("Please login to continue", 401));
+    if (token.startsWith("Bearer ")) {
+      token = token.slice(7, token.length).trimLeft();
+    }
+
+    const verified = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    req.user = verified;
+    next();
+  } catch (error) {
+    return next(new ErrorHandler(error.message));
   }
-
-  const decoded = jwt.verify(user_token, process.env.JWT_SECRET_KEY);
-
-  req.user = await User.findById(decoded.id);
-
-  next();
 });
 
 exports.isSeller = catchAsyncErrors(async (req, res, next) => {
-  const { seller_token } = req.cookies;
-  if (!seller_token) {
-    return next(new ErrorHandler("Please login to continue", 401));
+  try {
+    let sellerToken = req.header("Authorization");
+    if (!sellerToken) {
+      return next(new ErrorHandler("Please login to continue", 403));
+    }
+
+    if (sellerToken.startsWith("Bearer ")) {
+      sellerToken = sellerToken.slice(7, sellerToken.length).trimLeft();
+    }
+
+    const verified = jwt.verify(sellerToken, process.env.JWT_SECRET_KEY);
+    req.seller = verified;
+    next();
+  } catch (error) {
+    return next(new ErrorHandler(error.message));
   }
-
-  const decoded = jwt.verify(seller_token, process.env.JWT_SECRET_KEY);
-
-  req.seller = await Shop.findById(decoded.id);
-
-  next();
 });
 
 exports.isAdmin = (...roles) => {

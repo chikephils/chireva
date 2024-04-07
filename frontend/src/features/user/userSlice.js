@@ -13,10 +13,14 @@ const initialState = {
 
 export const LoadUser = createAsyncThunk(
   "user/LoadUser",
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
+    const token = getState().user.token;
     try {
       const response = await axios.get(`${server}/user/getUser`, {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       console.log(response.data.user);
       return response.data.user;
@@ -31,8 +35,9 @@ export const updateUserInformation = createAsyncThunk(
   "user/updateUserInformation",
   async (
     { firstName, lastName, email, phoneNumber, password },
-    { rejectWithValue }
+    { rejectWithValue, getState }
   ) => {
+    const token = getState().user.token;
     try {
       const response = await axios.put(
         `${server}/user/update-user-info`,
@@ -45,6 +50,9 @@ export const updateUserInformation = createAsyncThunk(
         },
         {
           withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
@@ -63,6 +71,7 @@ export const updateUserAddress = createAsyncThunk(
     { country, city, address1, address2, zipCode, addressType },
     { rejectWithValue, getState }
   ) => {
+    const token = getState().user.token;
     try {
       const response = await axios.put(
         `${server}/user/update-user-addresses`,
@@ -76,6 +85,9 @@ export const updateUserAddress = createAsyncThunk(
         },
         {
           withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       toast.success("Address Updated Successfully");
@@ -90,11 +102,15 @@ export const updateUserAddress = createAsyncThunk(
 export const deleteUserAddress = createAsyncThunk(
   "user/deleteUserAddress",
   async (id, { rejectWithValue, getState }) => {
+    const token = getState().user.token;
     try {
       const response = await axios.delete(
         `${server}/user/delete-user-address/${id}`,
         {
           withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       toast.success("Address Deleted Successfully");
@@ -120,7 +136,6 @@ export const getAllOrders = createAsyncThunk(
     }
   }
 );
-
 
 const userSlice = createSlice({
   name: "user",
@@ -204,7 +219,6 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       });
-    
   },
 });
 
@@ -215,6 +229,5 @@ export const selectUserLoading = (state) => state.user.loading;
 export const selectUserError = (state) => state.user.error;
 export const selectAllOrders = (state) => state.user.orders;
 export const selectOrderLoading = (state) => state.user.loading;
-
 
 export default userSlice.reducer;
