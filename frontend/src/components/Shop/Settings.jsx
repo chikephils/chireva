@@ -28,6 +28,7 @@ const Settings = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [loading, setLoading] = useState(false);
   const sellerLoading = useSelector(selectSellerLoading);
+  const sellerToken = useSelector((state) => state.shop.sellerToken);
 
   const dispatch = useDispatch();
 
@@ -43,7 +44,12 @@ const Settings = () => {
           .put(
             `${server}/shop/update-shop-avatar"`,
             { avatar: reader.result },
-            { withCredentials: true }
+            {
+              headers: {
+                Authorization: `Bearer ${sellerToken}`,
+                "Content-Type": "application/json",
+              },
+            }
           )
           .then((response) => {
             dispatch(LoadSeller());
@@ -74,7 +80,12 @@ const Settings = () => {
           phoneNumber,
           description,
         },
-        { withCredentials: true }
+        {
+          headers: {
+            Authorization: `Bearer ${sellerToken}`,
+            "Content-Type": "application/json",
+          },
+        }
       )
       .then((res) => {
         toast.success("Shop info updated succesfully!");

@@ -57,9 +57,8 @@ const UserInbox = () => {
         const response = await axios.get(
           `${server}/conversation/get-all-conversation-user/${user?._id}`,
           {
-            withCredentials: true,
             headers: {
-              Authorization: `Bearer${token}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );

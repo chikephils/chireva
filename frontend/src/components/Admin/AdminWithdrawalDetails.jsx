@@ -22,7 +22,6 @@ const AdminWithdrawalDetails = () => {
   useEffect(() => {
     axios
       .get(`${server}/withdraw/get-all-withdrawal-request`, {
-        withCredentials: true,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -50,7 +49,12 @@ const AdminWithdrawalDetails = () => {
         {
           sellerId: withdrawal?.seller?._id,
         },
-        { withCredentials: true }
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
       );
       if (response.status === 201) {
         toast.success("Withdrawal Status updated!");

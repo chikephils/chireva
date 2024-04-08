@@ -35,6 +35,7 @@ const DashboardMessages = () => {
   const [open, setOpen] = useState(false);
   const scrollRef = useRef(null);
   const [imgLoading, setImageLoading] = useState(false);
+  const sellerToken = useSelector((state) => state.shop.sellerToken);
 
   useEffect(() => {
     if (seller) {
@@ -69,7 +70,10 @@ const DashboardMessages = () => {
         const response = await axios.get(
           `${server}/conversation/get-all-conversation-seller/${seller?._id}`,
           {
-            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${sellerToken}`,
+              "Content-Type": "application/json",
+            },
           }
         );
 

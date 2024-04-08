@@ -21,6 +21,7 @@ const ShopAllCoupons = () => {
   const isLoading = useSelector(selectAllProductsLoading);
   const [coupons, setCoupons] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const sellerToken = useSelector((state) => state.shop.sellerToken);
 
   const dispatch = useDispatch();
 
@@ -33,7 +34,9 @@ const ShopAllCoupons = () => {
       const response = await axios.get(
         `${server}/coupon/get-coupon/${seller._id}`,
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${sellerToken}`,
+          },
         }
       );
       setCoupons(response.data.couponCodes);

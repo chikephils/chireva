@@ -20,6 +20,7 @@ const WithdrawMoney = () => {
   const [isloading, setIsLoading] = useState(false);
   const [withdrawAmount, setWithdrawAmount] = useState(1000);
   const [paymentMethod, setPaymentMethod] = useState(false);
+  const sellerToken = useSelector((state) => state.shop.sellerToken);
 
   const dispatch = useDispatch();
 
@@ -71,7 +72,9 @@ const WithdrawMoney = () => {
     try {
       setLoading(true);
       await axios.delete(`${server}/shop/delete-withdraw-method`, {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${sellerToken}`,
+        },
       });
       toast.success("Withdraw method deleted successfully!");
       dispatch(LoadSeller());
@@ -97,7 +100,12 @@ const WithdrawMoney = () => {
         {
           withdrawMethod,
         },
-        { withCredentials: true }
+        {
+          headers: {
+            Authorization: `Bearer ${sellerToken}`,
+            "Content-Type": "application/json",
+          },
+        }
       );
       toast.success("Withdraw method updated successfully!");
       dispatch(LoadSeller());
@@ -122,7 +130,12 @@ const WithdrawMoney = () => {
         await axios.post(
           `${server}/withdraw/create-withdraw-request`,
           { amount },
-          { withCredentials: true }
+          {
+            headers: {
+              Authorization: `Bearer ${sellerToken}`,
+              "Content-Type": "application/json",
+            },
+          }
         );
         toast.success("Withdrawal request is successful!");
         dispatch(LoadSeller());

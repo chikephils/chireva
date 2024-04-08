@@ -19,7 +19,6 @@ export const LoadSeller = createAsyncThunk(
     const sellerToken = getState().shop.sellerToken;
     try {
       const response = await axios.get(`${server}/shop/getSeller`, {
-        withCredentials: true,
         headers: {
           Authorization: `Bearer ${sellerToken}`,
         },
@@ -57,7 +56,6 @@ export const deleteShopProduct = createAsyncThunk(
       const response = await axios.delete(
         `${server}/product/delete-shop-product/${id}`,
         {
-          withCredentials: true,
           headers: {
             Authorization: `Bearer ${sellerToken}`,
           },
@@ -109,7 +107,6 @@ export const deleteShopEvent = createAsyncThunk(
       const response = await axios.delete(
         `${server}/event/delete-shop-event/${id}`,
         {
-          withCredentials: true,
           headers: {
             Authorization: `Bearer ${sellerToken}`,
           },

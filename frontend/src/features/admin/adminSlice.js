@@ -19,7 +19,6 @@ export const getAllUsers = createAsyncThunk(
     const token = getState().user.token;
     try {
       const response = await axios.get(`${server}/user/admin-all-users`, {
-        withCredentials: true,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -38,7 +37,6 @@ export const deleteUser = createAsyncThunk(
     const token = getState().user.token;
     try {
       const response = await axios.delete(`${server}/user/delete-user/${id}`, {
-        withCredentials: true,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -57,7 +55,6 @@ export const getAllSellers = createAsyncThunk(
     const token = getState().user.token;
     try {
       const response = await axios.get(`${server}/shop/admin-all-sellers`, {
-        withCredentials: true,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -79,7 +76,6 @@ export const deleteSeller = createAsyncThunk(
       const response = await axios.delete(
         `${server}/shop/delete-seller/${id}`,
         {
-          withCredentials: true,
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -99,7 +95,6 @@ export const getAllAdminEvents = createAsyncThunk(
     const token = getState().user.token;
     try {
       const response = await axios.get(`${server}/event/admin-all-events`, {
-        withCredentials: true,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -117,7 +112,6 @@ export const getAllAdminOrders = createAsyncThunk(
     const token = getState().user.token;
     try {
       const response = await axios.get(`${server}/order/admin-all-orders/`, {
-        withCredentials: true,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -137,7 +131,6 @@ export const getAllAdminProducts = createAsyncThunk(
     const token = getState().user.token;
     try {
       const response = await axios.get(`${server}/product/admin-all-products`, {
-        withCredentials: true,
         headers: {
           Authorization: `Bearer ${token}`,
         },

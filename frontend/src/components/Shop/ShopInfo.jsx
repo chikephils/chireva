@@ -33,7 +33,6 @@ const ShopInfo = ({ isOwner, shop }) => {
     setIsLoading(true);
     try {
       const response = await axios.get(`${server}/shop/logout`, {
-        withCredentials: true,
         headers: {
           Authorization: `Bearer ${sellerToken}`,
         },

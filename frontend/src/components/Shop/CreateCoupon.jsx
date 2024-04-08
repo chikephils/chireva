@@ -44,9 +44,9 @@ const CreateCoupon = ({ seller, setIsOpen, refreshCoupons, shopProducts }) => {
           shopId: seller._id,
         },
         {
-          withCredentials: true,
           headers: {
             Authorization: `Bearer ${sellerToken}`,
+            "Content-Type": "application/json",
           },
         }
       );

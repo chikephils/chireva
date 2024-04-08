@@ -5,16 +5,20 @@ import { toast } from "react-toastify";
 import { server } from "../../server";
 import axios from "axios";
 import Loader from "../Layout/Loader";
+import { useSelector } from "react-redux";
 
 const AdminCoupons = () => {
   const [coupons, setCoupons] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
+  const token = useSelector((state) => state.user.token);
 
   const refreshCoupons = async () => {
     setShowLoader(true);
     try {
       const response = await axios.get(`${server}/coupon/get-all-coupon`, {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       setCoupons(response.data.coupons);
     } catch (error) {

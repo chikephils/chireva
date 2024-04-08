@@ -4,19 +4,24 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const helmet = require("helmet");
 
+// Use helmet middleware first
+app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+
+// Then apply other middleware
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(
   cors({
     origin: "https://chireva-frontend.vercel.app",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    credentials: true,
   })
 );
-app.use(express.json());
 app.use(cookieParser());
 app.use(express.static("public"));
+
 app.use("/test", (req, res) => {
   res.send("Hello world!");
 });

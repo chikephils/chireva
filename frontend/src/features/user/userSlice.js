@@ -17,7 +17,6 @@ export const LoadUser = createAsyncThunk(
     const token = getState().user.token;
     try {
       const response = await axios.get(`${server}/user/getUser`, {
-        withCredentials: true,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -49,9 +48,9 @@ export const updateUserInformation = createAsyncThunk(
           password,
         },
         {
-          withCredentials: true,
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
         }
       );
@@ -84,9 +83,9 @@ export const updateUserAddress = createAsyncThunk(
           addressType,
         },
         {
-          withCredentials: true,
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
         }
       );
@@ -107,7 +106,6 @@ export const deleteUserAddress = createAsyncThunk(
       const response = await axios.delete(
         `${server}/user/delete-user-address/${id}`,
         {
-          withCredentials: true,
           headers: {
             Authorization: `Bearer ${token}`,
           },

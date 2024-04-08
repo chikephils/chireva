@@ -24,6 +24,7 @@ const ProfileContent = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [loading, setLoading] = useState(false);
   const userLoading = useSelector(selectUserLoading);
+  const token = useSelector((state) => state.user.token);
 
   const dispatch = useDispatch();
 
@@ -59,7 +60,12 @@ const ProfileContent = () => {
           .put(
             `${server}/user/update-avatar`,
             { avatar: reader.result },
-            { withCredentials: true }
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
           )
           .then((response) => {
             dispatch(LoadUser());

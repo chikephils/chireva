@@ -41,9 +41,9 @@ const OrderDetails = () => {
           status,
         },
         {
-          withCredentials: true,
           headers: {
             Authorization: `Bearer ${sellerToken}`,
+            "Content-Type": "application/json",
           },
         }
       );
@@ -73,9 +73,9 @@ const OrderDetails = () => {
           status,
         },
         {
-          withCredentials: true,
           headers: {
             Authorization: `Bearer ${sellerToken}`,
+            "Content-Type": "application/json",
           },
         }
       );

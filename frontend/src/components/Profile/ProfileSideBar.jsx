@@ -29,7 +29,6 @@ const ProfileSideBar = ({ active }) => {
   const handleLogout = () => {
     axios
       .get(`${server}/user/logout`, {
-        withCredentials: true,
         headers: {
           Authorization: `Bearer ${token}`,
         },

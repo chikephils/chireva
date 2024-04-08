@@ -30,7 +30,7 @@ const ShopLogin = () => {
           email,
           password,
         },
-        { withCredentials: true }
+        { headers: { "Content-Type": "application/json" } }
       );
 
       if (response.status >= 200 && response.status < 300) {

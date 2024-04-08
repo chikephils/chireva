@@ -7,16 +7,20 @@ import { server } from "../../server";
 import Loader from "../Layout/Loader";
 import { DataGrid } from "@mui/x-data-grid";
 import { CiMoneyBill } from "react-icons/ci";
+import { useSelector } from "react-redux";
 
 const AdminWithdrawRequest = () => {
   const [withdrawals, setWithdrawals] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const token = useSelector((state) => state.user.token);
 
   useEffect(() => {
     setIsLoading(true);
     axios
       .get(`${server}/withdraw/get-all-withdrawal-request`, {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then((res) => {
         console.log(res);

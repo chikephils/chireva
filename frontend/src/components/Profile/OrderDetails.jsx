@@ -39,7 +39,6 @@ const OrderDetails = () => {
     dispatch(getAllOrders(user._id));
   }, [id, user._id, dispatch]);
 
-  console.log(order);
 
   const reviewHandler = async (e) => {
     e.preventDefault();
@@ -55,9 +54,9 @@ const OrderDetails = () => {
           orderId: order._id,
         },
         {
-          withCredentials: true,
           headers: {
-            Authorization: `Bearer${token}`,
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
         }
       );

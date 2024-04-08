@@ -29,6 +29,7 @@ const ShopInbox = () => {
   const location = useLocation();
   const { conversation, user, online } = location.state;
   const [imgLoading, setImageLoading] = useState(false);
+  const sellerToken = useSelector((state) => state.shop.sellerToken);
 
   const me = seller?._id;
 
@@ -63,7 +64,11 @@ const ShopInbox = () => {
       try {
         const response = await axios.get(
           `${server}/conversation/get-conversation/${conversation?._id || id}`,
-          { withCredentials: true }
+          {
+            headers: {
+              Authorization: `Bearer ${sellerToken}`,
+            },
+          }
         );
 
         setCurrentChat(response.data.conversation);
@@ -82,7 +87,11 @@ const ShopInbox = () => {
       try {
         const response = await axios.get(
           `${server}/messages/get-all-messages/${currentChat?._id}`,
-          { withCredentials: true }
+          {
+            headers: {
+              Authorization: `Bearer ${sellerToken}`,
+            },
+          }
         );
         setMessages(response.data.messages);
       } catch (error) {

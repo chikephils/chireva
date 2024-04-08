@@ -23,9 +23,9 @@ const ChangePassword = () => {
         `${server}/user/update-user-password`,
         { oldPassword, newPassword, confirmPassword },
         {
-          withCredentials: true,
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
         }
       );

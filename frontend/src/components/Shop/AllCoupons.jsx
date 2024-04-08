@@ -9,9 +9,11 @@ import axios from "axios";
 import { server } from "../../server";
 import Loader from "../Layout/Loader";
 import SmallLoader from "../Layout/SmallLoader";
+import { useSelector } from "react-redux";
 
 const AllCoupons = ({ refreshCoupons, coupons, isLoading, setIsOpen }) => {
   const [showLoader, setShowLoader] = useState(false);
+  const token = useSelector((state) => state.user.token);
 
   const handleDelete = async (id) => {
     setShowLoader(true);
@@ -19,7 +21,9 @@ const AllCoupons = ({ refreshCoupons, coupons, isLoading, setIsOpen }) => {
       const response = await axios.delete(
         `${server}/coupon/delete-coupon/${id}`,
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       refreshCoupons();
