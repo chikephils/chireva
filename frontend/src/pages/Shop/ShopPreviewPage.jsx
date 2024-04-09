@@ -46,9 +46,8 @@ const ShopPreviewPage = () => {
                   <ShopInfo isOwner={false} shopId={id} shop={shop} />
                 </div>
               </div>
-
-              <div className="800px:w-[72%]  800px:mt-['unset'] rounded-[4px]">
-                <div className=" overflow-y-scroll scrollbar-none h-screen">
+              <div className="lg:w-[72%]  800px:mt-['unset'] rounded-[4px] h-full py-4">
+                <div className=" overflow-y-scroll scrollbar-none h-[96vh]">
                   <ShopProfileDataUser isOwner={false} />
                 </div>
               </div>

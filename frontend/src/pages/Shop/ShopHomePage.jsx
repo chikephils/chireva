@@ -17,7 +17,6 @@ const ShopHomePage = () => {
     axios
       .get(`${server}/shop/get-shop-info/${id}`)
       .then((res) => {
-        console.log(res);
         setShop(res.data.shop);
         setLoading(false);
       })
@@ -43,8 +42,8 @@ const ShopHomePage = () => {
                 </div>
               </div>
 
-              <div className="lg:w-[72%]  800px:mt-['unset'] rounded-[4px]">
-                <div className=" overflow-y-scroll scrollbar-none h-screen">
+              <div className="lg:w-[72%]  800px:mt-['unset'] rounded-[4px] h-full py-4 ">
+                <div className=" overflow-y-scroll scrollbar-none h-[96vh]">
                   <ShopProfileData isOwner={true} />
                 </div>
               </div>
