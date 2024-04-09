@@ -68,6 +68,7 @@ import {
 import ScrollToTop from "./ScrollToTop";
 import { getAllProducts } from "./features/product/productSlice";
 import { getAllEvents } from "./features/event/eventSlice";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const theme = createTheme({});
 
@@ -448,6 +449,7 @@ function App() {
                 )
               }
             />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
         <ToastContainer

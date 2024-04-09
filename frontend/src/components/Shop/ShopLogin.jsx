@@ -157,6 +157,8 @@ const ShopLogin = () => {
             </div>
           </form>
         </div>
+        <p className="flex justify-center">Email: chikephils@gmail.com</p>
+        <p className="flex justify-center">password: bellamy</p>
       </div>
     </div>
   );

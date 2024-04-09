@@ -4,33 +4,28 @@ import DashBoardSideBar from "../../components/Shop/Layout/DashBoardSideBar";
 import styles from "../../styles/styles";
 import AllEvents from "../../components/Shop/AllEvents";
 import { useDispatch, useSelector } from "react-redux";
-import { getShopEvents, selectSeller } from "../../features/shop/shopSlice";
+import { getShopEvents, selectAllShopEvents, selectSeller } from "../../features/shop/shopSlice";
 import SellerEventDetails from "../../components/Events/SellerEventDetails";
 
 const ShopAllEvents = () => {
-  const [shopEvents, setShopEvents] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const seller = useSelector(selectSeller);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const shopAllEvents = useSelector(selectAllShopEvents)
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    setIsLoading(true)
     dispatch(getShopEvents(seller._id))
-      .unwrap()
-      .then((response) => {
-        setShopEvents(response);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        console.error("Error fetching shop events:", error);
-      });
-  }, [dispatch, seller._id]);
+    setIsLoading(false)
+  },[dispatch, seller._id])
+
+ 
 
   const handleEventClick = (eventId) => {
-    const event = shopEvents.find((item) => item._id === eventId);
+    const event = shopAllEvents.find((item) => item._id === eventId);
     setSelectedEvent(event);
     setIsOpen(true);
   };
@@ -45,7 +40,7 @@ const ShopAllEvents = () => {
           >
             <AllEvents
               handleEventClick={handleEventClick}
-              shopEvents={shopEvents}
+              shopEvents={shopAllEvents}
               seller={seller}
               isLoading={isLoading}
             />
@@ -55,7 +50,7 @@ const ShopAllEvents = () => {
       {isOpen && selectedEvent && (
         <SellerEventDetails
           setIsOpen={() => setIsOpen(false)}
-          product={selectedEvent}
+          event={selectedEvent}
         />
       )}
     </>

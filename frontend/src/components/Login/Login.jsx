@@ -150,7 +150,7 @@ const Login = () => {
                 type="submit"
                 className="group relative w-full h-[40px] flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-lime-500 hover:bg-lime-600"
               >
-                {loader ? <SmallLoader /> : "Login"}
+                {loader ? <SmallLoader className="absolute" /> : "Login"}
               </button>
             </div>
             <div
@@ -166,6 +166,9 @@ const Login = () => {
             </div>
           </form>
         </div>
+        <p className="flex justify-center">Email: chikeoreva@gmail.com</p>
+        <p className="flex justify-center">password: bellamy</p>
+        <p className="flex justify-center">This user is also an admin</p>
       </div>
     </div>
   );

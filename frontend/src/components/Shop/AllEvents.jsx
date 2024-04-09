@@ -117,7 +117,7 @@ const AllEvents = ({ handleEventClick, shopEvents, isLoading }) => {
       rows.push({
         id: event._id,
         name: event.name,
-        price: "US$" + event.discountPrice,
+        price: "\u20A6" + event.discountPrice,
         stock: event.stock,
         start: event.startDate.slice(0, 10),
         finish: event.finishDate.slice(0, 10),

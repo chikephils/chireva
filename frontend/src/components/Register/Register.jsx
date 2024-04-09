@@ -206,7 +206,11 @@ const Register = () => {
                   type="submit"
                   className="group relative w-full h-[35px] md:h-[40px] flex items-center justify-center py-1 px-4 border border-transparent text-[14px] md:text-sm font-medium rounded-md text-black bg-lime-400 hover:bg-lime-500"
                 >
-                  {isLoading ? <SmallLoader /> : "Register"}
+                  {isLoading ? (
+                    <SmallLoader className="relative" />
+                  ) : (
+                    "Register"
+                  )}
                 </button>
               </div>
               <div

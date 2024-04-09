@@ -19,9 +19,10 @@ const ShopTransactions = () => {
 
   useEffect(() => {
     setLoading(true);
-    if (seller) {
-      setTransactions(seller.transactions);
-    }
+    const sortedTransactions = [...seller.transactions].sort((a, b) => {
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
+    setTransactions(sortedTransactions);
     setLoading(false);
   }, [seller]);
 
