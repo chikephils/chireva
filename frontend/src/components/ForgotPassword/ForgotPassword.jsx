@@ -59,7 +59,7 @@ const ForgotPassword = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className=" appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-500 focus:border-lime-500 text-[14px] md:text-[16px]"
+                  className=" h-[45px] appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-500 focus:border-lime-500 text-[14px] md:text-[16px]"
                 />
               </div>
             </div>
@@ -67,9 +67,13 @@ const ForgotPassword = () => {
             <div>
               <button
                 type="submit"
-                className="group relative w-full h-[35px] md:h-[40px] flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-lime-500 hover:bg-lime-600"
+                className="group relative w-full h-[45px] flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-lime-500 hover:bg-lime-600"
               >
-                {loader ? <SmallLoader /> : "Recover Password"}
+                {loader ? (
+                  <SmallLoader className="relative flex items-center justify-center" />
+                ) : (
+                  "Recover Password"
+                )}
               </button>
             </div>
             <div

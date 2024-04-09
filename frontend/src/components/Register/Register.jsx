@@ -89,7 +89,7 @@ const Register = () => {
                     required
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className=" appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-500 text-[12px] md:text-sm"
+                    className="h-[45px] appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-500 text-[12px] md:text-sm"
                   />
                 </div>
               </div>
@@ -109,7 +109,7 @@ const Register = () => {
                     required
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className=" appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-500 text-[12px] md:text-sm"
+                    className="h-[45px] appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-500 text-[12px] md:text-sm"
                   />
                 </div>
               </div>
@@ -129,7 +129,7 @@ const Register = () => {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className=" appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-500 text-[12px] md:text-sm"
+                    className="h-[45px] appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-500 text-[12px] md:text-sm"
                   />
                 </div>
               </div>
@@ -149,7 +149,7 @@ const Register = () => {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className=" appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-500 text-[12px] md:text-sm"
+                    className="h-[45px] appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-500 text-[12px] md:text-sm"
                   />
                   {visible ? (
                     <AiOutlineEye
@@ -181,7 +181,7 @@ const Register = () => {
                         className="h-full w-full object-cover rounded-full"
                       />
                     ) : (
-                      <RxAvatar className="h-8 w-8" />
+                      <RxAvatar className="h-10 w-10" />
                     )}
                   </span>
                   <label
@@ -204,10 +204,10 @@ const Register = () => {
               <div>
                 <button
                   type="submit"
-                  className="group relative w-full h-[35px] md:h-[40px] flex items-center justify-center py-1 px-4 border border-transparent text-[14px] md:text-sm font-medium rounded-md text-black bg-lime-400 hover:bg-lime-500"
+                  className="group relative w-full h-[45px] md:h-[40px] flex items-center justify-center py-1 px-4 border border-transparent text-[14px] md:text-sm font-medium rounded-md text-black bg-lime-400 hover:bg-lime-500"
                 >
                   {isLoading ? (
-                    <SmallLoader className="relative" />
+                    <SmallLoader className="relative flex items-center justify-center" />
                   ) : (
                     "Register"
                   )}
