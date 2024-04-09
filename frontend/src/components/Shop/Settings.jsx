@@ -42,7 +42,7 @@ const Settings = () => {
 
         axios
           .put(
-            `${server}/shop/update-shop-avatar"`,
+            `${server}/shop/update-shop-avatar`,
             { avatar: reader.result },
             {
               headers: {
