@@ -8,7 +8,7 @@ const helmet = require("helmet");
 
 // Use helmet middleware first
 app.use(helmet());
-app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));c
 
 // Then apply other middleware
 app.use(bodyParser.json({ limit: "50mb" }));
@@ -19,6 +19,7 @@ app.use(
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   })
 );
+app.use(express.json());
 app.use(cookieParser());
 app.use(express.static("public"));
 

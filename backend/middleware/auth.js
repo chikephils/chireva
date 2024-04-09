@@ -16,7 +16,7 @@ exports.isAuthenticated = catchAsyncErrors(async (req, res, next) => {
     }
 
     const verified = jwt.verify(token, process.env.JWT_SECRET_KEY);
-    req.user = verified;
+    req.user = await User.findById(verified.id);
     next();
   } catch (error) {
     return next(new ErrorHandler(error.message));
@@ -35,7 +35,7 @@ exports.isSeller = catchAsyncErrors(async (req, res, next) => {
     }
 
     const verified = jwt.verify(sellerToken, process.env.JWT_SECRET_KEY);
-    req.seller = verified;
+    req.seller = await Shop.findById(verified.id);
     next();
   } catch (error) {
     return next(new ErrorHandler(error.message));
@@ -44,6 +44,7 @@ exports.isSeller = catchAsyncErrors(async (req, res, next) => {
 
 exports.isAdmin = (...roles) => {
   return (req, res, next) => {
+    console.log("User role:", req.user.role);
     if (!roles.includes(req.user.role)) {
       return next(
         new ErrorHandler(`${req.user.role} can not access this resources!`)

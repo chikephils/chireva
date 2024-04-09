@@ -25,10 +25,6 @@ const ShopAllCoupons = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getShopProducts(seller._id));
-  }, [dispatch, seller._id]);
-
   const refreshCoupons = async () => {
     try {
       const response = await axios.get(
@@ -44,6 +40,11 @@ const ShopAllCoupons = () => {
       toast.error(error.response.data.message);
     }
   };
+
+  useEffect(() => {
+    dispatch(getShopProducts(seller._id));
+    refreshCoupons();
+  }, [dispatch, seller._id]);
 
   return (
     <>
