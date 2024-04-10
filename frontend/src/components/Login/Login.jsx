@@ -148,13 +148,10 @@ const Login = () => {
             <div>
               <button
                 type="submit"
+                disabled={loader}
                 className="group relative w-full h-[45px] flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-lime-500 hover:bg-lime-600"
               >
-                {loader ? (
-                  <SmallLoader className="absolute flex items-center justify-center" />
-                ) : (
-                  "Login"
-                )}
+                {loader ? "Please wait..." : "Login"}
               </button>
             </div>
             <div
