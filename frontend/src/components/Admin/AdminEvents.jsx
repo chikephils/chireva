@@ -16,6 +16,7 @@ const AdminEvents = () => {
   const isLoading = useSelector(selectAdminEventsLoading);
   const adminEvents = useSelector(selectAllAdminEvents);
 
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -71,7 +72,7 @@ const AdminEvents = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={`/product/${params.id} ?isEvent=true`}>
+            <Link to={`/product/${params.id}?isEvent=true`}>
               <Button>
                 <AiOutlineEye size={20} />
               </Button>
