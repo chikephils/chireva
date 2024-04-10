@@ -12,7 +12,7 @@ const AdminHeader = ({ active }) => {
   const user = useSelector(selectUser);
 
   return (
-    <div className="w-full h-[60px] bg-white fixed top-0 left-0 z-50 flex items-center shadow justify-between px-3 mb-2">
+    <div className="w-full h-[60px] bg-gradient-to-r from-lime-400 to-yellow-800 ... shadow-lg fixed top-0 left-0 z-50 flex items-center justify-between px-3 mb-2">
       <div className="lg:ml-3">
         <Link to="/">
           <img src={Logo} alt="logo" className="w-12 h-12" title="Home" />
