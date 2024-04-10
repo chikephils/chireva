@@ -214,7 +214,7 @@ const adminSlice = createSlice({
       })
       .addCase(getAllAdminEvents.fulfilled, (state, action) => {
         state.loading = false;
-        state.events = action.payload;
+        state.adminEvents = action.payload;
       })
       .addCase(getAllAdminEvents.rejected, (state, action) => {
         state.loading = false;
