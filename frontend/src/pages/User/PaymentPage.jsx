@@ -80,30 +80,30 @@ const PaymentPage = ({ orderData, setShowPayment }) => {
   return (
     <>
       <div className="fixed w-full h-screen top-0 left-0 bg-[#00000030] z-50 flex items-center justify-center shadow-xl">
-        <div className="w-full h-screen overflow-y-scroll scrollbar-none bg-gray-400 rounded-md shadow-2xl relative p-2 py-3 ">
-          <div className=" sticky top-0 right-0 z-50 cursor-pointer">
-            <RxCross1
-              size={24}
-              className=" absolute right-0 cursor-pointer bg-red-500"
-              onClick={() => setShowPayment(false)}
-            />
+        <div className="w-full h-[98vh] overflow-y-scroll scrollbar-none bg-gray-400 rounded-md shadow-2xl relative p-2 py-3 pb-10 ">
+          <div className=" w-full flex items-center justify-center py-2 fixed top-0 left-0  bg-gray-500 z-50">
+            <CheckoutSteps active={2} />
+            <div className="absolute top-1 right-2 justify-end">
+              <RxCross1
+                size={24}
+                className="  cursor-pointer bg-red-500"
+                onClick={() => setShowPayment(false)}
+              />
+            </div>
           </div>
-          <br />
-          <br />
-          <CheckoutSteps active={2} />
-          <div className="w-full flex flex-col items-center py-8">
-            <div className="w-[95%] lg:w-[80%] block lg:flex">
-              <div className="w-full lg:w-[65%] ">
+          <div className="w-full flex flex-col items-center py-8 320px:mt-24 600px:mt-14">
+            <div className="w-[95%] 800px:w-[80%] block lg:flex ">
+              <div className="w-full 800px:w-[65%] h-[70vh] overflow-y-scroll scrollbar-none py-4 ">
                 <CartData orderData={orderData} />
               </div>
 
-              <div className="w-full lg:w-[35%] lg:mt-0 mt-8">
+              <div className="w-full 800px:w-[35%] lg:mt-0 mt-8">
                 <Shipping orderData={orderData} />
               </div>
             </div>
             <div>
               <button
-                className={`${styles.button} w-[150px] lg:w-[280px] mt-10 text-white font-medium`}
+                className={`${styles.button} w-[150px] 800px:w-[280px] mt-10 text-white font-medium`}
                 onClick={handlePayment}
                 disabled={loading}
               >
@@ -120,7 +120,7 @@ const PaymentPage = ({ orderData, setShowPayment }) => {
 };
 const CartData = ({ orderData }) => {
   return (
-    <div className="w-full lg:w-[95%] bg-[#ffffffbc] rounded-md  pb-8 shadow-lg">
+    <div className="w-full 800px:w-[95%] bg-[#ffffffbc] rounded-md  pb-8 shadow-lg">
       <h1 className="flex justify-center p-3 font-semibold text-[18px] mb-2">
         Order Summary
       </h1>
@@ -135,7 +135,7 @@ const CartData = ({ orderData }) => {
                 <img
                   src={`${item.images && item?.images[0]?.url}`}
                   alt="img"
-                  className="max-w-[50px] max-h-[50px] lg:max-w-[100px] lg:max-h-[60px]"
+                  className="max-w-[50px] max-h-[50px] 800px:max-w-[100px] lg:max-h-[60px]"
                 />
               </div>
               <div className="flex justify-center w-[5%] font-semibold">
