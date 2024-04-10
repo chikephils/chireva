@@ -16,7 +16,7 @@ import Loader from "../Layout/Loader";
 import SmallLoader from "../Layout/SmallLoader";
 import { server } from "../../server";
 import CreateLoader from "../Layout/createLoader";
-const ENDPOINT = "http://localhost:4000/";
+const ENDPOINT = "https://chireva.onrender.com/";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const DashboardMessages = () => {

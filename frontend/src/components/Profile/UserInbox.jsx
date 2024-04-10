@@ -7,7 +7,7 @@ import socketIO from "socket.io-client";
 import { FcSms } from "react-icons/fc";
 import Loader from "../Layout/Loader";
 import SmallLoader from "../Layout/SmallLoader";
-const ENDPOINT = "https://localhost.4000/";
+const ENDPOINT = "https://chireva.onrender.com/";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const UserInbox = () => {
