@@ -8,7 +8,6 @@ import { server } from "../../server";
 import { setShopLogin } from "../../features/shop/shopSlice";
 import { useDispatch } from "react-redux";
 import Logo from "../../Assests/img/logo.png";
-import SmallLoader from "../Layout/SmallLoader";
 import { shopTokenExpires } from "../../utils/auth";
 
 const ShopLogin = () => {
@@ -137,10 +136,11 @@ const ShopLogin = () => {
             </div>
             <div>
               <button
+                disabled={isLoading}
                 type="submit"
                 className="w-full items-center cursor-pointer h-[45px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-lime-500 hover:bg-lime-600"
               >
-                {isLoading ? <SmallLoader /> : "Login"}
+                {isLoading ? "Please wait..." : "Login"}
               </button>
             </div>
             <div
@@ -157,8 +157,10 @@ const ShopLogin = () => {
             </div>
           </form>
         </div>
-        <p className="flex justify-center">Email: chikephils@gmail.com</p>
-        <p className="flex justify-center">password: bellamy</p>
+        <p className="flex justify-center text-[12px]">
+          Email: chikephils@gmail.com
+        </p>
+        <p className="flex justify-center text-[12px]">password: bellamy</p>
       </div>
     </div>
   );

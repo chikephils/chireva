@@ -431,6 +431,7 @@ router.put(
     }
   })
 );
+
 //update user addressses
 router.put(
   "/update-user-addresses",
@@ -513,7 +514,9 @@ router.put(
         return next(new ErrorHandler("Password do not Match", 400));
       }
 
-      user.password = req.body.newPassword;
+      const hashedPassword = await bcrypt.hash(req.body.newPassword, 12);
+
+      user.password = hashedPassword;
       await user.save();
 
       res.status(200).json({

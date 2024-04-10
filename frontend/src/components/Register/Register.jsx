@@ -60,7 +60,7 @@ const Register = () => {
 
   return (
     <div>
-      <div className="relative flex-col pb-5">
+      <div className="relative flex-col pb-10">
         <div className=" flex items-center justify-center">
           <Link to="/">
             <img src={Logo} alt="Logo" className="w-14 h-14" />

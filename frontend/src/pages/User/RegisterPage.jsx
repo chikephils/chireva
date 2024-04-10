@@ -6,6 +6,7 @@ const RegisterPage = () => {
     <div className=" min-h-screen bg-gradient-to-r from-slate-200 to-slate-400 ... ">
       <br />
       <Register />
+      <br/>
     </div>
   );
 };

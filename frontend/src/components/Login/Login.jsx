@@ -170,9 +170,13 @@ const Login = () => {
             </div>
           </form>
         </div>
-        <p className="flex justify-center">Email: chikeoreva@gmail.com</p>
-        <p className="flex justify-center">password: bellamy</p>
-        <p className="flex justify-center">This user is also an admin</p>
+        <p className="flex justify-center text-[12px]">
+          Email: chikeoreva@gmail.com
+        </p>
+        <p className="flex justify-center text-[12px]">password: bellamy</p>
+        <p className="flex justify-center text-[12px]">
+          This user is also an admin
+        </p>
       </div>
     </div>
   );

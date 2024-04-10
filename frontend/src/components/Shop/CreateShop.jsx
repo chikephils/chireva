@@ -7,7 +7,6 @@ import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 import Logo from "../../Assests/img/logo.png";
-import SmallLoader from "../Layout/SmallLoader";
 
 const CreateShop = () => {
   const [email, setEmail] = useState("");
@@ -94,7 +93,7 @@ const CreateShop = () => {
                     required
                     value={shopName}
                     onChange={(e) => setShopName(e.target.value)}
-                    className=" appearance-none block w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-400 text-[14px] md:text-[16px]"
+                    className=" h-[40px] appearance-none block w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-400 text-[14px] md:text-[16px]"
                   />
                 </div>
               </div>
@@ -113,7 +112,7 @@ const CreateShop = () => {
                     required
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                    className=" appearance-none block w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-400 text-[14px] md:text-[16px]"
+                    className="h-[40px] appearance-none block w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-400 text-[14px] md:text-[16px]"
                   />
                 </div>
               </div>
@@ -133,7 +132,7 @@ const CreateShop = () => {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className=" appearance-none block w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-400 text-[14px] md:text-[16px]"
+                    className="h-[40px] appearance-none block w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-400 text-[14px] md:text-[16px]"
                   />
                 </div>
               </div>
@@ -152,7 +151,7 @@ const CreateShop = () => {
                     required
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
-                    className=" appearance-none block w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-400 text-[14px] md:text-[16px]"
+                    className="h-[40px] appearance-none block w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-400 text-[14px] md:text-[16px]"
                   />
                 </div>
               </div>
@@ -172,7 +171,7 @@ const CreateShop = () => {
                     required
                     value={zipCode}
                     onChange={(e) => setZipCode(e.target.value)}
-                    className=" appearance-none block w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-400 text-[14px] md:text-[16px]"
+                    className="h-[40px] appearance-none block w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-400 text-[14px] md:text-[16px]"
                   />
                 </div>
               </div>
@@ -192,7 +191,7 @@ const CreateShop = () => {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className=" appearance-none block w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-400 text-[14px] md:text-[16px]"
+                    className="h-[40px] appearance-none block w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-400 text-[14px] md:text-[16px]"
                   />
                   {visible ? (
                     <AiOutlineEye
@@ -216,7 +215,7 @@ const CreateShop = () => {
                   className=" block text-[14px] md:text-[16px] font-semibold text-gray-700"
                 ></label>
                 <div className="mt-2 flex items-center">
-                  <span className=" inline-block h-8 w-8 rounded-full overflow-hidden">
+                  <span className=" inline-block h-10 w-10 rounded-full overflow-hidden">
                     {avatar ? (
                       <img
                         src={avatar}
@@ -224,7 +223,7 @@ const CreateShop = () => {
                         className="h-full w-full object-cover rounded-full"
                       />
                     ) : (
-                      <RxAvatar className="h-8 w-8" />
+                      <RxAvatar className="h-10 w-10" />
                     )}
                   </span>
                   <label
@@ -248,9 +247,9 @@ const CreateShop = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group relative w-full  h-[35px] md:h-[40px] flex items-center justify-center py-2 px-4 border border-transparent text-[16px] font-medium rounded-md text-black bg-lime-500 hover:bg-lime-600"
+                  className="group relative w-full  h-[45px] flex items-center justify-center py-2 px-4 border border-transparent text-[16px] font-medium rounded-md text-black bg-lime-500 hover:bg-lime-600"
                 >
-                  {isSubmitting ? <SmallLoader /> : "Register"}
+                  {isSubmitting ? "Please wait..." : "Register"}
                 </button>
               </div>
               <div
