@@ -76,7 +76,7 @@ const Register = () => {
               <div>
                 <label
                   htmlFor="firstName"
-                  className="block text-[12px] md:text-sm font-medium text-gray-700"
+                  className="block text-[14px] md:text-sm font-medium text-gray-700"
                 >
                   First Name
                 </label>
@@ -89,14 +89,14 @@ const Register = () => {
                     required
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="h-[45px] appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-500 text-[12px] md:text-sm"
+                    className="h-[45px] appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-500 text-[16px] md:text-sm"
                   />
                 </div>
               </div>
               <div>
                 <label
                   htmlFor="lastName"
-                  className="block text-[12px] md:text-sm font-medium text-gray-700"
+                  className="block text-[14px] md:text-sm font-medium text-gray-700"
                 >
                   Last Name
                 </label>
@@ -109,14 +109,14 @@ const Register = () => {
                     required
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="h-[45px] appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-500 text-[12px] md:text-sm"
+                    className=" h-[45px] appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-500 text-[16px] md:text-sm"
                   />
                 </div>
               </div>
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-[12px] md:text-sm font-medium text-gray-700"
+                  className="block text-[14px] md:text-sm font-medium text-gray-700"
                 >
                   Email address:
                 </label>
@@ -129,14 +129,14 @@ const Register = () => {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="h-[45px] appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-500 text-[12px] md:text-sm"
+                    className="h-[45px] appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-500 text-[16px] md:text-sm"
                   />
                 </div>
               </div>
               <div>
                 <label
                   htmlFor="password"
-                  className="block text-[12px] md:text-sm font-medium text-gray-700"
+                  className="block text-[14px] md:text-sm font-medium text-gray-700"
                 >
                   Password
                 </label>
@@ -149,17 +149,17 @@ const Register = () => {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="h-[45px] appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-500 text-[12px] md:text-sm"
+                    className="h-[45px] appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-lime-400 focus:border-lime-500 text-[16px] md:text-sm"
                   />
                   {visible ? (
                     <AiOutlineEye
-                      className=" absolute right-2 top-1 cursor-pointer"
+                      className=" absolute right-2 top-3 cursor-pointer"
                       size={22}
                       onClick={() => setVisible(false)}
                     />
                   ) : (
                     <AiOutlineEyeInvisible
-                      className=" absolute right-2 top-1 cursor-pointer"
+                      className=" absolute right-2 top-3 cursor-pointer"
                       size={22}
                       onClick={() => setVisible(true)}
                     />
@@ -173,7 +173,7 @@ const Register = () => {
                   className=" block text-sm font-medium text-gray-700"
                 ></label>
                 <div className="mt-2 flex items-center">
-                  <span className=" inline-block h-8 w-8 rounded-full overflow-hidden">
+                  <span className=" inline-block h-10 w-10 rounded-full overflow-hidden">
                     {avatar ? (
                       <img
                         src={avatar}
@@ -186,7 +186,7 @@ const Register = () => {
                   </span>
                   <label
                     htmlFor="file-input"
-                    className=" ml-5 flex items-center justify-center px-4 py-1 border border-gray-300 rounded-md shadow-md text-[12px] md:text-sm font-medium text-gray-700 bg-white hover:bg-gray-200 cursor-pointer"
+                    className=" h-[40px] ml-5 flex items-center justify-center px-4 py-1 border border-gray-300 rounded-md shadow-md text-[14px] md:text-sm font-medium text-gray-700 bg-white hover:bg-gray-200 cursor-pointer"
                   >
                     <span>Upload Image</span>
                     <input
@@ -204,22 +204,18 @@ const Register = () => {
               <div>
                 <button
                   type="submit"
-                  className="group relative w-full h-[45px] md:h-[40px] flex items-center justify-center py-1 px-4 border border-transparent text-[14px] md:text-sm font-medium rounded-md text-black bg-lime-400 hover:bg-lime-500"
+                  className="group relative w-full h-[45px] md:h-[40px] flex items-center justify-center py-1 px-4 border border-transparent text-[16px] md:text-sm font-medium rounded-md text-black bg-lime-400 hover:bg-lime-500"
                 >
-                  {isLoading ? (
-                    <SmallLoader className="relative flex items-center justify-center" />
-                  ) : (
-                    "Register"
-                  )}
+                  {isLoading ? <SmallLoader /> : "Register"}
                 </button>
               </div>
               <div
-                className={`${styles.normalFlex} gap-4 w-full text-[12px] md:text-sm`}
+                className={`${styles.normalFlex} gap-4 w-full text-[14px] md:text-sm`}
               >
                 <h5>Already have an Account ?</h5>
                 <Link
                   to="/login"
-                  className="text-blue-600 hover:text-blue-800 pl-2 text-[12px] md:text-sm "
+                  className="text-blue-600 hover:text-blue-800 pl-2 text-[14px] md:text-sm "
                 >
                   Login
                 </Link>
