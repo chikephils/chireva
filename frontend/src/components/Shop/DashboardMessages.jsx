@@ -16,7 +16,7 @@ import Loader from "../Layout/Loader";
 import SmallLoader from "../Layout/SmallLoader";
 import { server } from "../../server";
 import CreateLoader from "../Layout/createLoader";
-const ENDPOINT = "http://localhost:4000/";
+const ENDPOINT = "https://chireva.onrender.com/";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const DashboardMessages = () => {
@@ -72,6 +72,7 @@ const DashboardMessages = () => {
           {
             headers: {
               Authorization: `Bearer ${sellerToken}`,
+              "Content-Type": "application/json",
             },
           }
         );
@@ -240,7 +241,7 @@ const DashboardMessages = () => {
             </h1>
           </div>
           {/* All Messages List */}
-          <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-4">
+          <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-12">
             {isLoading ? (
               <div className="flex items-center justify-center  h-[60vh] ">
                 <Loader />
@@ -271,7 +272,7 @@ const DashboardMessages = () => {
       )}
 
       {open && (
-        <div className="w-full h-full  pb-2">
+        <div className="w-full h-full">
           <SellerInbox
             setOpen={setOpen}
             newMessage={newMessage}
@@ -398,9 +399,9 @@ const SellerInbox = ({
   seller,
 }) => {
   return (
-    <div className="flex flex-col justify-between pb-2">
+    <div className="flex flex-col justify-between pb-10">
       {/* message header */}
-      <div className=" flex h-[10vh] items-center justify-between py-2 sticky top-2 mb-2 bg-slate-300 px-2">
+      <div className=" flex items-center justify-between py-2 sticky top-2 mb-2 bg-slate-300 pr-2">
         <div className="flex">
           <img
             src={`${userData?.avatar?.url}`}
@@ -422,7 +423,7 @@ const SellerInbox = ({
       </div>
 
       {/* messages container */}
-      <div className=" h-[60vh] overflow-y-scroll scrollbar-none py-2 ">
+      <div className=" h-[60vh] overflow-y-scroll scrollbar-none py-2 shadow-xl">
         {" "}
         {messages &&
           messages.map((message, index) => {
@@ -489,7 +490,7 @@ const SellerInbox = ({
 
       {/* message input */}
       <form
-        className=" relative w-full flex justify-between items-center"
+        className="relative w-full flex justify-between items-center"
         onSubmit={sendMessageHandler}
       >
         <div className="w-[30px]">
