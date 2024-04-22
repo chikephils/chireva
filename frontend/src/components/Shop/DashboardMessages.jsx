@@ -16,7 +16,7 @@ import Loader from "../Layout/Loader";
 import SmallLoader from "../Layout/SmallLoader";
 import { server } from "../../server";
 import CreateLoader from "../Layout/createLoader";
-const ENDPOINT = "https://chireva.onrender.com/";
+const ENDPOINT = "http://localhost:4000/";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const DashboardMessages = () => {
@@ -72,7 +72,6 @@ const DashboardMessages = () => {
           {
             headers: {
               Authorization: `Bearer ${sellerToken}`,
-              "Content-Type": "application/json",
             },
           }
         );
@@ -241,7 +240,7 @@ const DashboardMessages = () => {
             </h1>
           </div>
           {/* All Messages List */}
-          <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-12">
+          <div className=" h-[calc(100%-38px)] overflow-y-scroll scrollbar-none pt-3 pb-4">
             {isLoading ? (
               <div className="flex items-center justify-center  h-[60vh] ">
                 <Loader />
@@ -272,21 +271,23 @@ const DashboardMessages = () => {
       )}
 
       {open && (
-        <SellerInbox
-          setOpen={setOpen}
-          newMessage={newMessage}
-          setNewMessage={setNewMessage}
-          sendMessageHandler={sendMessageHandler}
-          messages={messages}
-          sellerId={seller._id}
-          userData={userData}
-          activeStatus={activeStatus}
-          scrollRef={scrollRef}
-          setMessages={setMessages}
-          handleImageUpload={handleImageUpload}
-          imgLoading={imgLoading}
-          seller={seller}
-        />
+        <div className="w-full h-full  pb-2">
+          <SellerInbox
+            setOpen={setOpen}
+            newMessage={newMessage}
+            setNewMessage={setNewMessage}
+            sendMessageHandler={sendMessageHandler}
+            messages={messages}
+            sellerId={seller._id}
+            userData={userData}
+            activeStatus={activeStatus}
+            scrollRef={scrollRef}
+            setMessages={setMessages}
+            handleImageUpload={handleImageUpload}
+            imgLoading={imgLoading}
+            seller={seller}
+          />
+        </div>
       )}
     </div>
   );
@@ -397,9 +398,9 @@ const SellerInbox = ({
   seller,
 }) => {
   return (
-    <div className="w-full flex flex-col justify-between pb-2">
+    <div className="flex flex-col justify-between pb-2">
       {/* message header */}
-      <div className=" flex items-center justify-between py-2 sticky top-2 mb-2 bg-slate-300 pr-2">
+      <div className=" flex h-[10vh] items-center justify-between py-2 sticky top-2 mb-2 bg-slate-300 px-2">
         <div className="flex">
           <img
             src={`${userData?.avatar?.url}`}
@@ -421,7 +422,7 @@ const SellerInbox = ({
       </div>
 
       {/* messages container */}
-      <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-3 pb-6">
+      <div className=" h-[60vh] overflow-y-scroll scrollbar-none py-2 ">
         {" "}
         {messages &&
           messages.map((message, index) => {
@@ -488,7 +489,7 @@ const SellerInbox = ({
 
       {/* message input */}
       <form
-        className="p-3 relative w-full flex justify-between items-center"
+        className=" relative w-full flex justify-between items-center"
         onSubmit={sendMessageHandler}
       >
         <div className="w-[30px]">
@@ -518,7 +519,7 @@ const SellerInbox = ({
           <label htmlFor="send">
             <AiOutlineSend
               size={20}
-              className="absolute right-4 top-5 cursor-pointer"
+              className="absolute right-2 top-5 cursor-pointer"
             />
           </label>
         </div>
