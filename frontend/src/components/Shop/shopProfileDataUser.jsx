@@ -34,7 +34,7 @@ const ShopProfileDataUser = ({ isOwner }) => {
   }, [dispatch, id]);
 
   return (
-    <div className="w-full lg-pr-2">
+    <div className="w-full 800px:pr-3">
       <div className="flex w-full items-center justify-between sticky top-0 left-0 z-10 bg-slate-200 px-2 h-[60px] overflow-x-scroll scrollbar-none">
         <div className="w-full flex ">
           <div className="flex items-center" onClick={() => setActive(1)}>
@@ -105,7 +105,7 @@ const ShopProductsTab = ({ data, isLoading }) => {
           No products available.
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:gap-[30px] lg:grid-cols-3 lg:gap-[40px] xl:grid-cols-4 xl:gap-[50px] 600px:grid-cols-3 600px:gap-[10px] 800px:grid-cols-4 800px:gap-[20px] pb-10 justify-items-center">
+        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:gap-[30px] lg:grid-cols-3 lg:gap-[40px] xl:grid-cols-4 xl:gap-[50px] 600px:grid-cols-3 600px:gap-[10px] 800px:grid-cols-4 800px:gap-[20px] pb-10 justify-items-center 800px:px-3">
           {data &&
             data.map((product) => (
               <ProductCard key={product._id} product={product} />

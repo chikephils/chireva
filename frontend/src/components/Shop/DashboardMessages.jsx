@@ -397,7 +397,7 @@ const SellerInbox = ({
   seller,
 }) => {
   return (
-    <div className="w-full h-[90vh] flex flex-col justify-between pb-2">
+    <div className="w-full flex flex-col justify-between pb-2">
       {/* message header */}
       <div className=" flex items-center justify-between py-2 sticky top-2 mb-2 bg-slate-300 pr-2">
         <div className="flex">

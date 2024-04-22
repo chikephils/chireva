@@ -20,9 +20,25 @@ const WithdrawMoney = () => {
   const [isloading, setIsLoading] = useState(false);
   const [withdrawAmount, setWithdrawAmount] = useState(1000);
   const [paymentMethod, setPaymentMethod] = useState(false);
+  const [availableBalance, setAvailableBalance] = useState(
+    seller?.availableBalance.toFixed(2)
+  );
   const sellerToken = useSelector((state) => state.shop.sellerToken);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (seller._id) {
+      axios
+        .get(`${server}/shop/get-shop-info/${seller._id}`)
+        .then((res) => {
+          setAvailableBalance(res.data.shop.availableBalance.toFixed(2));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [seller._id]);
 
   useEffect(() => {
     axios
@@ -157,14 +173,11 @@ const WithdrawMoney = () => {
         </div>
         <div className=" h-[70vh] rounded flex items-center justify-center flex-col overflow-y-scroll scrollbar-none pb-6">
           <h5 className="text-[16px] md:text-[18px] lg:text-[20px] pb-4">
-            Available Balance:{" "}
-            <strong>&#x20A6;{seller?.availableBalance}</strong>
+            Available Balance: <strong>&#x20A6;{availableBalance}</strong>
           </h5>
           <div
             className={`${styles.button} text-white !h-[40px]  p-3 !rounded-xl`}
-            onClick={() =>
-              seller?.availableBalance < 1000 ? error() : setOpen(true)
-            }
+            onClick={() => (availableBalance < 1000 ? error() : setOpen(true))}
           >
             Withdraw
           </div>
@@ -230,8 +243,9 @@ const WithdrawMoney = () => {
                           <button
                             type="submit"
                             className={`${styles.button} !h-[40px]  p-3 mb-3 text-white`}
+                            disabled={loading}
                           >
-                            {loading ? <SmallLoader /> : "Add"}
+                            {loading ? "Adding..." : "Add"}
                           </button>
                         </div>
                       </div>

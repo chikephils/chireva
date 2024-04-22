@@ -18,7 +18,7 @@ import { getAllShopOrders } from "../../features/shop/shopSlice";
 import { server } from "../../server";
 import axios from "axios";
 import Loader from "../Layout/Loader";
-import SmallLoader from "../Layout/SmallLoader";
+
 
 const DashboardHero = () => {
   const dispatch = useDispatch();

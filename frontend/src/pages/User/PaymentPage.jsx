@@ -93,7 +93,7 @@ const PaymentPage = ({ orderData, setShowPayment }) => {
           </div>
           <div className="w-full flex flex-col items-center py-8 320px:mt-24 600px:mt-14">
             <div className="w-[95%] 800px:w-[80%] block lg:flex ">
-              <div className="w-full 800px:w-[65%] h-[70vh] overflow-y-scroll scrollbar-none py-4 ">
+              <div className="w-full 800px:w-[65%] max-h-[70vh] overflow-y-scroll scrollbar-none py-4 ">
                 <CartData orderData={orderData} />
               </div>
 
@@ -120,7 +120,7 @@ const PaymentPage = ({ orderData, setShowPayment }) => {
 };
 const CartData = ({ orderData }) => {
   return (
-    <div className="w-full 800px:w-[95%] bg-[#ffffffbc] rounded-md  pb-8 shadow-lg">
+    <div className="w-full 800px:w-[95%] bg-[#ffffffbc] rounded-md  pb-8 shadow-lg px-1">
       <h1 className="flex justify-center p-3 font-semibold text-[18px] mb-2">
         Order Summary
       </h1>
@@ -131,7 +131,7 @@ const CartData = ({ orderData }) => {
               key={item._id}
               className="w-full flex items-center justify-between pb-2"
             >
-              <div className="flex justify-center w-[30%]">
+              <div className="flex justify-center w-[20%]">
                 <img
                   src={`${item.images && item?.images[0]?.url}`}
                   alt="img"
@@ -144,7 +144,7 @@ const CartData = ({ orderData }) => {
               <div className="flex justify-start w-[40%] font-semibold">
                 {item?.name}
               </div>
-              <div className="flex justify-start w-[20%] font-semibold pr-1">
+              <div className="flex justify-start w-[30%] font-semibold pr-1">
                 &#x20A6;{item.discountPrice * item.quantity}
               </div>
             </div>
