@@ -422,7 +422,7 @@ const SellerInbox = ({
 
       {/* messages container */}
 
-      <div className=" h-[75%] overflow-y-scroll scrollbar-none py-2 shadow-xl">
+      <div className=" h-[75%] overflow-y-scroll scrollbar-none py-2 px-1 shadow-xl">
         {" "}
         {messages &&
           messages.map((message, index) => {
@@ -489,7 +489,7 @@ const SellerInbox = ({
       {/* message input */}
       <div>
         <form
-          className="relative w-full flex justify-between items-center p-2"
+          className=" w-full flex justify-between items-center p-2"
           onSubmit={sendMessageHandler}
         >
           <div className="w-[30px]">
@@ -502,7 +502,7 @@ const SellerInbox = ({
               multiple
             />
             <label htmlFor="image">
-              <TfiGallery className="cursor-pointer" size={20} />
+              <TfiGallery className="cursor-pointer" size={20} color="blue" />
             </label>
           </div>
           <div className="w-full">
@@ -512,14 +512,17 @@ const SellerInbox = ({
               placeholder="Enter your message..."
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
-              className={`${styles.input}`}
+              className={`${styles.input} border-b-1 border border-blue-600`}
               rows={2}
             />
+          </div>
+          <div className="w-[30px]">
             <input type="submit" value="Send" className="hidden" id="send" />
             <label htmlFor="send">
               <AiOutlineSend
-                size={20}
-                className="absolute right-2 top-5 cursor-pointer"
+                size={30}
+                className="cursor-pointer pl-1"
+                color="blue"
               />
             </label>
           </div>

@@ -236,9 +236,9 @@ const Inbox = () => {
               <img
                 src={`${seller?.avatar.url}`}
                 alt="img"
-                className="w-[60px] h-[60px] rounded-full"
+                className="w-[60px] h-[60px] rounded-full border border-black"
               />
-              <div className="pl-3">
+              <div className="pl-3 pt-1">
                 <h1 className="text-[18px] font-[600]">{seller?.shopName}</h1>
                 <h1>{online ? "Active Now" : ""}</h1>
               </div>
@@ -251,7 +251,7 @@ const Inbox = () => {
           </div>
           {/* Messages */}
           <div className="w-full rounded-lg flex flex-col pb-1">
-            <div className=" h-[75vh] overflow-y-scroll scrollbar-none py-2 p-1 lg:px-4">
+            <div className=" h-[77vh] overflow-y-scroll scrollbar-none py-2 p-1 lg:px-4">
               {" "}
               {messages &&
                 messages.map((message, index) => {
@@ -319,7 +319,7 @@ const Inbox = () => {
 
             {/* send message input */}
             <form
-              className="p-3  relative w-full flex justify-between items-center"
+              className="p-2 w-full flex justify-between items-center"
               onSubmit={sendMessageHandler}
             >
               <div className="w-[30px]">
@@ -331,7 +331,11 @@ const Inbox = () => {
                   onChange={handleImageUpload}
                 />
                 <label htmlFor="image">
-                  <TfiGallery className="cursor-pointer" size={20} />
+                  <TfiGallery
+                    className="cursor-pointer"
+                    size={20}
+                    color="blue"
+                  />
                 </label>
               </div>
               <div className="w-full">
@@ -341,9 +345,11 @@ const Inbox = () => {
                   placeholder="Enter your message..."
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
-                  className={`${styles.input}`}
+                  className={`${styles.input}  border-blue-600 border-b-1 border`}
                   rows={2}
                 />
+              </div>
+              <div className="w-[30px]">
                 <input
                   type="submit"
                   value="Send"
@@ -352,8 +358,9 @@ const Inbox = () => {
                 />
                 <label htmlFor="send">
                   <AiOutlineSend
-                    size={20}
-                    className="absolute right-4 top-5 cursor-pointer"
+                    size={30}
+                    className=" cursor-pointer pl-1"
+                    color="blue"
                   />
                 </label>
               </div>
