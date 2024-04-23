@@ -272,7 +272,7 @@ const DashboardMessages = () => {
       )}
 
       {open && (
-        <div className="w-full h-full">
+        <div className="w-full pb-10">
           <SellerInbox
             setOpen={setOpen}
             newMessage={newMessage}
@@ -399,7 +399,7 @@ const SellerInbox = ({
   seller,
 }) => {
   return (
-    <div className="flex flex-col justify-between pb-10">
+    <div className="flex flex-col justify-between">
       {/* message header */}
       <div className=" w-full h-[10vh] flex items-center justify-between py-2  bg-slate-300 px-2 rounded-lg">
         <div className="flex">
@@ -423,7 +423,7 @@ const SellerInbox = ({
       </div>
 
       {/* messages container */}
-      <div className="w-full rounded-lg flex flex-col pb-1">
+      <div className="w-full rounded-lg flex flex-col">
         <div className=" h-[60vh] overflow-y-scroll scrollbar-none py-2 shadow-xl">
           {" "}
           {messages &&
