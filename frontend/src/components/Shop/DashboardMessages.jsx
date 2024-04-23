@@ -401,7 +401,7 @@ const SellerInbox = ({
   return (
     <div className="flex flex-col justify-between pb-10">
       {/* message header */}
-      <div className=" flex items-center justify-between py-2 sticky top-2 mb-2 bg-slate-300 pr-2">
+      <div className=" w-full h-[10vh] flex items-center justify-between py-2  bg-slate-300 px-2 rounded-lg">
         <div className="flex">
           <img
             src={`${userData?.avatar?.url}`}
@@ -491,7 +491,7 @@ const SellerInbox = ({
 
         {/* message input */}
         <form
-          className="relative w-full flex justify-between items-center"
+          className="relative w-full flex justify-between items-center mb-2"
           onSubmit={sendMessageHandler}
         >
           <div className="w-[30px]">
