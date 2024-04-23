@@ -399,7 +399,7 @@ const SellerInbox = ({
   seller,
 }) => {
   return (
-    <div className=" pb-10">
+    <div className="flex flex-col justify-between pb-10">
       {/* message header */}
       <div className=" flex items-center justify-between py-2 sticky top-2 mb-2 bg-slate-300 pr-2">
         <div className="flex">
@@ -423,108 +423,110 @@ const SellerInbox = ({
       </div>
 
       {/* messages container */}
-      <div className=" h-[60vh] overflow-y-scroll scrollbar-none py-2 shadow-xl">
-        {" "}
-        {messages &&
-          messages.map((message, index) => {
-            return (
-              <div key={index} className="flex flex-col" ref={scrollRef}>
-                <div
-                  className={` flex w-full my-2 ${
-                    message.sender === sellerId
-                      ? "justify-end"
-                      : "justify-start"
-                  }`}
-                >
-                  {message.sender !== sellerId && (
-                    <img
-                      src={`${userData?.avatar.url}`}
-                      alt=""
-                      className="w-[40px] h-[40px] rounded-full mr-3"
-                    />
-                  )}
+      <div className="w-full rounded-lg flex flex-col pb-1">
+        <div className=" h-[60vh] overflow-y-scroll scrollbar-none py-2 shadow-xl">
+          {" "}
+          {messages &&
+            messages.map((message, index) => {
+              return (
+                <div key={index} className="flex flex-col" ref={scrollRef}>
+                  <div
+                    className={` flex w-full my-2 ${
+                      message.sender === sellerId
+                        ? "justify-end"
+                        : "justify-start"
+                    }`}
+                  >
+                    {message.sender !== sellerId && (
+                      <img
+                        src={`${userData?.avatar.url}`}
+                        alt=""
+                        className="w-[40px] h-[40px] rounded-full mr-3"
+                      />
+                    )}
 
-                  {message.images && (
-                    <img
-                      src={`${message?.images?.url}`}
-                      alt=""
-                      className={`w-[150px] h-[150px] object-contain rounded-[10px] mr-2 `}
-                    />
-                  )}
-                  {message.text && (
-                    <div className="max-w-[250px] md:max-w-[300px] lg:max-w-[400px] p-2 rounded">
-                      <div
-                        className={`${
-                          message.sender === sellerId
-                            ? "bg-[#000] p-2 rounded"
-                            : "bg-[#38c776] p-2 rounded"
-                        } text-[#fff]`}
-                      >
-                        {message.text}
+                    {message.images && (
+                      <img
+                        src={`${message?.images?.url}`}
+                        alt=""
+                        className={`w-[150px] h-[150px] object-contain rounded-[10px] mr-2 `}
+                      />
+                    )}
+                    {message.text && (
+                      <div className="max-w-[250px] md:max-w-[300px] lg:max-w-[400px] p-2 rounded">
+                        <div
+                          className={`${
+                            message.sender === sellerId
+                              ? "bg-[#000] p-2 rounded"
+                              : "bg-[#38c776] p-2 rounded"
+                          } text-[#fff]`}
+                        >
+                          {message.text}
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
+
+                  <p
+                    className={`text-[12px] text-[#000000d3] flex w-full ${
+                      message.sender === sellerId
+                        ? "justify-end"
+                        : "justify-start"
+                    }`}
+                  >
+                    <TimeAgo datetime={message.createdAt} />
+                  </p>
                 </div>
-
-                <p
-                  className={`text-[12px] text-[#000000d3] flex w-full ${
-                    message.sender === sellerId
-                      ? "justify-end"
-                      : "justify-start"
-                  }`}
-                >
-                  <TimeAgo datetime={message.createdAt} />
-                </p>
-              </div>
-            );
-          })}
-      </div>
-
-      <div
-        className={` flex w-full mt-4 ${
-          !seller ? "justify-end pr-6" : "justify-start"
-        }`}
-      >
-        {imgLoading && <CreateLoader />}
-      </div>
-
-      {/* message input */}
-      <form
-        className="relative w-full flex justify-between items-center"
-        onSubmit={sendMessageHandler}
-      >
-        <div className="w-[30px]">
-          <input
-            type="file"
-            name=""
-            id="image"
-            className="hidden"
-            onChange={handleImageUpload}
-            multiple
-          />
-          <label htmlFor="image">
-            <TfiGallery className="cursor-pointer" size={20} />
-          </label>
+              );
+            })}
         </div>
-        <div className="w-full">
-          <textarea
-            type="text"
-            required
-            placeholder="Enter your message..."
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            className={`${styles.input}`}
-            rows={2}
-          />
-          <input type="submit" value="Send" className="hidden" id="send" />
-          <label htmlFor="send">
-            <AiOutlineSend
-              size={20}
-              className="absolute right-2 top-5 cursor-pointer"
+
+        <div
+          className={` flex w-full mt-4 ${
+            !seller ? "justify-end pr-6" : "justify-start"
+          }`}
+        >
+          {imgLoading && <CreateLoader />}
+        </div>
+
+        {/* message input */}
+        <form
+          className="relative w-full flex justify-between items-center"
+          onSubmit={sendMessageHandler}
+        >
+          <div className="w-[30px]">
+            <input
+              type="file"
+              name=""
+              id="image"
+              className="hidden"
+              onChange={handleImageUpload}
+              multiple
             />
-          </label>
-        </div>
-      </form>
+            <label htmlFor="image">
+              <TfiGallery className="cursor-pointer" size={20} />
+            </label>
+          </div>
+          <div className="w-full">
+            <textarea
+              type="text"
+              required
+              placeholder="Enter your message..."
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              className={`${styles.input}`}
+              rows={2}
+            />
+            <input type="submit" value="Send" className="hidden" id="send" />
+            <label htmlFor="send">
+              <AiOutlineSend
+                size={20}
+                className="absolute right-2 top-5 cursor-pointer"
+              />
+            </label>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
