@@ -308,19 +308,18 @@ const Inbox = () => {
                     </div>
                   );
                 })}
-            </div>
-
-            <div
-              className={` flex w-full mt-4 ${
-                user ? "justify-end pr-6" : "justify-start"
-              }`}
-            >
-              {imgLoading && <CreateLoader />}
+              <div
+                className={` flex w-full mt-4 ${
+                  user ? "justify-end pr-6" : "justify-start"
+                }`}
+              >
+                {imgLoading && <CreateLoader />}
+              </div>
             </div>
 
             {/* send message input */}
             <form
-              className="p-3  relative w-full flex justify-between items-center mb-2"
+              className="p-3  relative w-full flex justify-between items-center"
               onSubmit={sendMessageHandler}
             >
               <div className="w-[30px]">

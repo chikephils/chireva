@@ -272,7 +272,7 @@ const DashboardMessages = () => {
       )}
 
       {open && (
-        <div className="w-full pb-10">
+        <div className="w-full h-full">
           <SellerInbox
             setOpen={setOpen}
             newMessage={newMessage}
@@ -333,8 +333,6 @@ const MessageList = ({
     setOpen(true);
   };
 
-  console.log(user);
-
   return (
     <div
       className={`w-full flex p-2 md:p-3 px-1 md:px-3 bg-gradient-to-l from-slate-100 to-slate-200 ... shadow-lg rounded-md ${
@@ -373,7 +371,7 @@ const MessageList = ({
           <h1 className="text-[18px] text-[#000]">{user?.firstName}</h1>
           <p className="text-[16px] text-[#000c]">
             {" "}
-            {!sellerLoading && conversation?.lastMessageId !== me
+            {!sellerLoading && conversation?.lastMessageId !== user?._id
               ? "You:"
               : user?.firstName?.split(0, 8) + ": "}{" "}
             {conversation?.lastMessage}
@@ -399,9 +397,9 @@ const SellerInbox = ({
   seller,
 }) => {
   return (
-    <div className="flex flex-col justify-between">
+    <div className=" h-full w-full flex flex-col justify-between">
       {/* message header */}
-      <div className=" w-full h-[10vh] flex items-center justify-between py-2  bg-slate-300 px-2 rounded-lg">
+      <div className=" w-full h-[12%] flex items-center justify-between py-2  bg-slate-300 px-2 rounded-lg">
         <div className="flex">
           <img
             src={`${userData?.avatar?.url}`}
@@ -423,64 +421,62 @@ const SellerInbox = ({
       </div>
 
       {/* messages container */}
-      <div className="w-full rounded-lg flex flex-col">
-        <div className=" h-[60vh] overflow-y-scroll scrollbar-none py-2 shadow-xl">
-          {" "}
-          {messages &&
-            messages.map((message, index) => {
-              return (
-                <div key={index} className="flex flex-col" ref={scrollRef}>
-                  <div
-                    className={` flex w-full my-2 ${
-                      message.sender === sellerId
-                        ? "justify-end"
-                        : "justify-start"
-                    }`}
-                  >
-                    {message.sender !== sellerId && (
-                      <img
-                        src={`${userData?.avatar.url}`}
-                        alt=""
-                        className="w-[40px] h-[40px] rounded-full mr-3"
-                      />
-                    )}
 
-                    {message.images && (
-                      <img
-                        src={`${message?.images?.url}`}
-                        alt=""
-                        className={`w-[150px] h-[150px] object-contain rounded-[10px] mr-2 `}
-                      />
-                    )}
-                    {message.text && (
-                      <div className="max-w-[250px] md:max-w-[300px] lg:max-w-[400px] p-2 rounded">
-                        <div
-                          className={`${
-                            message.sender === sellerId
-                              ? "bg-[#000] p-2 rounded"
-                              : "bg-[#38c776] p-2 rounded"
-                          } text-[#fff]`}
-                        >
-                          {message.text}
-                        </div>
+      <div className=" h-[75%] overflow-y-scroll scrollbar-none py-2 shadow-xl">
+        {" "}
+        {messages &&
+          messages.map((message, index) => {
+            return (
+              <div key={index} className="flex flex-col" ref={scrollRef}>
+                <div
+                  className={` flex w-full my-2 ${
+                    message.sender === sellerId
+                      ? "justify-end"
+                      : "justify-start"
+                  }`}
+                >
+                  {message.sender !== sellerId && (
+                    <img
+                      src={`${userData?.avatar.url}`}
+                      alt=""
+                      className="w-[40px] h-[40px] rounded-full mr-3"
+                    />
+                  )}
+
+                  {message.images && (
+                    <img
+                      src={`${message?.images?.url}`}
+                      alt=""
+                      className={`w-[150px] h-[150px] object-contain rounded-[10px] mr-2 `}
+                    />
+                  )}
+                  {message.text && (
+                    <div className="max-w-[250px] md:max-w-[300px] lg:max-w-[400px] p-2 rounded">
+                      <div
+                        className={`${
+                          message.sender === sellerId
+                            ? "bg-[#000] p-2 rounded"
+                            : "bg-[#38c776] p-2 rounded"
+                        } text-[#fff]`}
+                      >
+                        {message.text}
                       </div>
-                    )}
-                  </div>
-
-                  <p
-                    className={`text-[12px] text-[#000000d3] flex w-full ${
-                      message.sender === sellerId
-                        ? "justify-end"
-                        : "justify-start"
-                    }`}
-                  >
-                    <TimeAgo datetime={message.createdAt} />
-                  </p>
+                    </div>
+                  )}
                 </div>
-              );
-            })}
-        </div>
 
+                <p
+                  className={`text-[12px] text-[#000000d3] flex w-full ${
+                    message.sender === sellerId
+                      ? "justify-end"
+                      : "justify-start"
+                  }`}
+                >
+                  <TimeAgo datetime={message.createdAt} />
+                </p>
+              </div>
+            );
+          })}
         <div
           className={` flex w-full mt-4 ${
             !seller ? "justify-end pr-6" : "justify-start"
@@ -488,10 +484,12 @@ const SellerInbox = ({
         >
           {imgLoading && <CreateLoader />}
         </div>
+      </div>
 
-        {/* message input */}
+      {/* message input */}
+      <div>
         <form
-          className="relative w-full flex justify-between items-center mb-2"
+          className="relative w-full flex justify-between items-center p-2"
           onSubmit={sendMessageHandler}
         >
           <div className="w-[30px]">
