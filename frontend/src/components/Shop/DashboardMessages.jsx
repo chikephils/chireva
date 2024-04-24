@@ -87,7 +87,7 @@ const DashboardMessages = () => {
     getConversation();
   }, [seller, messages]);
 
-  //Check if useris online
+  //Check if user is online
   const onlineCheck = (chat) => {
     const chatMembers = chat.members.find((member) => member !== seller?._id);
     const online = onlineUsers.find((user) => user.userId === chatMembers);
@@ -399,7 +399,7 @@ const SellerInbox = ({
   return (
     <div className=" h-full w-full flex flex-col justify-between">
       {/* message header */}
-      <div className=" w-full h-[12%] flex items-center justify-between py-2  bg-slate-300 px-2 rounded-lg">
+      <div className=" w-full h-[12vh] flex items-center justify-between py-2  bg-slate-300 px-2 rounded-lg">
         <div className="flex">
           <img
             src={`${userData?.avatar?.url}`}
@@ -422,7 +422,7 @@ const SellerInbox = ({
 
       {/* messages container */}
 
-      <div className=" h-[75%] overflow-y-scroll scrollbar-none py-2 px-1 shadow-xl">
+      <div className=" h-[75vh] overflow-y-scroll scrollbar-none py-2 px-1 shadow-xl">
         {" "}
         {messages &&
           messages.map((message, index) => {

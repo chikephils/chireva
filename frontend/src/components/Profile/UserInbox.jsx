@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -14,12 +14,8 @@ const UserInbox = () => {
   const user = useSelector((state) => state.user.user);
   const [conversations, setConversations] = useState([]);
   const [arrivalMessage, setArrivalMessage] = useState("");
-  const [currentChat, setCurrentChat] = useState();
-  const [activeStatus, setActiveStatus] = useState(false);
-  const [messages, setMessages] = useState([]);
   const [sellerData, setSellerData] = useState({});
   const [onlineUsers, setOnlineUsers] = useState([]);
-  const scrollRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
   const token = useSelector((state) => state.user.token);
 
@@ -38,17 +34,10 @@ const UserInbox = () => {
       setArrivalMessage({
         sender: data.senderId,
         text: data.text,
-        images: data.images,
         createdAt: Date.now(),
       });
     });
   }, [arrivalMessage]);
-
-  useEffect(() => {
-    arrivalMessage &&
-      currentChat?.members.includes(arrivalMessage.sender) &&
-      setMessages((prev) => [...prev, arrivalMessage]);
-  }, [arrivalMessage, currentChat]);
 
   useEffect(() => {
     const getConversation = async () => {
@@ -71,7 +60,7 @@ const UserInbox = () => {
       }
     };
     getConversation();
-  }, [user, messages]);
+  }, [user]);
 
   const onLlineCheck = (chat) => {
     const chatMembers = chat.members.find((member) => member !== user?._id);
@@ -79,10 +68,6 @@ const UserInbox = () => {
 
     return online ? true : false;
   };
-
-  useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behaviour: "smooth" });
-  }, [messages]);
 
   return (
     <div className="h-full px-2">
@@ -106,12 +91,10 @@ const UserInbox = () => {
                   conversation={conversation}
                   key={index}
                   index={index}
-                  setCurrentChat={setCurrentChat}
                   me={user?._id}
                   setSellerData={setSellerData}
                   sellerData={sellerData}
                   online={onLlineCheck(conversation)}
-                  setActiveStatus={setActiveStatus}
                 />
               ))}
           </>
@@ -120,21 +103,13 @@ const UserInbox = () => {
     </div>
   );
 };
-const MessageList = ({
-  conversation,
-  index,
-  me,
-  online,
-  setActiveStatus,
-  userLoading,
-}) => {
+const MessageList = ({ conversation, index, me, online, userLoading }) => {
   const [active, setActive] = useState(0);
-  const [seller, setSeller] = useState({});
+  const [seller, setSeller] = useState([]);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setActiveStatus(online);
     const sellerId = conversation.members.find((user) => user !== me);
     const getSeller = async () => {
       try {
@@ -150,22 +125,24 @@ const MessageList = ({
       }
     };
     getSeller();
-  }, [me, conversation]);
+  }, [me, conversation, online]);
 
   const handleClick = (id) => {
+    setActive(index);
     navigate(`${id}`, {
       state: {
         conversation,
         seller,
         online,
+        activeStatus: true,
       },
     });
   };
 
   return (
     <div
-      className={`w-full flex p-2 md:p-3 px-1 md:px-3  border-[0.5px] shadow-lg rounded-md bg-gradient-to-r from-slate-100 to-slate-200 ... mb-2 ${
-        active === index ? "bg-[00000010]" : "bg-transparent"
+      className={`w-full flex p-2 md:p-3 px-1 md:px-3 border-black border-[0.5px] shadow-lg rounded-md bg-gradient-to-r from-slate-100 to-slate-200 ... mb-2 ${
+        active === index ? "bg-[#00000010]" : "bg-transparent"
       } cursor-pointer`}
       onClick={handleClick}
     >

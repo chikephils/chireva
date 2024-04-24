@@ -142,6 +142,7 @@ const ProductDetails = ({ product }) => {
           state: {
             conversation: response.data.conversation,
             seller: product.shop,
+            online: true,
           },
         });
       } catch (error) {

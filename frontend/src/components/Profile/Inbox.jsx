@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-import { selectUser } from "../../features/user/userSlice";
 import { server } from "../../server";
 import axios from "axios";
 import { AiOutlineSend } from "react-icons/ai";
@@ -24,25 +23,16 @@ const Inbox = () => {
   const [messages, setMessages] = useState([]);
   const [images, setImages] = useState();
   const [newMessage, setNewMessage] = useState("");
-  const [onlineUsers, setOnlineUsers] = useState([]);
   const scrollRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const { conversation, seller, online } = location.state;
+  const { conversation, seller, online, activeStatus } = location.state;
   const [imgLoading, setImageLoading] = useState(false);
   const token = useSelector((state) => state.user?.token);
 
   const me = user?._id;
 
-  useEffect(() => {
-    if (user) {
-      const userId = user?._id;
-      socketId.emit("addUser", userId);
-      socketId.on("getUsers", (data) => {
-        setOnlineUsers(data);
-      });
-    }
-  }, [user, setOnlineUsers]);
+  console.log(location.state);
 
   useEffect(() => {
     socketId.on("getMessage", (data) => {
@@ -231,16 +221,16 @@ const Inbox = () => {
       ) : (
         <>
           {/* Message header */}
-          <div className=" w-full h-[10vh] flex items-center justify-between py-2  bg-slate-300 px-2 rounded-lg">
+          <div className=" w-full h-[12vh] flex items-center justify-between py-2  bg-slate-500 px-2 rounded-lg">
             <div className="flex">
               <img
                 src={`${seller?.avatar.url}`}
                 alt="img"
-                className="w-[60px] h-[60px] rounded-full border border-black"
+                className="w-[60px] h-[60px] rounded-full border-black border"
               />
-              <div className="pl-3 pt-1">
+              <div className="pl-3 pt-1 ">
                 <h1 className="text-[18px] font-[600]">{seller?.shopName}</h1>
-                <h1>{online ? "Active Now" : ""}</h1>
+                <h1>{online || activeStatus ? "Active Now" : ""}</h1>
               </div>
             </div>
             <RxCross1
@@ -250,8 +240,8 @@ const Inbox = () => {
             />
           </div>
           {/* Messages */}
-          <div className="w-full rounded-lg flex flex-col pb-1">
-            <div className=" h-[77vh] overflow-y-scroll scrollbar-none py-2 p-1 lg:px-4">
+          <div className="w-full rounded-lg flex flex-col">
+            <div className=" h-[75vh] overflow-y-scroll scrollbar-none py-2 p-1 lg:px-4 shadow-xl">
               {" "}
               {messages &&
                 messages.map((message, index) => {
@@ -319,7 +309,7 @@ const Inbox = () => {
 
             {/* send message input */}
             <form
-              className="p-2 w-full flex justify-between items-center"
+              className="p-2 w-full flex justify-between items-center bg-slate-100"
               onSubmit={sendMessageHandler}
             >
               <div className="w-[30px]">
@@ -359,7 +349,7 @@ const Inbox = () => {
                 <label htmlFor="send">
                   <AiOutlineSend
                     size={30}
-                    className=" cursor-pointer pl-1"
+                    className="cursor-pointer pl-1"
                     color="blue"
                   />
                 </label>
