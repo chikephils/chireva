@@ -2,20 +2,17 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { server } from "../../server";
 
-
 const initialState = {
   products: [],
   loading: true,
   error: null,
 };
 
-
 export const getAllProducts = createAsyncThunk(
   "products/getAllProducts",
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${server}/product/get-all-products`);
-      console.log(response);
       return response.data.allProducts;
     } catch (error) {
       console.log(error);

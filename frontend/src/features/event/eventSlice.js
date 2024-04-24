@@ -13,7 +13,6 @@ export const getAllEvents = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${server}/event/get-all-events`);
-      console.log(response);
       return response.data.events;
     } catch (error) {
       console.log(error);
@@ -60,9 +59,6 @@ export const createEvent = createAsyncThunk(
   }
 );
 
-
-
-
 const eventSlice = createSlice({
   name: "events",
   initialState,
@@ -94,9 +90,7 @@ const eventSlice = createSlice({
       .addCase(createEvent.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-      })
-     
-     
+      });
   },
 });
 
@@ -104,4 +98,3 @@ export default eventSlice.reducer;
 export const selectAllEvents = (state) => state.events.events;
 export const selectEventLoading = (state) => state.events.loading;
 export const selectEventError = (state) => state.events.error;
-

@@ -29,10 +29,8 @@ const Inbox = () => {
   const { conversation, seller, online, activeStatus } = location.state;
   const [imgLoading, setImageLoading] = useState(false);
   const token = useSelector((state) => state.user?.token);
-
   const me = user?._id;
 
-  console.log(location.state);
 
   useEffect(() => {
     socketId.on("getMessage", (data) => {
@@ -91,7 +89,7 @@ const Inbox = () => {
     };
     getMessage();
   }, [currentChat]);
-  console.log(messages);
+  
 
   const sendMessageHandler = async (e) => {
     e.preventDefault();
