@@ -392,28 +392,33 @@ router.put(
   isSeller,
   catchAsyncError(async (req, res, next) => {
     try {
-      let existsSeller = await Shop.findById(req.seller._id);
+      const shop = await Shop.findById(req.seller._id);
 
-        const imageId = existsSeller.avatar.public_id;
+      // Destroy previous shop avatar
+      const imageId = shop.avatar.public_id;
+      await cloudinary.v2.uploader.destroy(imageId);
 
-        await cloudinary.v2.uploader.destroy(imageId);
+      // Upload new shop avatar
+      const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+        folder: "avatars",
+      });
 
-        const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-          folder: "avatars",
-          width: 150,
-        });
+      // Update shop avatar
+      shop.avatar = {
+        public_id: myCloud.public_id,
+        url: myCloud.secure_url,
+      };
+      await shop.save();
 
-        existsSeller.avatar = {
-          public_id: myCloud.public_id,
-          url: myCloud.secure_url,
-        };
-
-  
-      await existsSeller.save();
+      // Update shop avatar for each product
+      await Products.updateMany(
+        { shopId: req.seller._id },
+        { "shop.avatar": shop.avatar }
+      );
 
       res.status(200).json({
         success: true,
-        seller:existsSeller,
+        shop,
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
@@ -441,6 +446,15 @@ router.put(
       shop.zipCode = zipCode;
       shop.description = description;
       await shop.save();
+
+      await Products.updateMany(
+        { shopId: req.seller._id },
+        { "shop.shopName": shop.shopName },
+        { "shop.address": shop.address },
+        { "shop.phoneNumber": shop.phoneNumber },
+        { "shop.zipCode": shop.zipCode },
+        { "shop.description": shop.description }
+      );
 
       res.status(201).json({
         success: true,

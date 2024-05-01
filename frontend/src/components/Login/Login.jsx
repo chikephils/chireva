@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 import { server } from "../../server";
 import { useDispatch } from "react-redux";
 import Logo from "../../Assests/img/logo.png";
-import SmallLoader from "../Layout/SmallLoader";
 import { setLogin } from "../../features/user/userSlice";
 import { tokenExpires } from "../../utils/auth";
 

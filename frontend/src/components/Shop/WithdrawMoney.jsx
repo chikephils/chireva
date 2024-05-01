@@ -184,7 +184,7 @@ const WithdrawMoney = () => {
         </div>
         {open && (
           <div className="fixed top-3 left-0 w-full h-screen bg-[#00000062] z-[5000] flex items-center justify-center pt-10 lg:pl-24 lg:pt-16">
-            <div className="w-[90%] md:w-[70%] lg:w-[50%] h-[75vh] bg-slate-200 rounded-md shadow p-4 overflow-y-scroll scrollbar-none">
+            <div className="w-[90%] md:w-[70%] lg:w-[50%] h-[75vh] bg-gradient-to-r from-slate-300 to-lime-200 ...  rounded-md shadow p-4 overflow-y-scroll scrollbar-none">
               <div className="w-full flex justify-end">
                 <RxCross1
                   size={25}
@@ -243,9 +243,8 @@ const WithdrawMoney = () => {
                           <button
                             type="submit"
                             className={`${styles.button} !h-[40px]  p-3 mb-3 text-white`}
-                            disabled={loading}
                           >
-                            {loading ? "Adding..." : "Add"}
+                            {loading ? <SmallLoader /> : "Add"}
                           </button>
                         </div>
                       </div>
@@ -255,38 +254,42 @@ const WithdrawMoney = () => {
               ) : (
                 <>
                   <h3 className="text-[18px] md:text-[20px] lg:text-[20px] font-semibold flex text-center justify-center md:mb-5">
-                    Available Withdraw Methods
+                    Available Withdrawal Options
                   </h3>
                   {seller && seller?.withdrawMethod ? (
                     <div className=" my-3">
-                      <div className="lg:flex w-full justify-between items-center">
-                        <div className="lg:w-[50%]">
-                          <h5 className="pb-2 flex items-center justify-center">
-                            Account Number :{" "}
-                            <strong>
-                              {" "}
-                              {seller?.withdrawMethod?.accountNumber}
-                            </strong>
-                          </h5>
-                          <h5 className=" pb-2 flex items-center justify-center">
-                            Bank :{" "}
-                            <strong>{seller?.withdrawMethod?.bankName}</strong>
-                          </h5>
-                        </div>
+                      <div className="w-full justify-between items-center">
+                        <div className=" flex justify-between items-center border border-black rounded-lg shadow-lg p-2 bg-gradient-to-r from-slate-50 to-slate-200 ... ">
+                          <div className="flex flex-col justify-center">
+                            <h5 className="pb-2">
+                              Account Number :{" "}
+                              <strong>
+                                {" "}
+                                {seller?.withdrawMethod?.accountNumber}
+                              </strong>
+                            </h5>
+                            <h5 className=" pb-2 ">
+                              Bank :{" "}
+                              <strong>
+                                {seller?.withdrawMethod?.bankName}
+                              </strong>
+                            </h5>
+                          </div>
 
-                        <div className="800px:w-[50%] flex items-center justify-center">
-                          {loading ? (
-                            <SmallLoader />
-                          ) : (
-                            <>
-                              {" "}
-                              <AiOutlineDelete
-                                size={25}
-                                className="cursor-pointer"
-                                onClick={() => handleDelete()}
-                              />
-                            </>
-                          )}
+                          <div>
+                            {loading ? (
+                              <SmallLoader />
+                            ) : (
+                              <>
+                                {" "}
+                                <AiOutlineDelete
+                                  size={25}
+                                  className="cursor-pointer"
+                                  onClick={() => handleDelete()}
+                                />
+                              </>
+                            )}
+                          </div>
                         </div>
                       </div>
                       <br />

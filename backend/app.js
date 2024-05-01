@@ -21,8 +21,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static("public"));
 
-app.use("/test", (req, res) => {
-  res.send("Hello world!");
+app.get("/", (req, res) => {
+  res.send("Hello world... Chireva Shops Server is Running!");
 });
 
 //config
@@ -57,9 +57,5 @@ app.use("/api/v2/withdraw", withdraw);
 
 //For Error Handling
 app.use(ErrorHandler);
-
-app.use("/test", (req, res) => {
-  res.send("Hello world!");
-});
 
 module.exports = app;
