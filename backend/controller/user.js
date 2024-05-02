@@ -11,6 +11,7 @@ const sendToken = require("../utils/jwtToken");
 const { isAuthenticated, isAdmin } = require("../middleware/auth");
 const cloudinary = require("cloudinary");
 const bcrypt = require("bcrypt");
+const Products = require("../model/product");
 
 //Create User
 router.post("/create-user", async (req, res, next) => {
@@ -368,26 +369,49 @@ router.put(
     try {
       const { email, password, phoneNumber, firstName, lastName } = req.body;
 
-      const user = await User.findOne({ email });
+      const user = await User.findById(req.user._id);
 
       if (!user) {
-        return next(new ErrorHandler("User not Found", 400));
+        return next(new ErrorHandler("User not found", 400));
       }
 
       const isPasswordValid = await bcrypt.compare(password, user.password);
 
       if (!isPasswordValid) {
-        return next(
-          new ErrorHandler("Please provide the correct information", 400)
-        );
+        return next(new ErrorHandler("Incorrect password", 400));
       }
 
+      // Update user information
       user.firstName = firstName;
+      user.lastName = lastName;
       user.email = email;
       user.phoneNumber = phoneNumber;
-      user.lastName = lastName;
 
       await user.save();
+
+      // Update user information in product reviews
+      await Products.updateMany(
+        { "reviews.user._id": req.user.id },
+        {
+          $set: {
+            "reviews.$[elem].user.firstName": firstName,
+            "reviews.$[elem].user.lastName": lastName,
+            "reviews.$[elem].user.email": email,
+            "reviews.$[elem].user.phoneNumber": phoneNumber,
+          },
+        },
+        { arrayFilters: [{ "elem.user._id": req.user.id }] }
+      );
+
+      // Fetch and save each updated product document
+      const updatedProducts = await Products.find({
+        "reviews.user._id": req.user.id,
+      });
+      await Promise.all(
+        updatedProducts.map(async (product) => {
+          await product.save({ validateBeforeSave: false });
+        })
+      );
 
       res.status(201).json({
         success: true,
@@ -405,26 +429,44 @@ router.put(
   isAuthenticated,
   catchAsyncErrors(async (req, res, next) => {
     try {
-      let existingUser = await User.findById(req.user.id);
-      if (req.body.avatar !== "") {
-        const imageId = existingUser.avatar.public_id;
+      const user = await User.findById(req.user._id);
+      const imageId = user.avatar.public_id;
 
-        await cloudinary.v2.uploader.destroy(imageId);
+      await cloudinary.v2.uploader.destroy(imageId);
 
-        const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-          folder: "avatars",
-          width: 150,
-        });
+      const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+        folder: "avatars",
+      });
 
-        existingUser.avatar = {
-          public_id: myCloud.public_id,
-          url: myCloud.secure_url,
-        };
-      }
-      await existingUser.save();
+      // Update the user's avatar information
+      user.avatar = {
+        public_id: myCloud.public_id,
+        url: myCloud.secure_url,
+      };
+
+      // Save the updated user information
+      await user.save();
+
+      // Update user information in product reviews
+      await Products.updateMany(
+        { "reviews.user._id": req.user.id },
+        { $set: { "reviews.$[elem].user.avatar": user.avatar } },
+        { arrayFilters: [{ "elem.user._id": req.user.id }] }
+      );
+
+      // Fetch and save each updated product document
+      const updatedProducts = await Products.find({
+        "reviews.user._id": req.user.id,
+      });
+      await Promise.all(
+        updatedProducts.map(async (product) => {
+          await product.save({ validateBeforeSave: false });
+        })
+      );
+
       res.status(200).json({
         success: true,
-        user: existingUser,
+        user: user, // Return the updated user object
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));

@@ -28,7 +28,7 @@ import { selectAllProducts } from "../../features/product/productSlice";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const ProductDetails = ({ product }) => {
-  const [click, setClick] = useState(false);;
+  const [click, setClick] = useState(false);
   const cartItems = useSelector(itemsInCart);
   const wishlist = useSelector(selectWishListItems);
   const navigate = useNavigate();
@@ -53,7 +53,6 @@ const ProductDetails = ({ product }) => {
     products &&
     products.filter((prdt) => prdt?.shop?._id === product?.shop?._id);
 
-
   useEffect(() => {
     if (wishlist && wishlist.find((listItem) => listItem._id === product._id)) {
       setClick(true);
@@ -63,7 +62,7 @@ const ProductDetails = ({ product }) => {
   }, [wishlist, product?._id]);
 
   useEffect(() => {
-    const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]"); 
+    const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
 
     if (
       cartItems.length > 0 &&
@@ -152,8 +151,7 @@ const ProductDetails = ({ product }) => {
       toast.error("Please login to create a conversation");
     }
   };
-  const { name, description, originalPrice, discountPrice, shop } =
-    product;
+  const { name, description, originalPrice, discountPrice, shop } = product;
 
   return (
     <div className="bg-gradient-to-r from-slate-100 to-slate-200 ...">
@@ -331,7 +329,6 @@ const ProductDetails = ({ product }) => {
 
 const ProductDetailsInfo = ({
   product,
-  totalRatings,
   totalReviewsLength,
   shopProducts,
   averageRating,
@@ -388,11 +385,13 @@ const ProductDetailsInfo = ({
           {product &&
             product.reviews.map((review, index) => (
               <div className="w-full flex my-2" key={index}>
-                <img
-                  src={`${review?.user?.avatar?.url}`}
-                  alt=""
-                  className="w-[50px] h-[50px] rounded-full"
-                />
+                <div className="relative" style={{ flexShrink: 0 }}>
+                  <img
+                    src={`${review?.user?.avatar?.url}`}
+                    alt=""
+                    className="w-[50px] h-[50px] rounded-full object-cover"
+                  />
+                </div>
                 <div className="pl-2 ">
                   <div className="w-full flex items-center">
                     <h1 className="font-[500] mr-3">

@@ -243,8 +243,9 @@ const WithdrawMoney = () => {
                           <button
                             type="submit"
                             className={`${styles.button} !h-[40px]  p-3 mb-3 text-white`}
+                            disabled={loading}
                           >
-                            {loading ? <SmallLoader /> : "Add"}
+                            {loading ? "Adding..." : "Add"}
                           </button>
                         </div>
                       </div>

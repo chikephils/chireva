@@ -393,12 +393,9 @@ router.put(
   catchAsyncError(async (req, res, next) => {
     try {
       const shop = await Shop.findById(req.seller._id);
-
-      // Destroy previous shop avatar
       const imageId = shop.avatar.public_id;
       await cloudinary.v2.uploader.destroy(imageId);
 
-      // Upload new shop avatar
       const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
         folder: "avatars",
       });
@@ -412,8 +409,18 @@ router.put(
 
       // Update shop avatar for each product
       await Products.updateMany(
-        { shopId: req.seller._id },
-        { "shop.avatar": shop.avatar }
+        { "shop._id": req.seller._id },
+        { $set: { "shop.avatar": shop.avatar } }
+      );
+
+      // Fetch and save each updated product document
+      const updatedProducts = await Products.find({
+        "shop._id": req.seller._id,
+      });
+      await Promise.all(
+        updatedProducts.map(async (product) => {
+          await product.save({ validateBeforeSave: false });
+        })
       );
 
       res.status(200).json({
@@ -434,26 +441,41 @@ router.put(
     try {
       const { shopName, description, address, phoneNumber, zipCode } = req.body;
 
-      const shop = await Shop.findOne(req.seller._id);
+      const shop = await Shop.findById(req.seller._id);
 
       if (!shop) {
-        return next(new ErrorHandler("User not found", 400));
+        return next(new ErrorHandler("Shop not found", 400));
       }
 
+      // Update shop information
       shop.shopName = shopName;
       shop.address = address;
       shop.phoneNumber = phoneNumber;
       shop.zipCode = zipCode;
       shop.description = description;
+
       await shop.save();
 
+      // Update seller information in associated products
       await Products.updateMany(
         { shopId: req.seller._id },
-        { "shop.shopName": shop.shopName },
-        { "shop.address": shop.address },
-        { "shop.phoneNumber": shop.phoneNumber },
-        { "shop.zipCode": shop.zipCode },
-        { "shop.description": shop.description }
+        {
+          $set: {
+            "shop.shopName": shopName,
+            "shop.address": address,
+            "shop.phoneNumber": phoneNumber,
+            "shop.zipCode": zipCode,
+            "shop.description": description,
+          },
+        }
+      );
+
+      // Fetch and save each updated product document
+      const updatedProducts = await Products.find({ shopId: req.seller._id });
+      await Promise.all(
+        updatedProducts.map(async (product) => {
+          await product.save({ validateBeforeSave: false });
+        })
       );
 
       res.status(201).json({
@@ -461,7 +483,7 @@ router.put(
         shop,
       });
     } catch (error) {
-      return next(new ErrorHandler("error.message", 500));
+      return next(new ErrorHandler(error.message, 500));
     }
   })
 );

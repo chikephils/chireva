@@ -180,11 +180,13 @@ const ShopReviewsTab = ({ isOwner, data, isLoading }) => {
                   className="w-full flex my-4 bg-gradient-to-l from-slate-100 to-slate-200 ... border-[1px] shadow-lg rounded-md p-2"
                   key={index}
                 >
-                  <img
-                    src={`${item.user.avatar?.url}`}
-                    className="w-10 h-10 rounded"
-                    alt=""
-                  />
+                  <div className="relative" style={{ flexShrink: 0 }}>
+                    <img
+                      src={`${item.user.avatar?.url}`}
+                      className="w-12 h-11 rounded-full object-cover"
+                      alt=""
+                    />
+                  </div>
                   <div className="pl-2">
                     <div className="flex w-full items-center">
                       <h1 className="font-[500] pr-2">{item.user.firstName}</h1>

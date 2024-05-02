@@ -31,7 +31,7 @@ const Cart = ({ setOpenCart }) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-[#0000004b] z-50 flex items-start justify-end pb-4">
+    <div className="fixed top-0 left-0 w-full h-full bg-[#0000004b] z-50 flex items-start justify-end">
       <div className="relative w-[70%] lg:w-[40%] bg-gradient-to-r from-slate-200 to-slate-300 flex flex-col justify-between shadow-xl rounded-lg h-full pb-1">
         <div className="w-full h-[40px] flex items-center justify-between px-1 bg-gradient-to-r from-red-300 to-red-500 ...">
           <div>
@@ -62,7 +62,7 @@ const Cart = ({ setOpenCart }) => {
 
         {cartItems && cartItems.length > 0 ? (
           <>
-            <div className="w-full h-[80vh] py-2  flex flex-col overflow-y-scroll scrollbar-none p-1 ">
+            <div className="w-full h-[84vh] py-2  flex flex-col overflow-y-scroll scrollbar-none p-1 ">
               {cartItems &&
                 cartItems.map((item) => (
                   <CartItem key={item._id} item={item} />

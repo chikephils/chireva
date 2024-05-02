@@ -31,7 +31,7 @@ const WishList = ({ setOpenWishList }) => {
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-[#0000004b] z-50 flex items-start justify-end">
-      <div className="relative w-[70%] lg:w-[40%] bg-gradient-to-r from-slate-200 to-slate-300 flex flex-col justify-between shadow-xl rounded-lg h-full">
+      <div className="relative w-[70%] lg:w-[40%] bg-gradient-to-r from-slate-200 to-slate-300 flex flex-col justify-between shadow-xl rounded-lg h-full pb-1">
         <div className="w-full h-[8vh] flex items-center justify-between px-1 bg-gradient-to-r from-cyan-300 to-blue-400 rounded-t-lg">
           <div>
             <RxCross1
@@ -61,20 +61,20 @@ const WishList = ({ setOpenWishList }) => {
 
         {/*Wish LIst items */}
         {wishList && wishList.length > 0 ? (
-          <div className="w-full  rounded-lg flex flex-col pb-1">
+          <>
             <div className="w-full h-[84vh] py-2 flex flex-col  overflow-y-scroll scrollbar-none p-1 ">
               {wishList &&
                 wishList.map((item) => <CartItem key={item._id} item={item} />)}
             </div>
 
             <div className="px-1">
-              <div className="h-[7vh] flex items-center justify-center w-[100%] bg-gradient-to-r from-cyan-400 to-blue-500 ...rounded-xl p-2 rounded-lg">
+              <div className="h-[45px] flex items-center justify-center w-[100%] bg-gradient-to-r from-cyan-400 to-blue-500 ...rounded-xl p-2 rounded-lg">
                 <h1 className="text-black text-[18px] font-[600]">
                   Total &#x20A6; {total.toFixed(2)}
                 </h1>
               </div>
             </div>
-          </div>
+          </>
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center gap-6 p-4">
             <p className="text-md md:text-xl text-textColor font-semibold">
