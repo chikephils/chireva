@@ -154,7 +154,7 @@ const ProductCardDetails = ({
                 <p className="block text-[14px] 800px:text-[18px] pr-2">
                   {product?.description}
                 </p>
-                <div className="flex pt-3">
+                <div className="flex-col pt-3">
                   <h4
                     className={`${styles.productDiscountPrice} text-sm 800px:text-base`}
                   >

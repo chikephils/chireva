@@ -33,7 +33,7 @@ const ShopProfileData = ({ isOwner }) => {
 
   return (
     <div className="w-full 800px:pr-2 ">
-      <div className="flex w-full items-center justify-between sticky top-0 left-0 z-10 bg-slate-300 px-2 overflow-x-scroll scrollbar-none shadow-lg rounded-lg">
+      <div className="flex w-full items-center justify-between sticky top-0 left-0 z-10 bg-slate-300 px-3 overflow-x-scroll scrollbar-none shadow-lg rounded-lg">
         <div className="w-full flex ">
           <div className="flex items-center" onClick={() => setActive(1)}>
             <h5
@@ -103,7 +103,7 @@ const ShopProductsTab = ({ data, isLoading }) => {
           No products available.
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:gap-[30px] 800px:grid-cols-3 800px:gap-[40px] xl:gap-[50px] 2500px:grid-cols-4 600px:grid-cols-3 600px:gap-[10px]  pb-10 justify-items-center">
+        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:gap-[30px] 800px:grid-cols-3 800px:gap-[40px] xl:gap-[50px] 2500px:grid-cols-4 600px:grid-cols-3 600px:gap-[10px]  pb-10 justify-items-center px-2">
           {data &&
             data.map((product) => (
               <SellerProductCard key={product._id} product={product} />
@@ -146,7 +146,7 @@ const RunningEventsTab = () => {
             No Events available.
           </div>
         ) : (
-          <div className="flex flex-col pb-2 p-2 ">
+          <div className="flex flex-col pb-2 p-2 px-1 ">
             {data &&
               data.map((event) => (
                 <SellerEventCard key={event._id} event={event} />
@@ -180,11 +180,14 @@ const ShopReviewsTab = ({ data, isLoading }) => {
                   className="w-full flex my-4 bg-gradient-to-l from-slate-100 to-slate-200 ... border-[1px] shadow-lg rounded-md p-2"
                   key={index}
                 >
-                  <img
-                    src={`${item.user.avatar?.url}`}
-                    className="w-10 h-10 rounded-full"
-                    alt=""
-                  />
+                  <div className="relative" style={{ flexShrink: 0 }}>
+                    <img
+                      src={`${item.user.avatar?.url}`}
+                      className="w-10 h-10 rounded-full"
+                      alt=""
+                    />
+                  </div>
+
                   <div className="pl-2">
                     <div className="flex w-full items-center">
                       <h1 className="font-[500] pr-2">
@@ -195,7 +198,7 @@ const ShopReviewsTab = ({ data, isLoading }) => {
                     <p className="font-[400] text-[#000000a7]">
                       {item?.comment}
                     </p>
-                    <p className="text-[#000000a7] text-[14px]">
+                    <p className="text-[#000000a7] text-[12px] font-[500]">
                       <TimeAgo datetime={item?.createdAt} />
                     </p>
                   </div>

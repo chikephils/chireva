@@ -3,6 +3,7 @@ import { AiOutlineEye } from "react-icons/ai";
 import SellerProductCardDetails from "../ProductCardDetails/SellerProductCardDetails";
 import Ratings from "../../ProductDetails/Ratings";
 import { numbersWithCommas } from "../../../utils/priceDisplay";
+import styles from "../../../styles/styles";
 
 const SellerProductCard = ({ product }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,13 +53,17 @@ const SellerProductCard = ({ product }) => {
           <Ratings rating={product?.ratings} />
         </div>
         <div className="800px:mt-1 flex justify-between">
-          <div className=" flex-col">
-            <p className=" text-[14px] md:text-[14px] 800px:text-base font-medium mt-1">
-              &#x20A6; {editedPrice === 0 ? editedPrice : editedDiscountPrice}
-            </p>
-            <p className=" text-[12px] md:text-[14px] 800px:text-base font-medium text-red-600 line-through mt-1 ">
-              &#x20A6; {editedPrice ? editedPrice : null}
-            </p>
+          <div className="flex-col">
+            <h4
+              className={`${styles.productDiscountPrice} text-sm 800px:text-base`}
+            >
+              &#x20A6; {editedDiscountPrice}
+            </h4>
+            {product.originalPrice !== null && (
+              <h3 className={`${styles.price}  !pt-2`}>
+                &#x20A6; {editedPrice}
+              </h3>
+            )}
           </div>
           <span className="text-[12px] md:text-x[14px] 880px:text-[16px] font-semibold text-lime-600">
             {product.sold_out} sold

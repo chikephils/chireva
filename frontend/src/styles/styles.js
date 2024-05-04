@@ -8,8 +8,8 @@ const styles = {
     " text-[20px] 800px:text-[25px] font-[600] font-Roboto text-[#333]",
   productDiscountPrice: "font-bold text-[18px] text-[#333] font-Roboto",
   sm_productDiscountPrice: "font-bold text-xs text-[#333] font Roboto",
-  price: "font-[500] text-[16px] text-[#d55b45] pl-3 mt-[-4px] line-through",
-  sm_Price: "font-[500] text-xs text-[#d55b45] pl-3 mt-[-4px] line-through",
+  price: "font-[500] text-[15px] text-[#d55b45]  mt-[-4px] line-through",
+  sm_Price: "font-[500] text-xs text-[#d55b45]  mt-[-4px] line-through",
   shop_name: "pt-3 text-[15px] text-blue-400 pb-3",
   active_indicator: "absolute bottom-[-27%] left-0 h-[3px] w-full bg-[crimson]",
   button:

@@ -3,11 +3,14 @@ import { RxCross1 } from "react-icons/rx";
 import styles from "../../../styles/styles";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { numbersWithCommas } from "../../../utils/priceDisplay";
+import { useSelector } from "react-redux";
+import { selectAllShopProducts } from "../../../features/shop/shopSlice";
 
 const SellerProductCardDetails = ({ setIsOpen, product }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const editedPrice = numbersWithCommas(product?.originalPrice);
   const editedDiscountPrice = numbersWithCommas(product?.discountPrice);
+  const shopProducts = useSelector(selectAllShopProducts);
 
   const goToPrevSlide = () => {
     setCurrentIndex(
@@ -20,7 +23,21 @@ const SellerProductCardDetails = ({ setIsOpen, product }) => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % product?.images?.length);
   };
 
-  useEffect(() => {}, [product]);
+  const totalReviewsLength =
+    shopProducts &&
+    shopProducts.reduce((acc, product) => acc + product.reviews?.length, 0);
+
+  const totalRatings =
+    shopProducts &&
+    shopProducts.reduce(
+      (acc, product) =>
+        acc + product.reviews?.reduce((sum, review) => sum + review.rating, 0),
+      0
+    );
+
+  const avg = totalRatings / totalReviewsLength || 0;
+
+  const averageRating = avg.toFixed(2);
 
   return (
     <div className="fixed w-full h-full top-0 left-0 bg-[#00000061] z-[1000] flex items-center justify-center shadow-xl">
@@ -88,7 +105,7 @@ const SellerProductCardDetails = ({ setIsOpen, product }) => {
                   {product.shop.shopName}
                 </h3>
                 <h5 className="pb-3 text-[13px] 800px:text-[15px]">
-                  ({product.shop?.ratings}) Ratings
+                  {averageRating} Ratings
                 </h5>
               </div>
             </div>
@@ -113,7 +130,7 @@ const SellerProductCardDetails = ({ setIsOpen, product }) => {
                 &#x20A6; {editedDiscountPrice}
               </h4>
               {product.originalPrice !== null && (
-                <h3 className={`${styles.price} !pt-2`}>
+                <h3 className={`${styles.price}  !pt-2`}>
                   &#x20A6; {editedPrice}
                 </h3>
               )}

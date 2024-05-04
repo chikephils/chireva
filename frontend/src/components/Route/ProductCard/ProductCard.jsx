@@ -16,6 +16,7 @@ import {
   selectWishListItems,
 } from "../../../features/wishlist/wishlistSlice";
 import { numbersWithCommas } from "../../../utils/priceDisplay";
+import { toast } from "react-toastify";
 
 const ProductCard = ({ product, isEvent }) => {
   const [click, setClick] = useState(false);
@@ -54,6 +55,7 @@ const ProductCard = ({ product, isEvent }) => {
   };
 
   const add = () => {
+    if (product.stock < 1) return toast.info("item out of stock");
     setInCart(!inCart);
     dispatch(addToCart({ item: product }));
   };
@@ -159,7 +161,7 @@ const ProductCard = ({ product, isEvent }) => {
           <Ratings rating={product?.ratings} />
         </div>
         <div className="800px:mt-1 flex justify-between">
-          <div className="800px:flex flex-col">
+          <div className="flex-col">
             {product.originalPrice === 0 ? null : (
               <p className="text-[14px] md:text-[14px] 800px:text-base font-medium mt-1">
                 &#x20A6; {editedDiscountPrice}
@@ -171,10 +173,16 @@ const ProductCard = ({ product, isEvent }) => {
               </p>
             )}
           </div>
-
-          <span className="text-[12px] md:text-x[14px] 800px:text-[16px] font-semibold text-lime-600">
-            {product?.sold_out} sold
-          </span>
+          <div className="flex-col">
+            <p className="text-[12px] md:text-x[14px] 800px:text-[16px] font-semibold text-lime-600 mt-1">
+              {product?.sold_out} sold
+            </p>
+            {product?.stock < 1 && (
+              <p className="text-[12px] md:text-x[14px] 800px:text-[16px] font-semibold text-red-600 mt-1">
+                Sold Out
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>

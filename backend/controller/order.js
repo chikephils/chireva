@@ -101,7 +101,10 @@ router.put(
         return next(new ErrorHandler("Order not found with this id", 400));
       }
 
-      if (req.body.status === "Transferred to delivery partner") {
+      if (
+        req.body.status === "Transferred to delivery partner" ||
+        req.body.status === "Delivered"
+      ) {
         for (const item of order.cart) {
           await updateOrder(item._id, item.quantity);
         }
