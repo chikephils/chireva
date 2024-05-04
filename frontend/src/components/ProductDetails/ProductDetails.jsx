@@ -207,15 +207,17 @@ const ProductDetails = ({ product }) => {
                 {name}
               </h1>
               <p className="text-sm 800px:text-base">{description}</p>
-              <div className="flex pt-3">
+              <div className="flex-col pt-3">
                 <h4 className={`${styles.productDiscountPrice}`}>
                   &#x20A6; {editedDiscountPrice}
                 </h4>
-                <h3 className={`${styles.price}`}>
-                  &#x20A6; {editedPrice ? editedPrice : null}
-                </h3>
+                {product.originalPrice !== null && (
+                  <h3 className={`${styles.price} !pt-2`}>
+                    &#x20A6; {editedPrice}
+                  </h3>
+                )}
               </div>
-              <div className="flex items-center mt-4 justify-between pr-3">
+              <div className="flex items-center mt-4 justify-between pr-3 mb-4">
                 <div className="flex">
                   <button
                     className="bg-gradient-to-r from-lime-500 to-lime-600 text-[22px] text-black font-bold rounded-sm flex items-center justify-center shadow-lg border w-10"

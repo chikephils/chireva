@@ -154,15 +154,17 @@ const ProductCardDetails = ({
                 <p className="block text-[14px] 800px:text-[18px] pr-2">
                   {product?.description}
                 </p>
-                <div className=" flex pt-3">
+                <div className="flex pt-3">
                   <h4
                     className={`${styles.productDiscountPrice} text-sm 800px:text-base`}
                   >
                     &#x20A6; {editedDiscountPrice}
                   </h4>
-                  <h3 className={`${styles.price} text-sm 800px:text-base`}>
-                    &#x20A6; {editedPrice ? editedPrice : null}
-                  </h3>
+                  {product.originalPrice !== null && (
+                    <h3 className={`${styles.price} !pt-2`}>
+                      &#x20A6; {editedPrice}
+                    </h3>
+                  )}
                 </div>
                 <div className="flex items-center mt-4 justify-between pr-3">
                   <div className="flex">

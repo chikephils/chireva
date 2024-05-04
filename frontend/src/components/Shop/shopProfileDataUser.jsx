@@ -105,7 +105,7 @@ const ShopProductsTab = ({ data, isLoading }) => {
           No products available.
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:gap-[30px] 800px:grid-cols-3 800px:gap-[40px] xl:grid-cols-4 xl:gap-[50px] 600px:grid-cols-3 600px:gap-[10px] 800px:grid-cols-4 800px:gap-[20px] pb-10 justify-items-center 800px:px-3">
+        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:gap-[30px] 800px:grid-cols-3 800px:gap-[40px] xl:gap-[50px] 2500px:grid-cols-4 600px:grid-cols-3 600px:gap-[10px]  pb-10 justify-items-center">
           {data &&
             data.map((product) => (
               <ProductCard key={product._id} product={product} />

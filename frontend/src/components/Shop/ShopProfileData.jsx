@@ -93,7 +93,7 @@ const ShopProfileData = ({ isOwner }) => {
 
 const ShopProductsTab = ({ data, isLoading }) => {
   return (
-    <div className={`${styles.section}`}>
+    <>
       {isLoading ? (
         <div className="flex items-center justify-center h-[80vh]">
           <Loader />
@@ -103,14 +103,14 @@ const ShopProductsTab = ({ data, isLoading }) => {
           No products available.
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:gap-[30px] 800px:grid-cols-3 800px:gap-[40px] xl:grid-cols-4 xl:gap-[50px] 600px:grid-cols-3 600px:gap-[10px] 800px:grid-cols-4 800px:gap-[20px] pb-10 justify-items-center">
+        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:gap-[30px] 800px:grid-cols-3 800px:gap-[40px] xl:gap-[50px] 2500px:grid-cols-4 600px:grid-cols-3 600px:gap-[10px]  pb-10 justify-items-center">
           {data &&
             data.map((product) => (
               <SellerProductCard key={product._id} product={product} />
             ))}
         </div>
       )}
-    </div>
+    </>
   );
 };
 
@@ -182,7 +182,7 @@ const ShopReviewsTab = ({ data, isLoading }) => {
                 >
                   <img
                     src={`${item.user.avatar?.url}`}
-                    className="w-10 h-10 rounded"
+                    className="w-10 h-10 rounded-full"
                     alt=""
                   />
                   <div className="pl-2">
