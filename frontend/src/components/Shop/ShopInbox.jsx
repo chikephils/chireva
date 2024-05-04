@@ -252,7 +252,7 @@ const ShopInbox = () => {
             />
           </div>
           {/* Messages */}
-          <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-3 pb-6 ml-2 lg:px-4">
+          <div className=" h-[70vh] overflow-y-scroll scrollbar-none pt-3 pb-6 ml-2 800px:px-4">
             {" "}
             {messages &&
               messages.map((message, index) => {
@@ -281,7 +281,7 @@ const ShopInbox = () => {
                       )}
 
                       {message.text && (
-                        <div className="max-w-[250px] md:max-w-[300px] lg:max-w-[900px] p-2 rounded">
+                        <div className="max-w-[250px] md:max-w-[300px] 800px:max-w-[900px] p-2 rounded">
                           <div
                             className={`${
                               message?.sender === me

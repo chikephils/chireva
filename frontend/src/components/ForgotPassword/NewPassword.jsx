@@ -22,7 +22,7 @@ const NewPassword = () => {
       <div className="mt-2 mx-auto max-w-md">
         <div className=" py-2 md:py-4 px-4 shadow">
           <form className="space-y-2" onSubmit={handleSubmit}>
-            <h1 className=" pb-2 md:pb-4 text-base md:text-lg lg:text-xl font-semibold text-center">
+            <h1 className=" pb-2 md:pb-4 text-base md:text-lg 800px:text-xl font-semibold text-center">
               Create new password
             </h1>
 

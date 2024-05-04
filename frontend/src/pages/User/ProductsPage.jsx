@@ -65,7 +65,7 @@ const ProductsPage = () => {
             ) : (
               <>
                 {data && data.length > 0 ? (
-                  <div className="grid grid-cols-2 gap-[20px] md:grid-cols-4 md:gap-[30px] lg:grid-cols-4 lg:gap-[40px] xl:grid-cols-5 xl:gap-[50px] 600px:grid-cols-3 600px:gap-[10px] py-10 justify-items-center">
+                  <div className="grid grid-cols-2 gap-[20px] md:grid-cols-4 md:gap-[30px] 800px:grid-cols-4 800px:gap-[40px] xl:grid-cols-5 xl:gap-[50px] 600px:grid-cols-3 600px:gap-[10px] py-10 justify-items-center">
                     {data.map((product) => (
                       <ProductCard product={product} key={product._id} />
                     ))}

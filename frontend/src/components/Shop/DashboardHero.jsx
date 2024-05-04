@@ -18,7 +18,7 @@ import { getAllShopOrders } from "../../features/shop/shopSlice";
 import { server } from "../../server";
 import axios from "axios";
 import Loader from "../Layout/Loader";
-
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
 const DashboardHero = () => {
   const dispatch = useDispatch();
@@ -137,9 +137,11 @@ const DashboardHero = () => {
         itemsQty: item.cart.length,
         total:
           "\u20A6" +
-          item.cart.reduce(
-            (acc, item) => acc + item.discountPrice * item.quantity,
-            0
+          numbersWithCommas(
+            item.cart.reduce(
+              (acc, item) => acc + item.discountPrice * item.quantity,
+              0
+            )
           ),
       });
     });
@@ -147,7 +149,7 @@ const DashboardHero = () => {
   return (
     <div className="h-full">
       <div className="flex items-center justify-center sticky h-[35px] py-3">
-        <h1 className=" flex font-medium lg:text-[22px] lg:font-[600] text-black py-2">
+        <h1 className=" flex font-medium 800px:text-[22px] 800px:font-[600] text-black py-2">
           Overview
         </h1>
       </div>
@@ -164,7 +166,7 @@ const DashboardHero = () => {
               </h3>
             </div>
             <h5 className="pt-2 pl-[36px] text-[20px] font-[500]">
-              &#x20A6;{availableBalance}
+              &#x20A6; {numbersWithCommas(availableBalance)}
             </h5>
             <Link to="/dashboard-withdraw-money">
               <h5 className="pt-4 pl-[2] text-[#077f9c]">Withdraw Money</h5>

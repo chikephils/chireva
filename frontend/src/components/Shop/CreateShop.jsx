@@ -75,7 +75,7 @@ const CreateShop = () => {
         <div className=" mx-auto mt-2 max-w-[380px] mb-5">
           <div className=" shadow py-4 px-5">
             <form className="space-y-1" onSubmit={handleSubmit}>
-              <h1 className=" pb-4 text-[16px] md:text-lg lg:text-xl font-semibold text-center">
+              <h1 className=" pb-4 text-[16px] md:text-lg 800px:text-xl font-semibold text-center">
                 Register as a Seller
               </h1>
               <div>

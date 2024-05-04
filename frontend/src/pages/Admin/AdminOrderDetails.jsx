@@ -24,7 +24,9 @@ const AdminOrderDetails = () => {
               <BsFillBagFill size={24} color="crimson" />
             </div>
             <div className="flex items-center">
-              <h1 className="flex text-[18px] lg:text-[20px]">Order Details</h1>
+              <h1 className="flex text-[18px] 800px:text-[20px]">
+                Order Details
+              </h1>
             </div>
             <div className=" flex">
               <RxCross1
@@ -36,11 +38,11 @@ const AdminOrderDetails = () => {
           </div>
         </div>
         <div className="w-full flex items-center justify-between gap-2 p-2">
-          <h5 className="text-[00000084] text-[14px] md:text-[16px] lg:text-[base]">
+          <h5 className="text-[00000084] text-[14px] md:text-[16px] 800px:text-[base]">
             {" "}
             Order ID: <span>#{order?._id?.slice(0, 8)}</span>
           </h5>
-          <h5 className="text-[#00000084] text-[14px] md:text-[16px] lg:text-[base]">
+          <h5 className="text-[#00000084] text-[14px] md:text-[16px] 800px:text-[base]">
             {" "}
             Placed on: <span>{order?.createdAt?.slice(0, 10)}</span>
           </h5>
@@ -66,10 +68,10 @@ const AdminOrderDetails = () => {
 
                 <div className="w-[40%] justify-start items-center">
                   {" "}
-                  <h5 className="text-[14px] md:text-[15px] 600px:text-[16px] lg:text-[18px] font-semibold">
+                  <h5 className="text-[14px] md:text-[15px] 600px:text-[16px] 800px:text-[18px] font-semibold">
                     {item.name}
                   </h5>
-                  <h5 className="text-[12px] md:text-[13px] 600px:text-[14px] lg:text-[16px] font-semibold ">
+                  <h5 className="text-[12px] md:text-[13px] 600px:text-[14px] 800px:text-[16px] font-semibold ">
                     &#x20A6; {item.discountPrice} X {item.quantity}
                   </h5>
                 </div>
@@ -78,7 +80,7 @@ const AdminOrderDetails = () => {
           })}
 
         <div className="border-t w-full text-right pr-2 mb-2">
-          <h5 className="pt-2 text-[16px] lg:text-[18px]">
+          <h5 className="pt-2 text-[16px] 800px:text-[18px]">
             Total Price:{" "}
             <strong>
               {" "}
@@ -90,34 +92,34 @@ const AdminOrderDetails = () => {
             </strong>
           </h5>
         </div>
-        <div className="w-full 600px:flex lg:flex items-center p-2">
-          <div className="w-full lg:w-[60%]">
-            <h4 className=" text-[16px] md:text-[18px] lg:text-[20px] font-semibold">
+        <div className="w-full 600px:flex 800px:flex items-center p-2">
+          <div className="w-full 800px:w-[60%]">
+            <h4 className=" text-[16px] md:text-[18px] 800px:text-[20px] font-semibold">
               Shipping Address :
             </h4>
-            <h4 className="text-[14px] md:text-[16px] lg:text-[16px]">
+            <h4 className="text-[14px] md:text-[16px] 800px:text-[16px]">
               {order?.shippingAddress?.street}
             </h4>
-            <h4 className="text-[14px] md:text-[16px] lg:text-[16px]">
+            <h4 className="text-[14px] md:text-[16px] 800px:text-[16px]">
               {order?.shippingAddress?.city}
             </h4>
-            <h4 className="text-[14px] md:text-[16px] lg:text-[16px]">
+            <h4 className="text-[14px] md:text-[16px] 800px:text-[16px]">
               {order?.shippingAddress?.state}
             </h4>
-            <h4 className="text-[14px] md:text-[16px] lg:text-[16px]">
+            <h4 className="text-[14px] md:text-[16px] 800px:text-[16px]">
               {order?.shippingAddress?.country}
             </h4>
-            <h4 className="text-[14px] md:text-[16px] lg:text-[16px]">
+            <h4 className="text-[14px] md:text-[16px] 800px:text-[16px]">
               {order?.user?.phoneNumber}
             </h4>
           </div>
-          <div className="w-full lg:w-[40%] pt-3 mb-3">
-            <h4 className="text-[16px] md:text-[18px] lg:text-[20px] font-semibold">
+          <div className="w-full 800px:w-[40%] pt-3 mb-3">
+            <h4 className="text-[16px] md:text-[18px] 800px:text-[20px] font-semibold">
               Payment Status:
             </h4>
             <h4>{order?.paymentInfo?.status === true ? "Paid" : "Not Paid"}</h4>
             <br />
-            <h4 className="text-[16px] md:text-[18px] lg:text-[20px] font-semibold">
+            <h4 className="text-[16px] md:text-[18px] 800px:text-[20px] font-semibold">
               Order Status:
             </h4>
             <h4>{order?.status}</h4>

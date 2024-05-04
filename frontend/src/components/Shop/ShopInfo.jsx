@@ -68,59 +68,59 @@ const ShopInfo = ({ isOwner, shop }) => {
           <img
             src={`${shop?.avatar?.url || seller?.avatar?.url}`}
             alt="avatar"
-            className="w-[70px] md:w-[90px] lg:w-[150px] h-[70px] md:h-[90px] lg:h-[150px] object-cover rounded-full"
+            className="w-[70px] md:w-[90px] 800px:w-[150px] h-[70px] md:h-[90px] 800px:h-[150px] object-cover rounded-full"
           />
         </div>
-        <h3 className="text-center py-2 text-[16px] lg:text-[20px] font-medium">
+        <h3 className="text-center py-2 text-[16px] 800px:text-[20px] font-medium">
           {shop?.shopName || seller?.shopName}
         </h3>
       </div>
       <div className="p-3">
-        <h5 className="font-[600] text-[14px] md:text-[16px] lg:text-[inherit]">
+        <h5 className="font-[600] text-[14px] md:text-[16px] 800px:text-[inherit]">
           Description
         </h5>
-        <h4 className="text-black text-[12px] md:text-[14px] lg:text-base font-normal">
+        <h4 className="text-black text-[12px] md:text-[14px] 800px:text-base font-normal">
           {shop?.description || seller?.description}
         </h4>
       </div>
       <div className="p-3">
-        <h5 className="font-[600] text-[14px] md:text-[16px] lg:text-[inherit]">
+        <h5 className="font-[600] text-[14px] md:text-[16px] 800px:text-[inherit]">
           Address
         </h5>
-        <h4 className="text-black text-[12px] md:text-[14px] lg:text-base font-normal">
+        <h4 className="text-black text-[12px] md:text-[14px] 800px:text-base font-normal">
           {shop?.address || seller?.address}
         </h4>
       </div>
       <div className="p-3">
-        <h5 className="font-[600] text-[14px] md:text-[16px] lg:text-[inherit]">
+        <h5 className="font-[600] text-[14px] md:text-[16px] 800px:text-[inherit]">
           Phone Number
         </h5>
-        <h4 className="text-black text-[12px] md:text-[14px] lg:text-base font-normal">
+        <h4 className="text-black text-[12px] md:text-[14px] 800px:text-base font-normal">
           {shop?.phoneNumber || seller?.phoneNumber}
         </h4>
       </div>
       <div className="p-3">
-        <h5 className="font-[600] text-[14px] md:text-[16px] lg:text-[inherit]">
+        <h5 className="font-[600] text-[14px] md:text-[16px] 800px:text-[inherit]">
           Total Products
         </h5>
-        <h4 className="text-black text-[12px] md:text-[14px] lg:text-base font-normal">
+        <h4 className="text-black text-[12px] md:text-[14px] 800px:text-base font-normal">
           {" "}
           {data && data.length}
         </h4>
       </div>
       <div className="p-3">
-        <h5 className="font-[600] text-[14px] md:text-[16px] lg:text-[inherit]">
+        <h5 className="font-[600] text-[14px] md:text-[16px] 800px:text-[inherit]">
           Shop Ratings
         </h5>
-        <h4 className="text-black text-[12px] md:text-[14px] lg:text-base font-normal">
+        <h4 className="text-black text-[12px] md:text-[14px] 800px:text-base font-normal">
           {(averageRating / 5).toFixed(2)}
         </h4>
       </div>
       <div className="p-3">
-        <h5 className="font-[600] text-[14px] md:text-[16px] lg:text-[inherit]">
+        <h5 className="font-[600] text-[14px] md:text-[16px] 800px:text-[inherit]">
           Joined On
         </h5>
-        <h4 className="text-black text-[12px] md:text-[14px] lg:text-base font-normal">
+        <h4 className="text-black text-[12px] md:text-[14px] 800px:text-base font-normal">
           {shop?.createdAt
             ? shop?.createdAt.slice(0, 10)
             : "N/A" || seller?.createdAt
@@ -134,7 +134,7 @@ const ShopInfo = ({ isOwner, shop }) => {
             <div
               className={`${styles.sm_button} !w-full !h-[42px] !rounded-[5px]`}
             >
-              <span className=" text-[14px] md:text-[16px] lg:text-base text-white font-medium">
+              <span className=" text-[14px] md:text-[16px] 800px:text-base text-white font-medium">
                 {" "}
                 Edit Shop
               </span>
@@ -148,7 +148,7 @@ const ShopInfo = ({ isOwner, shop }) => {
             {isLoading ? (
               <SmallLoader />
             ) : (
-              <span className="text-white text-[14px] md:text-[16px] lg:text-base font-medium">
+              <span className="text-white text-[14px] md:text-[16px] 800px:text-base font-medium">
                 {" "}
                 Logout
               </span>

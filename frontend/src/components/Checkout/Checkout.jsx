@@ -6,9 +6,10 @@ import { toast } from "react-toastify";
 import { selectUser } from "../../features/user/userSlice";
 import { itemsInCart } from "../../features/cart/cartSlice";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import PaymentPage from "../../pages/User/PaymentPage";
-
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
 const Checkout = () => {
   const user = useSelector(selectUser);
@@ -141,8 +142,8 @@ const Checkout = () => {
 
   return (
     <div className="w-full flex flex-col items-center py-8">
-      <div className="w-[95%] lg:w-[80%] block lg:flex">
-        <div className="w-full lg:w-[65%]">
+      <div className="w-[95%] 800px:w-[80%] block 800px:flex">
+        <div className="w-full 800px:w-[65%]">
           <ShippingInfo
             user={user}
             country={country}
@@ -159,7 +160,7 @@ const Checkout = () => {
             setAddress2={setAddress2}
           />
         </div>
-        <div className="w-full lg:w-[35%] lg:mt-0 mt-8">
+        <div className="w-full 800px:w-[35%] 800px:mt-0 mt-8">
           <CartData
             handleSubmit={handleSubmit}
             totalPrice={totalPrice}
@@ -172,7 +173,7 @@ const Checkout = () => {
         </div>
       </div>
       <div
-        className={`${styles.button} w-[150px] lg:w-[280px] mt-10`}
+        className={`${styles.button} w-[150px] 800px:w-[280px] mt-10`}
         onClick={paymentSubmit}
       >
         <h5 className="text-white">Go to Payment</h5>
@@ -200,7 +201,7 @@ const ShippingInfo = ({
   setZipCode,
 }) => {
   return (
-    <div className="w-full lg:w-[95%] bg-white rounded-md p-2 lg:p-5 pb-8">
+    <div className="w-full 800px:w-[95%] bg-white rounded-md p-2 800px:p-5 pb-8">
       <h5 className="text-[18px] font-[500]"> Shipping Address</h5>
       <br />
       <form>
@@ -256,13 +257,13 @@ const ShippingInfo = ({
               value={country}
               onChange={(e) => setCountry(e.target.value)}
             >
-              <option className="block  text-[14px] lg:text-[16px] pb-2 font-semibold">
+              <option className="block  text-[14px] 800px:text-[16px] pb-2 font-semibold">
                 Choose Country
               </option>
               {Country &&
                 Country.getAllCountries().map((country) => (
                   <option
-                    className="text-[12px] md:text-[14px] lg:text-base
+                    className="text-[12px] md:text-[14px] 800px:text-base
                   font-medium"
                     key={country.isoCode}
                     value={country.isoCode}
@@ -279,13 +280,13 @@ const ShippingInfo = ({
               value={city}
               onChange={(e) => setCity(e.target.value)}
             >
-              <option className="block text-[14px] lg:text-[16px] pb-2 font-semibold">
+              <option className="block text-[14px] 800px:text-[16px] pb-2 font-semibold">
                 Choose a City
               </option>
               {State &&
                 State.getStatesOfCountry(country).map((state) => (
                   <option
-                    className="text-[12px] md:text-[14px] lg:text-base
+                    className="text-[12px] md:text-[14px] 800px:text-base
                   font-medium"
                     key={state.isoCode}
                     value={state.isoCode}
@@ -363,22 +364,22 @@ const CartData = ({
   setCouponCode,
   discountPercentage,
 }) => {
+  const editedSubTotal = subTotalPrice.toFixed();
+  const edited = numbersWithCommas(editedSubTotal);
+  const editeShipping = shipping.toFixed();
+  const shippingFee = numbersWithCommas(editeShipping);
+  const editedTotal = numbersWithCommas(totalPrice);
+
   return (
     <div className="w-full bg-[#fff] rounded-md p-5 pb-8">
       <div className="flex justify-between">
         <h3 className="text-[16px] font-[400] text-[#000000a4]"> Subtotal</h3>
-        <h5 className="text-[18px] font-[600]">
-          {" "}
-          &#x20A6; {subTotalPrice.toFixed(2)}
-        </h5>
+        <h5 className="text-[18px] font-[600]"> &#x20A6; {edited}</h5>
       </div>
       <br />
       <div className="flex justify-between">
         <h3 className="text-[16px] font-[400] text-[#000000e4]"> Shipping</h3>
-        <h5 className="text-[18px] font-[600]">
-          {" "}
-          &#x20A6; {shipping.toFixed(2)}
-        </h5>
+        <h5 className="text-[18px] font-[600]"> &#x20A6; {shippingFee}</h5>
       </div>
       <br />
       <div className="flex justify-between">
@@ -389,7 +390,7 @@ const CartData = ({
       </div>
       <h5 className="text-[18px] font-[600] text-end pt-3">
         {" "}
-        &#x20A6; {totalPrice}
+        &#x20A6; {editedTotal}
       </h5>
 
       <br />

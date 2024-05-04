@@ -27,8 +27,11 @@ const Categories = () => {
         </div>
       </div>
 
-      <div className={`p-1 lg:p-6 rounded-lg mb-12 mt-3  md:${styles.section}`} id="categories">
-        <div className="grid grid-cols-2 gap-[5px] md:grid-cols-3 md:gap-[10px] lg:grid-cols-4 lg:gap-[10px] xl:grid-cols-5 xl:gap-[20px] justify-items-center shadow-md p-2 lg:p-3">
+      <div
+        className={`p-1 800px:p-6 rounded-lg mb-12 mt-3  md:${styles.section}`}
+        id="categories"
+      >
+        <div className="grid grid-cols-2 gap-[5px] md:grid-cols-3 md:gap-[10px] 800px:grid-cols-4 800px:gap-[10px] xl:grid-cols-5 xl:gap-[20px] justify-items-center shadow-md p-2 800px:p-3">
           {categoriesData &&
             categoriesData.map((category) => {
               const handleClick = (category) => {

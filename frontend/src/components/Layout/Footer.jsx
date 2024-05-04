@@ -17,8 +17,9 @@ const Footer = () => {
   return (
     <div className="bg-black text-white">
       <div className=" md:flex md:justify-between md:items-center sm:px-12 px-4 bg-lime-600 py-3">
-        <h1 className="xl:text-xl text-lg sm:text-xl md:mb-0 mb-6 lg:leading-normal font-semibold md-w-2/5 text-black">
-          <span className=" text-white text-xl sm:text-3xl">Subscribe</span> <br/>
+        <h1 className="xl:text-xl text-lg sm:text-xl md:mb-0 mb-6 800px:leading-normal font-semibold md-w-2/5 text-black">
+          <span className=" text-white text-xl sm:text-3xl">Subscribe</span>{" "}
+          <br />
           with us to get news <br />
           events and offers
         </h1>
@@ -28,14 +29,14 @@ const Footer = () => {
             type="text"
             required
             placeholder="Enter your Email"
-            className="text-gray-800 sm:w-72 w-full sm:mr-1 lg:mb-0 py-2.5 rounded px-2 focus:outline-none"
+            className="text-gray-800 sm:w-72 w-full sm:mr-1 800px:mb-0 py-2.5 rounded px-2 focus:outline-none"
           />
           <button className="bg-blue-700 hover:bg-blue-800 duration-300 px-5 py-2.5 rounded-md text-white md:w-auto w-full mt-3">
             Submit
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-4 gap-6 sm:px-5 px-5 py-6 sm:text-center">
+      <div className="grid grid-cols-1 sm:grid-cols-4 800px:grid-cols-4 gap-6 sm:px-5 px-5 py-6 sm:text-center">
         <ul className="px-5 text-center sm:text-start flex sm:block flex-col items-center">
           <img
             src={Logo}
@@ -50,7 +51,7 @@ const Footer = () => {
             <AiFillYoutube size={25} className="ml-[15px] cursor-pointer" />
           </div>
         </ul>
-        
+
         <ul className="text-center sm:text-start">
           <h1 className="mb-1 font-semibold"> Company </h1>
           {footerProductLinks.map((link) => (
@@ -91,7 +92,7 @@ const Footer = () => {
           ))}
         </ul>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-10 text-center pt-2 text-gray-400 text-sm pb-8 sm:mr-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 800px:grid-cols-3 gap-10 text-center pt-2 text-gray-400 text-sm pb-8 sm:mr-4">
         <span>&copy;2022 GOT. All rights reserved. </span>
         <span>Terms Privacy Policy</span>
         <div className="flex justify-center items-center w-full">

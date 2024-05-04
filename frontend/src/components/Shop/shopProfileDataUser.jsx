@@ -39,7 +39,7 @@ const ShopProfileDataUser = ({ isOwner }) => {
         <div className="w-full flex ">
           <div className="flex items-center" onClick={() => setActive(1)}>
             <h5
-              className={`font-[600] text-[14px] lg:text-[20px] ${
+              className={`font-[600] text-[14px] 800px:text-[20px] ${
                 active === 1 ? "text-red-500" : "text-black"
               } cursor-pointer pr-[20px]`}
             >
@@ -48,7 +48,7 @@ const ShopProfileDataUser = ({ isOwner }) => {
           </div>
           <div className="flex items-center" onClick={() => setActive(2)}>
             <h5
-              className={`font-[600] text-[14px] lg:text-[20px] ${
+              className={`font-[600] text-[14px] 800px:text-[20px] ${
                 active === 2 ? "text-red-500" : "text-black"
               } cursor-pointer pr-[20px]`}
             >
@@ -58,7 +58,7 @@ const ShopProfileDataUser = ({ isOwner }) => {
           </div>
           <div className="flex items-center" onClick={() => setActive(3)}>
             <h5
-              className={`font-[600] text-[14px] lg:text-[20px] ${
+              className={`font-[600] text-[14px] 800px:text-[20px] ${
                 active === 3 ? "text-red-500" : "text-black"
               } cursor-pointer pr-[20px]`}
             >
@@ -72,7 +72,7 @@ const ShopProfileDataUser = ({ isOwner }) => {
             <div>
               <Link to="/dashboard">
                 <div className={`${styles.sm_button} !rounded-[4px] h-[42px]`}>
-                  <span className="text-white text-[14px] lg:text-[16px] font-medium">
+                  <span className="text-white text-[14px] 800px:text-[16px] font-medium">
                     {" "}
                     Dashboard
                   </span>
@@ -105,7 +105,7 @@ const ShopProductsTab = ({ data, isLoading }) => {
           No products available.
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:gap-[30px] lg:grid-cols-3 lg:gap-[40px] xl:grid-cols-4 xl:gap-[50px] 600px:grid-cols-3 600px:gap-[10px] 800px:grid-cols-4 800px:gap-[20px] pb-10 justify-items-center 800px:px-3">
+        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-3 md:gap-[30px] 800px:grid-cols-3 800px:gap-[40px] xl:grid-cols-4 xl:gap-[50px] 600px:grid-cols-3 600px:gap-[10px] 800px:grid-cols-4 800px:gap-[20px] pb-10 justify-items-center 800px:px-3">
           {data &&
             data.map((product) => (
               <ProductCard key={product._id} product={product} />

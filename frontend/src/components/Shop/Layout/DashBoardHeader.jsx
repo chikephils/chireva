@@ -12,7 +12,7 @@ const DashBoardHeader = ({ active }) => {
 
   return (
     <div className="w-full h-[60px] bg-gradient-to-r from-yellow-200 to-lime-400 ... shadow-lg d fixed top-0 left-0 z-50 flex items-center justify-between px-3 mb-2">
-      <div className="lg:ml-3">
+      <div className="800px:ml-3">
         <Link to="/dashboard">
           <img src={Logo} alt="logo" className="w-14 h-14" title="Dashboard" />
         </Link>
@@ -23,7 +23,7 @@ const DashBoardHeader = ({ active }) => {
             <AiOutlineGift
               color={`${active === 9 ? "red" : "black"}`}
               size={24}
-              className="mx-3 lg:mx-5 cursor-pointer"
+              className="mx-3 800px:mx-5 cursor-pointer"
               title="Coupons"
             />
           </Link>
@@ -31,7 +31,7 @@ const DashBoardHeader = ({ active }) => {
             <MdOutlineCalendarMonth
               color={`${active === 5 ? "red" : "black"}`}
               size={24}
-              className="mx-3 lg:mx-5 cursor-pointer"
+              className="mx-3 800px:mx-5 cursor-pointer"
               title="Events"
             />
           </Link>
@@ -39,7 +39,7 @@ const DashBoardHeader = ({ active }) => {
             <FiPackage
               color={`${active === 4 ? "red" : "black"}`}
               size={24}
-              className="mx-3 lg:mx-5 cursor-pointer"
+              className="mx-3 800px:mx-5 cursor-pointer"
               title="Products"
             />
           </Link>
@@ -47,7 +47,7 @@ const DashBoardHeader = ({ active }) => {
             <AiOutlineShopping
               color={`${active === 2 ? "red" : "black"}`}
               size={30}
-              className="mx-3 lg:mx-5 cursor-pointer"
+              className="mx-3 800px:mx-5 cursor-pointer"
               title="Orders"
             />
           </Link>
@@ -55,14 +55,14 @@ const DashBoardHeader = ({ active }) => {
             <BiMessageAltDetail
               color={`${active === 8 ? "red" : "black"}`}
               size={24}
-              className="mx-3 lg:mx-5 cursor-pointer"
+              className="mx-3 800px:mx-5 cursor-pointer"
               title="Messages"
             />
           </Link>
           <Link to={`/shop/${seller._id}`}>
             <img
               src={`${seller.avatar?.url}`}
-              className=" w-[40px] h-[40px] rounded-full object-cover 3 lg:ml-5"
+              className=" w-[40px] h-[40px] rounded-full object-cover 3 800px:ml-5"
               alt="bmg"
               title="Homepage"
             />

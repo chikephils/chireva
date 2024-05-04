@@ -11,28 +11,28 @@ const Sponsored = () => {
           <img
             src="https://logos-world.net/wp-content/uploads/2020/04/Sony-Logo.png"
             alt="img"
-            className=" w-[100px] lg:w-[150px] object-contain"
+            className=" w-[100px] 800px:w-[150px] object-contain"
           />
         </div>
         <div className="flex items-start">
           <img
             src="https://logos-world.net/wp-content/uploads/2020/08/Dell-Logo-1989-2016.png"
             alt="img"
-            className=" w-[100px] lg:w-[150px] object-contain"
+            className=" w-[100px] 800px:w-[150px] object-contain"
           />
         </div>
         <div className="flex items-start">
           <img
             src="https://www.vectorlogo.zone/logos/apple/apple-ar21.png"
             alt="img"
-            className=" w-[100px] lg:w-[150px] object-contain"
+            className=" w-[100px] 800px:w-[150px] object-contain"
           />
         </div>
         <div className="flex items-start">
           <img
             src="https://blogs.microsoft.com/wp-content/uploads/prod/2012/08/8867.Microsoft_5F00_Logo_2D00_for_2D00_screen.jpg"
             alt="img"
-            className=" w-[100px] lg:w-[150px] object-contain"
+            className=" w-[100px] 800px:w-[150px] object-contain"
           />
         </div>
       </div>

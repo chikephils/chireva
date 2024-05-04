@@ -37,7 +37,7 @@ const Events = () => {
                       className="max-h-[250px]"
                     />
                   </div>
-                  <p className="flex justify-center text-[16px] lg:[20px] font-semibold">
+                  <p className="flex justify-center text-[16px] 800px:[20px] font-semibold">
                     No Events
                   </p>
                 </>

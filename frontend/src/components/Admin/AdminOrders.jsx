@@ -11,6 +11,7 @@ import { Button } from "@mui/material";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Loader from "../Layout/Loader";
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
 const AdminOrders = () => {
   const adminOrders = useSelector(selectAdminOrders);
@@ -30,11 +31,10 @@ const AdminOrders = () => {
       flex: 0.7,
       cellClassName: (params) => {
         const status = params.value;
-        return status === "Processing"
-          ? "bg-yellow-400"
-          : status === "Delivered" || status === "Refund Success"
-          ? "bg-green-400"
-          : "bg-blue-300";
+        // console.log("status:", status);
+        const className = status === "Delivered" ? "greenColor" : "redColor";
+        // console.log("className:", className);
+        return className;
       },
     },
     {
@@ -90,9 +90,11 @@ const AdminOrders = () => {
         itemsQty: item.cart.length,
         total:
           "\u20A6" +
-          item.cart.reduce(
-            (acc, item) => acc + item.discountPrice * item.quantity,
-            0
+          numbersWithCommas(
+            item.cart.reduce(
+              (acc, item) => acc + item.discountPrice * item.quantity,
+              0
+            )
           ),
         createdAt: item?.createdAt.slice(0, 10),
       });
@@ -101,10 +103,11 @@ const AdminOrders = () => {
   return (
     <div className="h-full pb-10">
       <div className="flex items-center justify-center sticky h-[35px]">
-        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black py-2">
+        <h1 className=" flex font-medium 800px:text-[25px] 800px:font-[600] text-black py-2">
           <FiPackage size={24} /> Orders
         </h1>
       </div>
+
       {isLoading ? (
         <div className="flex items-center justify-center  h-[60vh] ">
           <Loader />

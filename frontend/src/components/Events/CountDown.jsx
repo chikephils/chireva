@@ -7,7 +7,12 @@ const CountDown = ({ event }) => {
 
   useEffect(() => {
     let timer;
-    if (timeLeft.days || timeLeft.hours || timeLeft.minutes || timeLeft.seconds) {
+    if (
+      timeLeft.days ||
+      timeLeft.hours ||
+      timeLeft.minutes ||
+      timeLeft.seconds
+    ) {
       timer = setTimeout(() => {
         setTimeLeft(calculateTimeLeft());
       }, 1000);
@@ -42,9 +47,11 @@ const CountDown = ({ event }) => {
     return (
       <span
         key={interval}
-        className="text-[18px] lg:text-[25px] font-medium text-blue-700"
+        className="text-[18px] 800px:text-[25px] font-medium text-blue-700"
       >
-        {timeLeft[interval]}{interval}{"  "}
+        {timeLeft[interval]}
+        {interval}
+        {"  "}
       </span>
     );
   });
@@ -52,11 +59,11 @@ const CountDown = ({ event }) => {
   return (
     <div key={timeLeft}>
       {timerComponent.length ? (
-        <span className="text-[18px] lg:text-[25px] font-medium text-blue-700">
+        <span className="text-[18px] 800px:text-[25px] font-medium text-blue-700">
           {timerComponent} Left
         </span>
       ) : (
-        <span className="text-red-400 text-[16px] lg:text-[25px] mt-3 font-medium">
+        <span className="text-red-400 text-[16px] 800px:text-[25px] mt-3 font-medium">
           Time's Up
         </span>
       )}

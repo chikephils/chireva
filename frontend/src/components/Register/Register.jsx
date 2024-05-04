@@ -70,7 +70,7 @@ const Register = () => {
         <div className="mx-auto mt-2 max-w-[380px]">
           <div className=" shadow py-4 px-5 ">
             <form className="space-y-2" onSubmit={handleSubmit}>
-              <h1 className=" pb-4 text-base md:text-lg lg:text-xl font-semibold text-center">
+              <h1 className=" pb-4 text-base md:text-lg 800px:text-xl font-semibold text-center">
                 Register as a new User
               </h1>
               <div>

@@ -108,7 +108,7 @@ const AdminUsers = () => {
   return (
     <div className="h-full pb-10">
       <div className="flex items-center justify-center sticky h-[35px]">
-        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black pb-2">
+        <h1 className=" flex font-medium 800px:text-[25px] 800px:font-[600] text-black pb-2">
           <HiOutlineUserGroup size={24} /> USERS
         </h1>
       </div>
@@ -129,11 +129,11 @@ const AdminUsers = () => {
 
       {open && (
         <div className="w-full fixed top-0 left-0 z-[999] bg-[#00000039] flex items-center justify-center h-screen">
-          <div className="w-[95%] md:w-[70%] lg:w-[40%] min-h-[20vh] bg-white rounded shadow p-5">
+          <div className="w-[95%] md:w-[70%] 800px:w-[40%] min-h-[20vh] bg-white rounded shadow p-5">
             <div className="w-full flex justify-end cursor-pointer">
               <RxCross1 size={25} onClick={() => setOpen(false)} />
             </div>
-            <h3 className="text-[20px] lg:text-[25px] text-center py-3 lg:py-5 font-Poppins text-[#000000cb]">
+            <h3 className="text-[20px] 800px:text-[25px] text-center py-3 800px:py-5 font-Poppins text-[#000000cb]">
               Are you sure you want to delete this user?
             </h3>
             <div className="w-full flex items-center justify-center">

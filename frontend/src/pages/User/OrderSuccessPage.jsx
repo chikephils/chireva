@@ -22,7 +22,7 @@ const OrderSuccessPage = ({ transactionId }) => {
                 successful 😍
               </h1>
               <div
-                className={`${styles.button} w-[100px] lg:w-[150px] mt-10`}
+                className={`${styles.button} w-[100px] 800px:w-[150px] mt-10`}
                 onClick={() => navigate("/")}
               >
                 <h5 className="text-white">OK</h5>

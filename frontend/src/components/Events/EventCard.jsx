@@ -39,21 +39,21 @@ const EventCard = ({ active, event }) => {
     <div
       className={`w-full block bg-white rounded-lg ${
         active ? "unset" : "mb-12"
-      } lg:flex p-2`}
+      } 800px:flex p-2`}
     >
-      <div className=" lg:w-[40%] flex items-center justify-center">
+      <div className=" 800px:w-[40%] flex items-center justify-center">
         <img
           src={`${event?.images && event?.images[0]?.url}`}
           alt="img"
-          className="max-h-[100px] lg:max-h-[250px]"
+          className="max-h-[100px] 800px:max-h-[250px]"
         />
       </div>
-      <div className="w-full lg:[w-40%] flex flex-col justify center">
-        <h2 className="text-[18px] md:text-[20px] lg:text-[25px] font-semibold pb-2">
+      <div className="w-full 800px:[w-40%] flex flex-col justify center">
+        <h2 className="text-[18px] md:text-[20px] 800px:text-[25px] font-semibold pb-2">
           {" "}
           {event?.name}
         </h2>
-        <p className=" text-[14px] md:text-[14px] lg:text-[16px] font-Roboto md:pb-2">
+        <p className=" text-[14px] md:text-[14px] 800px:text-[16px] font-Roboto md:pb-2">
           {event?.description.slice(0, 100)}...
         </p>
         <div className="flex py-2 justify-between">
@@ -64,7 +64,7 @@ const EventCard = ({ active, event }) => {
             <p className={`${styles.price}`}>&#x20A6;{event?.originalPrice}</p>
           </div>
           <div>
-            <span className="pr-3 font-bold text-[15px] lg:text-[17px] text-lime-600">
+            <span className="pr-3 font-bold text-[15px] 800px:text-[17px] text-lime-600">
               {event?.sold_out}
             </span>
           </div>

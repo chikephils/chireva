@@ -19,7 +19,7 @@ const CheckoutPage = () => {
             />
           </div>
         </div>
-        <div className=" 320px:mt-24 600px:mt-14 lg:mt-14">
+        <div className=" 320px:mt-24 600px:mt-14 800px:mt-14">
           <Checkout />
         </div>
       </div>

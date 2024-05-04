@@ -71,7 +71,7 @@ const Header = ({ activeHeading }) => {
           </div>
 
           {/*Search Bar */}
-          <div className="w-[40%] lg:w-[50%] relative">
+          <div className="w-[40%] 800px:w-[50%] relative">
             <input
               type="search"
               placeholder={`\u{1F50D} Search Products...`}
@@ -124,11 +124,11 @@ const Header = ({ activeHeading }) => {
         </div>
         <div className=" hidden md:flex shadow-sm items-center justify-between w-full bg-lime-600 h-[55px]">
           <div
-            className={`w-full lg:w-11/12 lg:mx-auto mx-2 relative ${styles.normalFlex} justify-between`}
+            className={`w-full 800px:w-11/12 800px:mx-auto mx-2 relative ${styles.normalFlex} justify-between`}
           >
             {/* categories */}
             <div onClick={dropDownToogle}>
-              <div className="hidden md:block relative h-[40px] md:w-[200px] lg:w-[270px]">
+              <div className="hidden md:block relative h-[40px] md:w-[200px] 800px:w-[270px]">
                 <BiMenuAltLeft
                   size={30}
                   className="absolute top-1 left-2 cursor-pointer"
@@ -165,7 +165,7 @@ const Header = ({ activeHeading }) => {
             <div className="flex">
               <div className={`${styles.normalFlex}`}>
                 <div
-                  className="relative cursor-pointer mr-[10px] lg:mr-[15px] "
+                  className="relative cursor-pointer mr-[10px] 800px:mr-[15px] "
                   onClick={() => setOpenWishList(!openWishList)}
                 >
                   <AiOutlineHeart size={30} color="white" />

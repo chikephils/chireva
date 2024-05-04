@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { FiPackage } from "react-icons/fi";
 import Loader from "../Layout/Loader";
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
 const AllOrders = () => {
   const [shopOrders, setShopOrders] = useState(null);
@@ -94,9 +95,11 @@ const AllOrders = () => {
         itemsQty: item.cart.length,
         total:
           "\u20A6" +
-          item.cart.reduce(
-            (acc, item) => acc + item.discountPrice * item.quantity,
-            0
+          numbersWithCommas(
+            item.cart.reduce(
+              (acc, item) => acc + item.discountPrice * item.quantity,
+              0
+            )
           ),
       });
     });
@@ -104,11 +107,10 @@ const AllOrders = () => {
   return (
     <div className="h-full pb-10">
       <div className="flex items-center justify-center sticky h-[35px]">
-        <h1 className=" flex font-medium lg:text-[22px] lg:font-[600] text-black py-3">
+        <h1 className=" flex font-medium 800px:text-[22px] 800px:font-[600] text-black py-3">
           <FiPackage size={24} /> Your Shop Orders
         </h1>
       </div>
-
       {isLoading ? (
         <div className="flex items-center justify-center  h-[60vh] ">
           <Loader />

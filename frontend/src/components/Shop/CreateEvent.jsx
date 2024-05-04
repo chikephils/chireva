@@ -214,7 +214,7 @@ const CreateEvent = () => {
       </>
 
       <div className="flex items-center justify-center sticky h-[35px]">
-        <h5 className=" flex font-medium lg:text-[22px] lg:font-[600] text-black py-3">
+        <h5 className=" flex font-medium 800px:text-[22px] 800px:font-[600] text-black py-3">
           Create Event
         </h5>
       </div>
@@ -416,7 +416,7 @@ const CreateEvent = () => {
                             >
                               {(provided) => (
                                 <div
-                                  className="relative md:w-[120px] md:h-[100px] lg:min-h-[120px] 320px:w-[100px] 320px:h-[80px] 375px:w-[120px] 375px:h-[100px] cursor-move"
+                                  className="relative md:w-[120px] md:h-[100px] 800px:min-h-[120px] 320px:w-[100px] 320px:h-[80px] 375px:w-[120px] 375px:h-[100px] cursor-move"
                                   ref={provided.innerRef}
                                   {...provided.draggableProps}
                                   {...provided.dragHandleProps}

@@ -1,84 +1,79 @@
-import { Button } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
 import React, { useEffect } from "react";
-import { AiOutlineArrowRight } from "react-icons/ai";
-import { HiOutlineReceiptRefund } from "react-icons/hi";
+import {
+  getAllAdminProducts,
+  selectAdminAllProducts,
+  selectAdminProductsLoading,
+} from "../../features/admin/adminSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
+import { AiOutlineEye } from "react-icons/ai";
+import { FiPackage } from "react-icons/fi";
+import { DataGrid } from "@mui/x-data-grid";
 import Loader from "../Layout/Loader";
-import {
-  getAllOrders,
-  selectAllOrders,
-  selectOrderLoading,
-} from "../../features/user/userSlice";
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
-const Refunds = () => {
-  const isLoading = useSelector(selectOrderLoading);
-  const user = useSelector((state) => state.user.user);
-  const orders = useSelector(selectAllOrders);
+const AdminProducts = () => {
+  const isLoading = useSelector(selectAdminProductsLoading);
+  const adminProducts = useSelector(selectAdminAllProducts);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllOrders(user._id));
-  }, [dispatch, user._id]);
-
-  const data =
-    orders &&
-    orders.filter(
-      (item) =>
-        item.status === "Processing Refund" || item.status === "Refund Success"
-    );
+    dispatch(getAllAdminProducts());
+  }, [dispatch]);
 
   const columns = [
     {
       field: "id",
-      headerName: "Order ID",
+      headerName: "Product Id",
       minWidth: 130,
       flex: 0.7,
       sortable: false,
     },
 
     {
-      field: "status",
-      headerName: "Status",
-      minWidth: 100,
-      flex: 0.7,
-
-      cellClassName: (params) => {
-        const status = params.value;
-        return status === "Refund Success" ? "bg-green-400" : "bg-red-400";
-      },
+      field: "name",
+      headerName: "Name",
+      minWidth: 150,
+      flex: 0.9,
     },
 
     {
-      field: "itemsQty",
-      headerName: "items qty",
-      type: "Number",
-      minWidth: 100,
+      field: "price",
+      headerName: "Price",
+      minWidth: 80,
       flex: 0.7,
       sortable: false,
     },
     {
-      field: "total",
-      headerName: "Total",
-      type: "Number",
-      minWidth: 90,
-      flex: 0.7,
+      field: "stock",
+      headerName: "Stock",
+
+      minWidth: 80,
+      flex: 0.6,
       sortable: false,
     },
     {
-      field: "",
+      field: "sold",
+      minWidth: 80,
+      headerName: "Sold out",
+      type: "text",
+      sortable: false,
+      flex: 0.7,
+    },
+    {
+      field: "Preview",
       flex: 0.7,
       minWidth: 80,
-      headerName: "",
+      headerName: " ",
       type: "number",
       sortable: false,
       renderCell: (params) => {
         return (
           <>
-            <Link to={`/user/order/details/${params.id}`}>
+            <Link to={`/product/${params.id}`}>
               <Button>
-                <AiOutlineArrowRight size={20} />
+                <AiOutlineEye size={20} />
               </Button>
             </Link>
           </>
@@ -89,25 +84,21 @@ const Refunds = () => {
 
   const rows = [];
 
-  data &&
-    data.forEach((item) => {
+  adminProducts &&
+    adminProducts.forEach((product) => {
       rows.push({
-        id: item._id,
-        itemsQty: item.cart.length,
-        total:
-          "\u20A6" +
-          item.cart.reduce(
-            (acc, item) => acc + item.discountPrice * item.quantity,
-            0
-          ),
-        status: item.status,
+        id: product._id,
+        name: product.name,
+        price: "\u20A6" + numbersWithCommas(product.discountPrice),
+        stock: product.stock,
+        sold: product?.sold_out,
       });
     });
   return (
     <div className="h-full pb-10">
       <div className="flex items-center justify-center sticky h-[35px]">
-        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black py-2">
-          <HiOutlineReceiptRefund size={24} /> REFUNDS
+        <h1 className=" flex font-medium 800px:text-[25px] 800px:font-[600] text-black py-2">
+          <FiPackage size={24} /> PRODUCTS
         </h1>
       </div>
 
@@ -122,11 +113,10 @@ const Refunds = () => {
           disableRowSelectionOnClick
           autoPageSize
           disableColumnMenu
-          getRowId={(row) => row.id}
         />
       )}
     </div>
   );
 };
 
-export default Refunds;
+export default AdminProducts;

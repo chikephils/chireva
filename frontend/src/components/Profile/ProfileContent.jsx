@@ -92,7 +92,7 @@ const ProfileContent = () => {
         ) : null}
       </>
       <div className="flex items-center justify-center sticky h-[35px]">
-        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black py-2">
+        <h1 className=" flex font-medium 800px:text-[25px] 800px:font-[600] text-black py-2">
           <FcPortraitMode size={24} /> My Profile
         </h1>
       </div>
@@ -102,7 +102,7 @@ const ProfileContent = () => {
           <div className="relative">
             <img
               src={`${user?.avatar?.url}`}
-              className=" w-[80px] h-[80px] lg:w-[150px] lg:h-[150px] rounded-full object-cover border-[3px] border-lime-500"
+              className=" w-[80px] h-[80px] 800px:w-[150px] 800px:h-[150px] rounded-full object-cover border-[3px] border-lime-500"
               alt="avatar"
             />
             <div className="w-[30px] h-[30px] bg-slate-300 rounded-full flex items-center justify-center cursor-pointer absolute bottom-[5px] right-[5px]">
@@ -122,71 +122,71 @@ const ProfileContent = () => {
         <br />
         <div className="w-full px-2 md:px-5 pb-4">
           <form onSubmit={handleSubmit}>
-            <div className="w-full block lg:flex pb-1 lg:pb-3">
-              <div className="w-[100%] lg:w-[50%]">
-                <label className="block pb-1 text-sm lg:text-base font-medium">
+            <div className="w-full block 800px:flex pb-1 800px:pb-3">
+              <div className="w-[100%] 800px:w-[50%]">
+                <label className="block pb-1 text-sm 800px:text-base font-medium">
                   {" "}
                   First Name
                 </label>
                 <input
                   type="text"
-                  className={`${styles.input} !w-[95%] mb-4 lg:mb-0`}
+                  className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
                   required
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
-              <div className="w-[100%] lg:w-[50%]">
-                <label className="block pb-1 text-sm lg:text-base font-medium">
+              <div className="w-[100%] 800px:w-[50%]">
+                <label className="block pb-1 text-sm 800px:text-base font-medium">
                   {" "}
                   Last Name
                 </label>
                 <input
                   type="text"
-                  className={`${styles.input} !w-[95%] mb-4 lg:mb-0`}
+                  className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
                   required
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
             </div>
-            <div className="w-full lg:flex block pb-1 lg:pb-3">
-              <div className="w-[100%] lg:w-[50%]">
-                <label className="block pb-1 text-sm lg:text-base font-medium">
+            <div className="w-full 800px:flex block pb-1 800px:pb-3">
+              <div className="w-[100%] 800px:w-[50%]">
+                <label className="block pb-1 text-sm 800px:text-base font-medium">
                   {" "}
                   Email Address{" "}
                 </label>
                 <input
                   type="text"
-                  className={`${styles.input} !w-[95%] mb-4 lg:mb-0`}
+                  className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div className="w-[100%] lg:w-[50%]">
-                <label className="block pb-1 text-sm lg:text-base font-medium">
+              <div className="w-[100%] 800px:w-[50%]">
+                <label className="block pb-1 text-sm 800px:text-base font-medium">
                   {" "}
                   Phone Number
                 </label>
                 <input
                   type="number"
-                  className={`${styles.input} !w-[95%] mb-4 lg:mb-0`}
+                  className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
                   required
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
                 />
               </div>
             </div>
-            <div className="w-full lg:flex block pb-1 lg:pb-3">
-              <div className="w-[100%] lg:w-[50%]">
-                <label className="block pb-1 text-sm lg:text-base font-medium">
+            <div className="w-full 800px:flex block pb-1 800px:pb-3">
+              <div className="w-[100%] 800px:w-[50%]">
+                <label className="block pb-1 text-sm 800px:text-base font-medium">
                   {" "}
                   Password
                 </label>
                 <input
                   type="password"
-                  className={`${styles.input} !w-[95%] mb-4 lg:mb-0`}
+                  className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}

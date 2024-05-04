@@ -103,7 +103,7 @@ const AllCoupons = ({ refreshCoupons, coupons, isLoading, setIsOpen }) => {
           </div>
         </div>
 
-        <h1 className=" flex justify-center font-medium lg:text-[22px] lg:font-[600] text-black pb-2">
+        <h1 className=" flex justify-center font-medium 800px:text-[22px] 800px:font-[600] text-black pb-2">
           <FiPackage size={24} /> Your Discount Coupons
         </h1>
       </div>

@@ -8,6 +8,7 @@ import axios from "axios";
 import { server } from "../../server";
 import { AiOutlineDelete } from "react-icons/ai";
 import SmallLoader from "../Layout/SmallLoader";
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
 const WithdrawMoney = () => {
   const [open, setOpen] = useState(false);
@@ -20,25 +21,9 @@ const WithdrawMoney = () => {
   const [isloading, setIsLoading] = useState(false);
   const [withdrawAmount, setWithdrawAmount] = useState(1000);
   const [paymentMethod, setPaymentMethod] = useState(false);
-  const [availableBalance, setAvailableBalance] = useState(
-    seller?.availableBalance.toFixed(2)
-  );
   const sellerToken = useSelector((state) => state.shop.sellerToken);
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (seller._id) {
-      axios
-        .get(`${server}/shop/get-shop-info/${seller._id}`)
-        .then((res) => {
-          setAvailableBalance(res.data.shop.availableBalance.toFixed(2));
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, [seller._id]);
 
   useEffect(() => {
     axios
@@ -165,26 +150,31 @@ const WithdrawMoney = () => {
 
   return (
     <div className="w-full flex items-center justify-center px-1">
-      <div className="w-full md:w-[60%] lg:w-[50%] px-2 py-2 md:py-2">
+      <div className="w-full md:w-[60%] 800px:w-[50%] px-2 py-2 md:py-2">
         <div className="flex items-center justify-center sticky top-2 mb-2">
-          <h5 className=" text-base md:text-lg lg:text-xl font-semibold text-center">
+          <h5 className=" text-base md:text-lg 800px:text-xl font-semibold text-center">
             Withdraw Money
           </h5>
         </div>
         <div className=" h-[70vh] rounded flex items-center justify-center flex-col overflow-y-scroll scrollbar-none pb-6">
-          <h5 className="text-[16px] md:text-[18px] lg:text-[20px] pb-4">
-            Available Balance: <strong>&#x20A6;{availableBalance}</strong>
+          <h5 className="text-[16px] md:text-[18px] 800px:text-[20px] pb-4">
+            Available Balance:{" "}
+            <strong>
+              &#x20A6; {numbersWithCommas(seller?.availableBalance)}
+            </strong>
           </h5>
           <div
             className={`${styles.button} text-white !h-[40px]  p-3 !rounded-xl`}
-            onClick={() => (availableBalance < 1000 ? error() : setOpen(true))}
+            onClick={() =>
+              seller?.availableBalance < 1000 ? error() : setOpen(true)
+            }
           >
             Withdraw
           </div>
         </div>
         {open && (
-          <div className="fixed top-3 left-0 w-full h-screen bg-[#00000062] z-[5000] flex items-center justify-center pt-10 lg:pl-24 lg:pt-16">
-            <div className="w-[90%] md:w-[70%] lg:w-[50%] h-[75vh] bg-gradient-to-r from-slate-300 to-lime-200 ...  rounded-md shadow p-4 overflow-y-scroll scrollbar-none">
+          <div className="fixed top-3 left-0 w-full h-screen bg-[#00000062] z-[5000] flex items-center justify-center pt-10 800px:pl-24 800px:pt-16">
+            <div className="w-[90%] md:w-[70%] 800px:w-[50%] h-[75vh] bg-gradient-to-r from-slate-300 to-lime-200 ...  rounded-md shadow p-4 overflow-y-scroll scrollbar-none">
               <div className="w-full flex justify-end">
                 <RxCross1
                   size={25}
@@ -194,7 +184,7 @@ const WithdrawMoney = () => {
               </div>
               {paymentMethod ? (
                 <div>
-                  <h1 className="text-center text-[16px] md:text-[20px] lg:text-[25px] font-poppins">
+                  <h1 className="text-center text-[16px] md:text-[20px] 800px:text-[25px] font-poppins">
                     Add New Payment method
                   </h1>
                   <div className="w-full">
@@ -254,7 +244,7 @@ const WithdrawMoney = () => {
                 </div>
               ) : (
                 <>
-                  <h3 className="text-[18px] md:text-[20px] lg:text-[20px] font-semibold flex text-center justify-center md:mb-5">
+                  <h3 className="text-[18px] md:text-[20px] 800px:text-[20px] font-semibold flex text-center justify-center md:mb-5">
                     Available Withdrawal Options
                   </h3>
                   {seller && seller?.withdrawMethod ? (
@@ -297,7 +287,9 @@ const WithdrawMoney = () => {
                       <h4 className=" flex items-center justify-center">
                         {" "}
                         Available Balance :
-                        <strong>&#x20A6;{seller?.availableBalance}</strong>{" "}
+                        <strong>
+                          &#x20A6; {numbersWithCommas(seller?.availableBalance)}
+                        </strong>{" "}
                       </h4>
                       <br />
                       <div className="800px:flex w-full items-center justify-center">
@@ -322,7 +314,7 @@ const WithdrawMoney = () => {
                     </div>
                   ) : (
                     <div>
-                      <p className="text-[14px] md:text-[16px] lg:text-[18px] flex items-center justify-center pt-2">
+                      <p className="text-[14px] md:text-[16px] 800px:text-[18px] flex items-center justify-center pt-2">
                         No Withdraw Methods available!
                       </p>
                       <div className="w-full flex items-center justify-center">

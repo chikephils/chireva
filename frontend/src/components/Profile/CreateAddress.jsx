@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { updateUserAddress } from "../../features/user/userSlice";
 import { RxCross1 } from "react-icons/rx";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { Country, State } from "country-state-city";
 import { toast } from "react-toastify";
 import styles from "../../styles/styles";
@@ -62,9 +62,9 @@ const CreateAddress = ({ setOpen }) => {
   };
   return (
     <div className="fixed w-full h-screen top-0 left-0 bg-[#00000030] z-50 flex items-center justify-center shadow-xl">
-      <div className="w-[90%] lg:w-[40%] h-[80vh] md:h-[80vh] overflow-y-scroll scrollbar-none lg:h-[75vh] bg-gradient-to-r from-slate-300 to-slate-400 ... rounded-md shadow-2xl relative p-1 lg:p-2 mt-4">
+      <div className="w-[90%] 800px:w-[40%] h-[80vh] md:h-[80vh] overflow-y-scroll scrollbar-none 800px:h-[75vh] bg-gradient-to-r from-slate-300 to-slate-400 ... rounded-md shadow-2xl relative p-1 800px:p-2 mt-4">
         <div className="w-full flex items-center justify-between pb-3 px-2">
-          <h5 className=" text-base md:text-lg lg:text-xl font-semibold text-center">
+          <h5 className=" text-base md:text-lg 800px:text-xl font-semibold text-center">
             Add new address
           </h5>
           <RxCross1
@@ -91,7 +91,7 @@ const CreateAddress = ({ setOpen }) => {
                   {Country &&
                     Country.getAllCountries().map((item) => (
                       <option
-                        className="text-[14px] md:text-[16px] lg:text-base font-medium "
+                        className="text-[14px] md:text-[16px] 800px:text-base font-medium "
                         key={item.isoCode}
                         value={item.isoCode}
                       >
@@ -115,7 +115,7 @@ const CreateAddress = ({ setOpen }) => {
                   {State &&
                     State.getStatesOfCountry(country).map((item) => (
                       <option
-                        className="text-[14px] md:text-[16px] lg:text-base font-medium"
+                        className="text-[14px] md:text-[16px] 800px:text-base font-medium"
                         key={item.isoCode}
                         value={item.isoCode}
                       >
@@ -165,14 +165,14 @@ const CreateAddress = ({ setOpen }) => {
                 >
                   <option
                     value=""
-                    className="text-[14px] md:text-[16px] lg:text-[16px] font-medium"
+                    className="text-[14px] md:text-[16px] 800px:text-[16px] font-medium"
                   >
                     Choose your Address Type
                   </option>
                   {addressTypeData &&
                     addressTypeData.map((item) => (
                       <option
-                        className="text-[14px] md:text-[16px] lg:text-base font-medium"
+                        className="text-[14px] md:text-[16px] 800px:text-base font-medium"
                         key={item.name}
                         value={item.name}
                       >

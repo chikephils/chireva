@@ -5,7 +5,7 @@ const styles = {
   section: "w-11/12 mx-auto",
   sm_section: "w-full px-2",
   productTitle:
-    " text-[20px] lg:text-[25px] font-[600] font-Roboto text-[#333]",
+    " text-[20px] 800px:text-[25px] font-[600] font-Roboto text-[#333]",
   productDiscountPrice: "font-bold text-[18px] text-[#333] font-Roboto",
   sm_productDiscountPrice: "font-bold text-xs text-[#333] font Roboto",
   price: "font-[500] text-[16px] text-[#d55b45] pl-3 mt-[-4px] line-through",

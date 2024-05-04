@@ -108,7 +108,7 @@ const Settings = () => {
       </>
 
       <div className="flex items-center justify-center sticky h-[35px] bg-slate-200 py-2">
-        <h5 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black py-2">
+        <h5 className=" flex font-medium 800px:text-[25px] 800px:font-[600] text-black py-2">
           Shop Settings
         </h5>
       </div>
@@ -118,7 +118,7 @@ const Settings = () => {
             <img
               src={`${seller?.avatar?.url}`}
               alt=""
-              className="w-[100px] h-[100px] lg:w-[140px] lg:h-[140px] rounded-full cursor-pointer border-[1.5px] border-lime-500 "
+              className="w-[100px] h-[100px] 800px:w-[140px] 800px:h-[140px] rounded-full cursor-pointer border-[1.5px] border-lime-500 "
             />
             <div className="w-[30px] h-[30px] bg-slate-400 rounded-full flex items-center justify-center cursor-pointer absolute bottom-[10px] right-[15px]">
               <input

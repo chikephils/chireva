@@ -8,6 +8,7 @@ import Loader from "../Layout/Loader";
 import { DataGrid } from "@mui/x-data-grid";
 import { CiMoneyBill } from "react-icons/ci";
 import { useSelector } from "react-redux";
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
 const AdminWithdrawRequest = () => {
   const [withdrawals, setWithdrawals] = useState();
@@ -97,14 +98,14 @@ const AdminWithdrawRequest = () => {
         id: item._id,
         status: item.status,
         shop: item.seller.shopName,
-        amount: "\u20A6" + item?.amount,
+        amount: "\u20A6" + numbersWithCommas(item?.amount),
         createdAt: item?.createdAt.slice(0, 10),
       });
     });
   return (
-    <div className="h-full pb-10">
+    <div className="h-full">
       <div className="flex items-center justify-center sticky h-[35px]">
-        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black pb-2">
+        <h1 className=" flex font-medium 800px:text-[25px] 800px:font-[600] text-black pb-2">
           <CiMoneyBill size={24} /> Withdrawal Request
         </h1>
       </div>

@@ -123,7 +123,7 @@ const DashBoardSideBar = ({ active }) => {
         <Link to="/dashboard-messages" className="w-full flex items-center">
           <FcSms size={30} color={`${active === 8 ? "red" : "black"}`} />
           <h5
-            className={`hidden lg:block pl-2 text-[14px] lg:text-[16px] font-semibold ${
+            className={`hidden 800px:block pl-2 text-[14px] 800px:text-[16px] font-semibold ${
               active === 8 ? "text-[red]" : "text-black"
             }`}
           >

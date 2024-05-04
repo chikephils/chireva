@@ -9,11 +9,13 @@ import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 import styles from "../../styles/styles";
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
 const PaymentPage = ({ orderData, setShowPayment }) => {
   const user = useSelector(selectUser);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const editedPrice = numbersWithCommas(orderData?.totalPrice);
 
   const config = {
     public_key: "FLWPUBK_TEST-4bfb059aab8ea1c5cd2cf17d7e73bd96-X",
@@ -92,12 +94,12 @@ const PaymentPage = ({ orderData, setShowPayment }) => {
             </div>
           </div>
           <div className="w-full flex flex-col items-center py-8 320px:mt-24 600px:mt-14">
-            <div className="w-[95%] 800px:w-[80%] block lg:flex ">
+            <div className="w-[95%] 800px:w-[80%] block 800px:flex ">
               <div className="w-full 800px:w-[65%] max-h-[70vh] overflow-y-scroll scrollbar-none py-4 ">
                 <CartData orderData={orderData} />
               </div>
 
-              <div className="w-full 800px:w-[35%] lg:mt-0 mt-8">
+              <div className="w-full 800px:w-[35%] 800px:mt-0 mt-8">
                 <Shipping orderData={orderData} />
               </div>
             </div>
@@ -107,9 +109,7 @@ const PaymentPage = ({ orderData, setShowPayment }) => {
                 onClick={handlePayment}
                 disabled={loading}
               >
-                {loading
-                  ? "Processing..."
-                  : `Pay \u20A6${orderData?.totalPrice}`}
+                {loading ? "Processing..." : `Pay \u20A6${editedPrice}`}
               </button>
             </div>
           </div>
@@ -135,7 +135,7 @@ const CartData = ({ orderData }) => {
                 <img
                   src={`${item.images && item?.images[0]?.url}`}
                   alt="img"
-                  className="max-w-[50px] max-h-[50px] 800px:max-w-[100px] lg:max-h-[60px]"
+                  className="max-w-[50px] max-h-[50px] 800px:max-w-[100px] 800px:max-h-[60px]"
                 />
               </div>
               <div className="flex justify-center w-[5%] font-semibold">
@@ -145,7 +145,7 @@ const CartData = ({ orderData }) => {
                 {item?.name}
               </div>
               <div className="flex justify-start w-[30%] font-semibold pr-1">
-                &#x20A6;{item.discountPrice * item.quantity}
+                &#x20A6;{numbersWithCommas(item.discountPrice * item.quantity)}
               </div>
             </div>
           ))}

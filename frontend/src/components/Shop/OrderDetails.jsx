@@ -14,6 +14,7 @@ import {
 } from "../../features/shop/shopSlice";
 import { server } from "../../server";
 import SmallLoader from "../Layout/SmallLoader";
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
 const OrderDetails = () => {
   const seller = useSelector(selectSeller);
@@ -23,7 +24,7 @@ const OrderDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const orders = useSelector(selectAllShopOrders);
-  const sellerToken = useSelector((state) => state.shop?.sellerToken);
+  const sellerToken = useSelector((state) => state.shop.sellerToken);
 
   useEffect(() => {
     dispatch(getAllShopOrders(seller._id));
@@ -94,14 +95,18 @@ const OrderDetails = () => {
   };
 
   return (
-    <div className={`py-4 min-h-screen mt-[60px] ${styles.section}`}>
+    <div
+      className={`py-4 min-h-screen mt-[82px] 800px:mt-[90px] ${styles.section}`}
+    >
       <div className="w-full h-[35px] bg-green-400 sticky top-0">
         <div className="flex justify-between p-2">
           <div className=" flex">
             <BsFillBagFill size={24} color="crimson" />
           </div>
           <div className="flex items-center">
-            <h1 className="flex text-[18px] lg:text-[20px]">Order Details</h1>
+            <h1 className="flex text-[18px] 800px:text-[20px]">
+              Order Details
+            </h1>
           </div>
           <div className="flex">
             <RxCross1
@@ -113,11 +118,11 @@ const OrderDetails = () => {
         </div>
       </div>
       <div className="w-full flex items-center justify-between gap-2 p-2">
-        <h5 className="text-[00000084] text-[14px] md:text-[16px] lg:text-[base]">
+        <h5 className="text-[00000084] text-[14px] md:text-[16px] 800px:text-[base]">
           {" "}
           Order ID: <span>#{order?._id?.slice(0, 8)}</span>
         </h5>
-        <h5 className="text-[#00000084] text-[14px] md:text-[16px] lg:text-[base]">
+        <h5 className="text-[#00000084] text-[14px] md:text-[16px] 800px:text-[base]">
           {" "}
           Placed on: <span>{order?.createdAt?.slice(0, 10)}</span>
         </h5>
@@ -144,11 +149,12 @@ const OrderDetails = () => {
 
               <div className="w-full items-center">
                 {" "}
-                <h5 className="text-[14px] md:text-[15px] 600px:text-[16px] lg:text-[18px] pl-3 ">
+                <h5 className="text-[14px] md:text-[15px] 600px:text-[16px] 800px:text-[18px] pl-3 ">
                   {item?.name}
                 </h5>
-                <h5 className="text-[12px] md:text-[13px] 600px:text-[14px] lg:text-[16px] pl-3 ">
-                  &#x20A6; {item?.discountPrice} X {item.quantity}
+                <h5 className="text-[12px] md:text-[13px] 600px:text-[14px] 800px:text-[16px] pl-3 ">
+                  &#x20A6; {numbersWithCommas(item?.discountPrice)} x{" "}
+                  {item.quantity}
                 </h5>
               </div>
             </div>
@@ -156,42 +162,44 @@ const OrderDetails = () => {
         })}
 
       <div className="w-full border-t text-right pr-2 mb-2">
-        <h5 className="pt-2 text-[16px] lg:text-[18px]">
+        <h5 className="pt-2 text-[16px] 800px:text-[18px]">
           Total Price:{" "}
           <strong>
             {" "}
             &#x20A6;{" "}
-            {order?.cart.reduce(
-              (acc, item) => acc + item.discountPrice * item.quantity,
-              0
+            {numbersWithCommas(
+              order?.cart.reduce(
+                (acc, item) => acc + item.discountPrice * item.quantity,
+                0
+              )
             )}
           </strong>
         </h5>
       </div>
 
-      <div className="w-full 600px:flex lg:flex items-center p-2">
-        <div className="w-full lg:w-[30%]">
-          <h4 className=" text-[16px] md:text-[18px] lg:text-[20px] font-semibold">
+      <div className="w-full 600px:flex 800px:flex items-center p-2">
+        <div className="w-full 800px:w-[30%]">
+          <h4 className=" text-[16px] md:text-[18px] 800px:text-[20px] font-semibold">
             Shipping Address :
           </h4>
-          <h4 className="text-[14px] md:text-[16px] lg:text-[16px]">
+          <h4 className="text-[14px] md:text-[16px] 800px:text-[16px]">
             {order.shippingAddress.street}
           </h4>
-          <h4 className="text-[14px] md:text-[16px] lg:text-[16px]">
+          <h4 className="text-[14px] md:text-[16px] 800px:text-[16px]">
             {order.shippingAddress.city}
           </h4>
-          <h4 className="text-[14px] md:text-[16px] lg:text-[16px]">
+          <h4 className="text-[14px] md:text-[16px] 800px:text-[16px]">
             {order.shippingAddress.state}
           </h4>
-          <h4 className="text-[14px] md:text-[16px] lg:text-[16px]">
+          <h4 className="text-[14px] md:text-[16px] 800px:text-[16px]">
             {order.shippingAddress.country}
           </h4>
-          <h4 className="text-[14px] md:text-[16px] lg:text-[16px]">
+          <h4 className="text-[14px] md:text-[16px] 800px:text-[16px]">
             {order.user.phoneNumber}
           </h4>
         </div>
-        <div className="w-full lg:w-[30%] pt-3 lg:pt-0">
-          <h4 className="text-[16px] md:text-[18px] lg:text-[20px] font-semibold">
+        <div className="w-full 800px:w-[30%] pt-3 800px:pt-0">
+          <h4 className="text-[16px] md:text-[18px] 800px:text-[20px] font-semibold">
             Payment Info
           </h4>
           <h4>
@@ -200,7 +208,7 @@ const OrderDetails = () => {
         </div>
         <br />
         <div className="">
-          <h4 className="text-[16px] md:text-[18px] lg:text-[18px] font-semibold">
+          <h4 className="text-[16px] md:text-[18px] 800px:text-[18px] font-semibold">
             Order Status:
           </h4>
           {order?.status !== "Processing Refund" &&
@@ -231,7 +239,7 @@ const OrderDetails = () => {
                   .map((option, index) => (
                     <option
                       value={option}
-                      className="text-[12px] lg:text-[14px] font-normal cursor-pointer"
+                      className="text-[12px] 800px:text-[14px] font-normal cursor-pointer"
                       key={index}
                     >
                       {option}
@@ -255,7 +263,7 @@ const OrderDetails = () => {
                   <option
                     value={option}
                     key={index}
-                    className="text-[12px] lg:text-[14px] font-normal cursor-pointer"
+                    className="text-[12px] 800px:text-[14px] font-normal cursor-pointer"
                   >
                     {option}
                   </option>
@@ -265,7 +273,7 @@ const OrderDetails = () => {
 
           {order?.status !== "Refund Success" &&
             order?.status !== "Delivered" && (
-              <div className=" lg:pl-2">
+              <div className=" 800px:pl-2">
                 <div
                   className={`${styles.button}  !w-max p-1  !bg-[#FCE1E6] !rounded-[4px] text-[#E94560] font-[600] !h-[35px] text-[14px]`}
                   onClick={

@@ -31,7 +31,6 @@ const Inbox = () => {
   const token = useSelector((state) => state.user?.token);
   const me = user?._id;
 
-
   useEffect(() => {
     socketId.on("getMessage", (data) => {
       setArrivalMessage({
@@ -89,7 +88,6 @@ const Inbox = () => {
     };
     getMessage();
   }, [currentChat]);
-  
 
   const sendMessageHandler = async (e) => {
     e.preventDefault();
@@ -239,7 +237,7 @@ const Inbox = () => {
           </div>
           {/* Messages */}
           <div className="w-full rounded-lg flex flex-col">
-            <div className=" h-[75vh] overflow-y-scroll scrollbar-none py-2 p-1 lg:px-4 shadow-xl">
+            <div className=" h-[75vh] overflow-y-scroll scrollbar-none py-2 p-1 800px:px-4 shadow-xl">
               {" "}
               {messages &&
                 messages.map((message, index) => {
@@ -270,7 +268,7 @@ const Inbox = () => {
                         )}
 
                         {message.text && (
-                          <div className="max-w-[250px] md:max-w-[300px] lg:max-w-[900px] p-2 rounded">
+                          <div className="max-w-[250px] md:max-w-[300px] 800px:max-w-[900px] p-2 rounded">
                             <div
                               className={`${
                                 message?.sender === me

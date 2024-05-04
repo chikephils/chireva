@@ -15,7 +15,7 @@ const Navbar = ({ active }) => {
                 active === index + 1
                   ? "text-lime-600 md:text-white"
                   : "text-gray-700"
-              } text-[16px] lg:text-base font-[500] px-2 lg:px-6 cursor-pointer ${
+              } text-[16px] 800px:text-base font-[500] px-2 800px:px-6 cursor-pointer ${
                 item.title === "Best Selling" ? "whitespace-nowrap" : ""
               } mb-5 md:mb-0 md:px-2 `}
             >

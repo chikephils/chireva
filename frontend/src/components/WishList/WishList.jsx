@@ -12,17 +12,19 @@ import {
   clearWishList,
 } from "../../features/wishlist/wishlistSlice";
 import { addToCart } from "../../features/cart/cartSlice";
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
 const WishList = ({ setOpenWishList }) => {
   const wishList = useSelector(selectWishListItems);
   const [total, setTotal] = useState(0);
   const dispatch = useDispatch();
+  const editedTotal = numbersWithCommas(total);
 
   useEffect(() => {
     let totalPrice = wishList?.reduce(function (accumulator, item) {
       return accumulator + item.discountPrice;
     }, 0);
-    setTotal(totalPrice);
+    setTotal(totalPrice.toFixed(2));
   }, [total, wishList]);
 
   const emptyWishListHandler = () => {
@@ -31,7 +33,7 @@ const WishList = ({ setOpenWishList }) => {
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-[#0000004b] z-50 flex items-start justify-end">
-      <div className="relative w-[70%] lg:w-[40%] bg-gradient-to-r from-slate-200 to-slate-300 flex flex-col justify-between shadow-xl rounded-lg h-full pb-1">
+      <div className="relative w-[70%] 800px:w-[40%] bg-gradient-to-r from-slate-200 to-slate-300 flex flex-col justify-between shadow-xl rounded-lg h-full pb-1">
         <div className="w-full h-[8vh] flex items-center justify-between px-1 bg-gradient-to-r from-cyan-300 to-blue-400 rounded-t-lg">
           <div>
             <RxCross1
@@ -70,7 +72,7 @@ const WishList = ({ setOpenWishList }) => {
             <div className="px-1">
               <div className="h-[45px] flex items-center justify-center w-[100%] bg-gradient-to-r from-cyan-400 to-blue-500 ...rounded-xl p-2 rounded-lg">
                 <h1 className="text-black text-[18px] font-[600]">
-                  Total &#x20A6; {total.toFixed(2)}
+                  Total &#x20A6; {editedTotal}
                 </h1>
               </div>
             </div>
@@ -105,8 +107,10 @@ const CartItem = ({ item }) => {
     ? item.discountPrice
     : item.originalPrice;
 
+  const editedTotalPrice = numbersWithCommas(totalPrice);
+
   return (
-    <div className=" w-full rounded-lg p-1 lg:p-2 flex justify-between min-h-[80px] bg-gradient-to-r from-lime-300 to-blue-400 ... shadow-lg my-2">
+    <div className=" w-full rounded-lg p-1 800px:p-2 flex justify-between min-h-[80px] bg-gradient-to-r from-lime-300 to-blue-400 ... shadow-lg my-2">
       <div className=" flex items-center justify-start">
         <RxCross1
           className=" flex items-center cursor-pointer font-bold"
@@ -117,7 +121,7 @@ const CartItem = ({ item }) => {
         <img
           src={`${item.images && item.images[0]?.url}`}
           alt="img"
-          className="max-w-[60px] max-h-[50px]  600px:max-w-[100px] 600px:max-h-[70px] lg:max-w-[130px] lg:max-h-[80px] "
+          className="max-w-[60px] max-h-[50px]  600px:max-w-[100px] 600px:max-h-[70px] 800px:max-w-[130px] 800px:max-h-[80px] "
         />
       </div>
       <div className="w-[40%]">
@@ -125,7 +129,7 @@ const CartItem = ({ item }) => {
           {item.name.slice(0, 15)}...
         </h1>
         <h4 className="text-sm md:text-base font-Roboto font-semibold  pt-[3px] text-red-600">
-          &#x20A6;{totalPrice}
+          &#x20A6;{editedTotalPrice}
         </h4>
       </div>
       <div className="flex items-center justify-end pr-1">

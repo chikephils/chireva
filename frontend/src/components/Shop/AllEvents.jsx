@@ -98,7 +98,7 @@ const AllEvents = ({ handleEventClick, shopEvents, isLoading }) => {
         return (
           <>
             <Button onClick={() => handleDelete(params.id)}>
-            {showLoader[params.id] ? (
+              {showLoader[params.id] ? (
                 <SmallLoader />
               ) : (
                 <AiOutlineDelete size={18} />
@@ -128,7 +128,7 @@ const AllEvents = ({ handleEventClick, shopEvents, isLoading }) => {
   return (
     <div className="h-full pb-10">
       <div className="flex items-center justify-center sticky h-[35px]">
-        <h1 className=" flex font-medium lg:text-[22px] lg:font-[600] text-black py-3p">
+        <h1 className=" flex font-medium 800px:text-[22px] 800px:font-[600] text-black py-3p">
           <MdOutlineLocalOffer size={24} /> Your Shop Events
         </h1>
       </div>

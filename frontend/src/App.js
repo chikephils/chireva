@@ -89,7 +89,7 @@ function App() {
     <>
       <ScrollToTop />
       <ThemeProvider theme={theme}>
-        <div className="w-screen min-h-[100vh] lg:pr-2">
+        <div className="w-screen min-h-[100vh] 800px:pr-2">
           <Routes>
             <Route path="/" element={<HomePage />} />
 

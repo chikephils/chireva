@@ -15,6 +15,7 @@ import {
   removeFromWishList,
   selectWishListItems,
 } from "../../../features/wishlist/wishlistSlice";
+import { numbersWithCommas } from "../../../utils/priceDisplay";
 
 const ProductCard = ({ product, isEvent }) => {
   const [click, setClick] = useState(false);
@@ -22,8 +23,9 @@ const ProductCard = ({ product, isEvent }) => {
   const wishlist = useSelector(selectWishListItems);
   const [inCart, setInCart] = useState(false);
   const cart = useSelector(itemsInCart);
-
   const dispatch = useDispatch();
+  const editedPrice = numbersWithCommas(product?.originalPrice);
+  const editedDiscountPrice = numbersWithCommas(product?.discountPrice);
 
   useEffect(() => {
     if (wishlist && wishlist.find((listItem) => listItem._id === product._id)) {
@@ -54,7 +56,7 @@ const ProductCard = ({ product, isEvent }) => {
   const add = () => {
     setInCart(!inCart);
     dispatch(addToCart({ item: product }));
-  }
+  };
 
   const remove = () => {
     setInCart(!inCart);
@@ -62,7 +64,7 @@ const ProductCard = ({ product, isEvent }) => {
   };
 
   return (
-    <div className="320px:w-[145px] 375px:w-[165px] 400px:w-[175px] min-h-[150px] lg:min-w-full lg:min-h-[280px] bg-gradient-to-r from-slate-50 to-slate-200 ... rounded-lg shadow-2xl p-2 lg:p-2 overflow-hidden flex flex-col">
+    <div className="320px:w-[145px] 375px:w-[165px] 400px:w-[175px] min-h-[150px] 800px:min-w-full 800px:min-h-[280px] bg-gradient-to-r from-slate-50 to-slate-200 ... rounded-lg shadow-2xl p-2 800px:p-2 overflow-hidden flex flex-col ">
       <div className="flex items-start justify-between">
         <Link
           to={`${
@@ -74,7 +76,7 @@ const ProductCard = ({ product, isEvent }) => {
           <img
             src={`${product.images && product.images[0]?.url}`}
             alt="img"
-            className="w-full max-w-[70px] md:min-w-[100px] lg:min-w-[150px] h-[70px] md:min-h-[100px] lg:min-h-[150px] object-contain"
+            className="w-full max-w-[70px] md:min-w-[100px] 800px:min-w-[150px] h-[70px] md:min-h-[100px] 800px:min-h-[150px] object-contain"
           />
         </Link>
         {/* side options */}
@@ -136,7 +138,7 @@ const ProductCard = ({ product, isEvent }) => {
 
       <div>
         <Link to={`/shop/preview/${product?.shop?._id}`}>
-          <h5 className="text-lime-600 text-[12px] lg:text-base font-semibold mt-1 hover:text-lime-500">
+          <h5 className="text-lime-600 text-[12px] 800px:text-base font-semibold mt-1 hover:text-lime-500">
             {product?.shop?.shopName}
           </h5>
         </Link>
@@ -147,7 +149,7 @@ const ProductCard = ({ product, isEvent }) => {
               : `/product/${product._id}`
           }`}
         >
-          <h4 className=" pb-1 lg:pr-0 lg:pb-2 text-[14px] lg:text-sm font-medium hover:font-bold">
+          <h4 className=" pb-1 800px:pr-0 800px:pb-2 text-[14px] 800px:text-sm font-medium hover:font-bold">
             {product?.name.length > 35
               ? product?.name.slice(0, 35) + "..."
               : product?.name}
@@ -156,21 +158,21 @@ const ProductCard = ({ product, isEvent }) => {
         <div className="flex">
           <Ratings rating={product?.ratings} />
         </div>
-        <div className="lg:mt-1 flex justify-between">
-          <div className="flex">
+        <div className="800px:mt-1 flex justify-between">
+          <div className="800px:flex flex-col">
             {product.originalPrice === 0 ? null : (
-              <p className="text-[14px] md:text-[14px] lg:text-base font-medium mt-1">
-                &#x20A6; {product?.discountPrice}
+              <p className="text-[14px] md:text-[14px] 800px:text-base font-medium mt-1">
+                &#x20A6; {editedDiscountPrice}
               </p>
             )}
             {product.originalPrice && (
-              <p className="text-[12px] md:text-[14px] lg:text-base font-medium text-red-600 line-through pl-3 mt-3">
-                &#x20A6; {product?.originalPrice}
+              <p className="text-[12px] md:text-[14px] 800px:text-base font-medium text-red-600 line-through mt-1">
+                &#x20A6; {editedPrice}
               </p>
             )}
           </div>
 
-          <span className="text-[12px] md:text-x[14px] lg:text-[16px] font-semibold text-lime-600">
+          <span className="text-[12px] md:text-x[14px] 800px:text-[16px] font-semibold text-lime-600">
             {product?.sold_out} sold
           </span>
         </div>

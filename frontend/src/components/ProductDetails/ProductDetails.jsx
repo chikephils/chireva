@@ -26,6 +26,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { selectAllProducts } from "../../features/product/productSlice";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
 const ProductDetails = ({ product }) => {
   const [click, setClick] = useState(false);
@@ -37,6 +38,10 @@ const ProductDetails = ({ product }) => {
   const user = useSelector((state) => state.user.user);
   const [inCart, setInCart] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const editedPrice = numbersWithCommas(product?.originalPrice);
+  const editedDiscountPrice = numbersWithCommas(product?.discountPrice);
+
+  console.log(product);
 
   const goToPrevSlide = () => {
     setCurrentIndex(
@@ -135,13 +140,11 @@ const ProductDetails = ({ product }) => {
         );
 
         const conversationId = response.data.conversation._id;
-
         // Pass the state object to the navigate function
         navigate(`/profile/inbox/${conversationId}`, {
           state: {
             conversation: response.data.conversation,
             seller: product.shop,
-            online: true,
           },
         });
       } catch (error) {
@@ -151,14 +154,14 @@ const ProductDetails = ({ product }) => {
       toast.error("Please login to create a conversation");
     }
   };
-  const { name, description, originalPrice, discountPrice, shop } = product;
+  const { name, description, shop } = product;
 
   return (
     <div className="bg-gradient-to-r from-slate-100 to-slate-200 ...">
-      <div className={`${styles.section} w-[90%] lg:w-[90%] pb-10`}>
+      <div className={`${styles.section} w-[90%] 800px:w-[90%] pb-10`}>
         <div className="w-full py-5">
-          <div className="block w-full lg:flex">
-            <div className="w-full lg:w-[50%] px-2 ">
+          <div className="block w-full 800px:flex">
+            <div className="w-full 800px:w-[50%] px-2 ">
               <div className="relative cursor-pointer px-[10px] rounded-[10px] flex items-center justify-center hover:shadow-md">
                 <div className="min-w-[250px] overflow-hidden rounded-[10px] mb-[10px]">
                   <div
@@ -173,7 +176,7 @@ const ProductDetails = ({ product }) => {
                         <img
                           src={`${photo?.url}`}
                           alt={`pics ${index + 1}`}
-                          className="max-h-[250px] max-w-[200px] 600px:max-h-[300px] lg:max-h-[350px] lg:max-w-[400px] mb-2 flex items-center justify-center"
+                          className="max-h-[250px] max-w-[200px] 600px:max-h-[300px] 800px:max-h-[350px] 800px:max-w-[400px] mb-2 flex items-center justify-center"
                         />
                         <div
                           className="absolute top-1/2 transform -translate-y-1/2 rounded-full px-1 border-none cursor-pointer flex items-center justify-center z-50 left-[5px] bg-slate-200"
@@ -199,17 +202,17 @@ const ProductDetails = ({ product }) => {
                 </div>
               </div>
             </div>
-            <div className="w-full lg:w-[50%] pt-5">
+            <div className="w-full 800px:w-[50%] pt-5">
               <h1 className={`${styles.productTitle} text-base pb-3`}>
                 {name}
               </h1>
-              <p className="text-sm lg:text-base">{description}</p>
+              <p className="text-sm 800px:text-base">{description}</p>
               <div className="flex pt-3">
                 <h4 className={`${styles.productDiscountPrice}`}>
-                  &#x20A6; {discountPrice}
+                  &#x20A6; {editedDiscountPrice}
                 </h4>
                 <h3 className={`${styles.price}`}>
-                  &#x20A6; {originalPrice ? originalPrice : null}
+                  &#x20A6; {editedPrice ? editedPrice : null}
                 </h3>
               </div>
               <div className="flex items-center mt-4 justify-between pr-3">
@@ -303,7 +306,7 @@ const ProductDetails = ({ product }) => {
                   </h5>
                 </div>
                 <div
-                  className={`${styles.button} bg-blue-700 mt-3 !w-max !h-[45px] lg:px-2 shadow-xl !rounded-full lg:mr-3 p-1`}
+                  className={`${styles.button} bg-blue-700 mt-3 !w-max !h-[45px] 800px:px-2 !px-1 shadow-xl !rounded-full 800px:mr-3 p-1`}
                   onClick={() => handleMessageSubmit()}
                 >
                   <span className="text-sm text-white font-semibold flex items-center">
@@ -329,6 +332,7 @@ const ProductDetails = ({ product }) => {
 
 const ProductDetailsInfo = ({
   product,
+  totalRatings,
   totalReviewsLength,
   shopProducts,
   averageRating,
@@ -337,11 +341,11 @@ const ProductDetailsInfo = ({
   const { description, shop } = product;
 
   return (
-    <div className="bg-gradient-to-r from-gray-300 to-blue-300 ... px-3 lg:px-10 py-2 rounded shadow-lg ">
+    <div className="bg-gradient-to-r from-gray-300 to-blue-300 ... px-3 800px:px-10 py-2 rounded shadow-lg ">
       <div className="w-full flex justify-between border-b pt-10 pb-2">
         <div className="relative">
           <h5
-            className="text-black text-[15px] leaading-5 font-[600] cursor-pointer lg:text-[20px]"
+            className="text-black text-[15px] leaading-5 font-[600] cursor-pointer 800px:text-[20px]"
             onClick={() => setActive(1)}
           >
             Product Details
@@ -352,7 +356,7 @@ const ProductDetailsInfo = ({
         </div>
         <div className="relative">
           <h5
-            className="text-black text-[15px] leaading-5 font-[600] cursor-pointer lg:text-[20px]"
+            className="text-black text-[15px] leaading-5 font-[600] cursor-pointer 800px:text-[20px]"
             onClick={() => setActive(2)}
           >
             Product Reviews
@@ -363,7 +367,7 @@ const ProductDetailsInfo = ({
         </div>
         <div className="relative">
           <h5
-            className="text-black text-[15px] leaading-5 font-[600] cursor-pointer lg:text-[20px]"
+            className="text-black text-[15px] leaading-5 font-[600] cursor-pointer 800px:text-[20px]"
             onClick={() => setActive(3)}
           >
             Seller Information
@@ -375,7 +379,7 @@ const ProductDetailsInfo = ({
       </div>
       {active === 1 ? (
         <>
-          <p className="py-2 text-[14px] lg:text-[16px] leeading-8 pb-20 whitespace-pre-line">
+          <p className="py-2 text-[14px] 800px:text-[16px] leeading-8 pb-20 whitespace-pre-line">
             {description}
           </p>
         </>
@@ -412,8 +416,8 @@ const ProductDetailsInfo = ({
         </div>
       ) : null}
       {active === 3 && (
-        <div className="w-full block lg:flex p-2 lg:p-5">
-          <div className="w-full lg:w-[50%]">
+        <div className="w-full block 800px:flex p-2 800px:p-5">
+          <div className="w-full 800px:w-[50%]">
             <div className="flex items-center">
               <img
                 src={`${shop?.avatar?.url}`}
@@ -422,30 +426,30 @@ const ProductDetailsInfo = ({
               />
               <div className="pl-3">
                 <h3 className={`${styles.shop_name}`}>{product?.shop_name}</h3>
-                <h5 className="pb-2 text-[16px] lg:text-[20px] font-semibold">
+                <h5 className="pb-2 text-[16px] 800px:text-[20px] font-semibold">
                   {(averageRating / 5).toFixed(2)} Ratings
                 </h5>
               </div>
             </div>
-            <p className="text-[14px] lg:text-[18px]">{shop?.description}</p>
+            <p className="text-[14px] 800px:text-[18px]">{shop?.description}</p>
           </div>
-          <div className="w-full lg:w-[50%] mt-5 lg:mt-0 lg:flex flex-col items-end">
+          <div className="w-full 800px:w-[50%] mt-5 800px:mt-0 800px:flex flex-col items-end">
             <div className="text-left">
-              <h5 className="font-[600] text-[15px] lg:text-[18px]">
+              <h5 className="font-[600] text-[15px] 800px:text-[18px]">
                 Joined:{" "}
-                <span className="font-[500] text-[14px] lg:text-[16px]">
+                <span className="font-[500] text-[14px] 800px:text-[16px]">
                   {shop.createdAt.slice(0, 10)}
                 </span>
               </h5>
-              <h5 className="font-[600] text-[15px] lg:text-[18px] pt-3">
+              <h5 className="font-[600] text-[15px] 800px:text-[18px] pt-3">
                 Total Products:{" "}
-                <span className="font-[500] text-[14px] lg:text-[16px]">
+                <span className="font-[500] text-[14px] 800px:text-[16px]">
                   {shopProducts && shopProducts.length}
                 </span>
               </h5>
-              <h5 className="font-[600] text-[15px] lg:text-[18px] pt-3">
+              <h5 className="font-[600] text-[15px] 800px:text-[18px] pt-3">
                 Total Reviews:{" "}
-                <span className="font-[500] text-[14px] lg:text-[16px]">
+                <span className="font-[500] text-[14px] 800px:text-[16px]">
                   {totalReviewsLength}
                 </span>
               </h5>
@@ -453,7 +457,7 @@ const ProductDetailsInfo = ({
                 <div
                   className={`${styles.button} !w-max !h-[45px]  px-2 shadow-xl !rounded-xl  mt-3`}
                 >
-                  <h4 className="text-[14px] lg:text-[18px] font-semibold text-white">
+                  <h4 className="text-[14px] 800px:text-[18px] font-semibold text-white">
                     {" "}
                     Visit Shop
                   </h4>

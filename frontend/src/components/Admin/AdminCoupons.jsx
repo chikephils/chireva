@@ -79,7 +79,7 @@ const AdminCoupons = () => {
   return (
     <div className="h-full pb-10">
       <div className="flex items-center justify-center sticky h-[35px]">
-        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black pb-2">
+        <h1 className=" flex font-medium 800px:text-[25px] 800px:font-[600] text-black pb-2">
           <FiPackage size={24} /> ALL COUPONS
         </h1>
       </div>

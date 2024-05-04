@@ -14,6 +14,7 @@ import { MdBorderClear } from "react-icons/md";
 import { FiPackage } from "react-icons/fi";
 import { DataGrid } from "@mui/x-data-grid";
 import Loader from "../Layout/Loader";
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
 const AdminDashboard = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const AdminDashboard = () => {
     adminOrders.reduce((acc, item) => acc + item.totalPrice * 0.1, 0);
 
   const adminBalnce = adminEarnings?.toFixed(2);
+  const editedBalance = numbersWithCommas(adminBalnce);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
@@ -82,9 +84,11 @@ const AdminDashboard = () => {
         itemsQty: item?.cart?.length,
         total:
           "\u20A6" +
-          item.cart.reduce(
-            (acc, item) => acc + item.discountPrice * item.quantity,
-            0
+          numbersWithCommas(
+            item.cart.reduce(
+              (acc, item) => acc + item.discountPrice * item.quantity,
+              0
+            )
           ),
         createdAt: item?.createdAt?.slice(0, 10),
       });
@@ -93,7 +97,7 @@ const AdminDashboard = () => {
   return (
     <div className="h-full">
       <div className="flex items-center justify-center sticky h-[35px]">
-        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black py-2">
+        <h1 className=" flex font-medium 800px:text-[25px] 800px:font-[600] text-black py-2">
           Overview
         </h1>
       </div>
@@ -109,7 +113,7 @@ const AdminDashboard = () => {
               </h3>
             </div>
             <h5 className="pt-2 pl-[36px] text-[20px] font-[500]">
-              &#x20A6;{adminBalnce}
+              &#x20A6;{editedBalance}
             </h5>
           </div>
           <div className="w-full mb-4 800px:w-[30%] min-h-[30vh] bg-gradient-to-l from-gray-50 to-slate-100 ... shadow-md rounded-md px-2 py-5">

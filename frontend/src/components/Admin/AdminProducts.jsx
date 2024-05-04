@@ -11,6 +11,7 @@ import { AiOutlineEye } from "react-icons/ai";
 import { FiPackage } from "react-icons/fi";
 import { DataGrid } from "@mui/x-data-grid";
 import Loader from "../Layout/Loader";
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
 const AdminProducts = () => {
   const isLoading = useSelector(selectAdminProductsLoading);
@@ -88,7 +89,7 @@ const AdminProducts = () => {
       rows.push({
         id: product._id,
         name: product.name,
-        price: "\u20A6" + product.discountPrice,
+        price: "\u20A6" + numbersWithCommas(product.discountPrice),
         stock: product.stock,
         sold: product?.sold_out,
       });
@@ -96,10 +97,11 @@ const AdminProducts = () => {
   return (
     <div className="h-full pb-10">
       <div className="flex items-center justify-center sticky h-[35px]">
-        <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black py-2">
+        <h1 className=" flex font-medium 800px:text-[25px] 800px:font-[600] text-black py-2">
           <FiPackage size={24} /> PRODUCTS
         </h1>
       </div>
+
       {isLoading ? (
         <div className="flex items-center justify-center  h-[60vh] ">
           <Loader />

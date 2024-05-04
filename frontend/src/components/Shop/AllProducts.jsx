@@ -9,6 +9,7 @@ import { FiPackage } from "react-icons/fi";
 import Loader from "../Layout/Loader";
 import SmallLoader from "../Layout/SmallLoader";
 import { selectError } from "../../features/product/productSlice";
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
 const AllProducts = ({ handleProductClick, shopProducts, isLoading }) => {
   const deleteError = useSelector(selectError);
@@ -110,7 +111,7 @@ const AllProducts = ({ handleProductClick, shopProducts, isLoading }) => {
       rows.push({
         id: item._id,
         name: item.name,
-        price: "\u20A6" + item.discountPrice,
+        price: "\u20A6" + numbersWithCommas(item?.discountPrice),
         stock: item.stock,
         sold: item.sold_out,
       });
@@ -118,8 +119,8 @@ const AllProducts = ({ handleProductClick, shopProducts, isLoading }) => {
 
   return (
     <div className="h-full pb-10">
-      <div className="flex items-center justify-center sticky h-[35px]">
-        <h1 className=" flex font-medium lg:text-[22px] lg:font-[600] text-black py-3">
+      <div className="flex items-center justify-center sticky h-[35px] mb-3">
+        <h1 className=" flex font-medium 800px:text-[22px] 800px:font-[600] text-black py-3">
           <FiPackage size={24} /> Your Shop Products
         </h1>
       </div>

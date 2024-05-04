@@ -1,96 +1,130 @@
+import { Button } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { getAllOrders, selectAllOrders } from "../../features/user/userSlice";
-import { selectUser } from "../../features/user/userSlice";
 import { MdOutlineTrackChanges } from "react-icons/md";
-import { RxCross1 } from "react-icons/rx";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../Layout/Loader";
+import {
+  getAllOrders,
+  selectAllOrders,
+  selectOrderLoading,
+} from "../../features/user/userSlice";
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
-const TrackOrder = () => {
-  const user = useSelector(selectUser);
-  const orders = useSelector(selectAllOrders);
+const TrackOrders = () => {
+  const isLoading = useSelector(selectOrderLoading);
+  const user = useSelector((state) => state.user.user);
+  const myOrders = useSelector(selectAllOrders);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const { id } = useParams();
 
   useEffect(() => {
     dispatch(getAllOrders(user._id));
   }, [dispatch, user._id]);
 
-  const order = orders && orders.find((item) => item._id === id);
+  const columns = [
+    {
+      field: "id",
+      headerName: "Order ID",
+      minWidth: 130,
+      flex: 0.7,
+      sortable: false,
+    },
 
+    {
+      field: "status",
+      headerName: "Status",
+      minWidth: 100,
+      flex: 0.7,
+      cellClassName: (params) => {
+        const status = params.value;
+        return status === "Processing"
+          ? "bg-yellow-400"
+          : status === "Delivered" || status === "Refund Success"
+          ? "bg-green-400"
+          : "bg-red-400";
+      },
+    },
+
+    {
+      field: "itemsQty",
+      headerName: "items qty",
+      type: "Number",
+      minWidth: 100,
+      flex: 0.7,
+      sortable: false,
+    },
+    {
+      field: "total",
+      headerName: "Total",
+      type: "Number",
+      minWidth: 90,
+      flex: 0.7,
+      sortable: false,
+    },
+    {
+      field: "",
+      minWidth: 80,
+      headerName: "",
+      type: "number",
+      sortable: false,
+      flex: 0.7,
+
+      renderCell: (params) => {
+        return (
+          <>
+            <Link to={`/user/tracking/details/${params.id}`}>
+              <Button>
+                <MdOutlineTrackChanges size={18} />
+              </Button>
+            </Link>
+          </>
+        );
+      },
+    },
+  ];
+
+  const rows = [];
+
+  myOrders &&
+    myOrders.forEach((item) => {
+      rows.push({
+        id: item._id,
+        itemsQty: item.cart.length,
+        total:
+          "\u20A6" +
+          numbersWithCommas(
+            item.cart.reduce(
+              (acc, item) => acc + item.discountPrice * item.quantity,
+              0
+            )
+          ),
+        status: item.status,
+      });
+    });
   return (
-    <div className="py-4 w-full h-[80vh] justify-center items-center">
-      {" "}
-      <div className="w-full h-[35px]  sticky mb-4 ">
-        <div className="flex justify-between p-2">
-          <div className=" flex">
-            <MdOutlineTrackChanges size={24} color="crimson" />
-          </div>
-          <div className="flex items-center">
-            <h1 className="flex text-[18px] lg:text-[20px]">
-              Tracking Details
-            </h1>
-          </div>
-          <div className=" flex">
-            <RxCross1
-              size={24}
-              className=" cursor-pointer bg-red-500"
-              onClick={() => navigate("/profile/track-orders")}
-            />
-          </div>
+    <div className="h-full pb-10">
+      <div className="flex items-center justify-center sticky h-[35px]">
+        <h1 className=" flex font-medium 800px:text-[25px] 800px:font-[600] text-black py-2">
+          <MdOutlineTrackChanges size={24} /> Track Orders
+        </h1>
+      </div>
+
+      {isLoading ? (
+        <div className="flex items-center justify-center  h-[60vh] ">
+          <Loader />
         </div>
-      </div>
-      <div className="w-full flex items-center justify-between gap-2 p-2">
-        <h5 className="text-[00000084] text-[14px] md:text-[16px] lg:text-[base]">
-          {" "}
-          Order ID: <span>#{order?._id?.slice(0, 8)}</span>
-        </h5>
-        <h5 className="text-[#00000084] text-[14px] md:text-[16px] lg:text-[base]">
-          {" "}
-          Placed on: <span>{order?.createdAt?.slice(0, 10)}</span>
-        </h5>
-      </div>
-      <br />
-      <br />
-      <div className="w-full flex flex-col items-center justify-center">
-        {order && order?.status === "Processing" ? (
-          <h1 className="text-[20px] text-center">
-            {" "}
-            Your Order is Processing in Shop
-          </h1>
-        ) : order?.status === "Transferred to delivery partner" ? (
-          <h1 className="text-[20px] text-center">
-            Your Order is on the way for delivery partner
-          </h1>
-        ) : order?.status === "Shipping" ? (
-          <h1 className="text-[20px] text-center">
-            Your Order is on the way with delivery partner
-          </h1>
-        ) : order?.status === "Received" ? (
-          <h1 className="text-[20px] text-center">
-            Your Order is in your city, Our Delivery man will deliver it
-          </h1>
-        ) : order?.status === "On the Way" ? (
-          <h1 className="text-[20px] text-center">
-            {" "}
-            Our Delivery is on the way to deliver your order.
-          </h1>
-        ) : order.status === "Delivered" ? (
-          <h1 className="text-[20px] text-center text-green-500 font-bold  ">
-            Congratulations! Your order was successfully delivered{" "}
-          </h1>
-        ) : order.status === "Processing refund" ? (
-          <h1 className="text-[20px] text-center"> Your Refund is procesing</h1>
-        ) : order.status === "Refund Success" ? (
-          <h1 className="text-[20px] text-center">
-            Your refund is successfully completely!
-          </h1>
-        ) : null}
-      </div>
+      ) : (
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          disableRowSelectionOnClick
+          autoPageSize
+          disableColumnMenu
+        />
+      )}
     </div>
   );
 };
 
-export default TrackOrder;
+export default TrackOrders;

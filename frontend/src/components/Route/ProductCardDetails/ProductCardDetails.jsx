@@ -19,6 +19,7 @@ import {
 } from "../../../features/wishlist/wishlistSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllProducts } from "../../../features/product/productSlice";
+import { numbersWithCommas } from "../../../utils/priceDisplay";
 
 const ProductCardDetails = ({
   setIsOpen,
@@ -33,6 +34,8 @@ const ProductCardDetails = ({
   const wishlist = useSelector(selectWishListItems);
   const products = useSelector(selectAllProducts);
   const dispatch = useDispatch();
+  const editedPrice = numbersWithCommas(product?.originalPrice);
+  const editedDiscountPrice = numbersWithCommas(product?.discountPrice);
 
   const shopProducts = products.filter(
     (prdt) => prdt.shop._id === product.shop._id
@@ -96,7 +99,7 @@ const ProductCardDetails = ({
     <div className="bg-[#fff] shadow-xl">
       {product ? (
         <div className="fixed w-full h-screen top-0 left-0 bg-[#00000030] z-50 flex items-center justify-center shadow-xl">
-          <div className="w-[90%] lg:w-[60%] h-[80vh] md:h-[90vh] overflow-y-scroll scrollbar-none lg:h-[75vh] bg-white rounded-md shadow-2xl relative p-2 pt-2 pb-6 mb-3 ">
+          <div className="w-[90%] 800px:w-[60%] h-[80vh] md:h-[90vh] overflow-y-scroll scrollbar-none 800px:h-[75vh] bg-white rounded-md shadow-2xl relative p-2 pt-2 pb-6 mb-3 ">
             <div className=" sticky top-0 right-0 z-50 cursor-pointer">
               <RxCross1
                 size={24}
@@ -105,13 +108,13 @@ const ProductCardDetails = ({
               />
             </div>
 
-            <div className="block w-full lg:flex">
-              <div className="w-full justify-center lg:w-[40%] ">
+            <div className="block w-full 800px:flex">
+              <div className="w-full justify-center 800px:w-[40%] ">
                 <div className="flex justify-center py-2">
                   <img
                     src={`${product.images && product.images[0]?.url}`}
                     alt="img"
-                    className="max-w-[80%]  lg:max-w-[100%] max-h-[150px] lg:h-[60%] "
+                    className="max-w-[80%]  800px:max-w-[100%] max-h-[150px] 800px:h-[60%] "
                   />
                 </div>
 
@@ -119,13 +122,13 @@ const ProductCardDetails = ({
                   <img
                     src={`${product.shop?.avatar?.url}`}
                     alt="img"
-                    className="w-[45px] lg:w-[50px] h-[45px] lg:h-[50px] rounded-full mr-2"
+                    className="w-[45px] 800px:w-[50px] h-[45px] 800px:h-[50px] rounded-full mr-2"
                   />
                   <div>
                     <h3 className={`${styles.shop_name}`}>
                       {product.shop?.shopName}
                     </h3>
-                    <h5 className="pb-3 text-[13px] lg:text-[15px]">
+                    <h5 className="pb-3 text-[13px] 800px:text-[15px]">
                       {(averageRating / 5).toFixed(2)} Ratings
                     </h5>
                   </div>
@@ -142,24 +145,23 @@ const ProductCardDetails = ({
                   ({product?.sold_out}) Sold out
                 </h5>
               </div>
-              <div className="w-full lg:w-[60%] pt-5 pl-[5px] pr-1">
+              <div className="w-full 800px:w-[60%] pt-5 pl-[5px] pr-1">
                 <h1
-                  className={`${styles.productTitle} text-base lg:text-[18px] pb-1 pr-5`}
+                  className={`${styles.productTitle} text-base 800px:text-[18px] pb-1 pr-5`}
                 >
                   {product?.name}
                 </h1>
-                <p className="block text-[14px] lg:text-[18px] pr-2">
+                <p className="block text-[14px] 800px:text-[18px] pr-2">
                   {product?.description}
                 </p>
                 <div className=" flex pt-3">
                   <h4
-                    className={`${styles.productDiscountPrice} text-sm lg:text-base`}
+                    className={`${styles.productDiscountPrice} text-sm 800px:text-base`}
                   >
-                    &#x20A6; {product?.discountPrice}
+                    &#x20A6; {editedDiscountPrice}
                   </h4>
-                  <h3 className={`${styles.price} text-sm lg:text-base`}>
-                    &#x20A6;{" "}
-                    {product?.originalPrice ? product?.originalPrice : null}
+                  <h3 className={`${styles.price} text-sm 800px:text-base`}>
+                    &#x20A6; {editedPrice ? editedPrice : null}
                   </h3>
                 </div>
                 <div className="flex items-center mt-4 justify-between pr-3">

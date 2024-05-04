@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import Loader from "../Layout/Loader";
 import SmallLoader from "../Layout/SmallLoader";
 import { useSelector } from "react-redux";
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
 const AdminWithdrawalDetails = () => {
   const navigate = useNavigate();
@@ -79,7 +80,7 @@ const AdminWithdrawalDetails = () => {
             <CiMoneyBill size={24} color="crimson" />
           </div>
           <div className="flex items-center">
-            <h1 className="flex text-[18px] lg:text-[20px]">
+            <h1 className="flex text-[18px] 800px:text-[20px]">
               Withdrawal Details
             </h1>
           </div>
@@ -100,7 +101,7 @@ const AdminWithdrawalDetails = () => {
         ) : (
           <>
             <div className="w-full flex items-center justify-between gap-2 p-2">
-              <h5 className="text-[00000084] text-[14px] md:text-[16px] lg:text-[base]">
+              <h5 className="text-[00000084] text-[14px] md:text-[16px] 800px:text-[base]">
                 Transaction ID:{" "}
                 <span className=" hidden 600px:inline-block">
                   #{withdrawal?._id}
@@ -109,7 +110,7 @@ const AdminWithdrawalDetails = () => {
                   #{withdrawal?._id?.slice(0, 10)}
                 </span>
               </h5>
-              <h5 className="text-[#00000084] text-[14px] md:text-[16px] lg:text-[base]">
+              <h5 className="text-[#00000084] text-[14px] md:text-[16px] 800px:text-[base]">
                 {" "}
                 Placed on: <span>{withdrawal?.createdAt?.slice(0, 10)}</span>
               </h5>
@@ -118,24 +119,24 @@ const AdminWithdrawalDetails = () => {
             <br />
             <div className="w-full md:flex items-center justify-start">
               <img
-                src={`${backend_url}${withdrawal?.seller?.avatar}`}
+                src={`${withdrawal?.seller?.avatar.url}`}
                 alt=""
-                className="max-w-[100px] max-h-[120px] md:max-w[300px] md:max-h-[320px] lg:max-w[300px] lg:max-h-[320px] "
+                className="max-w-[100px] max-h-[120px] md:max-w[300px] md:max-h-[320px] 800px:max-w[300px] 800px:max-h-[320px] "
               />
               <div className="flex flex-col">
-                <h2 className="text-[14px] md:text-[16px] lg:text-[16px]">
+                <h2 className="text-[14px] md:text-[16px] 800px:text-[16px]">
                   <strong>Shop Name: </strong>{" "}
                   <span> {withdrawal?.seller?.shopName}</span>
                 </h2>
-                <h2 className="text-[14px] md:text-[16px] lg:text-[16px]">
+                <h2 className="text-[14px] md:text-[16px] 800px:text-[16px]">
                   <strong>Shop Address: </strong>{" "}
                   <span> {withdrawal?.seller?.address}</span>
                 </h2>
-                <h2 className="text-[14px] md:text-[16px] lg:text-[16px]">
+                <h2 className="text-[14px] md:text-[16px] 800px:text-[16px]">
                   <strong>Phone-Number: </strong>{" "}
                   <span> {withdrawal?.seller?.phoneNumber}</span>
                 </h2>
-                <h2 className="text-[14px] md:text-[16px] lg:text-[16px]">
+                <h2 className="text-[14px] md:text-[16px] 800px:text-[16px]">
                   <strong>Shop Email: </strong>{" "}
                   <span>{withdrawal?.seller?.email}</span>
                 </h2>
@@ -144,20 +145,20 @@ const AdminWithdrawalDetails = () => {
             <br />
             <div className="md:flex justify-between">
               <div className="flex flex-col">
-                <h4 className=" text-[16px] md:text-[18px] lg:text-[20px] font-semibold">
+                <h4 className=" text-[16px] md:text-[18px] 800px:text-[20px] font-semibold">
                   Withdrawal Details :
                 </h4>
-                <h2 className="text-[14px] md:text-[16px] lg:text-[16px]">
+                <h2 className="text-[14px] md:text-[16px] 800px:text-[16px]">
                   {" "}
                   <strong> Amount:</strong>{" "}
-                  <span> &#x20A6;{withdrawal?.amount}</span>
+                  <span> &#x20A6; {numbersWithCommas(withdrawal?.amount)}</span>
                 </h2>
-                <h2 className="text-[14px] md:text-[16px] lg:text-[16px]">
+                <h2 className="text-[14px] md:text-[16px] 800px:text-[16px]">
                   {" "}
                   <strong> Bank:</strong>
                   <span> {withdrawal?.seller?.withdrawMethod?.bankName}</span>
                 </h2>
-                <h2 className="text-[14px] md:text-[16px] lg:text-[16px]">
+                <h2 className="text-[14px] md:text-[16px] 800px:text-[16px]">
                   {" "}
                   <strong> Account Number:</strong>
                   <span>
@@ -168,7 +169,7 @@ const AdminWithdrawalDetails = () => {
               </div>
               <br />
               <div>
-                <h4 className="text-[16px] md:text-[18px] lg:text-[18px] font-semibold">
+                <h4 className="text-[16px] md:text-[18px] 800px:text-[18px] font-semibold">
                   Withdrawal Status:
                 </h4>
                 {withdrawal?.status !== "succeeded" && (
@@ -184,7 +185,7 @@ const AdminWithdrawalDetails = () => {
                       .map((option, index) => (
                         <option
                           value={option}
-                          className="text-[12px] lg:text-[14px] font-normal cursor-pointer"
+                          className="text-[12px] 800px:text-[14px] font-normal cursor-pointer"
                           key={index}
                         >
                           {option}
@@ -194,7 +195,7 @@ const AdminWithdrawalDetails = () => {
                 )}
 
                 {withdrawal?.status === "succeeded" ? (
-                  <h2 className="text-[14px] md:text-[16px] lg:text-[16px]">
+                  <h2 className="text-[14px] md:text-[16px] 800px:text-[16px]">
                     Succeeded
                   </h2>
                 ) : null}

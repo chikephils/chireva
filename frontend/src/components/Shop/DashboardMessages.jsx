@@ -236,7 +236,7 @@ const DashboardMessages = () => {
       {!open && (
         <>
           <div className="flex items-center justify-center sticky h-[35px]">
-            <h1 className=" flex font-medium lg:text-[25px] lg:font-[600] text-black py-2">
+            <h1 className=" flex font-medium 800px:text-[25px] 800px:font-[600] text-black py-2">
               <FcSms size={24} /> All Messages
             </h1>
           </div>
@@ -451,7 +451,7 @@ const SellerInbox = ({
                     />
                   )}
                   {message.text && (
-                    <div className="max-w-[250px] md:max-w-[300px] lg:max-w-[400px] p-2 rounded">
+                    <div className="max-w-[250px] md:max-w-[300px] 800px:max-w-[400px] p-2 rounded">
                       <div
                         className={`${
                           message.sender === sellerId

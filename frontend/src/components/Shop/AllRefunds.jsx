@@ -12,6 +12,7 @@ import { HiOutlineReceiptRefund } from "react-icons/hi";
 import { selectSeller } from "../../features/shop/shopSlice";
 import { Link } from "react-router-dom";
 import Loader from "../Layout/Loader";
+import { numbersWithCommas } from "../../utils/priceDisplay";
 
 const AllRefunds = () => {
   const isLoading = useSelector(selectShopOrderLoading);
@@ -88,9 +89,11 @@ const AllRefunds = () => {
         itemsQty: item.cart.length,
         total:
           "\u20A6" +
-          item.cart.reduce(
-            (acc, item) => acc + item.discountPrice * item.quantity,
-            0
+          numbersWithCommas(
+            item.cart.reduce(
+              (acc, item) => acc + item.discountPrice * item.quantity,
+              0
+            )
           ),
         status:
           item.status === "Processing Refund" ? "Refunds Request" : item.status,
@@ -100,11 +103,10 @@ const AllRefunds = () => {
   return (
     <div className="h-full pb-10">
       <div className="flex items-center justify-center sticky h-[35px]">
-        <h1 className=" flex font-medium lg:text-[22px] lg:font-[600] text-black py-3">
+        <h1 className=" flex font-medium 800px:text-[22px] 800px:font-[600] text-black py-3">
           <HiOutlineReceiptRefund size={24} /> Your Shop Refunds
         </h1>
       </div>
-
       {isLoading ? (
         <div className="flex items-center justify-center  h-[60vh] ">
           <Loader />
