@@ -96,7 +96,7 @@ const OrderDetails = () => {
 
   return (
     <div
-      className={`py-4 min-h-screen mt-[82px] 800px:mt-[90px] ${styles.section}`}
+      className={`py-4 min-h-screen mt-[80px] 800px:mt-[90px] ${styles.section}`}
     >
       <div className="w-full h-[35px] bg-green-400 sticky top-0">
         <div className="flex justify-between p-2">

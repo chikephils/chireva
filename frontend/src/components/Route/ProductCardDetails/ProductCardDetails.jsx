@@ -141,9 +141,12 @@ const ProductCardDetails = ({
                     Send Message <AiOutlineMessage className="ml-1" />
                   </span>
                 </div>
-                <h5 className="text-[14px] text-red-600 pb-4">
-                  ({product?.sold_out}) Sold out
+                <h5 className="text-[16px] text-green-600 pb-4">
+                  {product?.sold_out} Sold
                 </h5>
+                {product.stock < 1 && (
+                  <h5 className="text-[16px] text-red-600 pb-4">Sold-out!!</h5>
+                )}
               </div>
               <div className="w-full 800px:w-[60%] pt-5 pl-[5px] pr-1">
                 <h1

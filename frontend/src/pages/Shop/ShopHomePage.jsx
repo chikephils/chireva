@@ -34,7 +34,7 @@ const ShopHomePage = () => {
         </div>
       ) : (
         <>
-          <div className={` 800px:px-2 `}>
+          <div className={` 600px:px-2 `}>
             <div className="w-full 800px:flex justify-between">
               <div className="800px:w-[25%] bg-stone-200 rounded-[4px] shadow-sm  800px:sticky left-0 z-10 px-2 py-4 h-full">
                 <div className="overflow-y-scroll scrollbar-none h-[95vh] bg-slate-400 rounded-md shadow-lg">

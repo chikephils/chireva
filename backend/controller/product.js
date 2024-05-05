@@ -8,8 +8,6 @@ const { isSeller, isAuthenticated, isAdmin } = require("../middleware/auth");
 const Order = require("../model/order");
 const cloudinary = require("cloudinary");
 
-
-
 // create Product
 router.post(
   "/create-product",
@@ -98,6 +96,45 @@ router.delete(
       });
     } catch (error) {
       return next(new ErrorHandler(error, 400));
+    }
+  })
+);
+
+//edit Product
+router.put(
+  "/edit-product/:id",
+  isSeller,
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const {
+        name,
+        description,
+        category,
+        originalPrice,
+        discountPrice,
+        stock,
+      } = req.body;
+
+      const product = await Product.findById(req.params.id);
+      console.log(product);
+      if (!product) {
+        return next(new ErrorHandler("Product is not found with this id", 404));
+      }
+
+      (product.name = name),
+        (product.description = description),
+        (product.category = category),
+        (product.originalPrice = originalPrice),
+        (product.discountPrice = discountPrice),
+        (product.stock = stock),
+        await product.save();
+
+      res.status(200).json({
+        success: true,
+        product,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
     }
   })
 );

@@ -105,14 +105,17 @@ const SellerProductCardDetails = ({ setIsOpen, product }) => {
                   {product.shop.shopName}
                 </h3>
                 <h5 className="pb-3 text-[13px] 800px:text-[15px]">
-                  {averageRating} Ratings
+                {(averageRating / 5).toFixed(2)} Ratings
                 </h5>
               </div>
             </div>
 
-            <h5 className="text-[14px] text-red-600 pb-4">
-              ({product?.sold_out}) Sold out
+            <h5 className="text-[16px] text-green-600 pb-4">
+              {product?.sold_out} Sold
             </h5>
+            {product.stock < 1 && (
+              <h5 className="text-[16px] text-red-600 pb-4">Sold-out!!</h5>
+            )}
           </div>
           <div className="w-full 800px:w-[60%] pt-5 pl-[5px] pr-1">
             <h1

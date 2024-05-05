@@ -13,7 +13,7 @@ const SellerProductCard = ({ product }) => {
   useEffect(() => {}, [product]);
 
   return (
-    <div className="320px:w-[145px] 375px:w-[165px] 400px:w-[175px] min-h-[150px] 800px:min-w-full 800px:min-h-[280px] bg-gradient-to-l from-yellow-200 to-slate-300 ... rounded-lg shadow-lg p-2 800px:p-2 overflow-hidden flex flex-col">
+    <div className="320px:w-[145px] 375px:w-[165px] 400px:w-[175px] min-h-[200px] 600px:min-w-full 600px:min-h-[240px] 800px:min-w-full 800px:min-h-[280px] bg-gradient-to-l from-yellow-200 to-slate-300 ... rounded-lg shadow-lg p-2 800px:p-2 overflow-hidden flex flex-col">
       <div className="flex items-start justify-between">
         <img
           src={`${product.images && product.images[0]?.url}`}

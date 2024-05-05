@@ -66,7 +66,7 @@ const ProductCard = ({ product, isEvent }) => {
   };
 
   return (
-    <div className="320px:w-[145px] 375px:w-[165px] 400px:w-[175px] min-h-[150px] 800px:min-w-full 800px:min-h-[280px] bg-gradient-to-r from-slate-50 to-slate-200 ... rounded-lg shadow-2xl p-2 800px:p-2 overflow-hidden flex flex-col ">
+    <div className="320px:w-[145px] 375px:w-[165px] 400px:w-[175px] min-h-[200px] 800px:min-w-full 800px:min-h-[280px] bg-gradient-to-r from-slate-50 to-slate-200 ... rounded-lg shadow-2xl p-2 800px:p-2 overflow-hidden flex flex-col ">
       <div className="flex items-start justify-between">
         <Link
           to={`${

@@ -10,13 +10,16 @@ import {
   selectSeller,
 } from "../../features/shop/shopSlice";
 import SellerProductCardDetails from "../../components/Route/ProductCardDetails/SellerProductCardDetails";
+import ProductEditForm from "../../components/Shop/ProductEditForm";
 
 const ShopAllProducts = () => {
   const [isLoading, setIsLoading] = useState(false);
   const seller = useSelector(selectSeller);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedEdit, setSelectedEdit] = useState(null);
   const shopProducts = useSelector(selectAllShopProducts);
   const [isOpen, setIsOpen] = useState(false);
+  const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,6 +33,12 @@ const ShopAllProducts = () => {
     setSelectedProduct(product);
     setIsOpen(true);
   };
+
+  const handleProductEdit = (productId) => {
+    const product = shopProducts.find((item) => item._id === productId);
+    setSelectedEdit(product);
+    setEdit(true);
+  };
   return (
     <>
       <DashBoardHeader active={3} />
@@ -37,10 +46,11 @@ const ShopAllProducts = () => {
         <div className=" w-[20%] md:w-[20%] 800px:w-[20%] fixed  mt-1 h-[calc(100%-62px)] bg-gradient-to-r from-slate-200 to-slate-400 ...  shadow-md  rounded-md py-4 flex items-center">
           <DashBoardSideBar active={3} />
           <div
-            className={`w-[78%] ml-[21%] h-[calc(100%-62px)] fixed  pb-4 bg-gradient-to-l from-slate-300 to-slate-400 ...  rounded-md shadow-md px-1 md:px-2 py-2`}
+            className={`w-[78%] ml-[21%] h-[calc(100%-62px)] fixed pb-4 bg-gradient-to-l from-slate-300 to-slate-400 ...  rounded-md shadow-md px-1 md:px-2 py-2`}
           >
             <AllProducts
               handleProductClick={handleProductClick}
+              handleProductEdit={handleProductEdit}
               shopProducts={shopProducts}
               seller={seller}
               isLoading={isLoading}
@@ -52,6 +62,12 @@ const ShopAllProducts = () => {
         <SellerProductCardDetails
           setIsOpen={() => setIsOpen(false)}
           product={selectedProduct}
+        />
+      )}
+      {edit && selectedEdit && (
+        <ProductEditForm
+          setEdit={() => setEdit(false)}
+          product={selectedEdit}
         />
       )}
     </>

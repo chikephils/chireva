@@ -128,7 +128,7 @@ const OrderDetails = () => {
         order?.cart.map((item, index) => {
           return (
             <div
-              className="w-full flex justify-between mb-1 p-1 border border-black rounded-md bg-gradient-to-r from-slate-200 to-yellow-300 ..."
+              className="w-full flex justify-between items-center mb-1 p-1 border border-black rounded-md bg-gradient-to-r from-slate-200 to-yellow-300 ... h-[80px] "
               key={index}
             >
               <div className="w-[30%]">

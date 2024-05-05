@@ -10,8 +10,14 @@ import Loader from "../Layout/Loader";
 import SmallLoader from "../Layout/SmallLoader";
 import { selectError } from "../../features/product/productSlice";
 import { numbersWithCommas } from "../../utils/priceDisplay";
+import { MdEdit } from "react-icons/md";
 
-const AllProducts = ({ handleProductClick, shopProducts, isLoading }) => {
+const AllProducts = ({
+  handleProductClick,
+  shopProducts,
+  isLoading,
+  handleProductEdit,
+}) => {
   const deleteError = useSelector(selectError);
   const [showLoader, setShowLoader] = useState({});
 
@@ -76,6 +82,23 @@ const AllProducts = ({ handleProductClick, shopProducts, isLoading }) => {
           <>
             <Button onClick={() => handleProductClick(params.row.id)}>
               <AiOutlineEye size={18} />
+            </Button>
+          </>
+        );
+      },
+    },
+    {
+      field: "Edit",
+      flex: 0.4,
+      minWidth: 80,
+      headerName: "",
+      type: "number",
+      sortable: false,
+      renderCell: (params) => {
+        return (
+          <>
+            <Button onClick={() => handleProductEdit(params.row.id)}>
+              <MdEdit size={18} />
             </Button>
           </>
         );
