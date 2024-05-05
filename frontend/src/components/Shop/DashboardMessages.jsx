@@ -404,7 +404,7 @@ const SellerInbox = ({
           <img
             src={`${userData?.avatar?.url}`}
             alt="img"
-            className="w-[60px] h-[60px] rounded-full"
+            className="w-[45px] h-[45px] rounded-full"
           />
           <div className="pl-3">
             <h1 className="text-[18px] font-[600]">

@@ -11,6 +11,7 @@ const catchAsyncError = require("../middleware/CatchAsyncError");
 const sendShopToken = require("../utils/shopToken");
 const cloudinary = require("cloudinary");
 const bcrypt = require("bcrypt");
+const Products = require("../model/product");
 
 //create Shop
 router.post("/create-shop", async (req, res, next) => {
