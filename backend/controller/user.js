@@ -42,7 +42,7 @@ router.post("/create-user", async (req, res, next) => {
     };
 
     const activationToken = createActivationToken(user);
-    const activationURL = `https://chireva-frontend.vercel.app/activation/${activationToken}`;
+    const activationURL = `https://chireva-shops.vercel.app/activation/${activationToken}`;
 
     //Read HTML template file
     const htmlTemplatePath = path.join(
@@ -125,7 +125,7 @@ router.post(
       const htmlMail = htmlTemplate
         .replace("%FIRST_NAME%", user.firstName)
         .replace("%LAST_NAME%", user.lastName)
-        .replace("%LOGIN%", "https://chireva-frontend.vercel.app/login");
+        .replace("%LOGIN%", "https://chireva-shops.vercel.app/login");
 
       try {
         await sendMail({
@@ -176,7 +176,7 @@ router.post(
           expiresIn: "2m",
         }
       );
-      const passwordResetURL = `https://chireva-frontend.vercel.app/password-reset/${user._id}/${passwordResetToken}`;
+      const passwordResetURL = `https://chireva-shops.vercel.app/password-reset/${user._id}/${passwordResetToken}`;
 
       const htmlTemplatePath = path.join(
         __dirname,
