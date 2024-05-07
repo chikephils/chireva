@@ -109,7 +109,7 @@ Used Cloudinary to save and deliver product images
 ## Deployments
 •	Backend and frontend: Vercels
 
-•	Socket : onrender
+•	Socket :render
 
 
 
