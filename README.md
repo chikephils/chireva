@@ -1,6 +1,149 @@
-A MERN STACK Multi Vendor/User Online Shopping Web Application, that enable both users and Seller create an own an account while enjoying wonderful shopping experience.
-Uses cloudinary for cloud storage, to store and deliver product Images
-Redux js Toolkit and React Persist for state management
-Flutterwave Payment Portal to allow users pay for orders and using cards and other accepted payment methods
-Web Socket to enable messaging between users and sellers
-Various React Libaries like React Toastify, React Router, React datepicker ..... etc
+# Chireva-Shops
+
+## Overview
+LIVE-LINK ** : https://chireva-shops.vercel.app/
+
+This is a MERN-Stack application for both online shoppers and online sellers, it’s a mobile market place where buyers and sellers can create and account to enjoy a wonderful shopping experience from the comfort of anywhere.
+The API for this website, was built from scratch using Node JS.
+This has a web-socket server to enable instant messaging between users and sellers
+Integrated Flutterwave Online payment system for easy payment for products bought and to enable sellers make withdrawals from Shop
+Used Cloudinary to save and deliver product images
+
+## Features
+•	Ability for users and sellers and sign up and login, Registration involves email verification with a token that has an expiration limit to confirm account sign-up and successfully create an account for both users and sellers
+
+•	Functionality for searching for products provided by various sellers to the backend.
+
+•	Functionality for users and seller to interact via messaging.
+
+•	User Dashboard which allows each user to update their profile, view Orders, request for refunds, view Refund history, give product rating and reviews,  change password, add and update addresses.
+
+•	Seller Dashboard to update seller profile, view Orders, process orders, accept refunds, add withdrawal method, check shop balance, make withdrawals from shop, create, delete and edit products for the shop, check withdrawal and transaction history.
+
+•	Admin Dashboard which keeps track of Admin profits from sales made around the shop, accept withdrawal requests from sellers, check all Products, users and sellers registered to the application.
+
+
+
+
+## Technologies used
+•	React
+
+•	Tailwind CSS
+
+•	Node JS
+
+•	Express
+
+•	Mongo DB
+
+
+
+## Front-end Dependencies
+•	React-icons
+
+•	Axios
+
+•	React-toastify
+
+•	Reduxjs toolkit
+
+•	React-router
+
+•	Redux-persist
+
+•	React-loader 
+
+•	Country-sate-city
+
+•	emotion/react
+
+•	emotion/styled
+
+•	Material UI
+
+•	React-datepicker
+
+•	Socket.io
+
+•	Tailwindcss
+
+
+## Back-end Dependencies
+•	bcrypt
+
+•	Cloudinary
+
+•	Dotenv
+
+•	Express
+
+•	Flutterwave-node-v3
+
+•	jsonwebtoken
+
+•	mongoose
+
+•	nodemailer
+
+•	nodemon
+
+•	helmet
+
+•	cors
+
+•	nodemailer
+
+•	nodemon
+
+•	body-parser
+
+•	cookie-parser
+
+
+
+## API
+•	https://chirevaapi.vercel.app/
+
+
+
+## Deployments
+•	Backend and frontend: Vercels
+
+•	Socket : onrender
+
+
+
+## Getting started
+
+•	Clone the repository with git clone  https://github.com/chikephils/chireva
+
+•	Run cd backend and run npm install to install all backend dependencies
+
+•	Run npm run dev to start the backend
+
+•	Run cd ..
+
+•	Run cd socket and run npm install to install all socket dependencies 
+
+•	Run npm start to start the socket server
+
+•	Run cd ..
+
+•	Run cd frontend and run npm install to install the frontend dependencies
+
+•	Run npm start to start the frontend once you have completed the steps above and you will be ready-to-go copy of chireva-shops on your local machine
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
