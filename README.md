@@ -102,14 +102,16 @@ Used Cloudinary to save and deliver product images
 
 
 ## API
-•	https://chirevaapi.vercel.app/
+•	https://chireva-api.onrender.com/
 
 
 
 ## Deployments
-•	Backend and frontend: Vercels
+•	Frontend: Vercels
 
-•	Socket : onrender
+•	Backend: render
+
+•	Socket :render
 
 
 
