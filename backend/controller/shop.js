@@ -10,7 +10,7 @@ const ErrorHandler = require("../utils/ErrorHandler");
 const catchAsyncError = require("../middleware/CatchAsyncError");
 const sendShopToken = require("../utils/shopToken");
 const cloudinary = require("cloudinary");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const Products = require("../model/product");
 
 //create Shop
@@ -24,6 +24,7 @@ router.post("/create-shop", async (req, res, next) => {
       return next(new ErrorHandler("User already exists", 400));
     }
 
+    const hashedPassword = await bcrypt.hash(password, 12);
     const myCloud = await cloudinary.v2.uploader.upload(avatar, {
       folder: "avatars",
     });
@@ -38,7 +39,7 @@ router.post("/create-shop", async (req, res, next) => {
         public_id: myCloud.public_id,
         url: myCloud.secure_url,
       },
-      password: password,
+      password: hashedPassword,
     };
 
     const activationToken = createActivationToken(seller);

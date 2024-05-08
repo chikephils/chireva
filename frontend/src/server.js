@@ -1,3 +1,3 @@
-export const server = "https://chirevaapi.vercel.app/api/v2";
+export const server = "https://chireva-api.onrender.com/api/v2";
 
-export const backend_url = "https://chirevaapi.vercel.app/";
+export const backend_url = "https://chireva-api.onrender.com/";

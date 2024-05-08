@@ -10,7 +10,7 @@ const sendMail = require("../utils/sendMail");
 const sendToken = require("../utils/jwtToken");
 const { isAuthenticated, isAdmin } = require("../middleware/auth");
 const cloudinary = require("cloudinary");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const Products = require("../model/product");
 
 //Create User
@@ -24,7 +24,7 @@ router.post("/create-user", async (req, res, next) => {
       return next(new ErrorHandler("User already exists", 400));
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 12);
 
     const myCloud = await cloudinary.v2.uploader.upload(avatar, {
       folder: "avatars",

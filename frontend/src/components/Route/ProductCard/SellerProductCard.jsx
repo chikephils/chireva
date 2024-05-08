@@ -65,9 +65,16 @@ const SellerProductCard = ({ product }) => {
               </h3>
             )}
           </div>
-          <span className="text-[12px] md:text-x[14px] 880px:text-[16px] font-semibold text-lime-600">
-            {product.sold_out} sold
-          </span>
+          <div className="flex-col">
+            <p className="text-[12px] md:text-x[14px] 800px:text-[16px] font-semibold text-lime-600 mt-1">
+              {product?.sold_out} sold
+            </p>
+            {product?.stock < 1 && (
+              <p className="text-[12px] md:text-x[14px] 800px:text-[16px] font-semibold text-red-600 mt-1">
+                Sold Out
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>

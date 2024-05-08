@@ -7,6 +7,7 @@ import { server } from "../../server";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { getShopProducts, selectSeller } from "../../features/shop/shopSlice";
+import { getAllProducts } from "../../features/product/productSlice";
 
 const ProductEditForm = ({ setEdit, product }) => {
   const seller = useSelector(selectSeller);
@@ -14,10 +15,10 @@ const ProductEditForm = ({ setEdit, product }) => {
   const [description, setDescription] = useState(product?.description || "");
   const [category, setCategory] = useState(product?.category || "");
   const [originalPrice, setOriginalPrice] = useState(
-    product?.originalPrice || " "
+    product?.originalPrice || null
   );
   const [discountPrice, setDiscountPrice] = useState(
-    product?.discountPrice || ""
+    product?.discountPrice || null
   );
   const [stock, setStock] = useState(product?.stock || 0);
   const [showLoader, setShowLoader] = useState(false);
@@ -66,6 +67,7 @@ const ProductEditForm = ({ setEdit, product }) => {
       .then((response) => {
         if (response.status >= 200 || response.status < 300) {
           dispatch(getShopProducts(seller._id));
+         dispatch(getAllProducts())
           toast.success("Product edited Successfully");
         }
       })
