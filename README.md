@@ -69,7 +69,7 @@ Used Cloudinary to save and deliver product images
 
 
 ## Back-end Dependencies
-•	bcrypt
+•	bcryptjs
 
 •	Cloudinary
 
