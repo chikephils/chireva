@@ -28,8 +28,6 @@ Used Cloudinary to save and deliver product images
 ## Technologies used
 •	React
 
-•	Tailwind CSS
-
 •	Node JS
 
 •	Express
@@ -54,10 +52,6 @@ Used Cloudinary to save and deliver product images
 •	React-loader 
 
 •	Country-sate-city
-
-•	emotion/react
-
-•	emotion/styled
 
 •	Material UI
 
@@ -121,7 +115,7 @@ Used Cloudinary to save and deliver product images
 
 •	Run cd backend and run npm install to install all backend dependencies
 
-•	Run npm run dev to start the backend
+•	Run npm start to start the backend
 
 •	Run cd ..
 
