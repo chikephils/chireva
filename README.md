@@ -89,8 +89,6 @@ Used Cloudinary to save and deliver product images
 
 •	nodemailer
 
-•	nodemon
-
 •	body-parser
 
 •	cookie-parser
