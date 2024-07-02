@@ -103,6 +103,7 @@ const UserInbox = () => {
     </div>
   );
 };
+
 const MessageList = ({ conversation, index, me, online, userLoading }) => {
   const [active, setActive] = useState(0);
   const [seller, setSeller] = useState([]);
@@ -111,6 +112,7 @@ const MessageList = ({ conversation, index, me, online, userLoading }) => {
 
   useEffect(() => {
     const sellerId = conversation.members.find((user) => user !== me);
+    
     const getSeller = async () => {
       try {
         setLoading(true);
@@ -134,7 +136,6 @@ const MessageList = ({ conversation, index, me, online, userLoading }) => {
         conversation,
         seller,
         online,
-        activeStatus: true,
       },
     });
   };

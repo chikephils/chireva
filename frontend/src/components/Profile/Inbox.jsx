@@ -26,7 +26,7 @@ const Inbox = () => {
   const scrollRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const { conversation, seller, online, activeStatus } = location.state;
+  const { conversation, seller, online } = location.state;
   const [imgLoading, setImageLoading] = useState(false);
   const token = useSelector((state) => state.user?.token);
   const me = user?._id;
@@ -68,6 +68,7 @@ const Inbox = () => {
     };
     getConversation();
   }, [conversation._id, id]);
+
 
   //get messages
   useEffect(() => {
@@ -226,7 +227,7 @@ const Inbox = () => {
               />
               <div className="pl-3 pt-1 ">
                 <h1 className="text-[18px] font-[600]">{seller?.shopName}</h1>
-                <h1>{online || activeStatus ? "Active Now" : ""}</h1>
+                <h1>{online ? "Active Now" : ""}</h1>
               </div>
             </div>
             <RxCross1

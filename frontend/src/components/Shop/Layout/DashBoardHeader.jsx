@@ -14,7 +14,7 @@ const DashBoardHeader = ({ active }) => {
     <div className="w-full h-[60px] bg-gradient-to-r from-yellow-200 to-lime-400 ... shadow-lg d fixed top-0 left-0 z-50 flex items-center justify-between px-3 mb-2">
       <div className="800px:ml-3">
         <Link to="/dashboard">
-          <img src={Logo} alt="logo" className="w-14 h-14" title="Dashboard" />
+          <img src={Logo} alt="logo" className="w-[40px] h-[40px]" title="Dashboard" />
         </Link>
       </div>
       <div className="flex items-center">
