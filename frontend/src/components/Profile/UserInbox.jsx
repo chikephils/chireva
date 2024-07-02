@@ -167,7 +167,7 @@ const MessageList = ({ conversation, index, me, online, userLoading }) => {
       {loading ? (
         "Loading..."
       ) : (
-        <div className="pl-3 h-[60px] overflow-hidden">
+        <div className="pl-3 h-[50px] overflow-hidden">
           <h1 className="text-[16px]"> {seller?.shopName}</h1>
           <p className="text-[14px] text-[#000c]">
             {!userLoading && conversation?.lastMessageId !== seller?._id

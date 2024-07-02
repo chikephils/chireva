@@ -367,7 +367,7 @@ const MessageList = ({
       {loading ? (
         "Loading..."
       ) : (
-        <div className="pl-3 h-[60px] overflow-hidden">
+        <div className="pl-3 h-[50px] overflow-hidden">
           <h1 className="text-[16px] text-[#000]">{user?.firstName}</h1>
           <p className="text-[14px] text-[#000c]">
             {" "}
@@ -400,7 +400,7 @@ const SellerInbox = ({
   return (
     <div className=" h-full w-full flex flex-col justify-between">
       {/* message header */}
-      <div className=" w-full h-[12vh] flex items-center justify-between py-2  bg-slate-300 px-2 rounded-lg">
+      <div className=" w-full h-[12vh] flex items-center justify-between py-2  bg-slate-300 px-2">
         <div className="flex">
           <img
             src={`${userData?.avatar?.url}`}

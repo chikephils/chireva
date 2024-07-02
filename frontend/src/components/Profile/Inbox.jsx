@@ -217,12 +217,12 @@ const Inbox = () => {
       ) : (
         <>
           {/* Message header */}
-          <div className=" w-full h-[12vh] flex items-center justify-between py-2  bg-slate-500 px-2 rounded-lg">
+          <div className=" w-full h-[12vh] flex items-center justify-between py-2  bg-slate-500 px-2">
             <div className="flex">
               <img
                 src={`${seller?.avatar.url}`}
                 alt="img"
-                className="w-[50px] h-[60px] rounded-full border-black border"
+                className="w-[40px] h-[40px] rounded-full border-black border"
               />
               <div className="pl-3 pt-1 ">
                 <h1 className="text-[18px] font-[600]">{seller?.shopName}</h1>
