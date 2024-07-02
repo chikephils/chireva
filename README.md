@@ -3,10 +3,14 @@
 ## Overview
 LIVE-LINK ** : https://chireva-shops.vercel.app/
 
-This is a MERN-Stack application for both online shoppers and online sellers, it’s a mobile market place where buyers and sellers can create and account to enjoy a wonderful shopping experience from the comfort of anywhere.
+This is a MERN-Stack application for both online shoppers and online sellers, it’s a mobile market place where buyers and sellers can create an account to enjoy wonderful shopping experience from the comfort of anywhere.
+
 The API for this website, was built from scratch using Node JS.
+
 This has a web-socket server to enable instant messaging between users and sellers
+
 Integrated Flutterwave Online payment system for easy payment for products bought and to enable sellers make withdrawals from Shop
+
 Used Cloudinary to save and deliver product images
 
 ## Features
@@ -23,12 +27,8 @@ Used Cloudinary to save and deliver product images
 •	Admin Dashboard which keeps track of Admin profits from sales made around the shop, accept withdrawal requests from sellers, check all Products, users and sellers registered to the application.
 
 
-
-
 ## Technologies used
 •	React
-
-•	Tailwind CSS
 
 •	Node JS
 
@@ -55,10 +55,6 @@ Used Cloudinary to save and deliver product images
 
 •	Country-sate-city
 
-•	emotion/react
-
-•	emotion/styled
-
 •	Material UI
 
 •	React-datepicker
@@ -69,7 +65,7 @@ Used Cloudinary to save and deliver product images
 
 
 ## Back-end Dependencies
-•	bcrypt
+•	bcryptjs
 
 •	Cloudinary
 
@@ -92,8 +88,6 @@ Used Cloudinary to save and deliver product images
 •	cors
 
 •	nodemailer
-
-•	nodemon
 
 •	body-parser
 
@@ -121,7 +115,7 @@ Used Cloudinary to save and deliver product images
 
 •	Run cd backend and run npm install to install all backend dependencies
 
-•	Run npm run dev to start the backend
+•	Run npm start to start the backend
 
 •	Run cd ..
 
