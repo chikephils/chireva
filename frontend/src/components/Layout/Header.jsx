@@ -338,7 +338,7 @@ const Header = ({ activeHeading }) => {
                               <img
                                 src={`${data?.images[0]?.url}`}
                                 alt="log"
-                                className="w-[40px] h-[40px] mr-2"
+                                className="max-w-[40px] max-h-[40px] mr-2"
                               />
                               <p className="text-[12px]">{displayName}</p>
                             </div>
