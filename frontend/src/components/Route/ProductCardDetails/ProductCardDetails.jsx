@@ -20,6 +20,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllProducts } from "../../../features/product/productSlice";
 import { numbersWithCommas } from "../../../utils/priceDisplay";
+import { server } from "../../../server";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const ProductCardDetails = ({
   setIsOpen,
@@ -29,6 +33,7 @@ const ProductCardDetails = ({
   inCart,
   setInCart,
 }) => {
+  const user = useSelector((state) => state.user?.user);
   const [click, setClick] = useState(false);
   const cartItems = useSelector(itemsInCart);
   const wishlist = useSelector(selectWishListItems);
@@ -36,6 +41,7 @@ const ProductCardDetails = ({
   const dispatch = useDispatch();
   const editedPrice = numbersWithCommas(product?.originalPrice);
   const editedDiscountPrice = numbersWithCommas(product?.discountPrice);
+  const navigate = useNavigate();
 
   const shopProducts = products.filter(
     (prdt) => prdt.shop._id === product.shop._id
@@ -67,8 +73,37 @@ const ProductCardDetails = ({
     dispatch(addToWishList({ item: product }));
   };
 
-  const handleMessageSumbit = () => {
-    console.log("message sumbit");
+  const handleMessageSumbit = async () => {
+    if (user) {
+      const groupTitle = product.shop._id + user._id;
+      const userId = user._id;
+      const sellerId = product.shop._id;
+
+      try {
+        const response = await axios.post(
+          `${server}/conversation/create-new-conversation`,
+          {
+            groupTitle,
+            userId,
+            sellerId,
+          }
+        );
+
+        const conversationId = response.data.conversation._id;
+
+        // Pass the state object to the navigate function
+        navigate(`/profile/inbox/${conversationId}`, {
+          state: {
+            conversation: response.data.conversation,
+            seller: product.shop,
+          },
+        });
+      } catch (error) {
+        toast.error(error.response.data.message);
+      }
+    } else {
+      toast.error("Please login to create a conversation");
+    }
   };
 
   const decreamentCount = () => {
