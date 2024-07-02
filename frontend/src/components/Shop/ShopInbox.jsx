@@ -238,10 +238,10 @@ const ShopInbox = () => {
               <img
                 src={`${user?.avatar.url}`}
                 alt="img"
-                className="w-[60px] h-[60px] rounded-full"
+                className="w-[50px] h-[50px] rounded-full"
               />
               <div className="pl-3">
-                <h1 className="text-[18px] font-[600]">{user?.firstName}</h1>
+                <h1 className="text-[16px] font-[600]">{user?.firstName}</h1>
                 <h1>{online ? "Active Now" : ""}</h1>
               </div>
             </div>

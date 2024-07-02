@@ -154,7 +154,7 @@ const MessageList = ({ conversation, index, me, online, userLoading }) => {
             <img
               src={`${seller?.avatar?.url}`}
               alt=""
-              className="w-[50px] h-[50px] max-w-full rounded-full object-cover"
+              className="w-[40px] h-[40px] max-w-full rounded-full object-cover"
             />
             {online ? (
               <div className="w-[12px] h-[12px] bg-green-400 rounded-full absolute top-[2px] right-[2px]" />
@@ -167,13 +167,14 @@ const MessageList = ({ conversation, index, me, online, userLoading }) => {
       {loading ? (
         "Loading..."
       ) : (
-        <div className="pl-3 max-h-[75px] overflow-hidden">
-          <h1 className="text-[18px]"> {seller?.shopName}</h1>
-          <p className="text-[16px] text-[#000c]">
+        <div className="pl-3 h-[60px] overflow-hidden">
+          <h1 className="text-[16px]"> {seller?.shopName}</h1>
+          <p className="text-[14px] text-[#000c]">
             {!userLoading && conversation?.lastMessageId !== seller?._id
               ? "You:"
               : seller?.shopName?.slice(0, 8) + ": "}
-            {""} {conversation?.lastMessage}
+            {""} {conversation?.lastMessage?.slice(0, 20)}
+            {"..."}{" "}
           </p>
         </div>
       )}
